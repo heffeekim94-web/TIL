@@ -10,11 +10,14 @@ This will allow automatic code fillouts and compiling system executable in VS co
 ```bash
 haeminkim@pa:~/Desktop$ sudo apt update
 ```
+<br>
 
 2. enter passcode
 ```bash
 [sudo] haeminkim 암호: 
 ```
+<br>
+
 3. running program looks like:
 ```bash
 기존:1 http://kr.archive.ubuntu.com/ubuntu jammy InRelease
@@ -30,6 +33,7 @@ haeminkim@pa:~/Desktop$ sudo apt update
 상태 정보를 읽는 중입니다... 완료        
 188 패키지를 업그레이드할 수 있습니다. 확인하려면 'apt list --upgradable'를 실행하십시오.
 ```
+
 
 4. c++ language installation 
 ```bash
