@@ -1,6 +1,10 @@
 # Install C++ language
 
+<br>
+To have C++ language in Visual Studio Code, need to do following process 
+on its terminal.
 
+This will allow automatic code fillouts and compiling system executable in VS code.
 
 1. update
 ```bash
