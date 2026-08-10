@@ -1,13 +1,15 @@
 # C++ grammer
 
 ## Install C++ language
-'''bash
+
+```bash
 
 # update
 haeminkim@pa:~/Desktop$ sudo apt update
 
 # enter passcode
 [sudo] haeminkim 암호: 
+
 
 # running program looks like:
 기존:1 http://kr.archive.ubuntu.com/ubuntu jammy InRelease
@@ -89,12 +91,12 @@ sudo snap install valgrind  # version 3.26.0, or
 sudo apt  install valgrind  # version 1:3.18.1-1ubuntu2
 'snap info valgrind'에서 추가적인 버전을 확인하십시오.
 
-'''
+```
 
 
 ## Start Java
 
-'''java
+```java
 
 #include <iostream>
 int main() { //appropriate place to have opening { to reduce a line
@@ -117,10 +119,10 @@ int main() { //appropriate place to have opening { to reduce a line
 
 //input in the terminal to compile the code:
 
-'''
+```
 
 
-'''bash
+```bash
 
 g++ -Wall -Wextra -std=c++17 -o hello ./hello_world.cpp
 
@@ -136,10 +138,10 @@ Hello, World!
 
 # result shows up in the terminal after running the executable.
 
-'''
+```
 
 
-'''java
+```java
 
 #include <iostream>
 #include <string>
@@ -176,6 +178,7 @@ Battery: 220
 Distance: 1000000
 Age: 25
 
+---
 
 #include <iostream>
 #include <string>
@@ -204,6 +207,7 @@ int main() {
  number: 3.14
  largeNumber: 3.14159
 
+---
 
 #include <iostream>
 #include <string>
@@ -233,6 +237,7 @@ int main() {
 Sensor Type: A
 Message: Hello, World!
 
+---
 
 #include <iostream>
 #include <string>
@@ -258,7 +263,7 @@ int main() {
 // resultes showing in bash terminal:
 Sensor readings: 10, 20, 30, 40, 50
 
-
+---
 
 #include <iostream>
 #include <string>
@@ -279,6 +284,8 @@ int main() {
 
 // resultes showing in bash terminal:
 readings[0] size is: 8 bytes
+
+---
 
 #include <iostream>
 #include <string>
@@ -305,6 +312,7 @@ int main() {
 Array size: 5
 Array size2: 5
 
+---
 
 #include <iostream>
 #include <string>
@@ -327,6 +335,7 @@ int main() {
 // resultes showing in bash terminal:
 Hello, World!
 
+---
 
 #include <iostream>
 #include <string>
@@ -351,7 +360,7 @@ int main() {
 
 // resultes showing in bash terminal:
 
-
+---
 
 #include <iostream>
 #include <string>
@@ -378,6 +387,8 @@ int main() {
 4
 21
 2
+
+---
 
 #include <iostream>
 #include <string>
@@ -407,6 +418,7 @@ int main() {
 21
 2.33333
 
+---
 
 #include <iostream>
 #include <string>
@@ -437,6 +449,7 @@ int main() {
 250
 50
 
+---
 
 #include <iostream>
 #include <string>
@@ -467,7 +480,7 @@ int main() {
 
 // resultes showing in bash terminal:
 
-
+---
 
 #include <iostream>
 #include <string>
@@ -496,7 +509,7 @@ batteryVoltage <= 50 = true
 lidar_isOK = true
 imu_isOK = true
 
-
+---
 
 #include <iostream>
 #include <string>
@@ -523,6 +536,8 @@ int main() {
 robot State : OK
 robot State : 0
 
+---
+
 #include <iostream>
 #include <string>
 #include <cmath> // Include the cmath library for sqrt function
@@ -548,6 +563,7 @@ int main() {
 // resultes showing in bash terminal:
 Distance: 11.1803
 
+---
 
 #include <iostream>
 #include <string>
@@ -581,7 +597,7 @@ int main() {
 
 // resultes showing in bash terminal:
 
-
+---
 
 #include <iostream>
 #include <string>
@@ -625,7 +641,7 @@ int main() {
 
 // resultes showing in bash terminal:
 
-
+---
 
 #include <iostream>
 #include <string>
@@ -655,6 +671,7 @@ int main() {
 
 // resultes showing in bash terminal:
 
+---
 
 #include <iostream>
 #include <string>
@@ -680,6 +697,7 @@ int main() {
 
 // resultes showing in bash terminal:
 
+---
 
 #include <iostream>
 #include <string>
@@ -702,6 +720,8 @@ int main() {
 // run ./hello
 
 // resultes showing in bash terminal:
+
+---
 
 #include <iostream>
 #include <string>
@@ -732,6 +752,7 @@ int main() {
 Enter two integers: 2 3
 The Sum is: 5
 
+---
 
 #include <iostream>
 #include <vector>
@@ -767,15 +788,13 @@ int main() {
     return 0;
 
 
-'''
-
-
+```
 
 C language is important dealing with memory space
 
 controlling memory is important beacuse sometimes it brings
 extra datas and accumulates unimportant datas and this will 
-give troubles in programs in the future
+give troubles in programs in the future.
 
 in Python thses are automatic
 in C++, we have to manually input the function
