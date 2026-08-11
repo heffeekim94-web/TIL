@@ -93,8 +93,8 @@ ros2 launch turtlebot3_gazebo empty_world.launch.py
 ```bash
 ros2 run turtlebot3_teleop teleop_keyboard
 ```
-![alt text](gazebo_launch.png)
-![alt text](turtlebot_keybord.png)
+![alt text](TurtleBotPic/gazebo_launch.png)
+![alt text](TurtleBotPic/turtlebot_keybord.png)
 
 키보드 창에서는 이동을 진행하려면 
 a(좌회) w(전진) d(우회) s(멈춤) 키를 누르며 행동을 관찰할 수 있다. 
@@ -112,7 +112,7 @@ ctrl + c 를 해당창에서 누르면 된다.
 $ export TURTLEBOT3_MODEL=burger
 $ ros2 launch turtlebot3_gazebo turtlebot3_world.launch.py
 ```
-![alt text](gazebo_world.png)
+![alt text](TurtleBotPic/gazebo_world.png)
 위와 같은 platform이 나타나고
 
 - 아래 창을 실행하면 
@@ -120,7 +120,7 @@ $ ros2 launch turtlebot3_gazebo turtlebot3_world.launch.py
 $ export TURTLEBOT3_MODEL=burger
 $ ros2 launch turtlebot3_cartographer cartographer.launch.py use_sim_time:=True
 ```
-![alt text](gazebo_mapping.png)
+![alt text](TurtleBotPic/gazebo_mapping.png)
 위와 같은 mapping 현황을 볼 수 있는 창이 뜬다
 
 그러면 키보드 창에서 이동을 여러번 
@@ -131,10 +131,10 @@ $ ros2 launch turtlebot3_cartographer cartographer.launch.py use_sim_time:=True
 ros2 run nav2_map_server map_saver_cli -f ~/map
 ```
 하나는 파악이 완료된 맵의 사진이고
-![alt text](map.pgm)
+![alt text](TurtleBotPic/map.pgm)
 
 둘째는 위치 정보에 대한 것을 저장한 위치 관련 파일이 저장된다
-[text](TurtleBot/map.yaml)
+[text](TurtleBotPic//map.yaml)
 * 해당 파일에서는 나중에 임의로 위치나 해상도를 조정할 수 있다. 
 
 - 아래와 같은 명령을 개별 창에 띄우면
@@ -144,9 +144,9 @@ $ ros2 launch turtlebot3_navigation2 navigation2.launch.py use_sim_time:=True ma
 ```
 
 아래 사진과 같이 네비게이션을 시킬 수 있는 창이 뜬다
-![alt text](turtlebot_navigation.png)
+![alt text](TurtleBotPic/turtlebot_navigation.png)
 
 아래 사진에 보면 네비게이션 벡터를 그려주는게 있는데,
 벡터를 지적해주면 자동으로 그 방향으로 향하게 길을 만든다
 그 길을 다니면 다닐수록 map을 완성해간다.
-![alt text](turtlebot_navi_order.png)
+![alt text](TurtleBotPic/turtlebot_navi_order.png)

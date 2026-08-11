@@ -26,8 +26,6 @@ data누적을 막을 수 있는 길이 스마트 포인터다
 
 ### 9강.# ROS2 노드와 실행 모델 (콜백·executor·spin·멀티스레딩)
 
-[text](../../../../../../..)
-
 #### 구독 예시
 모터 드라이버 
 해상도를 변경해야 할때 구독한다 - 하지만 실시간으로 적용시키진 않아서 흔하진 않다
@@ -93,7 +91,7 @@ Topic의 양식이 정해져있음
 
 ## 실습 for FUN!!!
 
-[turtleBot 시뮬레이션](TurtleBot/turtleBot.md)
+[turtleBot 시뮬레이션](turtleBot.md)
 
 
 
