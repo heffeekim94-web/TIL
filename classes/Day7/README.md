@@ -14,7 +14,7 @@ data누적을 막을 수 있는 길이 스마트 포인터다
 
 문법만 참고하도록
 
-![alt text](../image.png)
+![alt text](codeRef/image.png)
 
 오늘의 과제:
 
@@ -93,7 +93,7 @@ Topic의 양식이 정해져있음
 
 ## 실습 for FUN!!!
 
-[turtleBot 시뮬레이션](turtleBot.md)
+[turtleBot 시뮬레이션](TurtleBot/turtleBot.md)
 
 
 
