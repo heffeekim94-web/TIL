@@ -6,7 +6,7 @@ int add(int a, int b){
         return a + b;
 }
 
-int subt(int a, int b){
+int subt(int a, int b){jnjn
     return a - b;
 }
 
@@ -16,10 +16,10 @@ int mult(int a, int b){
 
 int divide(int a, int b){
     return a / b;
-}
-
-int main() {
-    int num1, num2;
+    
+    int main() {
+        int num1, num2;
+    }
     std::string method;
 
     
