@@ -7,6 +7,7 @@
 
 #### Classes
 - [Day6 - C++ language](classes/Day6/README.md)
+- [Day7 - About ROS2 nodes](classes/Day7/README.md)
 
 <br>
 
