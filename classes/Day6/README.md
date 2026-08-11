@@ -1,3 +1,5 @@
+Date: 2026 Aug 10, Monday
+
 # Coding with C++ language
 
 In order to have C++ language running in VS Code,
