@@ -1,0 +1,94 @@
+<?xml version="1.0"?>
+
+<robot name="simple_car">
+
+    <!-- 차체 -->
+    <link name="base_link">
+        <visual>
+            <geometry>
+                <box size="1.0 0.6 0.2"/>
+            </geometry>
+        </visual>
+    </link>
+
+
+    <!-- 왼쪽 앞바퀴 -->
+    <link name="front_left_wheel">
+        <visual>
+            <geometry>
+                <cylinder radius="0.14" length="0.1"/>
+            </geometry>
+
+            <origin xyz="0 0 0" rpy="1.5708 0 0"/>
+        </visual>
+    </link>
+
+
+    <!-- 오른쪽 앞바퀴 -->
+    <link name="front_right_wheel">
+        <visual>
+            <geometry>
+                <cylinder radius="0.15" length="0.1"/>
+            </geometry>
+
+            <origin xyz="0 0 0" rpy="1.5708 0 0"/>
+        </visual>
+    </link>
+
+
+    <!-- 왼쪽 뒷바퀴 -->
+    <link name="rear_left_wheel">
+        <visual>
+            <geometry>
+                <cylinder radius="0.16" length="0.1"/>
+            </geometry>
+
+            <origin xyz="0 0 0" rpy="1.5708 0 0"/>
+        </visual>
+    </link>
+
+
+    <!-- 오른쪽 뒷바퀴 -->
+    <link name="rear_right_wheel">
+        <visual>
+            <geometry>
+                <cylinder radius="0.12" length="0.1"/>
+            </geometry>
+
+            <origin xyz="0 0 0" rpy="1.5708 0 0"/>
+        </visual>
+    </link>
+
+
+    <!-- 앞 왼쪽 바퀴 연결 -->
+    <joint name="front_left_wheel_joint" type="fixed">
+        <parent link="base_link"/>
+        <child link="front_left_wheel"/>
+        <origin xyz="0.35 0.35 -0.1" rpy="0 0 0"/>
+    </joint>
+
+
+    <!-- 앞 오른쪽 바퀴 연결 -->
+    <joint name="front_right_wheel_joint" type="fixed">
+        <parent link="base_link"/>
+        <child link="front_right_wheel"/>
+        <origin xyz="0.35 -0.35 -0.1" rpy="0 0 0"/>
+    </joint>
+
+
+    <!-- 뒤 왼쪽 바퀴 연결 -->
+    <joint name="rear_left_wheel_joint" type="fixed">
+        <parent link="base_link"/>
+        <child link="rear_left_wheel"/>
+        <origin xyz="-0.35 0.35 -0.1" rpy="0 0 0"/>
+    </joint>
+
+
+    <!-- 뒤 오른쪽 바퀴 연결 -->
+    <joint name="rear_right_wheel_joint" type="fixed">
+        <parent link="base_link"/>
+        <child link="rear_right_wheel"/>
+        <origin xyz="-0.35 -0.35 -0.1" rpy="0 0 0"/>
+    </joint>
+
+</robot>
