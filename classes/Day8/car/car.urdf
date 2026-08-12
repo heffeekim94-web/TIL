@@ -1,0 +1,15 @@
+<robot name="cybertruck">
+
+    <link name="base_link">
+        <visual>
+            <geometry>
+                <mesh filename="cybertruck_body.stl"
+                      scale="1 1 1"/>
+            </geometry>
+
+            <origin xyz="0 0 0"
+                    rpy="0 0 0"/>
+        </visual>
+    </link>
+
+</robot>

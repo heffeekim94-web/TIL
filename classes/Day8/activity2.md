@@ -12,7 +12,7 @@ sudo apt install ros-humble-urdf-tutorial
 
 3. 새로운 창을 열어서 실행한다
 ```bash
-ros2 launch urdf_tutorial display.launch.py model:=/home/haeminkim/turtlebot3_ws/src/260812/robot.urdf
+ros2 launch urdf_tutorial display.launch.py model:=파일주소/robot.urdf
 ```
 <br>
 
@@ -26,4 +26,72 @@ ros2 launch urdf_tutorial display.launch.py model:=/home/haeminkim/turtlebot3_ws
 - 거리는 원점 대 원점 거리를 측정하여 실린더의 길이나 외형의 사이즈를 고려하여 간격을 더 줘야 겹치지 않는다. 
 - 링크에서 좌표를 바꿀일은 없고 조인트에서 변경한다. 
 - 3d 모형을 그리고 .stl 파일 형식으로 변형한 다음에 .urdf 파일에서 원점과 위치, 회전 방향 등을 설정한다. 
+
+### 예시
+
+```xml
+<?xml version="1.0"?>
+<robot name="my_robot">
+
+    <link name="base_footprint"/>
+  <link name="base_link">
+    <visual>
+      <geometry>
+        <box size="1 1 0.5"/>
+      </geometry>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+    </visual>
+  </link>
+
+  <link name="lidar">
+    <visual>
+      <geometry>
+        <cylinder radius="0.05" length="0.1"/>
+      </geometry>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+    </visual>
+  </link>
+<link name="left_wheel">
+    <visual>
+      <geometry>
+        <cylinder radius="0.2" length="0.05"/>
+      </geometry>
+      <origin xyz="0 0 0" rpy="0 1.5735 0"/>
+    </visual>
+  </link>
+
+  <link name="right_wheel">
+    <visual>
+        <geometry>
+            <cylinder radius="0.2" length="0.05"/>
+        </geometry>
+        <origin xyz="0 0 0" rpy="1.5735 0 1.5735"/>
+    </visual>
+  </link>
+  <joint name="left_wheel_joint" type="continuous">
+    <parent link="base_link"/>
+    <child link="left_wheel"/>
+    <origin xyz="-0.525 0.3 -0.2" rpy="0 0 0"/>
+    <axis xyz="1 0 0"/>
+    </joint>
+
+    <joint name="right_wheel_joint" type="continuous">
+        <parent link="base_link"/>
+        <child link="right_wheel"/>
+        <origin xyz="0.525 0.3 -0.2" rpy="0 0 0"/>
+        <axis xyz="1 0 0"/>
+    </joint>
+    <joint name="lidar_joint" type="fixed">
+        <parent link="base_link"/>
+        <child link="lidar"/>
+        <origin xyz="0 0 0.3" rpy="0 0 0"/>
+    </joint>
+
+    <joint name="base_footprint_joint" type="fixed">
+        <parent link="base_footprint"/>
+        <child link="base_link"/>
+        <origin xyz="0 0 0.4" rpy="0 0 0"/>
+    </joint>
+</robot>
+```
 
