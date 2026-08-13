@@ -1,0 +1,80 @@
+<?xml version="1.0"?>
+
+<robot name="robot_1">
+    
+    <link name="base_footprint"/>
+        <link name="base_link">
+            <visual>
+                <geometry>
+                    <box size="0.5 0.5 0.5"/>           
+                </geometry>
+                <origin xyz="0 0 0" rpy="0 0 0"/>               
+            </visual>
+        </link>
+
+        <link name="core_1">  
+            <visual>
+                <geometry>
+                    <sphere radius="0.1"/>
+                </geometry>
+                <origin xyz="0 0.49 0" rpy="0 0 0"/>                
+            </visual>
+        </link>
+
+        <link name="joint_2_holder"/>
+
+        <link name="spine_1">
+            <visual>
+                <geometry>
+                    <cylinder radius="0.15" length="0.2"/>
+                </geometry>
+                <origin xyz="0 0.35 0" rpy="1.5708 1.5708 0.0"/>
+            </visual>
+        </link>
+
+        <link name="spine_2">
+            <visual>
+                <geometry>
+                    <cylinder radius="0.15" length="0.2"/>
+                </geometry>
+                <origin xyz="0 0.14 0" rpy="1.5708 1.5708 0.0"/>
+            </visual>
+        </link>
+        
+        <joint name="spine_joint_1" type="fixed">
+            <parent link="base_link"/>
+            <child link="spine_1"/>
+            <origin xyz="0 0 0"/>
+            <axis xyz="0 0 1"/>
+        </joint>
+        
+        <joint name="core_joint_1" type="fixed">
+            <parent link="spine_1"/>
+            <child link="core_1"/>
+            <origin xyz="0 0 0" rpy="0.0 0.0 0.0"/>    
+            <axis xyz="1 0 0"/>       
+        </joint>
+
+        <joint name="spine_joint_2_yaw" type="revolute">
+            <parent link="core_1"/>
+            <child link="joint_2_holder"/>
+            <origin xyz="0 0.49 0"/>
+            <axis xyz="0 0 1"/>
+            <limit lower="-1.57" upper="1.57" effort="10" velocity="1.0"/>
+        </joint>
+
+        <joint name="spine_joint_2_pitch" type="revolute">
+            <parent link="joint_2_holder"/>
+            <child link="spine_2"/>
+            <origin xyz="0 0 0"/>
+            <axis xyz="0 0 1"/>
+            <limit lower="-1.57" upper="1.57" effort="10" velocity="1.0"/>
+        </joint>
+
+        <joint name="base_footprint_joint" type="fixed">
+            <parent link="base_footprint"/>
+            <child link="base_link"/>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+        </joint>
+    
+</robot>
