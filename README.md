@@ -16,6 +16,8 @@ codes
 - [Day6 - C++ language](classes/Day6/README.md)
 - [Day7 - About ROS2 nodes](classes/Day7/README.md)
 - [Day8 - Building nodes](classes/Day8/README.md)
+- [Day9 - ROS2 nodes and executors](classes/Day9/README.md)
+- [Day10 - Topic and nodes](classes/Day10/README.md)
 
 <br>
 
