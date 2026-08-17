@@ -11,7 +11,7 @@ glossary
 
 <br>
 
-## Lifecycle Node
+## 1. Lifecycle Node
 활성되기 전 대기 상태로 각 행동 노드를 준비시키는 것 - 명시적 상태.
 
 <br>
@@ -45,7 +45,7 @@ deactivate() 대기 --> shutdown() 으로 종료
 
 <br>
 
-## Composition
+## 2. Composition
 Composition - 여러 노드를 하나의 프로세스로 함케 실행.
 
 <br>
@@ -79,19 +79,30 @@ Composition
 
 <br>
 
-## Colcon 
+## 3. Colcon 
 workspace - 여러 패키지(노드/인터페이스)를 한데 모은 곳
 
 colcon - workspace(ws)를 만드는 는 것. CMake와 setup.py를 의존성 순서대로 호출해 주는 상위 도구.
 
-*참조 - 강의 7: CMake, 강의 5: setup.py*
-
+* 참조 - 강의 7: CMake, 강의 5: setup.py*
 <br>
 
-#### 명령어
+#### < bash > 명령어
 ```bash
-colcon build
+$ colcon build
 ```
+
+Sourcing - 터미널에 ROS2 정체를 알리는 것.
+- 변수를 채운다 
+    
+    1. AMENT_PREFIX_PATH (ROS2R가 패키지를 찾는 경로)
+    2. PYTHONPATH(node module import)
+    3. LD_LIBRARY_PATH(공유 라이브러리)
+
+- overlay(오버레이) - 같은 이름이면 나중에 source 
+
+
+
 
 
 <br>
@@ -118,7 +129,7 @@ build에 parameters를 넣어 놔야 한다.
 아래와 같이 폴더를 생성한다. 
 
 home
-    ros2_ws
+<br><br>  ros2_ws
         src
             demo_cpp
                 demo_cpp
