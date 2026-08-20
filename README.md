@@ -21,6 +21,7 @@ codes
 - [Day10 - Topic and nodes](classes/Day10/README.md)
 - [Day11 - Vectors](classes/Day11/README.md)
 - [Day12 - Rotate vectors](classes/Day12/README.md)
+- [Day13 - Special Euclidean group](classes/Day13/README.md)
 
 <br>
 
