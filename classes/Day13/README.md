@@ -159,6 +159,16 @@ $$T^{-1} = \begin{bmatrix} R^T & -R^T t \\ 0 & 1 \end{bmatrix}$$
 
 요약하자면, "로봇이 이동하거나 제어할 때 반대 방향 좌표 변환이 빈번하게 일어나는데, 일반 역행렬 대신 이 전용 공식을 써야 코드가 빠르고 정확해진다"는 점을 알려주기 위함입니다.
 
+---
+
+Again,
+
+$$T^{-1} = \begin{bmatrix} R^T & -R^T t \\ 0 & 1 \end{bmatrix}$$
+
+$$\updownarrow$$
+
+$$T^{-1} = \begin{bmatrix} R^T & -R^T t \\ 0 & 1 \end{bmatrix}$$
+
 
 ---
 
@@ -184,9 +194,7 @@ $$T^{-1} = \begin{bmatrix} R^T & -R^T t \\ 0 & 1 \end{bmatrix}$$
 
 ---
 
-##
-
-외울 것 
+## 외울 것 
 
 ```math
 A^{-1} \text{ 존재 } \iff \text{det }A \not=0 \iff \text{rank } A = n \iff Ax = b \text{ 유일해}
