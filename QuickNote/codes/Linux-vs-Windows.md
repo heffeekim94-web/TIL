@@ -3,7 +3,7 @@ Comparison of code uses between the two Servers.
 
 
 ### Bash codes
-|      Windows/Powershall      |           Linux           |        function       |
+|      Windows/Powershall bash     |           Linux bash          |        function       |
 |------------------------------|---------------------------|-----------------------|
-| .\.venv\Scripts\Activate.ps1 | source .venv/bin/activate | .venv activation code |
+| source .venv/Scripts/activate | source .venv/bin/activate | .venv activation code |
 | New-Item                     | mkdir                     | make a new file       |
