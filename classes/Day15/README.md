@@ -96,4 +96,16 @@ A = P\Lambda P^{-1}, \qquad \Lambda = \text{diag}(\lambda_1, \ldots, \lambda_n)
 ```
 표준 좌표계 -> 고유벡터 좌표계 -> 다시 표준 좌표계
 ```
+<br>
+
+방정식:
+
+**행렬 거듭제곱**:
+<br> $A^k = P\Lambda^kP^{-1}$ , A를 대각 원소만 k제곱
+
+**미분방정식**:
+<br> $x" = Ax$ 의 해는 
+<br> $x(t) = \sum c_i e^{\lambda_it}v_i$
+- 고유값의 실수부가 모두 음수이면 해가 0
+- 제어공학의 "극점이 좌반평면에 있어야 안정하다"
 
