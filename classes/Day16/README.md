@@ -35,6 +35,7 @@ $ ssh pa@localhost
 $ systemctl status ssh
 ```
 ![alt text](<스크린샷 2026-08-25 09-39-38.png>)
+
 - 상태 표시가 가능
 
 과제 1이 끝난 것 
