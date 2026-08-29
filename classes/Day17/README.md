@@ -1,7 +1,10 @@
 Date: 2026 Aug 26, Wednesday
 
 과제 3 문제 1번에 대한 설명:
-[classwork 3](classwork3.md)
+
+[classwork 3](classwork3_expln.md)
+
+<br>
 
 배운 점:
 - 손으로 우선 수학 문제를 풀고 코딩에 문제가 없는지 확인하기로 한다
