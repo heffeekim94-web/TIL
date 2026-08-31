@@ -152,3 +152,201 @@ def rodrigues(axis, theta):
     return I + np.sin(theta)*K + (1-np.cos(theta))*(K@K)
 ```
 - 임이의 벡터 입력 -> 단위벡터로 변환 -> 단위행렬 I 준비 -> 로드리게스 공식에 입력 -> 회전행렬 R 완성
+
+---
+
+### Gram Shmidt
+
+```python
+def gram_shmidt(A) -> np.ndarray:
+    A = np.array(A, dtype=float, copy=True)
+    # (1) 입력행렬 A를 NumPy로 바꾸고 계산하면서 원본이 바뀌지 않도록 복사하는 것
+
+    n_cols = A.shape[1]
+    # 열 개수 ???
+
+    Q = np.zeros_like(A)
+    # 결과를 담을 빈 행렬을 만드는 것
+    # 행령 A처럼 생겼지만 모두 0인 행렬
+
+    for j in range(n_cols):
+        v = A[:,j].copy()
+        # (2)[모든행, j 열]
+        # 열벡터에 대해 Gram-Schmidt 직교정규화를 수행한다
+
+        for i in range(j):
+            v -= (Q[:,i]@v)*Q[:,i]
+                # 정사영 * Q = 
+        nv = np.sqrt(v @ v)
+        # v의 길이, v의 norm
+        # norm() 쓰면 되는거 아닌가~??
+        if nv <= 1e-12:
+            raise ValueError(
+                f"{j}번 열이 앞선 열들에 종속이라 직교화할 수 없습니다."
+            )
+
+        Q[:,j] = v/nv
+        # 남은 벡터를 길이 1로 만들어서 Q의 j번째 열에 둔다.
+
+    return Q
+```
+(1) 예시안:
+```python
+A = [a1 a2 a3]  # a1, a2, a3 각각 열벡터
+```
+
+(2) 예시안:
+```
+       열
+       0  1  2
+      ┌─────────┐
+행 0  │ 1  4  7 │
+행 1  │ 2  5  8 │
+행 2  │ 3  6  9 │
+      └─────────┘
+       ↑
+    Q[:, 0]
+
+   -> [1,2,3] 위의 뜻
+
+    즉,
+   Q = [ q₁  q₂  q₃ ]
+    
+    Q[:, 0] → q₁
+    Q[:, 1] → q₂
+    Q[:, 2] → q₃
+```
+---
+
+### test.py
+
+#### test_columns_are_orthonormal
+```python
+def test_columns_are_orthonormal():
+    R = rot_z(0.5)
+    # 회전행렬 1개 생성
+    result = R.T @ R
+    # 열벡터들이 직교정규인지 계산
+    assert np.allclose(result, np.eye(3))
+    # 단위행렬과 거의 같은가?
+```
+- pytest는 test_로 시작하는 함수를 찾아서 자동으로 실행해준다. 
+- 즉, columns_are_orthonormal인지 확인해 준다는 뜻
+
+* `np.eye(3)`은 **3×3 단위행렬(identity matrix)을 만들어주는 NumPy 명령어**
+
+```python
+np.eye(3)
+```
+
+결과:
+
+```python
+array([
+    [1., 0., 0.],
+    [0., 1., 0.],
+    [0., 0., 1.]
+])
+```
+
+즉 수학으로는:
+
+$$
+I=
+\begin{bmatrix}
+1&0&0\\
+0&1&0\\
+0&0&1
+\end{bmatrix}
+$$
+
+
+여기서 `3`은 **3×3 크기로 만들어라**라는 뜻
+
+예를 들어:
+
+```python
+np.eye(2)
+```
+
+는
+
+$$
+\begin{bmatrix}
+1&0\\
+0&1
+\end{bmatrix}
+$$
+
+이고,
+
+```python
+np.eye(4)
+```
+
+는
+
+$$
+\begin{bmatrix}
+1&0&0&0\\
+0&1&0&0\\
+0&0&1&0\\
+0&0&0&1
+\end{bmatrix}
+$$
+
+이다.
+
+그래서 지금 하려는 것은:
+
+```python
+assert np.allclose(R.T @ R, np.eye(3))
+```
+
+라고 하는 이유는 회전행렬이라면
+
+$$
+R^TR=I
+$$
+
+여야 하니까,
+
+```text
+R.T @ R        np.eye(3)
+   ↓               ↓
+ 실제 계산값   3×3 단위행렬
+
+        둘이 같은가?
+```
+
+를 검사하는 것.
+
+그리고 `eye`라는 이름은 **Identity matrix의 `I`(아이)**를 영어로 읽으면 `eye`와 발음이 같아서 붙은 이름이라고 생각하면 기억하기 쉬움.
+
+<br>
+
+#### test_determinant_is_one
+```python
+def test_determinant_is_one():
+    R = rot_z(0.5)
+    result = det(R)
+    assert np.isclose(result, 1)
+```
+- `isclose`는 숫자 하나와 숫자 하나가 거의 같은지 확인한다.
+- vs
+- `allclose`는 배열이나 행렬처럼 여러 숫자 전체가 각각 거의 같은지 확인한다. 
+- 사용전 확인해 봐야 하는 사항:
+```
+isclose = 이 값들이 가까운가?
+allclose = 전부(all) 가까운가?
+```
+
+<br>
+
+#### test_inverse_equals_transpose
+```python
+def test_inverse_equals_transpose():
+    R = rot_z(0.5)
+    assert np.allclose(np.linalg.inv(R), R.T)
+```
+
