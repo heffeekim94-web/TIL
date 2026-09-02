@@ -1,3 +1,5 @@
+Date: 2026 Aug 31, Monday
+
 # 오늘 배운 것
 - [3-2, 3-3 과제 설명](class.md)
 - 과제: https://github.com/SpartaPA/physicalai-lv1-assignments/blob/main/%EA%B3%BC%EC%A0%9C3_%EC%A2%8C%ED%91%9C%EB%B3%80%ED%99%98_%EC%88%98%ED%95%99%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC.md
@@ -11,3 +13,4 @@
 <br>
 
 # 할 일
+- 3-3 모듈 숙제 마무리
