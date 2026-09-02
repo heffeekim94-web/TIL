@@ -1,7 +1,7 @@
-Date: 2026 Sept 2, Wednesday
+Date: 2026 Mnth dd, Monday/Tuesday/Wednesday/Thursday/Friday
 
 ## 오늘 배운 것
-
+- 
 
 
 
@@ -9,14 +9,14 @@ Date: 2026 Sept 2, Wednesday
 
 ## 오늘 한 것 
 
-
+-
 
 
 
 <br>
 
 ## 문제점
-
+- 
 
 
 
@@ -25,11 +25,31 @@ Date: 2026 Sept 2, Wednesday
 
 ## 해결 방법
 
+- 
 
+
+<br>
+
+## 결과
+
+- 
 
 
 
 <br>
 
 ## 느낀 점
+
+- 
+
+
+
+
+<br>
+
+## 할 일
+
+-
+
+
 

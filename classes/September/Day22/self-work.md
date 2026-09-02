@@ -95,6 +95,7 @@ def inv_T(T) -> np.ndarray:
 def transform_point(T,v) -> np.ndarray:
     """4x4 변환행렬 T를 이용하여 3D 점 v를 변환합니다."""
     Rp = make_T(T,v)
+    # make_T를 불러올 필요가 없음. 이미 회전행렬을 한 변환행렬이라고 봐야 함.
     P = Rp @ np.append(v, 1)
         
     
@@ -106,5 +107,41 @@ def transform_point(T,v) -> np.ndarray:
     return P[:3]
 ```
 
+정정 1차 후 
+```python
+def transform_point(T,v) -> np.ndarray:
+    """4x4 변환행렬 T를 이용하여 3D 점 v를 변환합니다."""
+    p = np.eye(4)
+    p[4,:] = v
+    # -->   [1,0,0,0]
+    #       [0,1,0,0]
+    #       [0,0,1,0]
+    #       [1,0,0,1]  <-- v added
+    # returns 4x4 array but need 1x3...
 
+    new_p = T @ p
+        
+    
+    if v.shape != (3,):
+        raise ValueError("v는 shape (3,)의 벡터여야 합니다.")
+    if T.shape != (4,4):
+        raise ValueError("T는 4x4 변환행렬이어야 합니다.")
+    
+    return new_p[:3]
+```
 
+정정 2차 후 
+```python
+def transform_point(T,v) -> np.ndarray:
+    """4x4 변환행렬 T를 이용하여 3D 점 v를 변환합니다."""
+    p_homogeneous = np.append(v,1)
+    new_p = T @ p
+        
+    
+    if v.shape != (3,):
+        raise ValueError("v는 shape (3,)의 벡터여야 합니다.")
+    if T.shape != (4,4):
+        raise ValueError("T는 4x4 변환행렬이어야 합니다.")
+    
+    return new_p[:3]
+```

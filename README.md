@@ -24,17 +24,6 @@
 ### Self-study
 
 <details>
-<summary> Physical Ai </summary>
-
-<details>
-<summary> 2026 </summary>
-
-- [2026-Aug-29: classwork 3 coding]
-
-</details>
-</details>
-
-<details>
 <summary> History </summary>
 
 - [programmers](History/programmers.md)
@@ -54,29 +43,30 @@
 <details>
 <summary> August </summary>
 
-- [Day1 - OT & about Physical Ai](classes/Day1/README.md)
-- [Day6 - C++ language](classes/Day6/README.md)
-- [Day7 - About ROS2 nodes](classes/Day7/README.md)
-- [Day8 - Building nodes](classes/Day8/README.md)
-- [Day9 - ROS2 nodes and executors](classes/Day9/README.md)
-- [Day10 - Topic and nodes](classes/Day10/README.md)
-- [Day11 - Vectors](classes/Day11/README.md)
-- [Day12 - Rotate vectors](classes/Day12/README.md)
-- [Day13 - Special Euclidean group](classes/Day13/README.md)
-- [Day14 - 20th lecture: Qurternion](classes/Day14/README.md)
-- [Day15 - Eigenvalue & Eigenvector](classes/Day15/README.md)
-- [Day16 - classwork 3 explanation](classes/Day16/README.md)
-- [Day17 - classwork 3 explanation](classes/Day17/README.md)
-- [Day18 - Review classework 3](classes/Day18/README.md)
-- [Day19 - classwork 3 coding](classes/Day19/README.md)
-- [Day20]
+- [Day1 (2026.08.03) - OT & about Physical Ai](classes/Aughust/Day1/README.md)
+- [Day6 (2026.08.10) - C++ language](classes/Aughust/Day6/README.md)
+- [Day7 (2026.08.11) - About ROS2 nodes](classes/Aughust/Day7/README.md)
+- [Day8 (2026.08.12) - Building nodes](classes/Aughust/Day8/README.md)
+- [Day9 (2026.08.13) - ROS2 nodes and executors](classes/Aughust/Day9/README.md)
+- [Day10 (2026.08.14) - Topic and nodes](classes/Aughust/Day10/README.md)
+- [Day11 (2026.08.18) - Vectors](classes/Aughust/Day11/README.md)
+- [Day12 (2026.08.19) - Rotate vectors](classes/Aughust/Day12/README.md)
+- [Day13 (2026.08.20) - Special Euclidean group](classes/Aughust/Day13/README.md)
+- [Day14 (2026.08.21) - 20th lecture: Qurternion](classes/Aughust/Day14/README.md)
+- [Day15 (2026.08.24) - Eigenvalue & Eigenvector](classes/Aughust/Day15/README.md)
+- [Day16 (2026.08.25) - classwork 3 explanation](classes/Aughust/Day16/README.md)
+- [Day17 (2026.08.26) - classwork 3 explanation](classes/Aughust/Day17/README.md)
+- [Day18 (2026.08.27) - Review classework 3](classes/Aughust/Day18/README.md)
+- [Day19 (2026.08.28) - classwork 3 coding](classes/Aughust/Day19/README.md)
+- [Day20 (2026.08.31) - classwork 3-3 explanation](classes/Aughust/Day20/README.md)
 
 </details>
 
 <details>
 <summary> September </summary>
 
-- [Day21]
+- [Day21 (2026.09.01) - classwork 3-4 explanation](classes/September/Day21/README.md)
+- [Day22 (2026.09.02) - classwork 3-5 explanation](classes/September/Day22/README.md)
 
 </details>
 
