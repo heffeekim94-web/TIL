@@ -134,8 +134,10 @@ def transform_point(T,v) -> np.ndarray:
 ```python
 def transform_point(T,v) -> np.ndarray:
     """4x4 변환행렬 T를 이용하여 3D 점 v를 변환합니다."""
-    p_homogeneous = np.append(v,1)
-    new_p = T @ p
+    
+    
+    p_homo = to_homogenous(v,1)
+    new_p = T @ p_homo
         
     
     if v.shape != (3,):
