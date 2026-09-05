@@ -1,4 +1,4 @@
-Date: 2026 Mnth dd, Monday/Tuesday/Wednesday/Thursday/Friday
+Date: 2026 Mnth dd, Monday/Tuesday/Wednesday/Thursday/Friday/Saturday/Sunday
 
 ## 오늘 배운 것
 - 

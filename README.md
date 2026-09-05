@@ -5,6 +5,31 @@
 
 <br>
 
+### Daily lessons
+
+<details>
+<summary> 2026 </summary>
+
+- [2026.08.03](classes/Aughust/Day1/README.md)
+- [2026.08.10](classes/Aughust/Day6/README.md)
+- [2026.08.11](classes/Aughust/Day7/README.md)
+- [2026.08.12](classes/Aughust/Day8/README.md)
+- [2026.08.13](classes/Aughust/Day9/README.md)
+- [2026.08.14](classes/Aughust/Day10/README.md)
+- [2026.08.18](classes/Aughust/Day11/README.md)
+- [2026.08.19](classes/Aughust/Day12/README.md)
+- [2026.08.20](classes/Aughust/Day13/README.md)
+- [2026.08.21](classes/Aughust/Day14/README.md)
+- [2026.08.24](classes/Aughust/Day15/README.md)
+- [2026.08.25](classes/Aughust/Day16/README.md)
+- [2026.08.26](classes/Aughust/Day17/README.md)
+- [2026.08.27](classes/Aughust/Day18/README.md)
+- [2026.08.28](classes/Aughust/Day19/README.md)
+- [2026.08.31](classes/Aughust/Day20/README.md)
+- [2026.09.05](Daily-I-learned/2026/2026.09.05/README.md)
+
+</details>
+
 ### Quick Notes
 
 <details>
@@ -67,6 +92,7 @@
 
 - [Day21 (2026.09.01) - classwork 3-4 explanation](classes/September/Day21/README.md)
 - [Day22 (2026.09.02) - classwork 3-5 explanation](classes/September/Day22/README.md)
+- 
 
 </details>
 
@@ -89,4 +115,3 @@
 - [Coding Strategies]
 - [Problem Causes]
 - [Rehabilitations]
-
