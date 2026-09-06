@@ -26,7 +26,12 @@
 - [2026.08.27](classes/Aughust/Day18/README.md)
 - [2026.08.28](classes/Aughust/Day19/README.md)
 - [2026.08.31](classes/Aughust/Day20/README.md)
+- [2026.09.01](classes/September/Day21/README.md)
+- [2026.09.02](classes/September/Day22/README.md)
+- [2026.09.03](classes/September/Day23/README.md)
+- [2026.09.04](classes/September/Day24/README.md)
 - [2026.09.05](Daily-I-learned/2026/2026.09.05/README.md)
+- [2026.09.06](Daily-I-learned/2026/2026.09.06/README.md)
 
 </details>
 
@@ -58,6 +63,9 @@
 <br>
 
 ### Classes
+
+[Todo](classes/September/Day24/Todo.md)
+
 
 <details>
 <summary> Physical Ai </summary>
@@ -92,7 +100,8 @@
 
 - [Day21 (2026.09.01) - classwork 3-4 explanation](classes/September/Day21/README.md)
 - [Day22 (2026.09.02) - classwork 3-5 explanation](classes/September/Day22/README.md)
-- 
+- [Day23 (2026.09.03) - classwork 3-6 explanation](classes/September/Day23/README.md)
+- [Day24 (2026.09.04) - classwork ](classes/September/Day24/README.md)
 
 </details>
 

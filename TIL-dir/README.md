@@ -1,5 +1,7 @@
 # TIL 작성 방법
----
+
+[선생님의 마크다운 설명 참조](https://velog.io/@roboticsmaster/%EA%B0%9C%EB%B0%9C%EA%B8%B0%EC%B4%88-Markdown%EC%9D%B4%ED%95%B4%ED%95%98%EA%B8%B0)
+
 ### *제목 작성 방법*
 '#'의 개수마다 제목의 사이즈가 달라진다.
 
@@ -38,6 +40,10 @@
 예)
 [제목]"("하위폴더/README.md")"
 
+### 특정 란으로 citation 하고싶다면 
+[제목]"("하위폴더/README.md#L30")"
+
+--> README.md의 30란을 보여줌 
 ---
 
 ### 프로그램별 코드 표현 반영 방법
