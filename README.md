@@ -32,6 +32,8 @@
 - [2026.09.04](classes/September/Day24/README.md)
 - [2026.09.05](Daily-I-learned/2026/2026.09.05/README.md)
 - [2026.09.06](Daily-I-learned/2026/2026.09.06/README.md)
+- [2026.09.07](classes/September/Day25/README.md)
+- [2026.09.08](classes/September/Day26/README.md)
 
 </details>
 
@@ -102,6 +104,8 @@
 - [Day22 (2026.09.02) - classwork 3-5 explanation](classes/September/Day22/README.md)
 - [Day23 (2026.09.03) - classwork 3-6 explanation](classes/September/Day23/README.md)
 - [Day24 (2026.09.04) - classwork ](classes/September/Day24/README.md)
+- [Day25 (2026.09.07) - classwork Module all final submission](classes/September/Day25/README.md)
+- [Day26 (2026.09.08) - lv2 intro](classes/September/Day26/README.md)
 
 </details>
 
