@@ -1,4 +1,4 @@
-Date: 2026 Mnth dd, Monday/Tuesday/Wednesday/Thursday/Friday/Saturday/Sunday
+Date: 2026 Sept 09, Wednesday
 
 ## 오늘 배운 것
 - [개루프, 폐루프, PID 소개](class.md)

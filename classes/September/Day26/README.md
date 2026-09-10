@@ -2,7 +2,7 @@ Date: 2026 Sept 08, Tuesday
 
 ## 오늘 배운 것
 - [level 2 교육 과정에 대한 소개](class.md)
-
+- [aws 1일차 - 소개](../../1_aws/aws1.md)
 
 
 <br>
@@ -10,6 +10,7 @@ Date: 2026 Sept 08, Tuesday
 ## 오늘 한 것 
 
 - 모듈 4번 과제
+
 
 
 
