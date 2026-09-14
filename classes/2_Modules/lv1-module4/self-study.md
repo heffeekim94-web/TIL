@@ -1953,6 +1953,303 @@ p'=qpq^{-1}
 
 그래서 행렬로부터 quaternion을 복원할 수 있다. 실제 구현의 여러 분기는 \(180^\circ\) 부근에서 0에 가까운 값으로 나누는 문제를 피하려는 것이다.
 
+---
+
+### 01 pipeline
+
+#### 2-2. 관절이 움직이면 - 관절 각도 3종 비교
+
+<br>
+
+내가 짠 코드:
+```python
+README-t.md
+```
+- 여기서부터 머리가 멈춤..
+
+설명:
+봤어. 지금 막힌 핵심은 **각도별 결과를 어떤 형태로 저장하느냐**야. 2-1에서 했던 변환을 각도만 바꿔서 세 번 하면 돼.
+
+먼저 이 부분부터 정리해 봐:
+
+- `P_by_angle`, `T_cam_by_angle`은 **리스트 `[]`가 아니라 딕셔너리 `{}`**야. `-30.0` 같은 각도를 키로 써서 결과를 저장하려는 거야.
+- 변수 이름은 `JOINT_DEGS`야. 현재 반복문에는 마지막 `S`가 빠져 있어.
+- `for deg in JOINT_DEGS:`에서 **`deg`는 인덱스가 아니라 각도 값 자체**야. 따라서 `JOINT_DEGS[deg]`로 다시 꺼낼 필요가 없어.
+- `set_joint_angle()`은 각도를 설정하고 **`pipe` 자신을 반환**해. 반환값을 `angle`에 저장할 필요는 없어.
+
+반복문 안에서 할 일은 순서대로 세 가지야:
+
+```python
+for deg in JOINT_DEGS:
+    # 1. deg를 라디안으로 바꿔 pipe의 관절 각도 설정
+    # 2. 같은 P_cam을 base로 변환 → P_by_angle[deg]에 저장
+    # 3. 현재 카메라의 base 기준 변환행렬 → T_cam_by_angle[deg]에 저장
+```
+
+**2번의 힌트는 바로 위 2-1 셀에 있어:**
+
+```python
+P_base = pipe.camera_to_base(P_cam)
+```
+
+여기서 결과를 저장할 왼쪽만 “현재 각도에 해당하는 딕셔너리 항목”으로 바꾸면 어떨까?
+
+우선 여기까지 작성해 봐. 중심 계산과 마지막 관절 각도 초기화는 그다음에 이어가자.
+
+봤어. **딕셔너리 `{}`와 `for deg in JOINT_DEGS:`는 맞게 바꿨어.** 다만 반복문 안은 수정이 필요해.
+
+1. **닫는 괄호가 하나 빠졌어.**
+
+```python
+pipe.set_joint_angle(np.deg2rad(deg))
+```
+
+2. **`for p in P_base:`는 필요 없어.** 이번에도 2-1처럼 `P_cam` 전체를 한 번에 변환하면 돼. 이미 변환된 `P_base`를 다시 사용하는 게 아니야.
+
+3. **`make_T(rot_z(deg), p)`로 행렬을 새로 만들 필요 없어.** 관절 각도를 설정하면 `pipe.T_base_camera`가 그 각도를 반영한 행렬을 계산해 줘.
+
+4. **딕셔너리 자체를 덮어쓰지 말고 `[deg]`에 저장해야 해.**
+
+```python
+P_by_angle[deg] = ...      # 현재 각도에서 변환한 점군
+T_cam_by_angle[deg] = ...  # 현재 각도에서의 변환행렬
+```
+
+빈칸에 사용할 건 앞서 배운 **`pipe.camera_to_base(P_cam)`**과 **`pipe.T_base_camera`**야. 각각 어느 쪽에 들어갈지 생각해서 연결해 봐.
+
+각도 설정 줄은 이제 맞아! 아래 두 줄은 아직 수정이 필요해:
+
+```python
+T_cam_by_angle = pipe.camera_to_base
+P_by_angle = pipe.T_bases_camera
+```
+
+- **저장 대상이 반대야.** `P_by_angle`에는 점군, `T_cam_by_angle`에는 변환행렬을 넣어.
+- 왼쪽에 **`[deg]`**가 있어야 각도별로 저장돼.
+- `camera_to_base`는 함수라 **`(P_cam)`으로 호출**해야 변환 결과가 나와.
+- `T_bases_camera`는 오타야. **`T_base_camera`**가 맞아.
+
+즉, 두 줄은 이렇게 연결돼:
+
+```python
+P_by_angle[deg] = pipe.camera_to_base(P_cam)
+T_cam_by_angle[deg] = pipe.T_base_camera
+```
+
+이후 **반복문 바깥에서** 관절을 0으로 되돌리는 것도 잊지 마:
+
+```python
+pipe.set_joint_angle(0.0)
+```
+
+그다음에는 각도별 점군의 중심을 출력하는 부분이 남아 있어.
+
+이제 **각도별 점군 중심을 출력**하면 돼.
+
+`P_by_angle[deg]`는 `(N, 3)` 배열이야. 각 열이 x, y, z이므로, **행 방향으로 평균을 내면** 중심 좌표 `[평균 x, 평균 y, 평균 z]`가 나와:
+
+```python
+center = P_by_angle[deg].mean(axis=0)
+```
+
+`axis=0`은 점들을 모아서 **열마다 평균을 계산**한다는 뜻이야.
+
+셀 마지막에 아래 틀을 완성해 봐:
+
+```python
+print("각도(deg) | 중심 x | 중심 y | 중심 z")
+
+for deg in JOINT_DEGS:
+    center = ...  # 해당 각도의 점군 중심 계산
+    print(f"{deg:+6.1f} | {center[0]:.4f} | {center[1]:.4f} | {center[2]:.4f}")
+```
+
+`+.1f`는 부호를 포함해 소수점 한 자리, `.4f`는 소수점 네 자리로 표시해. 작성한 뒤 아래 그림 셀과 검증 셀을 순서대로 실행하면 돼.
+
+수정후:
+```python
+JOINT_DEGS = [-30.0, 0.0, 30.0]
+
+# TODO: 아래 변수를 만드세요 -> P_by_angle (dict: 각도[deg] -> (N,3) base 점군), T_cam_by_angle (dict: 각도 -> 4x4 T_base_camera)
+P_by_angle = {}
+T_cam_by_angle = {}
+#   for deg in JOINT_DEGS:
+#       pipe.set_joint_angle(np.deg2rad(deg))
+#       ...
+for deg in JOINT_DEGS:
+    pipe.set_joint_angle(np.deg2rad(deg))
+    T_cam_by_angle[deg] = pipe.T_base_camera
+    P_by_angle[deg] = pipe.camera_to_base(P_cam)
+        
+#   pipe.set_joint_angle(0.0)     # 마지막에 0 으로 되돌려 두세요
+pipe.set_joint_angle(0.0)
+
+# TODO: 각도별 점군 중심 (base) 을 표로 출력하세요.
+print("각도(deg) | 중ᄉퟄᆷ x | 중심 y | 중심 z")
+for deg in JOINT_DEGS:
+    center = P_by_angle[deg].mean(axis=0)
+    print(f'{deg:+6.1f} | {center[0]:.4f} | {center[1]:.4f} | {center[2]:.4f}')
+```
+
+---
+
+#### 2-3
+
+<br>
+
+작성 힌트:
+봤어. **`assert np.allclose(...)`로 비교하려는 방향은 맞아.** 다만 현재 줄에는 몇 가지 문제가 있어.
+
+- **`P`를 아직 만들지 않았어.** `rng`로 `(N, 3)` 점군을 먼저 생성해야 해.
+- **`pipeline.camera_to_base`는 함수 자체**야. `pipeline.camera_to_base(P)`로 호출해서 결과를 받아야 해.
+- **`T_base_link`, `T_link_camrea`가 정의되지 않았어.** 노트북 변수는 테스트 파일에 자동으로 전달되지 않아. `chain.get(...)`으로 가져와야 해. `camrea`도 오타야.
+- **배열 두 개를 `and`로 연결하면 안 돼.** `np.allclose`는 배열 두 개를 비교하므로, 비교를 두 번 따로 작성해.
+
+이 순서로 나눠서 작성해 봐:
+
+```python
+# 1. rng로 점군 P 생성
+# 2. pipeline.camera_to_base(P)의 결과 계산
+# 3. default_chain()으로 같은 점군을 변환
+# 4. 체인에서 두 행렬을 꺼내 직접 곱해서 같은 점군을 변환
+# 5. 결과를 각각 비교
+assert np.allclose(파이프라인_결과, 체인_결과)
+assert np.allclose(파이프라인_결과, 행렬곱_결과)
+```
+
+점군 생성은 이렇게 시작할 수 있어:
+
+```python
+P = rng.normal(0.0, 1.0, (100, 3))
+```
+
+**세 방법 모두 같은 `P`를 사용해야** 변환 결과가 일치하는지 확인할 수 있어.
+
+
+내가 짠 코드:
+```python
+def test_camera_to_base_matches_chain(pipeline, rng):
+    # TODO: (N,3) 점군을 만들어 pipeline.camera_to_base 결과가
+    #       default_chain().transform("base", "camera", P) 및
+    #       transform_points(T_base_link @ T_link_camera, P) 와 같은지 검사
+    P = np.rng(,3)
+    result = pipeline.camera_to_base(P)
+    compare = default_chain(P)
+    two_points = compare[0] @ compare[1]
+
+    assert np.allclose(result,compare)
+    assert np.allclose(result,two_points)
+```
+
+정정 힌트:
+**점군 생성, 파이프라인 호출, `assert`를 두 개로 나눈 건 맞아.** 수정할 부분은 중간 두 줄이야:
+
+```python
+compare = default_chain(P)
+two_points = compare[0] @ compare[1]
+```
+
+`default_chain()`은 **점을 변환하는 함수가 아니라, 좌표계 체인 객체를 만드는 함수**야. 인자를 넣지 않고 만든 다음, 그 객체의 기능을 사용해야 해:
+
+```python
+chain = default_chain()
+compare = chain.transform("base", "camera", P)
+```
+
+직접 행렬을 곱하는 비교에서는 **점 두 개가 아니라 변환행렬 두 개**를 꺼내야 해:
+
+```python
+T_base_link = chain.get("base", "link")
+T_link_camera = chain.get("link", "camera")
+```
+
+그다음 할 일은:
+
+1. 두 행렬을 `@`로 곱하기 → `(4, 4)` 변환행렬
+2. `transform_points`로 **같은 `P`를 변환하기** → `(100, 3)` 점군
+3. 그 결과를 `result`와 비교하기
+
+`result`가 점군이므로, 비교 대상도 **행렬 자체가 아니라 변환된 점군**이어야 해. 변수 이름도 `two_points`보다는 `matrix_result`가 의미에 맞아.
+
+
+수정후:
+```python
+def test_camera_to_base_matches_chain(pipeline, rng):
+    # TODO: (N,3) 점군을 만들어 pipeline.camera_to_base 결과가
+    #       default_chain().transform("base", "camera", P) 및
+    #       transform_points(T_base_link @ T_link_camera, P) 와 같은지 검사
+    P = rng.normal(0.0, 1.0, (100, 3))        
+    random_P = pipeline.camera_to_base(P)
+    chain = default_chain()
+    chain_P = chain.transform("base", "camera", P)
+
+    T_base_link = chain.get("base", "link")
+    T_link_camera = chain.get("link", "camera")
+    compare_T = T_base_link @ T_link_camera
+    compare_P = transform_points(compare_T, P)
+
+    assert np.allclose(random_P, compare_P)
+    assert np.allclose(random_P, chain_P)
+```
+
+그럼 **`quaternion_to_matrix` 하나만 같이 완성해 보자.** 지금은 공식을 직접 유도할 필요 없이, 주석에 주어진 공식을 Python으로 옮기는 거야.
+
+`quaternion_to_matrix(q)` 안의 `raise NotImplementedError(...)`를 아래 코드로 바꿔 봐:
+
+```python
+q = np.asarray(q, dtype=float)
+
+norm = np.linalg.norm(q)
+if norm == 0:
+    raise ValueError("크기가 0인 쿼터니언은 사용할 수 없습니다.")
+
+q = q / norm
+x, y, z, w = q
+
+R = np.array([
+    [1 - 2*(y**2 + z**2),  2*(x*y - z*w),       2*(x*z + y*w)],
+    [2*(x*y + z*w),        1 - 2*(x**2 + z**2), 2*(y*z - x*w)],
+    [2*(x*z - y*w),        2*(y*z + x*w),       1 - 2*(x**2 + y**2)]
+])
+
+return R
+```
+
+크게 **세 작업**을 하는 코드야.
+
+**① 쿼터니언의 크기를 1로 맞추기**
+
+```python
+q = q / norm
+```
+
+위 행렬 공식은 **크기가 1인 쿼터니언**을 전제로 하므로 먼저 정규화해.
+
+**② 숫자 네 개에 이름 붙이기**
+
+```python
+x, y, z, w = q
+```
+
+예를 들어 `q = [0, 0, 0, 1]`이면:
+
+```text
+x = 0, y = 0, z = 0, w = 1
+```
+
+**③ 네 숫자를 공식에 넣어서 행렬 만들기**
+
+`np.array` 안의 리스트 하나가 행렬의 **한 행**이야. 세 줄에 숫자 세 개씩 있으므로 `(3, 3)` 행렬이 돼.
+
+예를 들어 `[0, 0, 0, 1]`을 넣으면 곱셈 항들이 모두 0이 되어:
+
+```text
+[[1, 0, 0],
+ [0, 1, 0],
+ [0, 0, 1]]
+```
+
+이렇게 **회전하지 않는다는 뜻의 단위행렬**이 나와. 우선 이 예제로 “쿼터니언 네 숫자 → 회전행렬”이라는 흐름을 잡으면 돼.
 <br>
 
 내가 짠 코드:
@@ -1960,7 +2257,7 @@ p'=qpq^{-1}
 
 ```
 
-수정후:
+ 수정후:
 ```python
 
 ```
@@ -1972,19 +2269,7 @@ p'=qpq^{-1}
 
 ```
 
-수정후:
-```python
-
-```
-
-<br>
-
-내가 짠 코드:
-```python
-
-```
-
-수정후:
+ 수정후:
 ```python
 
 ```
