@@ -1,3 +1,4 @@
-#AWS
+# AWS
 
-[2026.09.08 - 소개](../September/Day26/aws.md)
+- [Day 1(2026.09.08) - 소개](aws1.md)
+- [Day 2(2026.09.08) - ](aws2.md)

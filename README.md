@@ -35,6 +35,8 @@
 - [2026.09.07](classes/September/Day25/README.md)
 - [2026.09.08](classes/September/Day26/README.md)
 - [2026.09.09](classes/September/Day27/README.md)
+- [2026.09.10](classes/September/Day28/README.md)
+- [2026.09.11](classes/September/Day29/README.md)
 
 </details>
 
@@ -66,9 +68,6 @@
 <br>
 
 ### Classes
-
-[Todo](classes/September/Day24/Todo.md)
-
 
 <details>
 <summary> Physical Ai </summary>
@@ -108,6 +107,8 @@
 - [Day25 (2026.09.07) - classwork Module all final submission](classes/September/Day25/README.md)
 - [Day26 (2026.09.08) - lv2 intro](classes/September/Day26/README.md)
 - [Day27 (2026.09.09) - lv2 제어..](classes/September/Day27/README.md)
+- [Day28 (2026.09.10) - lv1 module 1,2 finish](classes/September/Day28/README.md)
+- [Day29 (2026.09.11) - lv2 제어..](classes/September/Day29/README.md)
 
 </details>
 
@@ -123,6 +124,9 @@
 </details>
 </details>
 
+### Studies
+
+- [AWS](classes/1_aws/README.md)
 
 <br>
  

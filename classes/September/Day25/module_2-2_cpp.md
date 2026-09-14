@@ -1,4 +1,4 @@
-module 2-2
+ㅊmodule 2-2
 
 이번 문제는 **센서 클래스를 만들면서 상속·다형성·메모리 관리·STL을 배우는 과제**예요. 앞처럼 한 단계씩 코드의 의미와 예시를 보면서 진행하겠습니다.
 
@@ -238,3 +238,270 @@ g++ -Wall -std=c++17 main.cpp -o sensor_demo && ./sensor_demo
 
 **이 명령의 새 출력**을 보내주세요. 편집기 코드는 더 고치지 않아도 됩니다.
 
+---
+
+지금 코드가 잘못돼서 바꾸는 건 아니에요. **현재 코드는 포인터 배열로 다형성을 확인하는 올바른 코드**예요.
+
+기록에 다음 단계가 `vector`와 `unique_ptr`라고 적혀 있어서 제가 먼저 넘어갔어요. 지금 코드를 충분히 이해했는지 확인하지 않고 교체부터 안내했네요.
+
+그대로 두고 이어가요. 지금 코드의 핵심은 이 부분이에요.
+
+```cpp
+Sensor* sensors[] = {&lidar, &imu};
+```
+
+`lidar`와 `imu`의 **주소를 부모 타입인 `Sensor*` 배열에 담는 것**이에요. 이후 `sensor->read()`를 호출하면 실제 객체에 따라 `Lidar::read()` 또는 `Imu::read()`가 실행돼요.
+
+마지막에 이 코드 실행까지 성공했었나요, 아니면 오류를 해결하던 중이었나요?
+
+---
+
+좋아, 작업 파일 찾았어요. 지금은 **`Sensor*` 배열에 `Lidar`, `Imu`를 넣고 반복문으로 읽는 단계**까지 작성돼 있어요. 다음은 **`vector`와 `unique_ptr`로 센서를 관리하기**예요.
+
+[main.cpp](/C:/Users/haemi/git/classwork/physicalai-lv1-HaeminKim/lv1_module2_student/cpp_basics/sensors/main.cpp)를 다음처럼 바꿔볼게요. `sensor.hpp`는 그대로 사용해요.
+
+```cpp
+#include <iostream>
+#include <memory>
+#include <vector>
+#include "sensor.hpp"
+
+int main()
+{
+    std::vector<std::unique_ptr<Sensor>> sensors;
+
+    sensors.push_back(std::make_unique<Lidar>());
+    sensors.push_back(std::make_unique<Imu>());
+
+    for (const auto& sensor : sensors)
+    {
+        std::cout << "측정값: " << sensor->read() << '\n';
+    }
+
+    return 0;
+}
+```
+
+각 부분을 풀어보면:
+
+- **`vector`**: 센서를 여러 개 담는, 크기를 늘릴 수 있는 컨테이너예요.
+- **`unique_ptr<Sensor>`**: 센서 객체를 소유하고, 수명이 끝나면 자동으로 삭제하는 스마트 포인터예요.
+- **`make_unique<Lidar>()`**: `Lidar` 객체를 만들고 이를 소유하는 스마트 포인터를 반환해요.
+- **`const auto&`**: 스마트 포인터를 복사하지 않고 참조해서 읽어요. `unique_ptr`는 소유권이 하나라 복사가 금지돼 있어요.
+
+기존의 `&lidar`는 별도로 만든 객체의 주소만 담았어요. 이번에는 **컨테이너 안의 스마트 포인터가 객체의 수명까지 관리**해요. `main()`이 끝나면 센서도 자동으로 정리됩니다.
+
+`sensors` 폴더의 터미널에서 저장 후 실행해 주세요.
+
+```bash
+g++ -Wall -std=c++17 main.cpp -o sensor_demo
+./sensor_demo
+```
+
+측정값 `0.3`, `0.1`과 소멸 메시지가 나오면 됩니다. 현재 제가 사용하는 PowerShell에서는 `g++`가 잡히지 않아 실행 검증은 아직 못 했어요.
+
+모듈 2-2 센서 과제로 돌아가요. 마지막에는 `vector`와 `unique_ptr`를 사용한 코드가 실행돼서 **측정값 `0.3`, `0.1`과 소멸 메시지**까지 나왔어요.
+
+이번 코드에서 확인할 핵심은 이거예요.
+
+```cpp
+sensors.push_back(std::make_unique<Lidar>());
+```
+
+1. `make_unique<Lidar>()`가 `Lidar` 객체를 만들어요.
+2. 만들어진 객체를 소유하는 `unique_ptr`를 `sensors`에 넣어요.
+3. `main()`이 끝나면 `sensors`가 소멸하면서 각 `unique_ptr`가 센서 객체를 자동으로 삭제해요.
+
+그래서 우리가 **`delete`를 직접 쓰지 않았는데도 소멸 메시지가 나온 것**이에요. `Sensor`의 소멸자가 `virtual`이라서 `Lidar 소멸` → `Sensor 소멸`처럼 자식과 부모의 소멸자가 모두 실행됩니다.
+
+이제 반복문을 살펴볼게요.
+
+```cpp
+for (const auto& sensor : sensors)
+{
+    std::cout << "측정값: " << sensor->read() << '\n';
+}
+```
+
+**`sensors`에 담긴 스마트 포인터를 하나씩 참조해서 센서 값을 읽는 코드**예요.
+
+- `auto`: 원소의 타입인 `std::unique_ptr<Sensor>`를 컴파일러가 추론해요.
+- `&`: 원소를 복사하지 않고 참조해요. `unique_ptr`는 복사할 수 없어서 중요해요.
+- `const`: 이 참조로 스마트 포인터를 변경하지 않아요.
+- `->read()`: 포인터가 가리키는 센서의 `read()`를 호출해요.
+
+이때 **`Sensor` 포인터로 호출해도 실제 객체에 맞는 함수가 실행**돼요.
+
+```text
+Lidar 객체 → Lidar::read() → 0.3
+Imu 객체   → Imu::read()   → 0.1
+```
+
+이것이 앞에서 배운 **다형성**이에요. 센서를 담는 방식은 바뀌었지만, 실제 센서 종류에 따라 `read()`가 실행되는 원리는 같아요.
+
+여기서 `const`를 하나만 더 짚고 갈게요.
+
+```cpp
+for (const auto& sensor : sensors)
+```
+
+이 `const`는 **스마트 포인터 자체를 변경하지 못하게 하는 것**이에요. 가리키는 센서까지 무조건 변경 불가능하게 만드는 건 아니에요.
+
+반면 `sensor.hpp`의:
+
+```cpp
+virtual double read() const = 0;
+```
+
+여기서 함수 뒤의 `const`는 **`read()`가 센서의 일반 멤버 변수를 변경하지 않겠다는 뜻**이에요. `const`가 붙는 위치에 따라 대상이 달라져요.
+
+지금 코드에서는 세 가지가 함께 작동하고 있어요.
+
+| 기능 | 담당 |
+|---|---|
+| 센서 여러 개를 담기 | `vector` |
+| 센서 객체를 자동으로 삭제하기 | `unique_ptr` |
+| 실제 센서 종류에 맞는 `read()` 호출하기 | `virtual`을 통한 다형성 |
+
+직접 확인해 보려면 `Imu`를 추가한 줄 아래에 다음 한 줄을 더 넣어보세요.
+
+```cpp
+sensors.push_back(std::make_unique<Lidar>());
+```
+
+반복문을 수정하지 않아도 측정값이 **`0.3` → `0.1` → `0.3`**으로 세 번 나와요. 센서가 늘어나도 같은 반복문으로 처리할 수 있는 거예요.
+
+맞아요. **1번·2번은 해 둔 거고, 다음은 3번 ‘가상 소멸자를 뺐을 때의 차이’**예요. 제가 자꾸 앞 단계로 돌아갔네요.
+
+먼저 현재 `sensors` 폴더 터미널에서 실험용 파일을 복사해요.
+
+```bash
+mkdir -p no_virtual
+cp sensor.hpp main.cpp no_virtual/
+```
+
+그다음 **`no_virtual/sensor.hpp`에서 소멸자 선언 세 줄만** 바꾸세요.
+
+```cpp
+virtual ~Sensor()   →   ~Sensor()
+~Lidar() override   →   ~Lidar()
+~Imu() override     →   ~Imu()
+```
+
+`read()`는 그대로 두고 저장한 다음 실행해요.
+
+```bash
+g++ -Wall -Wextra -std=c++17 no_virtual/main.cpp -o no_virtual/sensor_demo.exe && ./no_virtual/sensor_demo.exe
+```
+
+**이번에는 어떤 소멸 메시지가 나오는지** 확인해서 정상 버전과 비교할 거예요. 가상 소멸자 없이 부모 포인터로 자식 객체를 삭제하면 *정의되지 않은 동작*이므로, 출력 결과가 항상 같다고 보장되지는 않아요.
+
+---
+
+그럼 다음은 **4번: 센서별 최근 값 저장 + 측정 로그에서 `0.35` 이내인 기록 세기**예요.
+
+원본 **`sensors/main.cpp`**에서 진행해요.
+
+① 위쪽에 헤더 두 개를 추가하세요.
+
+```cpp
+#include <string>
+#include <unordered_map>
+#include <algorithm>
+```
+
+② 센서 두 개를 `push_back`한 다음, 기존 반복문을 아래 코드로 바꾸세요.
+
+```cpp
+std::vector<std::string> names = {"Lidar", "Imu"};
+std::unordered_map<std::string, double> latest;
+std::vector<double> logs;
+
+for (std::size_t i = 0; i < sensors.size(); ++i)
+{
+    double value = sensors[i]->read();
+
+    latest[names[i]] = value;
+    logs.push_back(value);
+
+    std::cout << names[i] << " 측정값: " << value << '\n';
+}
+
+auto count = std::count_if(
+    logs.begin(),
+    logs.end(),
+    [](double distance)
+    {
+        return distance <= 0.35;
+    }
+);
+
+std::cout << "Lidar 최근 값: " << latest.at("Lidar") << '\n';
+std::cout << "Imu 최근 값: " << latest.at("Imu") << '\n';
+std::cout << "0.35 이내 기록: " << count << "개\n";
+```
+
+- `latest`: 센서 **이름으로 최근 측정값을 조회**해요.
+- `logs`: 읽은 측정값을 순서대로 쌓아요.
+- `count_if`: 조건을 만족하는 기록의 개수를 세요. 여기서는 과제의 가상 측정값을 거리로 취급해요.
+
+③ 저장하고 원본 폴더에서 실행하세요.
+
+```bash
+g++ -Wall -std=c++17 main.cpp -o sensor_demo.exe && ./sensor_demo.exe
+```
+
+현재 값은 `0.3`, `0.1`이므로 **`0.35 이내 기록: 2개`**가 나와야 해요.그럼 다음은 **4번: 센서별 최근 값 저장 + 측정 로그에서 `0.35` 이내인 기록 세기**예요.
+
+원본 **`sensors/main.cpp`**에서 진행해요.
+
+① 위쪽에 헤더 두 개를 추가하세요.
+
+```cpp
+#include <string>
+#include <unordered_map>
+#include <algorithm>
+```
+
+② 센서 두 개를 `push_back`한 다음, 기존 반복문을 아래 코드로 바꾸세요.
+
+```cpp
+std::vector<std::string> names = {"Lidar", "Imu"};
+std::unordered_map<std::string, double> latest;
+std::vector<double> logs;
+
+for (std::size_t i = 0; i < sensors.size(); ++i)
+{
+    double value = sensors[i]->read();
+
+    latest[names[i]] = value;
+    logs.push_back(value);
+
+    std::cout << names[i] << " 측정값: " << value << '\n';
+}
+
+auto count = std::count_if(
+    logs.begin(),
+    logs.end(),
+    [](double distance)
+    {
+        return distance <= 0.35;
+    }
+);
+
+std::cout << "Lidar 최근 값: " << latest.at("Lidar") << '\n';
+std::cout << "Imu 최근 값: " << latest.at("Imu") << '\n';
+std::cout << "0.35 이내 기록: " << count << "개\n";
+```
+
+- `latest`: 센서 **이름으로 최근 측정값을 조회**해요.
+- `logs`: 읽은 측정값을 순서대로 쌓아요.
+- `count_if`: 조건을 만족하는 기록의 개수를 세요. 여기서는 과제의 가상 측정값을 거리로 취급해요.
+
+③ 저장하고 원본 폴더에서 실행하세요.
+
+```bash
+g++ -Wall -std=c++17 main.cpp -o sensor_demo.exe && ./sensor_demo.exe
+```
+
+현재 값은 `0.3`, `0.1`이므로 **`0.35 이내 기록: 2개`**가 나와야 해요.
