@@ -1,0 +1,49 @@
+s 2.0 2.0 2.0 100 90 / target_deg:90.000	position_deg:90.088	error_deg:-0.088
+s 2.0 2.0 0.5 100 90 / target_deg:90.000	position_deg:89.824	error_deg:0.176
+s 2.0 1.0 0.5 100 90 / target_deg:90.000	position_deg:90.176	error_deg:-0.176
+s 3.0 2.0 0.5 100 90 / target_deg:90.000	position_deg:90.176	error_deg:-0.176
+s 2.9 2.0 0.5 100 90 / target_deg:90.000	position_deg:90.176	error_deg:-0.176
+s 2.9 1.0 0.5 100 90 / target_deg:90.000	position_deg:90.176	error_deg:-0.176
+s 2.8 2.0 0.4 100 90 / target_deg:90.000	position_deg:90.088	error_deg:-0.088
+s 2.7 2.0 0.5 100 90 / target_deg:90.000	position_deg:90.176	error_deg:-0.176
+s 2.7 2.0 0.5 90 90  / target_deg:90.000	position_deg:90.176	error_deg:-0.176
+s 2.7 2.0 0.5 200 90 / target_deg:90.000	position_deg:89.824	error_deg:0.176
+s 3.0 2.0 0.5 200 90 / target_deg:90.000	position_deg:89.824	error_deg:0.176
+s 3.2 2.0 0.5 200 90 / target_deg:90.000	position_deg:89.824	error_deg:0.176
+s 3.5 2.0 0.5 200 90 / target_deg:90.000	position_deg:89.824	error_deg:0.176
+s 4.0 3.0 0.5 200 90 / target_deg:90.000	position_deg:89.824	error_deg:0.176
+s 4.0 3.0 0.6 200 90 / target_deg:90.000	position_deg:89.824	error_deg:0.176
+s 4.0 3.0 0.5 190 90 / target_deg:90.000	position_deg:89.824	error_deg:0.176
+s 4.0 3.0 0.5 180 90 / target_deg:90.000	position_deg:89.912	error_deg:0.088
+s 4.0 3.0 0.5 170 90 / target_deg:90.000	position_deg:89.824	error_deg:0.176
+s 4.90100023 3.0 0.5 170 90 / target_deg:90.000	position_deg:89.824	error_deg:0.176
+s 0.5 0 0 50 90 / target_deg:90.000	position_deg:88.682	error_deg:1.318
+s 4.90100023 0 0 160 90 / target_deg:90.000	position_deg:90.176	error_deg:-0.176
+s 0.5 0 0 20 90 / target_deg:90.000	position_deg:88.682	error_deg:1.318	
+s 4.0 0 0 50 90 / target_deg:90.000	position_deg:90.176	error_deg:-0.176
+s 4.0 0 0 60 90 / target_deg:90.000	position_deg:90.176	error_deg:-0.176
+s 5.0 0 0 60 90 / target_deg:90.000	position_deg:90.176	error_deg:-0.176
+s 5.0 0 0 70 90 / target_deg:90.000	position_deg:90.176	error_deg:-0.176
+s 6.0 0 0 70 90 / target_deg:90.000	position_deg:89.912	error_deg:0.088
+s 6.0 0 0 80 90 / target_deg:90.000	position_deg:89.824	error_deg:0.176
+s 7.0 0 0 80 90 / target_deg:90.000	position_deg:90.176	error_deg:-0.176
+s 7.0 0 0 90 90 / target_deg:90.000	position_deg:90.176	error_deg:-0.176
+s 8.0 0 0 90 90 / target_deg:90.000	position_deg:89.824	error_deg:0.176
+s 8.0 0 0 100 90 / target_deg:90.000	position_deg:90.176	error_deg:-0.176
+s 9.0 0 0 100 90 / target_deg:90.000	position_deg:89.824	error_deg:0.176
+s 10.0 0 0 100 90 / target_deg:90.000	position_deg:89.824	error_deg:0.176
+s 28.0 0 0 300 90 / target_deg:90.000	position_deg:18.896	error_deg:71.104
+s 27.0 0 0 300 90 / target_deg:90.000	position_deg:28.916	error_deg:61.084 STOP: time limit reached; torque off
+s 27.0 0 0 300 90 / target_deg:90.000	position_deg:1.318	error_deg:88.682 STOP: time limit reached; torque off
+s 27.0 0 0 200 90 / target_deg:90.000	position_deg:124.102	error_deg:-34.102 STOP: time limit reached; torque off
+s 27.0 0 0 150 90 / target_deg:90.000	position_deg:170.947	error_deg:-80.947 STOP: time limit reached; torque off
+s 27.0 0 0 50 90 / target_deg:90.000	position_deg:90.000	error_deg:0.000
+s 27.0 0 0 100 90 / target_deg:90.000	position_deg:44.385	error_deg:45.615 STOP: time limit reached; torque off
+s 26.0 0 0 300 90 / target_deg:90.000	position_deg:37.793	error_deg:52.207 STOP: time limit reached; torque off
+s 25.0 0 0 300 90 / target_deg:90.000	position_deg:30.674	error_deg:59.326 STOP: time limit reached; torque off
+s 30.0 0 0 300 90 / target_deg:90.000	position_deg:-6.592	error_deg:96.592 STOP: time limit reached; torque off
+
+
+
+
+
