@@ -49,7 +49,7 @@ Date: 2026 Sept 16, Wednesday
 
 ## 할 일
 
--
+- 임베ᄃퟄ드 복습
 
 
 

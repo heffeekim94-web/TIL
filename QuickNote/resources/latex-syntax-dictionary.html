@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LaTeX 수학 문법 사전</title>
+  <meta name="description" content="수학·로봇공학 학습자를 위한 검색 가능한 LaTeX 문법 사전">
+  <script>
+    window.MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }, svg: { fontCache: 'global' } };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+  <style>
+    :root{--bg:#f6f7fb;--panel:#fff;--ink:#18202a;--muted:#647084;--line:#e5e8ef;--accent:#6257e8;--accent2:#e9e7ff;--code:#171a23;--ok:#16826c}
+    *{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.65 system-ui,-apple-system,"Noto Sans KR",sans-serif}
+    .layout{display:grid;grid-template-columns:260px minmax(0,1fr);min-height:100vh}.side{position:sticky;top:0;height:100vh;padding:28px 20px;background:#151722;color:#fff;overflow:auto}.brand{font-size:21px;font-weight:800}.brand span{color:#aaa3ff}.side p{font-size:13px;color:#aeb4c3}.side a{display:block;padding:7px 10px;border-radius:8px;color:#cdd1dc;text-decoration:none}.side a:hover{background:#242737;color:#fff}.main{max-width:1080px;width:100%;padding:44px 48px 100px}.hero{padding:36px;border-radius:24px;background:linear-gradient(135deg,#4c43c9,#7569f4);color:#fff;box-shadow:0 18px 50px #574ed32b}.hero h1{margin:0;font-size:clamp(30px,5vw,52px);letter-spacing:-.04em}.hero p{max-width:680px;margin:12px 0 0;color:#eceaff;font-size:17px}.search{position:sticky;top:16px;z-index:3;margin:22px 0}.search input{width:100%;padding:15px 18px;border:1px solid var(--line);border-radius:14px;background:#fff;box-shadow:0 8px 28px #22305a12;font:inherit;outline:none}.search input:focus{border-color:var(--accent);box-shadow:0 0 0 4px var(--accent2)}
+    section{scroll-margin-top:85px;margin-top:36px}h2{font-size:26px;margin:0 0 14px;letter-spacing:-.03em}h3{margin:22px 0 10px}.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px}.card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:18px;box-shadow:0 5px 20px #26304d0a}.card h3{margin:0 0 8px;font-size:16px}.formula{min-height:52px;display:flex;align-items:center;justify-content:center;padding:8px;background:#fafaff;border-radius:10px;font-size:18px;overflow:auto}.code{position:relative;margin-top:10px;padding:12px 45px 12px 13px;border-radius:10px;background:var(--code);color:#dcdef0;font:13px/1.5 ui-monospace,SFMono-Regular,Consolas,monospace;white-space:pre-wrap;word-break:break-all}.copy{position:absolute;right:7px;top:7px;border:0;border-radius:7px;padding:5px 8px;background:#303445;color:#fff;cursor:pointer}.copy:hover{background:var(--accent)}table{width:100%;border-collapse:separate;border-spacing:0;background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden}th,td{text-align:left;padding:11px 14px;border-bottom:1px solid var(--line)}tr:last-child td{border-bottom:0}th{background:#f0efff;font-size:13px}td code{color:#4d43c9}.tip{padding:16px 18px;border-left:4px solid var(--accent);border-radius:8px;background:var(--accent2)}.hidden{display:none!important}.footer{margin-top:52px;color:var(--muted);text-align:center}@media(max-width:760px){.layout{display:block}.side{position:relative;height:auto}.side nav{display:none}.main{padding:24px 16px 70px}.hero{padding:26px 22px}.search{top:8px}.cards{grid-template-columns:1fr}}
+    @media print{.side,.search,.copy{display:none}.layout{display:block}.main{max-width:none;padding:0}.hero{box-shadow:none}.card{break-inside:avoid}}
+  </style>
+</head>
+<body>
+<div class="layout">
+  <aside class="side"><div class="brand">LaTeX <span>Dictionary</span></div><p>수학·로봇공학용 빠른 문법 사전</p><nav>
+    <a href="#basic">기본 문법</a><a href="#symbols">기호와 그리스 문자</a><a href="#calculus">미분·적분·합</a><a href="#vectors">벡터와 행렬</a><a href="#layout">정렬과 조건식</a><a href="#robotics">로봇공학 예제</a><a href="#cheat">핵심 치트시트</a>
+  </nav></aside>
+  <main class="main">
+    <header class="hero"><h1>LaTeX 수학 문법 사전</h1><p>원하는 표현을 검색하고 코드를 바로 복사하세요. 분수부터 회전행렬, PID, 쿼터니언까지 한 문서에 모았습니다.</p></header>
+    <div class="search"><input id="search" type="search" placeholder="검색: 분수, theta, 행렬, PID…" aria-label="문법 검색"></div>
+
+    <section id="basic" data-search="기본 분수 첨자 제곱 루트 괄호">
+      <h2>1. 기본 문법</h2><div class="cards">
+        <article class="card"><h3>분수 — 두 번째 중괄호가 분모</h3><div class="formula">\(\frac{x+1}{y-2}\)</div><div class="code">\frac{x+1}{y-2}<button class="copy">복사</button></div></article>
+        <article class="card"><h3>위첨자 · 아래첨자</h3><div class="formula">\(x_i^2,\;x_{max}^{n+1}\)</div><div class="code">x_i^2, x_{max}^{n+1}<button class="copy">복사</button></div></article>
+        <article class="card"><h3>제곱근 · n제곱근</h3><div class="formula">\(\sqrt{x},\;\sqrt[n]{x}\)</div><div class="code">\sqrt{x}, \sqrt[n]{x}<button class="copy">복사</button></div></article>
+        <article class="card"><h3>내용에 맞춘 괄호</h3><div class="formula">\(\left(\frac{a}{b}\right)\)</div><div class="code">\left(\frac{a}{b}\right)<button class="copy">복사</button></div></article>
+      </div>
+      <p class="tip"><strong>핵심:</strong> <code>{ }</code>는 여러 문자를 한 덩어리로 묶고, <code>_</code>는 아래, <code>^</code>는 위에 붙입니다.</p>
+    </section>
+
+    <section id="symbols" data-search="기호 그리스 알파 베타 감마 델타 세타 람다 뮤 시그마 오메가 파이 비교 무한대">
+      <h2>2. 기호와 그리스 문자</h2>
+      <table><thead><tr><th>표현</th><th>LaTeX</th><th>결과</th></tr></thead><tbody>
+        <tr><td>곱·내적 / 외적</td><td><code>\cdot / \times</code></td><td>\(a\cdot b,\;a\times b\)</td></tr><tr><td>같지 않음·약 같음</td><td><code>\neq / \approx</code></td><td>\(a\neq b,\;a\approx b\)</td></tr><tr><td>부등호</td><td><code>\leq / \geq</code></td><td>\(a\leq b,\;a\geq b\)</td></tr><tr><td>플러스마이너스·무한대</td><td><code>\pm / \infty</code></td><td>\(\pm,\;\infty\)</td></tr><tr><td>화살표</td><td><code>\rightarrow / \Rightarrow</code></td><td>\(\rightarrow,\;\Rightarrow\)</td></tr>
+      </tbody></table>
+      <div class="cards" style="margin-top:14px">
+        <article class="card"><h3>소문자</h3><div class="formula">\(\alpha\;\beta\;\gamma\;\delta\;\theta\;\lambda\;\mu\;\sigma\;\omega\;\pi\)</div><div class="code">\alpha \beta \gamma \delta \theta \lambda \mu \sigma \omega \pi<button class="copy">복사</button></div></article>
+        <article class="card"><h3>대문자</h3><div class="formula">\(\Delta\;\Sigma\;\Omega\)</div><div class="code">\Delta \Sigma \Omega<button class="copy">복사</button></div></article>
+        <article class="card"><h3>삼각함수</h3><div class="formula">\(\sin\theta,\;\cos\theta,\;\tan\theta\)</div><div class="code">\sin\theta, \cos\theta, \tan\theta<button class="copy">복사</button></div></article>
+      </div>
+    </section>
+
+    <section id="calculus" data-search="미분 편미분 적분 합 시그마 속도 가속도 dot ddot">
+      <h2>3. 미분·적분·합</h2><div class="cards">
+        <article class="card"><h3>1차·2차 미분</h3><div class="formula">\(\frac{dx}{dt},\;\frac{d^2x}{dt^2}\)</div><div class="code">\frac{dx}{dt}, \frac{d^2x}{dt^2}<button class="copy">복사</button></div></article>
+        <article class="card"><h3>점 표기</h3><div class="formula">\(x,\;\dot{x},\;\ddot{x}\)</div><div class="code">x, \dot{x}, \ddot{x}<button class="copy">복사</button></div></article>
+        <article class="card"><h3>편미분</h3><div class="formula">\(\frac{\partial f}{\partial x}\)</div><div class="code">\frac{\partial f}{\partial x}<button class="copy">복사</button></div></article>
+        <article class="card"><h3>정적분</h3><div class="formula">\(\int_0^t f(x)\,dx\)</div><div class="code">\int_0^t f(x)\,dx<button class="copy">복사</button></div></article>
+        <article class="card"><h3>무한대까지 적분</h3><div class="formula">\(\int_0^\infty f(x)\,dx\)</div><div class="code">\int_0^\infty f(x)\,dx<button class="copy">복사</button></div></article>
+        <article class="card"><h3>합</h3><div class="formula">\(\sum_{i=1}^{n}x_i\)</div><div class="code">\sum_{i=1}^{n} x_i<button class="copy">복사</button></div></article>
+      </div>
+    </section>
+
+    <section id="vectors" data-search="벡터 내적 외적 노름 단위벡터 행렬 전치 역행렬 행렬식 단위행렬">
+      <h2>4. 벡터와 행렬</h2><div class="cards">
+        <article class="card"><h3>벡터 표기</h3><div class="formula">\(\vec v,\;\mathbf v,\;\hat v\)</div><div class="code">\vec{v}, \mathbf{v}, \hat{v}<button class="copy">복사</button></div></article>
+        <article class="card"><h3>노름</h3><div class="formula">\(\lVert\mathbf v\rVert\)</div><div class="code">\lVert\mathbf{v}\rVert<button class="copy">복사</button></div></article>
+        <article class="card"><h3>내적 관계</h3><div class="formula">\(\mathbf a\cdot\mathbf b=\lVert\mathbf a\rVert\lVert\mathbf b\rVert\cos\theta\)</div><div class="code">\mathbf{a}\cdot\mathbf{b}=\lVert\mathbf{a}\rVert\lVert\mathbf{b}\rVert\cos\theta<button class="copy">복사</button></div></article>
+        <article class="card"><h3>2×2 행렬</h3><div class="formula">\(\begin{bmatrix}1&2\\3&4\end{bmatrix}\)</div><div class="code">\begin{bmatrix}
+1 & 2 \\
+3 & 4
+\end{bmatrix}<button class="copy">복사</button></div></article>
+        <article class="card"><h3>전치·역행렬</h3><div class="formula">\(R^{\mathsf T},\;A^{-1}\)</div><div class="code">R^{\mathsf T}, A^{-1}<button class="copy">복사</button></div></article>
+        <article class="card"><h3>행렬식</h3><div class="formula">\(\det(A)=\begin{vmatrix}a&b\\c&d\end{vmatrix}\)</div><div class="code">\det(A)=\begin{vmatrix}a&b\\c&d\end{vmatrix}<button class="copy">복사</button></div></article>
+      </div><p class="tip"><strong>행렬 규칙:</strong> <code>&amp;</code>는 다음 열, <code>\\</code>는 다음 행입니다.</p>
+    </section>
+
+    <section id="layout" data-search="여러 줄 정렬 aligned 조건식 cases 위 기호 hat bar tilde">
+      <h2>5. 정렬과 조건식</h2><div class="cards">
+        <article class="card"><h3>여러 줄 등호 정렬</h3><div class="formula">\(\begin{aligned}x&=a+b\\y&=c+d\\z&=x+y\end{aligned}\)</div><div class="code">\begin{aligned}
+x &= a+b \\
+y &= c+d \\
+z &= x+y
+\end{aligned}<button class="copy">복사</button></div></article>
+        <article class="card"><h3>조건식</h3><div class="formula">\(f(x)=\begin{cases}x^2&x\geq0\\-x&x&lt;0\end{cases}\)</div><div class="code">f(x)=\begin{cases}
+x^2 & x \geq 0 \\
+-x & x &lt; 0
+\end{cases}<button class="copy">복사</button></div></article>
+        <article class="card"><h3>위에 기호 붙이기</h3><div class="formula">\(\hat{x},\;\bar{x},\;\tilde{x},\;\vec{x}\)</div><div class="code">\hat{x}, \bar{x}, \tilde{x}, \vec{x}<button class="copy">복사</button></div></article>
+      </div>
+    </section>
+
+    <section id="robotics" data-search="로봇공학 회전행렬 homogeneous transformation 동차변환 PID 각속도 가속도 쿼터니언">
+      <h2>6. 로봇공학 예제</h2><div class="cards">
+        <article class="card"><h3>2D 회전행렬</h3><div class="formula">\(R(\theta)=\begin{bmatrix}\cos\theta&-\sin\theta\\\sin\theta&\cos\theta\end{bmatrix}\)</div><div class="code">R(\theta)=\begin{bmatrix}
+\cos\theta & -\sin\theta \\
+\sin\theta & \cos\theta
+\end{bmatrix}<button class="copy">복사</button></div></article>
+        <article class="card"><h3>동차변환행렬</h3><div class="formula">\(T=\begin{bmatrix}R&p\\0&1\end{bmatrix}\)</div><div class="code">T=\begin{bmatrix}R & p \\ 0 & 1\end{bmatrix}<button class="copy">복사</button></div></article>
+        <article class="card"><h3>PID 제어식</h3><div class="formula">\(u(t)=K_pe(t)+K_i\int_0^t e(\tau)\,d\tau+K_d\frac{de(t)}{dt}\)</div><div class="code">u(t)=K_p e(t)+K_i\int_0^t e(\tau)\,d\tau+K_d\frac{de(t)}{dt}<button class="copy">복사</button></div></article>
+        <article class="card"><h3>각속도·가속도</h3><div class="formula">\(\omega=\frac{d\theta}{dt},\quad a=\frac{d^2x}{dt^2}\)</div><div class="code">\omega=\frac{d\theta}{dt}, \quad a=\frac{d^2x}{dt^2}<button class="copy">복사</button></div></article>
+        <article class="card"><h3>쿼터니언</h3><div class="formula">\(q=\begin{bmatrix}w&x&y&z\end{bmatrix}^{\mathsf T}\)</div><div class="code">q=\begin{bmatrix}w & x & y & z\end{bmatrix}^{\mathsf T}<button class="copy">복사</button></div></article>
+      </div>
+    </section>
+
+    <section id="cheat" data-search="핵심 치트시트 요약">
+      <h2>7. 핵심 치트시트</h2>
+      <div class="code">\frac{a}{b}        % 분수: 위 / 아래
+x^2, x_i            % 위첨자 / 아래첨자
+\sqrt{x}            % 제곱근
+\theta, \omega      % 그리스 문자
+\dot{x}, \ddot{x}   % 속도 / 가속도 표기
+\int_0^t            % 적분과 범위
+\sum_{i=1}^{n}      % 합과 범위
+\mathbf{v}, \hat{v} % 굵은 벡터 / hat
+\cdot, \times       % 내적 / 외적
+\lVert v\rVert      % 노름
+\begin{bmatrix}1&0\\0&1\end{bmatrix} % 행렬<button class="copy">복사</button></div>
+    </section>
+    <p class="footer">LaTeX Math Dictionary · 브라우저에서 열고 검색하거나 인쇄해 사용하세요.</p>
+  </main>
+</div>
+<script>
+  document.querySelectorAll('.copy').forEach(btn=>btn.addEventListener('click',async()=>{const box=btn.parentElement;const clone=box.cloneNode(true);clone.querySelector('.copy')?.remove();await navigator.clipboard.writeText(clone.textContent.trim());const old=btn.textContent;btn.textContent='완료';setTimeout(()=>btn.textContent=old,900)}));
+  const search=document.getElementById('search');search.addEventListener('input',()=>{const q=search.value.trim().toLowerCase();document.querySelectorAll('section').forEach(sec=>{const hit=!q||(sec.textContent+' '+(sec.dataset.search||'')).toLowerCase().includes(q);sec.classList.toggle('hidden',!hit)})});
+</script>
+</body>
+</html>
