@@ -2,6 +2,7 @@ Date: 2026 Sept 18, Friday
 
 ## 오늘 배운 것
 - [MCU와 주변장치](class.md)
+- [TIL 요점 정리](mcu_easy_lecture.html)
 
 
 
