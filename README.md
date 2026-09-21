@@ -109,6 +109,12 @@
 - [Day27 (2026.09.09) - lv2 제어..](classes/September/Day27/README.md)
 - [Day28 (2026.09.10) - lv1 module 1,2 finish](classes/September/Day28/README.md)
 - [Day29 (2026.09.11) - lv2 제어..](classes/September/Day29/README.md)
+- [Day30 (2026.09.14) - 임베디드 제어](classes/September/Day35/README.md)
+- [Day31 (2026.09.15) - PID](classes/September/Day31/README.md)
+- [Day32 (2026.09.16) - PID 값 구하기 실습](classes/September/Day32/README.md)
+- [Day33 (2026.09.17) - 프로젝트 2 조 편성](classes/September/Day33/README.md)
+- [Day34 (2026.09.18) - MCU와 주변 장치](classes/September/Day34/README.md)
+- [Day35 (2026.09.21) - 강의 5~8 발제](classes/September/Day35/README.md)
 
 </details>
 
