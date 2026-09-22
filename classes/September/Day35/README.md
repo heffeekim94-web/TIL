@@ -1,7 +1,7 @@
 Date: 2026 Mnth dd, Monday/Tuesday/Wednesday/Thursday/Friday/Saturday/Sunday
 
 ## 오늘 배운 것
-- [AWS - Docker에 대해서, API](../../1_aws/aws3.md)
+- [AWS - Docker에 대해서, API](../../1_aws/aws4.md)
 
 
 

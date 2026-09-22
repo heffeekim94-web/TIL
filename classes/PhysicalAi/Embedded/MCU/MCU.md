@@ -1,5 +1,5 @@
 ## MCU 
-https://omen-circle-24920305.figma.site/
+[피그마 가이드](https://omen-circle-24920305.figma.site/)
 
 
 MCU types: 임베디드(embedded)

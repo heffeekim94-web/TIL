@@ -37,7 +37,14 @@
 - [2026.09.09](classes/September/Day27/README.md)
 - [2026.09.10](classes/September/Day28/README.md)
 - [2026.09.11](classes/September/Day29/README.md)
-
+- [2026.09.11](classes/September/Day29/README.md)
+- [2026.09.14](classes/September/Day35/README.md)
+- [2026.09.15](classes/September/Day31/README.md)
+- [2026.09.16](classes/September/Day32/README.md)
+- [2026.09.17](classes/September/Day33/README.md)
+- [2026.09.18](classes/September/Day34/README.md)
+- [2026.09.21](classes/September/Day35/README.md)
+- [2026.09.22](classes/September/Day36/README.md)
 </details>
 
 ### Quick Notes
@@ -115,7 +122,7 @@
 - [Day33 (2026.09.17) - 프로젝트 2 조 편성](classes/September/Day33/README.md)
 - [Day34 (2026.09.18) - MCU와 주변 장치](classes/September/Day34/README.md)
 - [Day35 (2026.09.21) - 강의 5~8 발제](classes/September/Day35/README.md)
-
+- [Day36 (2026.09.22) - 과제 1 설치](classes/September/Day36/README.md)
 </details>
 
 </details>
