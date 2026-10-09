@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <meta name="description" content="외부 Git 레포지토리를 내 레포지토리로 복사하는 4단계 가이드. 새 저장소 생성, clone, remote 추가, push까지.">
+  <title>깃 레포지토리 복사법 · 4단계 가이드</title>
+  <style>
+    :root { --bg:#f4f6fa; --paper:#fff; --ink:#172339; --muted:#5b677c; --line:#dfe5ee; --blue:#2854d8; --pale:#edf2ff; --mono:ui-monospace,SFMono-Regular,Consolas,"Liberation Mono",monospace; }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { margin:0; background:var(--bg); color:var(--ink); font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans CJK KR","Noto Sans KR","Malgun Gothic",sans-serif; font-size:16px; line-height:1.75; -webkit-font-smoothing:antialiased; word-break:keep-all; overflow-wrap:break-word; }
+    button, a { -webkit-tap-highlight-color:transparent; }
+    a { color:var(--blue); text-decoration-thickness:1px; text-underline-offset:4px; }
+    a:hover { color:#173895; }
+    a:focus-visible, button:focus-visible, pre:focus-visible { outline:3px solid #7196ff; outline-offset:4px; }
+    .page { max-width:980px; margin:0 auto; padding:46px 28px 30px; }
+    .eyebrow { display:flex; align-items:center; justify-content:space-between; gap:16px; margin-bottom:24px; font-family:var(--mono); font-size:12px; font-weight:600; letter-spacing:.12em; color:var(--muted); }
+    .brand { display:flex; align-items:center; gap:10px; color:var(--blue); }
+    .brand svg { width:21px; height:21px; flex:none; }
+    h1 { margin:0; font-size:clamp(30px,5vw,46px); line-height:1.25; letter-spacing:-.055em; font-weight:800; }
+    .lead { margin:15px 0 0; color:var(--muted); font-size:17px; }
+    .route { display:flex; flex-wrap:wrap; align-items:center; gap:10px; margin:25px 0 30px; color:var(--muted); font-size:14px; }
+    .route span:not(.arrow) { padding:5px 12px; border:1px solid var(--line); border-radius:6px; background:var(--paper); }
+    .route span:last-child { background:var(--pale); border-color:#d3dfff; color:var(--blue); }
+    .route .arrow { font-family:var(--mono); color:#8390a5; }
+    .steps { list-style:none; margin:0; padding:0; display:grid; gap:17px; counter-reset:step; }
+    .step { display:grid; grid-template-columns:53px minmax(0,1fr); gap:19px; position:relative; }
+    .number { width:53px; height:53px; display:grid; place-items:center; font-family:var(--mono); font-size:19px; font-weight:600; letter-spacing:-.06em; border:1px solid #cbd8f2; border-radius:50%; background:var(--pale); color:var(--blue); margin-top:24px; position:relative; z-index:1; }
+    .step:not(:last-child)::before { content:""; position:absolute; top:78px; bottom:-42px; left:26px; width:1px; background:var(--line); }
+    .card { padding:24px 28px; border:1px solid var(--line); border-radius:14px; background:var(--paper); min-width:0; box-shadow:0 2px 3px rgba(23,35,57,.015); }
+    .card h2 { margin:0; font-size:21px; line-height:1.5; letter-spacing:-.04em; font-weight:750; }
+    .card p { margin:8px 0 0; color:var(--muted); }
+    .card strong { color:var(--ink); font-weight:650; }
+    .repo { margin-top:17px; padding:11px 15px; background:#f7f9fc; border:1px solid #e6ebf2; border-radius:8px; font-size:14px; }
+    .repo .label { font-family:inherit; color:var(--muted); margin-right:12px; }
+    .repo code { overflow-wrap:anywhere; background:none; padding:0; color:#364966; }
+    code { font-family:var(--mono); font-size:.9em; background:#edf1f7; color:#254272; padding:2px 5px; border-radius:4px; overflow-wrap:anywhere; word-break:normal; }
+    .codebox { margin-top:17px; border-radius:10px; overflow:hidden; background:#142136; color:#e9f0fc; }
+    .codebar { min-height:37px; padding:5px 12px 5px 17px; background:#1b2b43; display:flex; align-items:center; justify-content:space-between; gap:10px; color:#b8c7de; font-family:var(--mono); font-size:12px; letter-spacing:.03em; }
+    .copy { border:1px solid #566881; background:transparent; border-radius:5px; padding:4px 9px; color:#e3ebf7; font-size:14px; line-height:1.5; font-family:inherit; cursor:pointer; display:none; align-items:center; gap:6px; min-height:29px; }
+    .js .copy { display:inline-flex; }
+    .copy:hover { background:#314764; border-color:#7890af; }
+    .copy svg { width:13px; height:13px; }
+    pre { margin:0; padding:17px 19px; overflow-x:auto; font-family:var(--mono); font-size:14px; line-height:1.9; tab-size:2; -webkit-overflow-scrolling:touch; }
+    pre code { color:inherit; padding:0; background:none; font-size:inherit; overflow-wrap:normal; }
+    .cmd { color:#8db9ff; }
+    .arg { color:#b8dbbd; }
+    .tip { font-size:14px; }
+    .map { display:flex; flex-wrap:wrap; gap:8px 18px; margin-top:14px; font-size:14px; color:var(--muted); }
+    .branch-note { margin-top:15px; padding:13px 16px; border-left:3px solid #b8cbfa; background:#f4f7ff; border-radius:0 7px 7px 0; font-size:14px; color:var(--muted); }
+    .branch-note strong { display:block; color:#304a81; margin-bottom:3px; }
+    .finish { margin-top:13px !important; font-size:14px; }
+    .notes { margin:25px 0 0 72px; display:grid; grid-template-columns:1fr 1fr; gap:22px; }
+    .notes section { min-width:0; }
+    .notes h2 { margin:0 0 5px; font-size:14px; font-weight:700; color:var(--ink); }
+    .notes p { margin:0; font-size:14px; color:var(--muted); line-height:1.8; }
+    footer { border-top:1px solid var(--line); margin:25px 0 0 72px; padding-top:16px; display:flex; flex-wrap:wrap; justify-content:space-between; gap:8px 18px; font-size:12px; color:var(--muted); }
+    .sources { display:flex; flex-wrap:wrap; gap:6px 13px; }
+    .sources a { color:var(--muted); }
+    .toast { position:fixed; bottom:24px; left:50%; transform:translateX(-50%) translateY(12px); background:#172339; color:#fff; padding:11px 20px; border-radius:9px; font-size:14px; box-shadow:0 6px 30px #17233922; opacity:0; pointer-events:none; transition:opacity .18s,transform .18s; max-width:calc(100% - 32px); width:max-content; text-align:center; z-index:10; }
+    .toast.show { opacity:1; transform:translateX(-50%) translateY(0); }
+    @media (max-width:640px) {
+      .page { padding:26px 17px 25px; }
+      .eyebrow { margin-bottom:19px; font-size:11px; }
+      .lead { font-size:16px; }
+      .route { gap:7px; margin:20px 0 23px; font-size:12px; }
+      .route span:not(.arrow) { padding:4px 8px; }
+      .steps { gap:14px; }
+      .step { grid-template-columns:minmax(0,1fr); gap:0; }
+      .number { position:absolute; top:17px; left:17px; margin:0; width:34px; height:34px; font-size:14px; }
+      .step:not(:last-child)::before { display:none; }
+      .card { padding:19px 17px; border-radius:12px; }
+      .card h2 { font-size:18px; min-height:32px; padding-left:46px; margin-bottom:13px; display:flex; align-items:center; }
+      .card p { font-size:16px; }
+      .card .tip, .card .finish { font-size:14px; }
+      .codebox { margin-top:14px; }
+      pre { font-size:14px; padding:14px; }
+      .codebar { padding-left:14px; }
+      .repo { padding:10px 12px; font-size:13px; }
+      .repo .label { display:block; margin-bottom:3px; }
+      .branch-note { padding:11px 12px; font-size:14px; }
+      .notes { margin:22px 4px 0; grid-template-columns:1fr; gap:16px; }
+      footer { margin:23px 4px 0; }
+      .copy { min-height:32px; padding:5px 9px; }
+    }
+    @media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } .toast { transition:none; } }
+    @media print {
+      @page { size:A4; margin:13mm; }
+      body { background:#fff; font-size:10pt; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+      .page { max-width:none; padding:0; }
+      .eyebrow { margin-bottom:12px; }
+      h1 { font-size:27pt; }
+      .lead { font-size:11pt; margin-top:9px; }
+      .route { margin:12px 0 17px; font-size:9pt; }
+      .steps { gap:10px; }
+      .step { grid-template-columns:36px minmax(0,1fr); gap:12px; break-inside:avoid; }
+      .number { width:36px; height:36px; font-size:12pt; margin-top:16px; }
+      .step:not(:last-child)::before { left:18px; top:51px; bottom:-29px; }
+      .card { padding:13px 16px; border-radius:9px; box-shadow:none; }
+      .card h2 { font-size:13pt; }
+      .card p { margin-top:5px; }
+      .codebox { margin-top:10px; border:1px solid #dce2ea; background:#f5f7fa; color:#172339; }
+      .codebar { min-height:22px; padding:2px 12px; background:#e9edf4; color:#45536a; font-size:8pt; }
+      pre { padding:9px 12px; font-size:8pt; white-space:pre-wrap; overflow:visible; overflow-wrap:anywhere; line-height:1.65; }
+      pre code { white-space:pre-wrap; overflow-wrap:anywhere; }
+      .cmd { color:#2854a5; } .arg { color:#3e6351; }
+      .copy, .js .copy, .toast { display:none; }
+      .repo { margin-top:9px; padding:6px 10px; font-size:9pt; }
+      .tip, .map, .branch-note, .finish { font-size:9pt !important; }
+      .map { margin-top:8px; }
+      .branch-note { margin-top:8px; padding:8px 10px; }
+      .finish { margin-top:8px !important; }
+      .notes { margin:15px 0 0 48px; gap:20px; break-inside:avoid; }
+      .notes h2 { font-size:9pt; } .notes p { font-size:8pt; }
+      footer { margin:13px 0 0 48px; padding-top:9px; font-size:8pt; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header>
+      <div class="eyebrow">
+        <span class="brand"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="6" cy="5" r="2.5"/><circle cx="6" cy="19" r="2.5"/><circle cx="18" cy="6" r="2.5"/><path d="M6 7.5v9M18 8.5v2a5 5 0 0 1-5 5H6"/></svg> GIT / QUICK GUIDE</span>
+        <span>04 STEPS</span>
+      </div>
+      <h1>깃 레포지토리 복사법</h1>
+      <p class="lead">외부 레포지토리를 내 레포지토리로 옮기는 4단계.</p>
+      <div class="route" aria-label="외부 레포지토리에서 내 컴퓨터를 거쳐 내 레포지토리로 복사">
+        <span>외부 레포지토리</span><span class="arrow" aria-hidden="true">→</span><span>내 컴퓨터</span><span class="arrow" aria-hidden="true">→</span><span>내 레포지토리</span>
+      </div>
+    </header>
+
+    <ol class="steps" aria-label="레포지토리 복사 4단계">
+      <li class="step">
+        <span class="number" aria-hidden="true">01</span>
+        <section class="card" aria-labelledby="step1">
+          <h2 id="step1">내 레포지토리 만들기</h2>
+          <p>GitHub에서 내 계정으로 <strong>빈 레포지토리</strong>를 만듭니다.<br>README, .gitignore, 라이선스 파일은 초기 생성 옵션에서 추가하지 마세요.</p>
+          <div class="repo"><span class="label">내 레포지토리 주소 예시</span><code>https://github.com/YOUR-USERNAME/my-repo.git</code></div>
+          <p class="tip">아래 예시의 소유자·레포지토리 이름은 실제 주소에 맞게 바꿔주세요.</p>
+        </section>
+      </li>
+
+      <li class="step">
+        <span class="number" aria-hidden="true">02</span>
+        <section class="card" aria-labelledby="step2">
+          <h2 id="step2">외부 레포지토리 clone</h2>
+          <p>터미널에서 원본을 내려받고, <strong>복제된 폴더로 이동</strong>합니다.</p>
+          <div class="codebox">
+            <div class="codebar"><span>TERMINAL · 원본 주소</span><button class="copy" type="button" data-copy="clone-code" aria-label="clone과 폴더 이동 명령어 복사"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true"><rect x="5" y="5" width="8" height="9" rx="1"/><path d="M10 5V2H2v9h3"/></svg><span>복사</span></button></div>
+            <pre tabindex="0" aria-label="clone과 폴더 이동 명령어"><code id="clone-code"><span class="cmd">git clone</span> https://github.com/ORIGINAL-OWNER/source-repo.git
+<span class="cmd">cd</span> source-repo</code></pre>
+          </div>
+          <p class="tip">폴더 이름도 실제 레포지토리 이름으로 바꿉니다. 이후 명령은 이 폴더 안에서 실행하세요.</p>
+        </section>
+      </li>
+
+      <li class="step">
+        <span class="number" aria-hidden="true">03</span>
+        <section class="card" aria-labelledby="step3">
+          <h2 id="step3">내 레포지토리를 remote로 연결</h2>
+          <p>1단계에서 만든 내 레포지토리를 <code>public</code>이라는 이름으로 추가합니다.</p>
+          <div class="codebox">
+            <div class="codebar"><span>TERMINAL · 내 레포지토리 주소</span><button class="copy" type="button" data-copy="remote-code" aria-label="remote 추가 명령어 복사"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true"><rect x="5" y="5" width="8" height="9" rx="1"/><path d="M10 5V2H2v9h3"/></svg><span>복사</span></button></div>
+            <pre tabindex="0" aria-label="내 레포지토리 연결 명령어"><code id="remote-code"><span class="cmd">git remote add</span> <span class="arg">public</span> https://github.com/YOUR-USERNAME/my-repo.git</code></pre>
+          </div>
+          <div class="map"><span><code>origin</code> 외부 원본</span><span><code>public</code> 내 레포지토리</span></div>
+          <p class="tip"><code>public</code>은 remote의 별칭입니다. 저장소의 공개·비공개 설정과는 관계없어요.</p>
+        </section>
+      </li>
+
+      <li class="step">
+        <span class="number" aria-hidden="true">04</span>
+        <section class="card" aria-labelledby="step4">
+          <h2 id="step4">내 레포지토리에 push</h2>
+          <p>로컬 <code>main</code> 브랜치를 내 레포지토리의 <code>main</code>으로 올립니다.</p>
+          <div class="codebox">
+            <div class="codebar"><span>TERMINAL · main 브랜치 기준</span><button class="copy" type="button" data-copy="push-code" aria-label="main 브랜치 push 명령어 복사"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true"><rect x="5" y="5" width="8" height="9" rx="1"/><path d="M10 5V2H2v9h3"/></svg><span>복사</span></button></div>
+            <pre tabindex="0" aria-label="main 브랜치 push 명령어"><code id="push-code"><span class="cmd">git push</span> <span class="arg">public main</span></code></pre>
+          </div>
+          <div class="branch-note"><strong>실행 전, 브랜치 이름을 확인하세요.</strong>위 명령은 로컬에 <code>main</code>이 있을 때 사용합니다. 현재 브랜치는 <code>git branch --show-current</code>로 확인하세요. 복사할 현재 브랜치가 <code>develop</code>이면 <code>git push public develop</code>을 사용합니다.</div>
+          <p class="finish">push가 끝나면 GitHub에서 내 레포지토리의 파일과 커밋을 확인합니다. 인증이 필요하며, 내 레포지토리에 쓰기 권한이 있어야 합니다.</p>
+        </section>
+      </li>
+    </ol>
+
+    <aside class="notes" aria-label="복사 범위와 주의사항">
+      <section><h2>어디까지 복사되나요?</h2><p>선택한 브랜치의 파일과 그 브랜치에서 이어지는 커밋 기록이 전송됩니다. 모든 브랜치·태그, Issues, PR, 저장소 설정을 한 번에 옮기는 방법은 아닙니다. Git LFS·서브모듈은 별도 확인이 필요합니다.</p></section>
+      <section><h2>올리기 전에 확인</h2><p>원본의 복사·재배포 권한과 라이선스를 확인하세요. 공개 저장소로 올릴 때는 파일과 과거 커밋에 비밀번호·API 키 등 민감한 정보가 없는지도 확인합니다.</p></section>
+    </aside>
+
+    <footer>
+      <span>GitHub HTTPS 예시 · Git 설치 필요</span>
+      <nav class="sources" aria-label="공식 참고 문서">
+        <a href="https://git-scm.com/docs/git-clone" target="_blank" rel="noopener noreferrer">clone</a>
+        <a href="https://git-scm.com/docs/git-remote" target="_blank" rel="noopener noreferrer">remote</a>
+        <a href="https://git-scm.com/docs/git-push" target="_blank" rel="noopener noreferrer">push</a>
+        <a href="https://git-scm.com/docs/git-branch" target="_blank" rel="noopener noreferrer">branch</a>
+        <a href="https://docs.github.com/en/migrations/importing-source-code/using-the-command-line-to-import-source-code/adding-locally-hosted-code-to-github" target="_blank" rel="noopener noreferrer">GitHub 가이드</a>
+      </nav>
+    </footer>
+  </main>
+  <div class="toast" id="copy-status" role="status" aria-live="polite" aria-atomic="true"></div>
+  <script>
+    'use strict';
+    document.documentElement.classList.add('js');
+    const statusBox = document.getElementById('copy-status');
+    let toastTimer;
+    function showStatus(message) {
+      clearTimeout(toastTimer);
+      statusBox.textContent = message;
+      statusBox.classList.add('show');
+      toastTimer = setTimeout(() => statusBox.classList.remove('show'), 4200);
+    }
+    function legacyCopy(text) {
+      const input = document.createElement('textarea');
+      input.value = text;
+      input.setAttribute('readonly', '');
+      input.setAttribute('aria-label', '복사할 명령어');
+      Object.assign(input.style, { position:'fixed', top:'0', left:'-9999px', fontSize:'16px' });
+      document.body.appendChild(input);
+      input.select();
+      input.setSelectionRange(0, input.value.length);
+      let copied = false;
+      try { copied = document.execCommand('copy'); } catch (_) { copied = false; }
+      input.remove();
+      return copied;
+    }
+    document.querySelectorAll('[data-copy]').forEach(button => {
+      let resetTimer;
+      button.addEventListener('click', async () => {
+        const code = document.getElementById(button.dataset.copy);
+        const text = code.textContent;
+        let copied = false;
+        try {
+          if (navigator.clipboard && window.isSecureContext) {
+            await navigator.clipboard.writeText(text);
+            copied = true;
+          }
+        } catch (_) { copied = false; }
+        if (!copied) copied = legacyCopy(text);
+        if (copied) {
+          button.focus({ preventScroll:true });
+          clearTimeout(resetTimer);
+          button.querySelector('span').textContent = '완료';
+          showStatus(text.includes('https://') ? '명령어를 복사했어요. 예시 주소는 실제 주소로 바꿔주세요.' : '명령어를 복사했어요.');
+          resetTimer = setTimeout(() => { button.querySelector('span').textContent = '복사'; }, 2000);
+        } else {
+          code.parentElement.focus({ preventScroll:true });
+          const selection = window.getSelection();
+          const range = document.createRange();
+          range.selectNodeContents(code);
+          selection.removeAllRanges();
+          selection.addRange(range);
+          showStatus('명령어를 선택했어요. Ctrl+C 또는 ⌘C로 복사하세요.');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
