@@ -45,6 +45,34 @@
 - [2026.09.18](classes/2nd-month/Day34/README.md)
 - [2026.09.21](classes/2nd-month/Day35/README.md)
 - [2026.09.22](classes/2nd-month/Day36/README.md)
+- [2026.09.23](classes/2nd-month/Day37/README.md)
+- [2026.09.29](classes/2nd-month/Day38/README.md)
+- [2026.09.30](classes/2nd-month/Day39/README.md)
+- [2026.09.01](classes/2nd-month/Day21/README.md)
+- [2026.09.02](classes/2nd-month/Day22/README.md)
+- [2026.09.03](classes/2nd-month/Day23/README.md)
+- [2026.09.04](classes/2nd-month/Day24/README.md)
+- [2026.09.07](classes/2nd-month/Day25/README.md)
+- [2026.09.08](classes/2nd-month/Day26/README.md)
+- [2026.09.09](classes/2nd-month/Day27/README.md)
+- [2026.09.10](classes/2nd-month/Day28/README.md)
+- [2026.09.11](classes/2nd-month/Day29/README.md)
+- [2026.09.14](classes/2nd-month/Day35/README.md)
+- [2026.09.15](classes/2nd-month/Day31/README.md)
+- [2026.09.16](classes/2nd-month/Day32/README.md)
+- [2026.09.17](classes/2nd-month/Day33/README.md)
+- [2026.09.18](classes/2nd-month/Day34/README.md)
+- [2026.09.21](classes/2nd-month/Day35/README.md)
+- [2026.09.22](classes/2nd-month/Day36/README.md)
+- [2026.09.23](classes/2nd-month/Day37/README.md)
+- [2026.09.29](classes/2nd-month/Day38/README.md)
+- [2026.09.30](classes/2nd-month/Day39/README.md)
+- [2026.10.01](classes/3rd-month/Day40/README.md)
+- [2026.10.02](classes/3rd-month/Day41/README.md)
+- [2026.10.06](classes/3rd-month/Day42/README.md)
+- [2026.10.07](classes/3rd-month/Day43/README.md)
+- [2026.10.08](classes/3rd-month/Day44/README.md)
+
 </details>
 
 ### Quick Notes
@@ -124,10 +152,19 @@
 - [Day35 (2026.09.21) - 강의 5~8 발제](classes/2nd-month/Day35/README.md)
 - [Day36 (2026.09.22) - 과제 1 설치](classes/2nd-month/Day36/README.md)
 - [Day37 (2026.09.23) - 과제 2 진행](classes/2nd-month/Day37/README.md)
+- [Day38 (2026.09.29) - 현업에서 고민 되는 것: 취업특강](classes/2nd-month/Day38/README.md)
+- [Day39 (2026.09.30) - openCV](classes/2nd-month/Day39/README.md)
+
 </details>
 
 <details>
 <summary> October </summary>
+
+- [Day40 (2026.10.01) - 핀 카메라](classes/3rd-month/Day40/README.md)
+- [Day41 (2026.10.02) - openCR motor control](classes/3rd-month/Day41/README.md)
+- [Day42 (2026.10.06) - 프로젝트 1 수행](classes/3rd-month/Day42/README.md)
+- [Day43 (2026.10.07) - 프로젝트 1 발표](classes/3rd-month/Day43/README.md)
+- [Day44 (2026.10.08) - 프로젝트 1 리포트 작성 및 제출](classes/3rd-month/Day44/README.md)
 
 </details>
 
