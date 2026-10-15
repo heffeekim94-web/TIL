@@ -2,6 +2,7 @@ Date: 2026 Oct 15th, Thursday
 
 ## 오늘 배운 것
 - [Nav2](class.md)
+- [강의](https://app.notion.com/p/40-Nav2-Planner-Costmap-Behavior-Tree-Lifecycle-d9679696939583fbbb018171a3590e3a)
 
 
 
