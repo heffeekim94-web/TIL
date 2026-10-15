@@ -2,6 +2,7 @@ Date: 2026 Oct 13, Tuesday
 
 ## 오늘 배운 것
 - [slam과 nav2 자율주행 1](slam_nav2_자율주행1.md)
+- [강의](https://app.notion.com/p/SLAM-Nav2-09579696939583ea967001fe919901e7)
 
 
 
