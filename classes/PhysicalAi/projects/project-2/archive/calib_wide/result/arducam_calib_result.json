@@ -1,0 +1,102 @@
+{
+ "image_width": 1280,
+ "image_height": 720,
+ "model": "opencv_fisheye",
+ "K": [
+  [
+   676.3784099488455,
+   0.0,
+   674.2662523139247
+  ],
+  [
+   0.0,
+   674.7669070056667,
+   371.6519277775437
+  ],
+  [
+   0.0,
+   0.0,
+   1.0
+  ]
+ ],
+ "D": [
+  0.04095107086356044,
+  -0.017381246154029247,
+  -0.006935962049947187,
+  -0.021790357683960662
+ ],
+ "rms": 0.5418412140141323,
+ "n_images": 19,
+ "used": [
+  "frame_005.jpg",
+  "frame_013.jpg",
+  "frame_014.jpg",
+  "frame_015.jpg",
+  "frame_016.jpg",
+  "frame_017.jpg",
+  "frame_018.jpg",
+  "frame_046.jpg",
+  "frame_047.jpg",
+  "frame_051.jpg",
+  "frame_052.jpg",
+  "frame_053.jpg",
+  "frame_054.jpg",
+  "frame_056.jpg",
+  "frame_057.jpg",
+  "frame_058.jpg",
+  "frame_059.jpg",
+  "frame_060.jpg",
+  "frame_061.jpg"
+ ],
+ "removed": [
+  [
+   "frame_004.jpg",
+   4.994
+  ],
+  [
+   "frame_033.jpg",
+   3.889
+  ],
+  [
+   "frame_008.jpg",
+   2.366
+  ],
+  [
+   "frame_019.jpg",
+   1.943
+  ],
+  [
+   "frame_032.jpg",
+   1.713
+  ],
+  [
+   "frame_006.jpg",
+   1.518
+  ],
+  [
+   "frame_055.jpg",
+   1.133
+  ],
+  [
+   "frame_062.jpg",
+   1.058
+  ],
+  [
+   "frame_050.jpg",
+   1.063
+  ],
+  [
+   "frame_063.jpg",
+   1.085
+  ]
+ ],
+ "hfov_deg": 108.17045997104492,
+ "vfov_deg": 60.45999947700366,
+ "board": {
+  "inner_corners": [
+   9,
+   6
+  ],
+  "square_m": 0.025
+ }
+}

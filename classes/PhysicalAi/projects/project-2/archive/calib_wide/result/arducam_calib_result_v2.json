@@ -1,0 +1,124 @@
+{
+ "image_width": 1280,
+ "image_height": 720,
+ "model": "opencv_fisheye",
+ "K": [
+  [
+   853.374030045354,
+   0.0,
+   675.5484251378591
+  ],
+  [
+   0.0,
+   852.1567160779557,
+   371.4401636017154
+  ],
+  [
+   0.0,
+   0.0,
+   1.0
+  ]
+ ],
+ "D": [
+  -0.1287041217321039,
+  0.012666721355011479,
+  -0.03980697281469481,
+  0.02285231417264411
+ ],
+ "rms": 0.45032896394834765,
+ "n_images": 41,
+ "used": [
+  "a_frame_005.jpg",
+  "a_frame_013.jpg",
+  "a_frame_014.jpg",
+  "a_frame_015.jpg",
+  "a_frame_016.jpg",
+  "a_frame_017.jpg",
+  "a_frame_018.jpg",
+  "a_frame_046.jpg",
+  "a_frame_047.jpg",
+  "a_frame_051.jpg",
+  "a_frame_052.jpg",
+  "a_frame_053.jpg",
+  "a_frame_054.jpg",
+  "a_frame_056.jpg",
+  "a_frame_057.jpg",
+  "a_frame_058.jpg",
+  "a_frame_059.jpg",
+  "a_frame_060.jpg",
+  "a_frame_061.jpg",
+  "b_frame_001.png",
+  "b_frame_002.png",
+  "b_frame_003.png",
+  "b_frame_004.png",
+  "b_frame_005.png",
+  "b_frame_006.png",
+  "b_frame_007.png",
+  "b_frame_008.png",
+  "b_frame_009.png",
+  "b_frame_010.png",
+  "b_frame_011.png",
+  "b_frame_012.png",
+  "b_frame_013.png",
+  "b_frame_014.png",
+  "b_frame_015.png",
+  "b_frame_016.png",
+  "b_frame_017.png",
+  "b_frame_018.png",
+  "b_frame_019.png",
+  "b_frame_020.png",
+  "b_frame_021.png",
+  "b_frame_022.png"
+ ],
+ "removed": [
+  [
+   "a_frame_004.jpg",
+   5.548
+  ],
+  [
+   "a_frame_033.jpg",
+   4.107
+  ],
+  [
+   "a_frame_008.jpg",
+   2.322
+  ],
+  [
+   "a_frame_019.jpg",
+   1.944
+  ],
+  [
+   "a_frame_032.jpg",
+   1.695
+  ],
+  [
+   "a_frame_006.jpg",
+   1.688
+  ],
+  [
+   "a_frame_055.jpg",
+   1.228
+  ],
+  [
+   "a_frame_063.jpg",
+   1.179
+  ],
+  [
+   "a_frame_062.jpg",
+   1.143
+  ],
+  [
+   "a_frame_050.jpg",
+   1.108
+  ]
+ ],
+ "hfov_deg": 94.42938790423537,
+ "vfov_deg": 49.52753499524576,
+ "board": {
+  "inner_corners": [
+   9,
+   6
+  ],
+  "square_m": 0.025
+ }
+}
