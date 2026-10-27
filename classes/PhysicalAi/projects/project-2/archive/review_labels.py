@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """초벌 라벨 확인·수정 도구 (real_raw처럼 사진 옆에 .txt가 있는 폴더용).
 
-클래스: 0 qr | 1 puck_cyl (원기둥) | 2 puck_box (직육면체) | 3 signal_tower | 4 barcode
+클래스: 0 apriltag | 1 puck_cyl (원기둥) | 2 puck_box (직육면체) | 3 signal_tower | 4 barcode
 - 노란 점선 '?' = 모델이 자신 없던 박스 → 맞으면 그 번호 키, 틀리면 다른 번호, 헛것이면 r
 - 모델이 놓친 것(특히 바코드)은 마우스로 드래그해서 그리고 번호 키로 확정
 - 사진을 넘길 때(d/a/n) 자동 저장되고 '확인한 사진'으로 기록돼요. 중간에 꺼도 이어서 할 수 있어요.
@@ -24,7 +24,7 @@ from pathlib import Path
 import cv2
 import numpy as np
 
-CLASSES = ["qr", "puck_cyl", "puck_box", "signal_tower", "barcode"]
+CLASSES = ["apriltag", "puck_cyl", "puck_box", "signal_tower", "barcode"]
 COLORS = [(255, 160, 0), (0, 200, 0), (0, 120, 255), (200, 0, 200), (0, 230, 230)]  # BGR
 WIN, ZOOM = "review", "zoom"
 BAR = 54
@@ -141,7 +141,7 @@ class App:
         vis = cv2.resize(vis, None, fx=self.scale, fy=self.scale) if self.scale < 1 else vis
         bar = np.zeros((BAR, vis.shape[1], 3), np.uint8)
         cv2.putText(bar, head, (8, 20), cv2.FONT_HERSHEY_SIMPLEX, 0.55, (255, 255, 255), 1, cv2.LINE_AA)
-        cv2.putText(bar, "0 qr 1 cyl 2 box 3 tower 4 barcode | drag=new r=del Tab/[]=box u=next '?' n=next unchecked photo a/d=photo q=quit",
+        cv2.putText(bar, "0 apriltag 1 cyl 2 box 3 tower 4 barcode | drag=new r=del Tab/[]=box u=next '?' n=next unchecked photo a/d=photo q=quit",
                     (8, 44), cv2.FONT_HERSHEY_SIMPLEX, 0.48, (180, 180, 180), 1, cv2.LINE_AA)
         cv2.imshow(WIN, np.vstack([bar, vis]))
         self.draw_zoom()

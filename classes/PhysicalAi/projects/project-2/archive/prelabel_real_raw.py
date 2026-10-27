@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """real_raw 사진에 자동 초벌 라벨 달기 (지금 모델이 박스를 먼저 쳐 줌).
 
-- 사진 옆에 같은 이름의 .txt (YOLO 형식, 5클래스 번호: 0 qr | 1 puck_cyl | 2 puck_box | 3 signal_tower | 4 barcode)
+- 사진 옆에 같은 이름의 .txt (YOLO 형식, 5클래스 번호: 0 apriltag | 1 puck_cyl | 2 puck_box | 3 signal_tower | 4 barcode)
 - 모델은 4클래스(0~3)라 바코드는 못 잡음 → review_labels.py에서 직접 그리기
 - 신뢰도가 --sure 미만인 박스는 '확인 필요(?)'로 표시 → review_labels.py에서 u로 하나씩 확인
 - 이미 .txt가 있는 사진은 건너뜀 (사람이 고친 라벨 보호). 다시 하려면 --overwrite
