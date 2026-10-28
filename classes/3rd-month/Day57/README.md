@@ -1,7 +1,10 @@
 Date: 2026 Oct 27, Tuesday
 
 ## 오늘 배운 것
-- 
+- [cuVSLAM · 미로 주행 실습 · PPO 보상 설계](class.md)
+- [강의](https://app.notion.com/p/cuVSLAM-4067969693958038a92df9d7d1685209)
+- [수업 자료](https://docs.google.com/presentation/d/19UfjZpjlP2RR7iLeboQTa_h0JFBVk2P_-Yz-u_tQ-eA/edit)
+
 
 
 

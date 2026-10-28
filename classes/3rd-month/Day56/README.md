@@ -1,7 +1,8 @@
 Date: 2026 Oct 26, Monday
 
 ## 오늘 배운 것
-- 
+- [CVAT · 클래스 설계 · 학습 환경](class.md)
+
 
 
 
