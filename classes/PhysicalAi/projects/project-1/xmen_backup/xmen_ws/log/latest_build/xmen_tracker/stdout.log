@@ -1,0 +1,22 @@
+running develop
+running egg_info
+creating xmen_tracker.egg-info
+writing xmen_tracker.egg-info/PKG-INFO
+writing dependency_links to xmen_tracker.egg-info/dependency_links.txt
+writing entry points to xmen_tracker.egg-info/entry_points.txt
+writing requirements to xmen_tracker.egg-info/requires.txt
+writing top-level names to xmen_tracker.egg-info/top_level.txt
+writing manifest file 'xmen_tracker.egg-info/SOURCES.txt'
+reading manifest file 'xmen_tracker.egg-info/SOURCES.txt'
+writing manifest file 'xmen_tracker.egg-info/SOURCES.txt'
+running build_ext
+Creating /home/pa06/xmen_ws/install/xmen_tracker/lib/python3.14/site-packages/xmen-tracker.egg-link (link to .)
+Installing preview_node script to /home/pa06/xmen_ws/install/xmen_tracker/lib/xmen_tracker
+Installing rviz_node script to /home/pa06/xmen_ws/install/xmen_tracker/lib/xmen_tracker
+Installing tracker_node script to /home/pa06/xmen_ws/install/xmen_tracker/lib/xmen_tracker
+
+Installed /home/pa06/xmen_ws/build/xmen_tracker
+running symlink_data
+creating /home/pa06/xmen_ws/install/xmen_tracker/share/ament_index/resource_index/packages
+symbolically linking /home/pa06/xmen_ws/build/xmen_tracker/resource/xmen_tracker -> /home/pa06/xmen_ws/install/xmen_tracker/share/ament_index/resource_index/packages
+symbolically linking /home/pa06/xmen_ws/build/xmen_tracker/package.xml -> /home/pa06/xmen_ws/install/xmen_tracker/share/xmen_tracker

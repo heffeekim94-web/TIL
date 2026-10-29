@@ -1,0 +1,1 @@
+ament_cmake_symlink_install_files("/home/pa06/xmen_ws/src/Xmen/xmen_description" FILES "/home/pa06/xmen_ws/build/xmen_description/ament_cmake_index/share/ament_index/resource_index/parent_prefix_path/xmen_description" "DESTINATION" "share/ament_index/resource_index/parent_prefix_path")

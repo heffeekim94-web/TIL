@@ -1,0 +1,5 @@
+source;share/xmen_bringup/local_setup.bash
+source;share/xmen_bringup/local_setup.dsv
+source;share/xmen_bringup/local_setup.fish
+source;share/xmen_bringup/local_setup.sh
+source;share/xmen_bringup/local_setup.zsh

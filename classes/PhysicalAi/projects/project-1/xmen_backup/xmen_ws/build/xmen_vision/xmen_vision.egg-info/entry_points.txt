@@ -1,0 +1,2 @@
+[console_scripts]
+realsense_node = xmen_vision.realsense_node:main

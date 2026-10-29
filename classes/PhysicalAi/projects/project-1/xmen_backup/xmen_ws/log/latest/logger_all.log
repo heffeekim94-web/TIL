@@ -1,0 +1,453 @@
+[-1791441620773528064.000s] DEBUG:colcon:Command line arguments: ['/usr/bin/colcon', 'build', '--symlink-install', '--packages-up-to', 'xmen_bringup']
+[-1791441620773528064.000s] DEBUG:colcon:Parsed command line arguments: Namespace(log_base=None, log_level=None, verb_name='build', build_base='build', install_base='install', merge_install=False, symlink_install=True, test_result_base=None, continue_on_error=False, executor='parallel', parallel_workers=4, event_handlers=None, ignore_user_meta=False, metas=['./colcon.meta'], base_paths=['.'], packages_ignore=None, packages_ignore_regex=None, paths=None, packages_up_to=['xmen_bringup'], packages_up_to_regex=None, packages_above=None, packages_above_and_dependencies=None, packages_above_depth=None, packages_select_by_dep=None, packages_skip_by_dep=None, packages_skip_up_to=None, packages_select_build_failed=False, packages_skip_build_finished=False, packages_select_test_failures=False, packages_skip_test_passed=False, packages_select=None, packages_skip=None, packages_select_regex=None, packages_skip_regex=None, packages_start=None, packages_end=None, allow_overriding=[], cmake_args=None, cmake_target=None, cmake_target_skip_unavailable=False, cmake_clean_cache=False, cmake_clean_first=False, cmake_force_configure=False, ament_cmake_args=None, catkin_cmake_args=None, catkin_skip_building_tests=False, mixin_files=None, mixin=None, verb_parser=<colcon_mixin.mixin.mixin_argument.MixinArgumentDecorator object at 0xffffa9b5bed0>, verb_extension=<colcon_core.verb.build.BuildVerb object at 0xffffa9b52cf0>, main=<bound method BuildVerb.main of <colcon_core.verb.build.BuildVerb object at 0xffffa9b52cf0>>, mixin_verb=('build',))
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) check parameters
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) check parameters
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) check parameters
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) check parameters
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) discover
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) discover
+[-1791441620773528064.000s] INFO:colcon.colcon_core.package_discovery:Crawling recursively for packages in '/home/pa06/xmen_ws'
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ignore', 'ignore_ament_install']
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore'
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore_ament_install'
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_pkg']
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_pkg'
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_meta']
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_meta'
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ros']
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ros'
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['cmake', 'python']
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'cmake'
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python'
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['python_setup_py']
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python_setup_py'
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extensions ['ignore', 'ignore_ament_install']
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extension 'ignore'
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(build) ignored
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extensions ['ignore', 'ignore_ament_install']
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extension 'ignore'
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(install) ignored
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extensions ['ignore', 'ignore_ament_install']
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extension 'ignore'
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(log) ignored
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['ignore', 'ignore_ament_install']
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ignore'
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ignore_ament_install'
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['colcon_pkg']
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'colcon_pkg'
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['colcon_meta']
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'colcon_meta'
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['ros']
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ros'
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['cmake', 'python']
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'cmake'
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'python'
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['python_setup_py']
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'python_setup_py'
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(src/Xmen) by extensions ['ignore', 'ignore_ament_install']
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(src/Xmen) by extension 'ignore'
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(src/Xmen) by extension 'ignore_ament_install'
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(src/Xmen) by extensions ['colcon_pkg']
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(src/Xmen) by extension 'colcon_pkg'
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(src/Xmen) by extensions ['colcon_meta']
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(src/Xmen) by extension 'colcon_meta'
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(src/Xmen) by extensions ['ros']
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(src/Xmen) by extension 'ros'
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(src/Xmen) by extensions ['cmake', 'python']
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(src/Xmen) by extension 'cmake'
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(src/Xmen) by extension 'python'
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(src/Xmen) by extensions ['python_setup_py']
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(src/Xmen) by extension 'python_setup_py'
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(src/Xmen/firmware) by extensions ['ignore', 'ignore_ament_install']
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(src/Xmen/firmware) by extension 'ignore'
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(src/Xmen/firmware) by extension 'ignore_ament_install'
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(src/Xmen/firmware) by extensions ['colcon_pkg']
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(src/Xmen/firmware) by extension 'colcon_pkg'
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(src/Xmen/firmware) by extensions ['colcon_meta']
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(src/Xmen/firmware) by extension 'colcon_meta'
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(src/Xmen/firmware) by extensions ['ros']
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(src/Xmen/firmware) by extension 'ros'
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(src/Xmen/firmware) by extensions ['cmake', 'python']
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(src/Xmen/firmware) by extension 'cmake'
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(src/Xmen/firmware) by extension 'python'
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(src/Xmen/firmware) by extensions ['python_setup_py']
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(src/Xmen/firmware) by extension 'python_setup_py'
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(src/Xmen/report) by extensions ['ignore', 'ignore_ament_install']
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(src/Xmen/report) by extension 'ignore'
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(src/Xmen/report) by extension 'ignore_ament_install'
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(src/Xmen/report) by extensions ['colcon_pkg']
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(src/Xmen/report) by extension 'colcon_pkg'
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(src/Xmen/report) by extensions ['colcon_meta']
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(src/Xmen/report) by extension 'colcon_meta'
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(src/Xmen/report) by extensions ['ros']
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(src/Xmen/report) by extension 'ros'
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(src/Xmen/report) by extensions ['cmake', 'python']
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(src/Xmen/report) by extension 'cmake'
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(src/Xmen/report) by extension 'python'
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(src/Xmen/report) by extensions ['python_setup_py']
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(src/Xmen/report) by extension 'python_setup_py'
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(src/Xmen/report/main_control) by extensions ['ignore', 'ignore_ament_install']
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(src/Xmen/report/main_control) by extension 'ignore'
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(src/Xmen/report/main_control) by extension 'ignore_ament_install'
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(src/Xmen/report/main_control) by extensions ['colcon_pkg']
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(src/Xmen/report/main_control) by extension 'colcon_pkg'
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(src/Xmen/report/main_control) by extensions ['colcon_meta']
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(src/Xmen/report/main_control) by extension 'colcon_meta'
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(src/Xmen/report/main_control) by extensions ['ros']
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(src/Xmen/report/main_control) by extension 'ros'
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(src/Xmen/report/main_control) by extensions ['cmake', 'python']
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(src/Xmen/report/main_control) by extension 'cmake'
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(src/Xmen/report/main_control) by extension 'python'
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(src/Xmen/report/main_control) by extensions ['python_setup_py']
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(src/Xmen/report/main_control) by extension 'python_setup_py'
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(src/Xmen/report/pic) by extensions ['ignore', 'ignore_ament_install']
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(src/Xmen/report/pic) by extension 'ignore'
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(src/Xmen/report/pic) by extension 'ignore_ament_install'
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(src/Xmen/report/pic) by extensions ['colcon_pkg']
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(src/Xmen/report/pic) by extension 'colcon_pkg'
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(src/Xmen/report/pic) by extensions ['colcon_meta']
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(src/Xmen/report/pic) by extension 'colcon_meta'
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(src/Xmen/report/pic) by extensions ['ros']
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(src/Xmen/report/pic) by extension 'ros'
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(src/Xmen/report/pic) by extensions ['cmake', 'python']
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(src/Xmen/report/pic) by extension 'cmake'
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(src/Xmen/report/pic) by extension 'python'
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(src/Xmen/report/pic) by extensions ['python_setup_py']
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(src/Xmen/report/pic) by extension 'python_setup_py'
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(src/Xmen/xmen) by extensions ['ignore', 'ignore_ament_install']
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(src/Xmen/xmen) by extension 'ignore'
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(src/Xmen/xmen) by extension 'ignore_ament_install'
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(src/Xmen/xmen) by extensions ['colcon_pkg']
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(src/Xmen/xmen) by extension 'colcon_pkg'
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(src/Xmen/xmen) by extensions ['colcon_meta']
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(src/Xmen/xmen) by extension 'colcon_meta'
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(src/Xmen/xmen) by extensions ['ros']
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(src/Xmen/xmen) by extension 'ros'
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(src/Xmen/xmen) by extensions ['cmake', 'python']
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(src/Xmen/xmen) by extension 'cmake'
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(src/Xmen/xmen) by extension 'python'
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(src/Xmen/xmen) by extensions ['python_setup_py']
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(src/Xmen/xmen) by extension 'python_setup_py'
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(src/Xmen/xmen_bringup) by extensions ['ignore', 'ignore_ament_install']
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(src/Xmen/xmen_bringup) by extension 'ignore'
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(src/Xmen/xmen_bringup) by extension 'ignore_ament_install'
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(src/Xmen/xmen_bringup) by extensions ['colcon_pkg']
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(src/Xmen/xmen_bringup) by extension 'colcon_pkg'
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(src/Xmen/xmen_bringup) by extensions ['colcon_meta']
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(src/Xmen/xmen_bringup) by extension 'colcon_meta'
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(src/Xmen/xmen_bringup) by extensions ['ros']
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(src/Xmen/xmen_bringup) by extension 'ros'
+[-1791441620773528064.000s] DEBUG:colcon.colcon_core.package_identification:Package 'src/Xmen/xmen_bringup' with type 'ros.ament_cmake' and name 'xmen_bringup'
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(src/Xmen/xmen_control) by extensions ['ignore', 'ignore_ament_install']
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(src/Xmen/xmen_control) by extension 'ignore'
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(src/Xmen/xmen_control) by extension 'ignore_ament_install'
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(src/Xmen/xmen_control) by extensions ['colcon_pkg']
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(src/Xmen/xmen_control) by extension 'colcon_pkg'
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(src/Xmen/xmen_control) by extensions ['colcon_meta']
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(src/Xmen/xmen_control) by extension 'colcon_meta'
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(src/Xmen/xmen_control) by extensions ['ros']
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(src/Xmen/xmen_control) by extension 'ros'
+[-1791441620773528064.000s] DEBUG:colcon.colcon_core.package_identification:Package 'src/Xmen/xmen_control' with type 'ros.ament_python' and name 'xmen_control'
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(src/Xmen/xmen_description) by extensions ['ignore', 'ignore_ament_install']
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(src/Xmen/xmen_description) by extension 'ignore'
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(src/Xmen/xmen_description) by extension 'ignore_ament_install'
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(src/Xmen/xmen_description) by extensions ['colcon_pkg']
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(src/Xmen/xmen_description) by extension 'colcon_pkg'
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(src/Xmen/xmen_description) by extensions ['colcon_meta']
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(src/Xmen/xmen_description) by extension 'colcon_meta'
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(src/Xmen/xmen_description) by extensions ['ros']
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(src/Xmen/xmen_description) by extension 'ros'
+[-1791441620773528064.000s] DEBUG:colcon.colcon_core.package_identification:Package 'src/Xmen/xmen_description' with type 'ros.ament_cmake' and name 'xmen_description'
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(src/Xmen/xmen_tracker) by extensions ['ignore', 'ignore_ament_install']
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(src/Xmen/xmen_tracker) by extension 'ignore'
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(src/Xmen/xmen_tracker) by extension 'ignore_ament_install'
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(src/Xmen/xmen_tracker) by extensions ['colcon_pkg']
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(src/Xmen/xmen_tracker) by extension 'colcon_pkg'
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(src/Xmen/xmen_tracker) by extensions ['colcon_meta']
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(src/Xmen/xmen_tracker) by extension 'colcon_meta'
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(src/Xmen/xmen_tracker) by extensions ['ros']
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(src/Xmen/xmen_tracker) by extension 'ros'
+[-1791441620773528064.000s] DEBUG:colcon.colcon_core.package_identification:Package 'src/Xmen/xmen_tracker' with type 'ros.ament_python' and name 'xmen_tracker'
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(src/Xmen/xmen_vision) by extensions ['ignore', 'ignore_ament_install']
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(src/Xmen/xmen_vision) by extension 'ignore'
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(src/Xmen/xmen_vision) by extension 'ignore_ament_install'
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(src/Xmen/xmen_vision) by extensions ['colcon_pkg']
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(src/Xmen/xmen_vision) by extension 'colcon_pkg'
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(src/Xmen/xmen_vision) by extensions ['colcon_meta']
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(src/Xmen/xmen_vision) by extension 'colcon_meta'
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(src/Xmen/xmen_vision) by extensions ['ros']
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_identification:_identify(src/Xmen/xmen_vision) by extension 'ros'
+[-1791441620773528064.000s] DEBUG:colcon.colcon_core.package_identification:Package 'src/Xmen/xmen_vision' with type 'ros.ament_python' and name 'xmen_vision'
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) using defaults
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) discover
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) using defaults
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) discover
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) using defaults
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) check parameters
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) discover
+[-1791441620773528064.000s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 213 installed packages in /opt/ros/lyrical
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) using defaults
+[-1791441620773528064.000s] Level 5:colcon.colcon_core.verb:set package 'xmen_control' build argument 'cmake_args' from command line to 'None'
+[-1791441620773528064.000s] Level 5:colcon.colcon_core.verb:set package 'xmen_control' build argument 'cmake_target' from command line to 'None'
+[-1791441620773528064.000s] Level 5:colcon.colcon_core.verb:set package 'xmen_control' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[-1791441620773528064.000s] Level 5:colcon.colcon_core.verb:set package 'xmen_control' build argument 'cmake_clean_cache' from command line to 'False'
+[-1791441620773528064.000s] Level 5:colcon.colcon_core.verb:set package 'xmen_control' build argument 'cmake_clean_first' from command line to 'False'
+[-1791441620773528064.000s] Level 5:colcon.colcon_core.verb:set package 'xmen_control' build argument 'cmake_force_configure' from command line to 'False'
+[-1791441620773528064.000s] Level 5:colcon.colcon_core.verb:set package 'xmen_control' build argument 'ament_cmake_args' from command line to 'None'
+[-1791441620773528064.000s] Level 5:colcon.colcon_core.verb:set package 'xmen_control' build argument 'catkin_cmake_args' from command line to 'None'
+[-1791441620773528064.000s] Level 5:colcon.colcon_core.verb:set package 'xmen_control' build argument 'catkin_skip_building_tests' from command line to 'False'
+[-1791441620773528064.000s] DEBUG:colcon.colcon_core.verb:Building package 'xmen_control' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/pa06/xmen_ws/build/xmen_control', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/pa06/xmen_ws/install/xmen_control', 'merge_install': False, 'path': '/home/pa06/xmen_ws/src/Xmen/xmen_control', 'symlink_install': True, 'test_result_base': None}
+[-1791441620773528064.000s] Level 5:colcon.colcon_core.verb:set package 'xmen_description' build argument 'cmake_args' from command line to 'None'
+[-1791441620773528064.000s] Level 5:colcon.colcon_core.verb:set package 'xmen_description' build argument 'cmake_target' from command line to 'None'
+[-1791441620773528064.000s] Level 5:colcon.colcon_core.verb:set package 'xmen_description' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[-1791441620773528064.000s] Level 5:colcon.colcon_core.verb:set package 'xmen_description' build argument 'cmake_clean_cache' from command line to 'False'
+[-1791441620773528064.000s] Level 5:colcon.colcon_core.verb:set package 'xmen_description' build argument 'cmake_clean_first' from command line to 'False'
+[-1791441620773528064.000s] Level 5:colcon.colcon_core.verb:set package 'xmen_description' build argument 'cmake_force_configure' from command line to 'False'
+[-1791441620773528064.000s] Level 5:colcon.colcon_core.verb:set package 'xmen_description' build argument 'ament_cmake_args' from command line to 'None'
+[-1791441620773528064.000s] Level 5:colcon.colcon_core.verb:set package 'xmen_description' build argument 'catkin_cmake_args' from command line to 'None'
+[-1791441620773528064.000s] Level 5:colcon.colcon_core.verb:set package 'xmen_description' build argument 'catkin_skip_building_tests' from command line to 'False'
+[-1791441620773528064.000s] DEBUG:colcon.colcon_core.verb:Building package 'xmen_description' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/pa06/xmen_ws/build/xmen_description', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/pa06/xmen_ws/install/xmen_description', 'merge_install': False, 'path': '/home/pa06/xmen_ws/src/Xmen/xmen_description', 'symlink_install': True, 'test_result_base': None}
+[-1791441620773528064.000s] Level 5:colcon.colcon_core.verb:set package 'xmen_tracker' build argument 'cmake_args' from command line to 'None'
+[-1791441620773528064.000s] Level 5:colcon.colcon_core.verb:set package 'xmen_tracker' build argument 'cmake_target' from command line to 'None'
+[-1791441620773528064.000s] Level 5:colcon.colcon_core.verb:set package 'xmen_tracker' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[-1791441620773528064.000s] Level 5:colcon.colcon_core.verb:set package 'xmen_tracker' build argument 'cmake_clean_cache' from command line to 'False'
+[-1791441620773528064.000s] Level 5:colcon.colcon_core.verb:set package 'xmen_tracker' build argument 'cmake_clean_first' from command line to 'False'
+[-1791441620773528064.000s] Level 5:colcon.colcon_core.verb:set package 'xmen_tracker' build argument 'cmake_force_configure' from command line to 'False'
+[-1791441620773528064.000s] Level 5:colcon.colcon_core.verb:set package 'xmen_tracker' build argument 'ament_cmake_args' from command line to 'None'
+[-1791441620773528064.000s] Level 5:colcon.colcon_core.verb:set package 'xmen_tracker' build argument 'catkin_cmake_args' from command line to 'None'
+[-1791441620773528064.000s] Level 5:colcon.colcon_core.verb:set package 'xmen_tracker' build argument 'catkin_skip_building_tests' from command line to 'False'
+[-1791441620773528064.000s] DEBUG:colcon.colcon_core.verb:Building package 'xmen_tracker' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/pa06/xmen_ws/build/xmen_tracker', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/pa06/xmen_ws/install/xmen_tracker', 'merge_install': False, 'path': '/home/pa06/xmen_ws/src/Xmen/xmen_tracker', 'symlink_install': True, 'test_result_base': None}
+[-1791441620773528064.000s] Level 5:colcon.colcon_core.verb:set package 'xmen_vision' build argument 'cmake_args' from command line to 'None'
+[-1791441620773528064.000s] Level 5:colcon.colcon_core.verb:set package 'xmen_vision' build argument 'cmake_target' from command line to 'None'
+[-1791441620773528064.000s] Level 5:colcon.colcon_core.verb:set package 'xmen_vision' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[-1791441620773528064.000s] Level 5:colcon.colcon_core.verb:set package 'xmen_vision' build argument 'cmake_clean_cache' from command line to 'False'
+[-1791441620773528064.000s] Level 5:colcon.colcon_core.verb:set package 'xmen_vision' build argument 'cmake_clean_first' from command line to 'False'
+[-1791441620773528064.000s] Level 5:colcon.colcon_core.verb:set package 'xmen_vision' build argument 'cmake_force_configure' from command line to 'False'
+[-1791441620773528064.000s] Level 5:colcon.colcon_core.verb:set package 'xmen_vision' build argument 'ament_cmake_args' from command line to 'None'
+[-1791441620773528064.000s] Level 5:colcon.colcon_core.verb:set package 'xmen_vision' build argument 'catkin_cmake_args' from command line to 'None'
+[-1791441620773528064.000s] Level 5:colcon.colcon_core.verb:set package 'xmen_vision' build argument 'catkin_skip_building_tests' from command line to 'False'
+[-1791441620773528064.000s] DEBUG:colcon.colcon_core.verb:Building package 'xmen_vision' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/pa06/xmen_ws/build/xmen_vision', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/pa06/xmen_ws/install/xmen_vision', 'merge_install': False, 'path': '/home/pa06/xmen_ws/src/Xmen/xmen_vision', 'symlink_install': True, 'test_result_base': None}
+[-1791441620773528064.000s] Level 5:colcon.colcon_core.verb:set package 'xmen_bringup' build argument 'cmake_args' from command line to 'None'
+[-1791441620773528064.000s] Level 5:colcon.colcon_core.verb:set package 'xmen_bringup' build argument 'cmake_target' from command line to 'None'
+[-1791441620773528064.000s] Level 5:colcon.colcon_core.verb:set package 'xmen_bringup' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[-1791441620773528064.000s] Level 5:colcon.colcon_core.verb:set package 'xmen_bringup' build argument 'cmake_clean_cache' from command line to 'False'
+[-1791441620773528064.000s] Level 5:colcon.colcon_core.verb:set package 'xmen_bringup' build argument 'cmake_clean_first' from command line to 'False'
+[-1791441620773528064.000s] Level 5:colcon.colcon_core.verb:set package 'xmen_bringup' build argument 'cmake_force_configure' from command line to 'False'
+[-1791441620773528064.000s] Level 5:colcon.colcon_core.verb:set package 'xmen_bringup' build argument 'ament_cmake_args' from command line to 'None'
+[-1791441620773528064.000s] Level 5:colcon.colcon_core.verb:set package 'xmen_bringup' build argument 'catkin_cmake_args' from command line to 'None'
+[-1791441620773528064.000s] Level 5:colcon.colcon_core.verb:set package 'xmen_bringup' build argument 'catkin_skip_building_tests' from command line to 'False'
+[-1791441620773528064.000s] DEBUG:colcon.colcon_core.verb:Building package 'xmen_bringup' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/pa06/xmen_ws/build/xmen_bringup', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/pa06/xmen_ws/install/xmen_bringup', 'merge_install': False, 'path': '/home/pa06/xmen_ws/src/Xmen/xmen_bringup', 'symlink_install': True, 'test_result_base': None}
+[-1791441620773528064.000s] INFO:colcon.colcon_core.executor:Executing jobs using 'parallel' executor
+[-1791441620773528064.000s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete
+[-1791441620773528064.000s] INFO:colcon.colcon_ros.task.ament_python.build:Building ROS package in '/home/pa06/xmen_ws/src/Xmen/xmen_control' with build type 'ament_python'
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.shell:create_environment_hook('xmen_control', 'ament_prefix_path')
+[-1791441620773528064.000s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_core.shell.bat': Not used on non-Windows systems
+[-1791441620773528064.000s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/pa06/xmen_ws/install/xmen_control/share/xmen_control/hook/ament_prefix_path.ps1'
+[-1791441620773528064.000s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/pa06/xmen_ws/install/xmen_control/share/xmen_control/hook/ament_prefix_path.dsv'
+[-1791441620773528064.000s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/pa06/xmen_ws/install/xmen_control/share/xmen_control/hook/ament_prefix_path.sh'
+[-1791441620773528064.000s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[-1791441620773528064.000s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[-1791441620773528064.000s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/pa06/xmen_ws/src/Xmen/xmen_description' with build type 'ament_cmake'
+[-1791441620773528064.000s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/pa06/xmen_ws/src/Xmen/xmen_description'
+[-1791441620773528064.000s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[-1791441620773528064.000s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[-1791441620773528064.000s] INFO:colcon.colcon_ros.task.ament_python.build:Building ROS package in '/home/pa06/xmen_ws/src/Xmen/xmen_tracker' with build type 'ament_python'
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.shell:create_environment_hook('xmen_tracker', 'ament_prefix_path')
+[-1791441620773528064.000s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/pa06/xmen_ws/install/xmen_tracker/share/xmen_tracker/hook/ament_prefix_path.ps1'
+[-1791441620773528064.000s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/pa06/xmen_ws/install/xmen_tracker/share/xmen_tracker/hook/ament_prefix_path.dsv'
+[-1791441620773528064.000s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/pa06/xmen_ws/install/xmen_tracker/share/xmen_tracker/hook/ament_prefix_path.sh'
+[-1791441620773528064.000s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[-1791441620773528064.000s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[-1791441620773528064.000s] INFO:colcon.colcon_ros.task.ament_python.build:Building ROS package in '/home/pa06/xmen_ws/src/Xmen/xmen_vision' with build type 'ament_python'
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.shell:create_environment_hook('xmen_vision', 'ament_prefix_path')
+[-1791441620773528064.000s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/pa06/xmen_ws/install/xmen_vision/share/xmen_vision/hook/ament_prefix_path.ps1'
+[-1791441620773528064.000s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/pa06/xmen_ws/install/xmen_vision/share/xmen_vision/hook/ament_prefix_path.dsv'
+[-1791441620773528064.000s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/pa06/xmen_ws/install/xmen_vision/share/xmen_vision/hook/ament_prefix_path.sh'
+[-1791441620773528064.000s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[-1791441620773528064.000s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[-1791441620773528064.000s] INFO:colcon.colcon_core.task.python.build:Building Python package in '/home/pa06/xmen_ws/src/Xmen/xmen_control'
+[-1791441620773528064.000s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[-1791441620773528064.000s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[-1791441620773528064.000s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/pa06/xmen_ws/build/xmen_description': CMAKE_PREFIX_PATH=/opt/ros/lyrical /usr/bin/cmake /home/pa06/xmen_ws/src/Xmen/xmen_description -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/pa06/xmen_ws/install/xmen_description
+[-1791441620773528064.000s] INFO:colcon.colcon_core.task.python.build:Building Python package in '/home/pa06/xmen_ws/src/Xmen/xmen_tracker'
+[-1791441620773528064.000s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[-1791441620773528064.000s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[-1791441620773528064.000s] INFO:colcon.colcon_core.task.python.build:Building Python package in '/home/pa06/xmen_ws/src/Xmen/xmen_vision'
+[-1791441620773528064.000s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[-1791441620773528064.000s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[-1791441620773528064.000s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/pa06/xmen_ws/build/xmen_description' returned '0': CMAKE_PREFIX_PATH=/opt/ros/lyrical /usr/bin/cmake /home/pa06/xmen_ws/src/Xmen/xmen_description -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/pa06/xmen_ws/install/xmen_description
+[-1791441620773528064.000s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/pa06/xmen_ws/build/xmen_description': CMAKE_PREFIX_PATH=/opt/ros/lyrical /usr/bin/cmake --build /home/pa06/xmen_ws/build/xmen_description -- -j4 -l4
+[-1791441620773528064.000s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/pa06/xmen_ws/build/xmen_description' returned '0': CMAKE_PREFIX_PATH=/opt/ros/lyrical /usr/bin/cmake --build /home/pa06/xmen_ws/build/xmen_description -- -j4 -l4
+[-1791441620773528064.000s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/pa06/xmen_ws/build/xmen_description': CMAKE_PREFIX_PATH=/opt/ros/lyrical /usr/bin/cmake --install /home/pa06/xmen_ws/build/xmen_description
+[-1791441620773528064.000s] DEBUG:colcon.colcon_core.task.python.build:Available setuptools commands: build_ext, update_catalog, build_scripts, install_scripts, easy_install, check, install_lib, sdist, build_py, bdist, egg_info, install, rotate, bdist_wheel, saveopts, build_clib, install_headers, editable_wheel, symlink_data, clean, setopt, bdist_rpm, extract_messages, develop, compile_catalog, alias, bdist_dumb, build, bdist_egg, install_egg_info, init_catalog, dist_info, install_data
+[-1791441620773528064.000s] DEBUG:colcon.colcon_core.task.python.build:Available setuptools commands: build_ext, update_catalog, build_scripts, install_scripts, easy_install, check, install_lib, sdist, build_py, bdist, egg_info, install, rotate, bdist_wheel, saveopts, build_clib, install_headers, editable_wheel, symlink_data, clean, setopt, bdist_rpm, extract_messages, develop, compile_catalog, alias, bdist_dumb, build, bdist_egg, install_egg_info, init_catalog, dist_info, install_data
+[-1791441620773528064.000s] DEBUG:colcon.colcon_core.task.python.build:Available setuptools commands: build_ext, update_catalog, build_scripts, install_scripts, easy_install, check, install_lib, sdist, build_py, bdist, egg_info, install, rotate, bdist_wheel, saveopts, build_clib, install_headers, editable_wheel, symlink_data, clean, setopt, bdist_rpm, extract_messages, develop, compile_catalog, alias, bdist_dumb, build, bdist_egg, install_egg_info, init_catalog, dist_info, install_data
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(xmen_description)
+[-1791441620773528064.000s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/pa06/xmen_ws/build/xmen_description' returned '0': CMAKE_PREFIX_PATH=/opt/ros/lyrical /usr/bin/cmake --install /home/pa06/xmen_ws/build/xmen_description
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.environment:checking '/home/pa06/xmen_ws/install/xmen_description' for CMake module files
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.environment:checking '/home/pa06/xmen_ws/install/xmen_description' for CMake config files
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.shell:create_environment_hook('xmen_description', 'cmake_prefix_path')
+[-1791441620773528064.000s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/pa06/xmen_ws/install/xmen_description/share/xmen_description/hook/cmake_prefix_path.ps1'
+[-1791441620773528064.000s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/pa06/xmen_ws/install/xmen_description/share/xmen_description/hook/cmake_prefix_path.dsv'
+[-1791441620773528064.000s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/pa06/xmen_ws/install/xmen_description/share/xmen_description/hook/cmake_prefix_path.sh'
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.environment:checking '/home/pa06/xmen_ws/install/xmen_description/bin'
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.environment:checking '/home/pa06/xmen_ws/install/xmen_description/lib/pkgconfig/xmen_description.pc'
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.environment:checking '/home/pa06/xmen_ws/install/xmen_description/lib/python3.14/site-packages'
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.environment:checking '/home/pa06/xmen_ws/install/xmen_description/bin'
+[-1791441620773528064.000s] INFO:colcon.colcon_core.shell:Creating package script '/home/pa06/xmen_ws/install/xmen_description/share/xmen_description/package.ps1'
+[-1791441620773528064.000s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/pa06/xmen_ws/install/xmen_description/share/xmen_description/package.dsv'
+[-1791441620773528064.000s] INFO:colcon.colcon_core.shell:Creating package script '/home/pa06/xmen_ws/install/xmen_description/share/xmen_description/package.sh'
+[-1791441620773528064.000s] INFO:colcon.colcon_core.shell:Creating package script '/home/pa06/xmen_ws/install/xmen_description/share/xmen_description/package.bash'
+[-1791441620773528064.000s] INFO:colcon.colcon_core.shell:Creating package script '/home/pa06/xmen_ws/install/xmen_description/share/xmen_description/package.zsh'
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/pa06/xmen_ws/install/xmen_description/share/colcon-core/packages/xmen_description)
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(xmen_description)
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.environment:checking '/home/pa06/xmen_ws/install/xmen_description' for CMake module files
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.environment:checking '/home/pa06/xmen_ws/install/xmen_description' for CMake config files
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.shell:create_environment_hook('xmen_description', 'cmake_prefix_path')
+[-1791441620773528064.000s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/pa06/xmen_ws/install/xmen_description/share/xmen_description/hook/cmake_prefix_path.ps1'
+[-1791441620773528064.000s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/pa06/xmen_ws/install/xmen_description/share/xmen_description/hook/cmake_prefix_path.dsv'
+[-1791441620773528064.000s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/pa06/xmen_ws/install/xmen_description/share/xmen_description/hook/cmake_prefix_path.sh'
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.environment:checking '/home/pa06/xmen_ws/install/xmen_description/bin'
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.environment:checking '/home/pa06/xmen_ws/install/xmen_description/lib/pkgconfig/xmen_description.pc'
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.environment:checking '/home/pa06/xmen_ws/install/xmen_description/lib/python3.14/site-packages'
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.environment:checking '/home/pa06/xmen_ws/install/xmen_description/bin'
+[-1791441620773528064.000s] INFO:colcon.colcon_core.shell:Creating package script '/home/pa06/xmen_ws/install/xmen_description/share/xmen_description/package.ps1'
+[-1791441620773528064.000s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/pa06/xmen_ws/install/xmen_description/share/xmen_description/package.dsv'
+[-1791441620773528064.000s] INFO:colcon.colcon_core.shell:Creating package script '/home/pa06/xmen_ws/install/xmen_description/share/xmen_description/package.sh'
+[-1791441620773528064.000s] INFO:colcon.colcon_core.shell:Creating package script '/home/pa06/xmen_ws/install/xmen_description/share/xmen_description/package.bash'
+[-1791441620773528064.000s] INFO:colcon.colcon_core.shell:Creating package script '/home/pa06/xmen_ws/install/xmen_description/share/xmen_description/package.zsh'
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/pa06/xmen_ws/install/xmen_description/share/colcon-core/packages/xmen_description)
+[-1791441620773528064.000s] DEBUG:colcon.colcon_core.task.python.build:Available setuptools 'develop' options: --verbose, --editable, --force-installation-into-system-dir, --zip-ok, --local-snapshots-ok, --install-dir, --quiet, --upgrade, --egg-path, --no-user-cfg, --user, --no-deps, --allow-hosts, --multi-version, --find-links, --version, --install-layout, --optimize, --prefix, --record, --help, --dry-run, --uninstall, --always-copy, --no-find-links, --build-directory, --always-unzip, --site-dirs, --exclude-scripts, --index-url, --script-dir
+[-1791441620773528064.000s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/pa06/xmen_ws/build/xmen_control': PYTHONPATH=/home/pa06/xmen_ws/build/xmen_control/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/pa06/xmen_ws/install/xmen_control/lib/python3.14/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/pa06/xmen_ws/build/xmen_control/build --no-deps symlink_data
+[-1791441620773528064.000s] DEBUG:colcon.colcon_core.task.python.build:Available setuptools 'develop' options: --verbose, --editable, --force-installation-into-system-dir, --zip-ok, --local-snapshots-ok, --install-dir, --quiet, --upgrade, --egg-path, --no-user-cfg, --user, --no-deps, --allow-hosts, --multi-version, --find-links, --version, --install-layout, --optimize, --prefix, --record, --help, --dry-run, --uninstall, --always-copy, --no-find-links, --build-directory, --always-unzip, --site-dirs, --exclude-scripts, --index-url, --script-dir
+[-1791441620773528064.000s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/pa06/xmen_ws/build/xmen_vision': PYTHONPATH=/home/pa06/xmen_ws/build/xmen_vision/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/pa06/xmen_ws/install/xmen_vision/lib/python3.14/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/pa06/xmen_ws/build/xmen_vision/build --no-deps symlink_data
+[-1791441620773528064.000s] DEBUG:colcon.colcon_core.task.python.build:Available setuptools 'develop' options: --verbose, --editable, --force-installation-into-system-dir, --zip-ok, --local-snapshots-ok, --install-dir, --quiet, --upgrade, --egg-path, --no-user-cfg, --user, --no-deps, --allow-hosts, --multi-version, --find-links, --version, --install-layout, --optimize, --prefix, --record, --help, --dry-run, --uninstall, --always-copy, --no-find-links, --build-directory, --always-unzip, --site-dirs, --exclude-scripts, --index-url, --script-dir
+[-1791441620773528064.000s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/pa06/xmen_ws/build/xmen_tracker': PYTHONPATH=/home/pa06/xmen_ws/build/xmen_tracker/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/pa06/xmen_ws/install/xmen_tracker/lib/python3.14/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/pa06/xmen_ws/build/xmen_tracker/build --no-deps symlink_data
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.shell:create_environment_hook('xmen_tracker', 'pythonpath_develop')
+[-1791441620773528064.000s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/pa06/xmen_ws/build/xmen_tracker/share/xmen_tracker/hook/pythonpath_develop.ps1'
+[-1791441620773528064.000s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/pa06/xmen_ws/build/xmen_tracker' returned '0': PYTHONPATH=/home/pa06/xmen_ws/build/xmen_tracker/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/pa06/xmen_ws/install/xmen_tracker/lib/python3.14/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/pa06/xmen_ws/build/xmen_tracker/build --no-deps symlink_data
+[-1791441620773528064.000s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/pa06/xmen_ws/build/xmen_tracker/share/xmen_tracker/hook/pythonpath_develop.dsv'
+[-1791441620773528064.000s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/pa06/xmen_ws/build/xmen_tracker/share/xmen_tracker/hook/pythonpath_develop.sh'
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.environment:checking '/home/pa06/xmen_ws/install/xmen_tracker' for CMake module files
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.environment:checking '/home/pa06/xmen_ws/install/xmen_tracker' for CMake config files
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.environment:checking '/home/pa06/xmen_ws/install/xmen_tracker/lib'
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.environment:checking '/home/pa06/xmen_ws/install/xmen_tracker/bin'
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.environment:checking '/home/pa06/xmen_ws/install/xmen_tracker/lib/pkgconfig/xmen_tracker.pc'
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.environment:checking '/home/pa06/xmen_ws/install/xmen_tracker/lib/python3.14/site-packages'
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.shell:create_environment_hook('xmen_tracker', 'pythonpath')
+[-1791441620773528064.000s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/pa06/xmen_ws/install/xmen_tracker/share/xmen_tracker/hook/pythonpath.ps1'
+[-1791441620773528064.000s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/pa06/xmen_ws/install/xmen_tracker/share/xmen_tracker/hook/pythonpath.dsv'
+[-1791441620773528064.000s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/pa06/xmen_ws/install/xmen_tracker/share/xmen_tracker/hook/pythonpath.sh'
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.environment:checking '/home/pa06/xmen_ws/install/xmen_tracker/bin'
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(xmen_tracker)
+[-1791441620773528064.000s] INFO:colcon.colcon_core.shell:Creating package script '/home/pa06/xmen_ws/install/xmen_tracker/share/xmen_tracker/package.ps1'
+[-1791441620773528064.000s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/pa06/xmen_ws/install/xmen_tracker/share/xmen_tracker/package.dsv'
+[-1791441620773528064.000s] INFO:colcon.colcon_core.shell:Creating package script '/home/pa06/xmen_ws/install/xmen_tracker/share/xmen_tracker/package.sh'
+[-1791441620773528064.000s] INFO:colcon.colcon_core.shell:Creating package script '/home/pa06/xmen_ws/install/xmen_tracker/share/xmen_tracker/package.bash'
+[-1791441620773528064.000s] INFO:colcon.colcon_core.shell:Creating package script '/home/pa06/xmen_ws/install/xmen_tracker/share/xmen_tracker/package.zsh'
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/pa06/xmen_ws/install/xmen_tracker/share/colcon-core/packages/xmen_tracker)
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.shell:create_environment_hook('xmen_vision', 'pythonpath_develop')
+[-1791441620773528064.000s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/pa06/xmen_ws/build/xmen_vision/share/xmen_vision/hook/pythonpath_develop.ps1'
+[-1791441620773528064.000s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/pa06/xmen_ws/build/xmen_vision' returned '0': PYTHONPATH=/home/pa06/xmen_ws/build/xmen_vision/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/pa06/xmen_ws/install/xmen_vision/lib/python3.14/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/pa06/xmen_ws/build/xmen_vision/build --no-deps symlink_data
+[-1791441620773528064.000s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/pa06/xmen_ws/build/xmen_vision/share/xmen_vision/hook/pythonpath_develop.dsv'
+[-1791441620773528064.000s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/pa06/xmen_ws/build/xmen_vision/share/xmen_vision/hook/pythonpath_develop.sh'
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.environment:checking '/home/pa06/xmen_ws/install/xmen_vision' for CMake module files
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.environment:checking '/home/pa06/xmen_ws/install/xmen_vision' for CMake config files
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.environment:checking '/home/pa06/xmen_ws/install/xmen_vision/lib'
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.environment:checking '/home/pa06/xmen_ws/install/xmen_vision/bin'
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.environment:checking '/home/pa06/xmen_ws/install/xmen_vision/lib/pkgconfig/xmen_vision.pc'
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.environment:checking '/home/pa06/xmen_ws/install/xmen_vision/lib/python3.14/site-packages'
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.shell:create_environment_hook('xmen_vision', 'pythonpath')
+[-1791441620773528064.000s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/pa06/xmen_ws/install/xmen_vision/share/xmen_vision/hook/pythonpath.ps1'
+[-1791441620773528064.000s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/pa06/xmen_ws/install/xmen_vision/share/xmen_vision/hook/pythonpath.dsv'
+[-1791441620773528064.000s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/pa06/xmen_ws/install/xmen_vision/share/xmen_vision/hook/pythonpath.sh'
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.environment:checking '/home/pa06/xmen_ws/install/xmen_vision/bin'
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(xmen_vision)
+[-1791441620773528064.000s] INFO:colcon.colcon_core.shell:Creating package script '/home/pa06/xmen_ws/install/xmen_vision/share/xmen_vision/package.ps1'
+[-1791441620773528064.000s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/pa06/xmen_ws/install/xmen_vision/share/xmen_vision/package.dsv'
+[-1791441620773528064.000s] INFO:colcon.colcon_core.shell:Creating package script '/home/pa06/xmen_ws/install/xmen_vision/share/xmen_vision/package.sh'
+[-1791441620773528064.000s] INFO:colcon.colcon_core.shell:Creating package script '/home/pa06/xmen_ws/install/xmen_vision/share/xmen_vision/package.bash'
+[-1791441620773528064.000s] INFO:colcon.colcon_core.shell:Creating package script '/home/pa06/xmen_ws/install/xmen_vision/share/xmen_vision/package.zsh'
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/pa06/xmen_ws/install/xmen_vision/share/colcon-core/packages/xmen_vision)
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.shell:create_environment_hook('xmen_control', 'pythonpath_develop')
+[-1791441620773528064.000s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/pa06/xmen_ws/build/xmen_control/share/xmen_control/hook/pythonpath_develop.ps1'
+[-1791441620773528064.000s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/pa06/xmen_ws/build/xmen_control' returned '0': PYTHONPATH=/home/pa06/xmen_ws/build/xmen_control/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/pa06/xmen_ws/install/xmen_control/lib/python3.14/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/pa06/xmen_ws/build/xmen_control/build --no-deps symlink_data
+[-1791441620773528064.000s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/pa06/xmen_ws/build/xmen_control/share/xmen_control/hook/pythonpath_develop.dsv'
+[-1791441620773528064.000s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/pa06/xmen_ws/build/xmen_control/share/xmen_control/hook/pythonpath_develop.sh'
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.environment:checking '/home/pa06/xmen_ws/install/xmen_control' for CMake module files
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.environment:checking '/home/pa06/xmen_ws/install/xmen_control' for CMake config files
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.environment:checking '/home/pa06/xmen_ws/install/xmen_control/lib'
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.environment:checking '/home/pa06/xmen_ws/install/xmen_control/bin'
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.environment:checking '/home/pa06/xmen_ws/install/xmen_control/lib/pkgconfig/xmen_control.pc'
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.environment:checking '/home/pa06/xmen_ws/install/xmen_control/lib/python3.14/site-packages'
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.shell:create_environment_hook('xmen_control', 'pythonpath')
+[-1791441620773528064.000s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/pa06/xmen_ws/install/xmen_control/share/xmen_control/hook/pythonpath.ps1'
+[-1791441620773528064.000s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/pa06/xmen_ws/install/xmen_control/share/xmen_control/hook/pythonpath.dsv'
+[-1791441620773528064.000s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/pa06/xmen_ws/install/xmen_control/share/xmen_control/hook/pythonpath.sh'
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.environment:checking '/home/pa06/xmen_ws/install/xmen_control/bin'
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(xmen_control)
+[-1791441620773528064.000s] INFO:colcon.colcon_core.shell:Creating package script '/home/pa06/xmen_ws/install/xmen_control/share/xmen_control/package.ps1'
+[-1791441620773528064.000s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/pa06/xmen_ws/install/xmen_control/share/xmen_control/package.dsv'
+[-1791441620773528064.000s] INFO:colcon.colcon_core.shell:Creating package script '/home/pa06/xmen_ws/install/xmen_control/share/xmen_control/package.sh'
+[-1791441620773528064.000s] INFO:colcon.colcon_core.shell:Creating package script '/home/pa06/xmen_ws/install/xmen_control/share/xmen_control/package.bash'
+[-1791441620773528064.000s] INFO:colcon.colcon_core.shell:Creating package script '/home/pa06/xmen_ws/install/xmen_control/share/xmen_control/package.zsh'
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/pa06/xmen_ws/install/xmen_control/share/colcon-core/packages/xmen_control)
+[-1791441620773528064.000s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/pa06/xmen_ws/src/Xmen/xmen_bringup' with build type 'ament_cmake'
+[-1791441620773528064.000s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/pa06/xmen_ws/src/Xmen/xmen_bringup'
+[-1791441620773528064.000s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[-1791441620773528064.000s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[-1791441620773528064.000s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/pa06/xmen_ws/build/xmen_bringup': AMENT_PREFIX_PATH=/home/pa06/xmen_ws/install/xmen_vision:/home/pa06/xmen_ws/install/xmen_tracker:/home/pa06/xmen_ws/install/xmen_description:/home/pa06/xmen_ws/install/xmen_control:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/pa06/xmen_ws/install/xmen_description:/opt/ros/lyrical PYTHONPATH=/home/pa06/xmen_ws/build/xmen_vision:/home/pa06/xmen_ws/install/xmen_vision/lib/python3.14/site-packages:/home/pa06/xmen_ws/build/xmen_tracker:/home/pa06/xmen_ws/install/xmen_tracker/lib/python3.14/site-packages:/home/pa06/xmen_ws/build/xmen_control:/home/pa06/xmen_ws/install/xmen_control/lib/python3.14/site-packages:${PYTHONPATH} /usr/bin/cmake /home/pa06/xmen_ws/src/Xmen/xmen_bringup -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/pa06/xmen_ws/install/xmen_bringup
+[-1791441620773528064.000s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/pa06/xmen_ws/build/xmen_bringup' returned '0': AMENT_PREFIX_PATH=/home/pa06/xmen_ws/install/xmen_vision:/home/pa06/xmen_ws/install/xmen_tracker:/home/pa06/xmen_ws/install/xmen_description:/home/pa06/xmen_ws/install/xmen_control:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/pa06/xmen_ws/install/xmen_description:/opt/ros/lyrical PYTHONPATH=/home/pa06/xmen_ws/build/xmen_vision:/home/pa06/xmen_ws/install/xmen_vision/lib/python3.14/site-packages:/home/pa06/xmen_ws/build/xmen_tracker:/home/pa06/xmen_ws/install/xmen_tracker/lib/python3.14/site-packages:/home/pa06/xmen_ws/build/xmen_control:/home/pa06/xmen_ws/install/xmen_control/lib/python3.14/site-packages:${PYTHONPATH} /usr/bin/cmake /home/pa06/xmen_ws/src/Xmen/xmen_bringup -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/pa06/xmen_ws/install/xmen_bringup
+[-1791441620773528064.000s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/pa06/xmen_ws/build/xmen_bringup': AMENT_PREFIX_PATH=/home/pa06/xmen_ws/install/xmen_vision:/home/pa06/xmen_ws/install/xmen_tracker:/home/pa06/xmen_ws/install/xmen_description:/home/pa06/xmen_ws/install/xmen_control:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/pa06/xmen_ws/install/xmen_description:/opt/ros/lyrical PYTHONPATH=/home/pa06/xmen_ws/build/xmen_vision:/home/pa06/xmen_ws/install/xmen_vision/lib/python3.14/site-packages:/home/pa06/xmen_ws/build/xmen_tracker:/home/pa06/xmen_ws/install/xmen_tracker/lib/python3.14/site-packages:/home/pa06/xmen_ws/build/xmen_control:/home/pa06/xmen_ws/install/xmen_control/lib/python3.14/site-packages:${PYTHONPATH} /usr/bin/cmake --build /home/pa06/xmen_ws/build/xmen_bringup -- -j4 -l4
+[-1791441620773528064.000s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/pa06/xmen_ws/build/xmen_bringup' returned '0': AMENT_PREFIX_PATH=/home/pa06/xmen_ws/install/xmen_vision:/home/pa06/xmen_ws/install/xmen_tracker:/home/pa06/xmen_ws/install/xmen_description:/home/pa06/xmen_ws/install/xmen_control:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/pa06/xmen_ws/install/xmen_description:/opt/ros/lyrical PYTHONPATH=/home/pa06/xmen_ws/build/xmen_vision:/home/pa06/xmen_ws/install/xmen_vision/lib/python3.14/site-packages:/home/pa06/xmen_ws/build/xmen_tracker:/home/pa06/xmen_ws/install/xmen_tracker/lib/python3.14/site-packages:/home/pa06/xmen_ws/build/xmen_control:/home/pa06/xmen_ws/install/xmen_control/lib/python3.14/site-packages:${PYTHONPATH} /usr/bin/cmake --build /home/pa06/xmen_ws/build/xmen_bringup -- -j4 -l4
+[-1791441620773528064.000s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/pa06/xmen_ws/build/xmen_bringup': AMENT_PREFIX_PATH=/home/pa06/xmen_ws/install/xmen_vision:/home/pa06/xmen_ws/install/xmen_tracker:/home/pa06/xmen_ws/install/xmen_description:/home/pa06/xmen_ws/install/xmen_control:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/pa06/xmen_ws/install/xmen_description:/opt/ros/lyrical PYTHONPATH=/home/pa06/xmen_ws/build/xmen_vision:/home/pa06/xmen_ws/install/xmen_vision/lib/python3.14/site-packages:/home/pa06/xmen_ws/build/xmen_tracker:/home/pa06/xmen_ws/install/xmen_tracker/lib/python3.14/site-packages:/home/pa06/xmen_ws/build/xmen_control:/home/pa06/xmen_ws/install/xmen_control/lib/python3.14/site-packages:${PYTHONPATH} /usr/bin/cmake --install /home/pa06/xmen_ws/build/xmen_bringup
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(xmen_bringup)
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.environment:checking '/home/pa06/xmen_ws/install/xmen_bringup' for CMake module files
+[-1791441620773528064.000s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/pa06/xmen_ws/build/xmen_bringup' returned '0': AMENT_PREFIX_PATH=/home/pa06/xmen_ws/install/xmen_vision:/home/pa06/xmen_ws/install/xmen_tracker:/home/pa06/xmen_ws/install/xmen_description:/home/pa06/xmen_ws/install/xmen_control:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/pa06/xmen_ws/install/xmen_description:/opt/ros/lyrical PYTHONPATH=/home/pa06/xmen_ws/build/xmen_vision:/home/pa06/xmen_ws/install/xmen_vision/lib/python3.14/site-packages:/home/pa06/xmen_ws/build/xmen_tracker:/home/pa06/xmen_ws/install/xmen_tracker/lib/python3.14/site-packages:/home/pa06/xmen_ws/build/xmen_control:/home/pa06/xmen_ws/install/xmen_control/lib/python3.14/site-packages:${PYTHONPATH} /usr/bin/cmake --install /home/pa06/xmen_ws/build/xmen_bringup
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.environment:checking '/home/pa06/xmen_ws/install/xmen_bringup' for CMake config files
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.shell:create_environment_hook('xmen_bringup', 'cmake_prefix_path')
+[-1791441620773528064.000s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/pa06/xmen_ws/install/xmen_bringup/share/xmen_bringup/hook/cmake_prefix_path.ps1'
+[-1791441620773528064.000s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/pa06/xmen_ws/install/xmen_bringup/share/xmen_bringup/hook/cmake_prefix_path.dsv'
+[-1791441620773528064.000s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/pa06/xmen_ws/install/xmen_bringup/share/xmen_bringup/hook/cmake_prefix_path.sh'
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.environment:checking '/home/pa06/xmen_ws/install/xmen_bringup/bin'
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.environment:checking '/home/pa06/xmen_ws/install/xmen_bringup/lib/pkgconfig/xmen_bringup.pc'
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.environment:checking '/home/pa06/xmen_ws/install/xmen_bringup/lib/python3.14/site-packages'
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.environment:checking '/home/pa06/xmen_ws/install/xmen_bringup/bin'
+[-1791441620773528064.000s] INFO:colcon.colcon_core.shell:Creating package script '/home/pa06/xmen_ws/install/xmen_bringup/share/xmen_bringup/package.ps1'
+[-1791441620773528064.000s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/pa06/xmen_ws/install/xmen_bringup/share/xmen_bringup/package.dsv'
+[-1791441620773528064.000s] INFO:colcon.colcon_core.shell:Creating package script '/home/pa06/xmen_ws/install/xmen_bringup/share/xmen_bringup/package.sh'
+[-1791441620773528064.000s] INFO:colcon.colcon_core.shell:Creating package script '/home/pa06/xmen_ws/install/xmen_bringup/share/xmen_bringup/package.bash'
+[-1791441620773528064.000s] INFO:colcon.colcon_core.shell:Creating package script '/home/pa06/xmen_ws/install/xmen_bringup/share/xmen_bringup/package.zsh'
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/pa06/xmen_ws/install/xmen_bringup/share/colcon-core/packages/xmen_bringup)
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(xmen_bringup)
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.environment:checking '/home/pa06/xmen_ws/install/xmen_bringup' for CMake module files
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.environment:checking '/home/pa06/xmen_ws/install/xmen_bringup' for CMake config files
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.shell:create_environment_hook('xmen_bringup', 'cmake_prefix_path')
+[-1791441620773528064.000s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/pa06/xmen_ws/install/xmen_bringup/share/xmen_bringup/hook/cmake_prefix_path.ps1'
+[-1791441620773528064.000s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/pa06/xmen_ws/install/xmen_bringup/share/xmen_bringup/hook/cmake_prefix_path.dsv'
+[-1791441620773528064.000s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/pa06/xmen_ws/install/xmen_bringup/share/xmen_bringup/hook/cmake_prefix_path.sh'
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.environment:checking '/home/pa06/xmen_ws/install/xmen_bringup/bin'
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.environment:checking '/home/pa06/xmen_ws/install/xmen_bringup/lib/pkgconfig/xmen_bringup.pc'
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.environment:checking '/home/pa06/xmen_ws/install/xmen_bringup/lib/python3.14/site-packages'
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.environment:checking '/home/pa06/xmen_ws/install/xmen_bringup/bin'
+[-1791441620773528064.000s] INFO:colcon.colcon_core.shell:Creating package script '/home/pa06/xmen_ws/install/xmen_bringup/share/xmen_bringup/package.ps1'
+[-1791441620773528064.000s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/pa06/xmen_ws/install/xmen_bringup/share/xmen_bringup/package.dsv'
+[-1791441620773528064.000s] INFO:colcon.colcon_core.shell:Creating package script '/home/pa06/xmen_ws/install/xmen_bringup/share/xmen_bringup/package.sh'
+[-1791441620773528064.000s] INFO:colcon.colcon_core.shell:Creating package script '/home/pa06/xmen_ws/install/xmen_bringup/share/xmen_bringup/package.bash'
+[-1791441620773528064.000s] INFO:colcon.colcon_core.shell:Creating package script '/home/pa06/xmen_ws/install/xmen_bringup/share/xmen_bringup/package.zsh'
+[-1791441620773528064.000s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/pa06/xmen_ws/install/xmen_bringup/share/colcon-core/packages/xmen_bringup)
+[-1791441620773528064.000s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:closing loop
+[-1791441620773528064.000s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:loop closed
+[-1791441620773528064.000s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete finished with '0'
+[-1791441620773528064.000s] DEBUG:colcon.colcon_core.event_reactor:joining thread
+[-1791441620773528064.000s] DEBUG:colcon.colcon_core.event_reactor:joined thread
+[-1791441620773528064.000s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/pa06/xmen_ws/install/local_setup.ps1'
+[-1791441620773528064.000s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/pa06/xmen_ws/install/_local_setup_util_ps1.py'
+[-1791441620773528064.000s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/pa06/xmen_ws/install/setup.ps1'
+[-1791441620773528064.000s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/pa06/xmen_ws/install/local_setup.sh'
+[-1791441620773528064.000s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/pa06/xmen_ws/install/_local_setup_util_sh.py'
+[-1791441620773528064.000s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/pa06/xmen_ws/install/setup.sh'
+[-1791441620773528064.000s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/pa06/xmen_ws/install/local_setup.bash'
+[-1791441620773528064.000s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/pa06/xmen_ws/install/setup.bash'
+[-1791441620773528064.000s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/pa06/xmen_ws/install/local_setup.zsh'
+[-1791441620773528064.000s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/pa06/xmen_ws/install/setup.zsh'

@@ -1,0 +1,1 @@
+ament_cmake_symlink_install_files("/home/pa06/xmen_ws/src/Xmen/xmen_bringup" FILES "/home/pa06/xmen_ws/build/xmen_bringup/ament_cmake_core/xmen_bringupConfig.cmake" "/home/pa06/xmen_ws/build/xmen_bringup/ament_cmake_core/xmen_bringupConfig-version.cmake" "DESTINATION" "share/xmen_bringup/cmake")

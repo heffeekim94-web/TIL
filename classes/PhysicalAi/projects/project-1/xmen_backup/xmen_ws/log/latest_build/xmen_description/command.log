@@ -1,0 +1,6 @@
+Invoking command in '/home/pa06/xmen_ws/build/xmen_description': CMAKE_PREFIX_PATH=/opt/ros/lyrical /usr/bin/cmake /home/pa06/xmen_ws/src/Xmen/xmen_description -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/pa06/xmen_ws/install/xmen_description
+Invoked command in '/home/pa06/xmen_ws/build/xmen_description' returned '0': CMAKE_PREFIX_PATH=/opt/ros/lyrical /usr/bin/cmake /home/pa06/xmen_ws/src/Xmen/xmen_description -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/pa06/xmen_ws/install/xmen_description
+Invoking command in '/home/pa06/xmen_ws/build/xmen_description': CMAKE_PREFIX_PATH=/opt/ros/lyrical /usr/bin/cmake --build /home/pa06/xmen_ws/build/xmen_description -- -j4 -l4
+Invoked command in '/home/pa06/xmen_ws/build/xmen_description' returned '0': CMAKE_PREFIX_PATH=/opt/ros/lyrical /usr/bin/cmake --build /home/pa06/xmen_ws/build/xmen_description -- -j4 -l4
+Invoking command in '/home/pa06/xmen_ws/build/xmen_description': CMAKE_PREFIX_PATH=/opt/ros/lyrical /usr/bin/cmake --install /home/pa06/xmen_ws/build/xmen_description
+Invoked command in '/home/pa06/xmen_ws/build/xmen_description' returned '0': CMAKE_PREFIX_PATH=/opt/ros/lyrical /usr/bin/cmake --install /home/pa06/xmen_ws/build/xmen_description

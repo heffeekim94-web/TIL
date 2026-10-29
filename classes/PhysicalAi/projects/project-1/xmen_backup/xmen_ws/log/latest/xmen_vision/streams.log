@@ -1,0 +1,22 @@
+[8.797s] Invoking command in '/home/pa06/xmen_ws/build/xmen_vision': PYTHONPATH=/home/pa06/xmen_ws/build/xmen_vision/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/pa06/xmen_ws/install/xmen_vision/lib/python3.14/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/pa06/xmen_ws/build/xmen_vision/build --no-deps symlink_data
+[10.261s] running develop
+[13.383s] running egg_info
+[13.387s] creating xmen_vision.egg-info
+[13.393s] writing xmen_vision.egg-info/PKG-INFO
+[13.393s] writing dependency_links to xmen_vision.egg-info/dependency_links.txt
+[13.394s] writing entry points to xmen_vision.egg-info/entry_points.txt
+[13.395s] writing requirements to xmen_vision.egg-info/requires.txt
+[13.396s] writing top-level names to xmen_vision.egg-info/top_level.txt
+[13.397s] writing manifest file 'xmen_vision.egg-info/SOURCES.txt'
+[13.586s] reading manifest file 'xmen_vision.egg-info/SOURCES.txt'
+[13.589s] writing manifest file 'xmen_vision.egg-info/SOURCES.txt'
+[13.683s] running build_ext
+[13.684s] Creating /home/pa06/xmen_ws/install/xmen_vision/lib/python3.14/site-packages/xmen-vision.egg-link (link to .)
+[13.687s] Installing realsense_node script to /home/pa06/xmen_ws/install/xmen_vision/lib/xmen_vision
+[13.688s] 
+[13.689s] Installed /home/pa06/xmen_ws/build/xmen_vision
+[13.690s] running symlink_data
+[13.690s] creating /home/pa06/xmen_ws/install/xmen_vision/share/ament_index/resource_index/packages
+[13.693s] symbolically linking /home/pa06/xmen_ws/build/xmen_vision/resource/xmen_vision -> /home/pa06/xmen_ws/install/xmen_vision/share/ament_index/resource_index/packages
+[13.696s] symbolically linking /home/pa06/xmen_ws/build/xmen_vision/package.xml -> /home/pa06/xmen_ws/install/xmen_vision/share/xmen_vision
+[14.127s] Invoked command in '/home/pa06/xmen_ws/build/xmen_vision' returned '0': PYTHONPATH=/home/pa06/xmen_ws/build/xmen_vision/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/pa06/xmen_ws/install/xmen_vision/lib/python3.14/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/pa06/xmen_ws/build/xmen_vision/build --no-deps symlink_data

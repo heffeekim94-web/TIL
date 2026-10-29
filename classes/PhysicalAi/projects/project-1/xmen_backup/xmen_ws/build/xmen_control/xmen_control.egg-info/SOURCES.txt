@@ -1,0 +1,15 @@
+package.xml
+setup.cfg
+setup.py
+resource/xmen_control
+xmen_control/__init__.py
+xmen_control/control.py
+xmen_control/control_lite.py
+xmen_control/py.typed
+xmen_control.egg-info/PKG-INFO
+xmen_control.egg-info/SOURCES.txt
+xmen_control.egg-info/dependency_links.txt
+xmen_control.egg-info/entry_points.txt
+xmen_control.egg-info/requires.txt
+xmen_control.egg-info/top_level.txt
+xmen_control.egg-info/zip-safe

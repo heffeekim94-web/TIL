@@ -1,0 +1,55 @@
+[0.042s] Invoking command in '/home/pa06/xmen_ws/build/xmen_bringup': AMENT_PREFIX_PATH=/home/pa06/xmen_ws/install/xmen_vision:/home/pa06/xmen_ws/install/xmen_tracker:/home/pa06/xmen_ws/install/xmen_description:/home/pa06/xmen_ws/install/xmen_control:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/pa06/xmen_ws/install/xmen_description:/opt/ros/lyrical PYTHONPATH=/home/pa06/xmen_ws/build/xmen_vision:/home/pa06/xmen_ws/install/xmen_vision/lib/python3.14/site-packages:/home/pa06/xmen_ws/build/xmen_tracker:/home/pa06/xmen_ws/install/xmen_tracker/lib/python3.14/site-packages:/home/pa06/xmen_ws/build/xmen_control:/home/pa06/xmen_ws/install/xmen_control/lib/python3.14/site-packages:${PYTHONPATH} /usr/bin/cmake /home/pa06/xmen_ws/src/Xmen/xmen_bringup -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/pa06/xmen_ws/install/xmen_bringup
+[0.064s] [0mCMake Deprecation Warning at CMakeLists.txt:1 (cmake_minimum_required):
+[0.064s]   Compatibility with CMake < 3.10 will be removed from a future version of
+[0.064s]   CMake.
+[0.065s] 
+[0.065s]   Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+[0.065s]   to tell CMake that the project requires at least <min> but has been updated
+[0.065s]   to work with policies introduced by <max> or earlier.
+[0.066s] 
+[0.066s] [0m
+[0.258s] -- The C compiler identification is GNU 15.2.0
+[0.514s] -- The CXX compiler identification is GNU 15.2.0
+[0.539s] -- Detecting C compiler ABI info
+[0.821s] -- Detecting C compiler ABI info - done
+[0.873s] -- Check for working C compiler: /usr/bin/cc - skipped
+[0.874s] -- Detecting C compile features
+[0.876s] -- Detecting C compile features - done
+[0.918s] -- Detecting CXX compiler ABI info
+[1.220s] -- Detecting CXX compiler ABI info - done
+[1.273s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[1.274s] -- Detecting CXX compile features
+[1.276s] -- Detecting CXX compile features - done
+[1.305s] -- Found ament_cmake: 2.8.8 (/opt/ros/lyrical/share/ament_cmake/cmake)
+[2.251s] -- Override CMake install command with custom implementation using symlinks instead of copying resources
+[2.753s] -- Configuring done (2.7s)
+[2.768s] -- Generating done (0.0s)
+[2.773s] -- Build files have been written to: /home/pa06/xmen_ws/build/xmen_bringup
+[2.786s] Invoked command in '/home/pa06/xmen_ws/build/xmen_bringup' returned '0': AMENT_PREFIX_PATH=/home/pa06/xmen_ws/install/xmen_vision:/home/pa06/xmen_ws/install/xmen_tracker:/home/pa06/xmen_ws/install/xmen_description:/home/pa06/xmen_ws/install/xmen_control:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/pa06/xmen_ws/install/xmen_description:/opt/ros/lyrical PYTHONPATH=/home/pa06/xmen_ws/build/xmen_vision:/home/pa06/xmen_ws/install/xmen_vision/lib/python3.14/site-packages:/home/pa06/xmen_ws/build/xmen_tracker:/home/pa06/xmen_ws/install/xmen_tracker/lib/python3.14/site-packages:/home/pa06/xmen_ws/build/xmen_control:/home/pa06/xmen_ws/install/xmen_control/lib/python3.14/site-packages:${PYTHONPATH} /usr/bin/cmake /home/pa06/xmen_ws/src/Xmen/xmen_bringup -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/pa06/xmen_ws/install/xmen_bringup
+[2.790s] Invoking command in '/home/pa06/xmen_ws/build/xmen_bringup': AMENT_PREFIX_PATH=/home/pa06/xmen_ws/install/xmen_vision:/home/pa06/xmen_ws/install/xmen_tracker:/home/pa06/xmen_ws/install/xmen_description:/home/pa06/xmen_ws/install/xmen_control:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/pa06/xmen_ws/install/xmen_description:/opt/ros/lyrical PYTHONPATH=/home/pa06/xmen_ws/build/xmen_vision:/home/pa06/xmen_ws/install/xmen_vision/lib/python3.14/site-packages:/home/pa06/xmen_ws/build/xmen_tracker:/home/pa06/xmen_ws/install/xmen_tracker/lib/python3.14/site-packages:/home/pa06/xmen_ws/build/xmen_control:/home/pa06/xmen_ws/install/xmen_control/lib/python3.14/site-packages:${PYTHONPATH} /usr/bin/cmake --build /home/pa06/xmen_ws/build/xmen_bringup -- -j4 -l4
+[2.913s] Invoked command in '/home/pa06/xmen_ws/build/xmen_bringup' returned '0': AMENT_PREFIX_PATH=/home/pa06/xmen_ws/install/xmen_vision:/home/pa06/xmen_ws/install/xmen_tracker:/home/pa06/xmen_ws/install/xmen_description:/home/pa06/xmen_ws/install/xmen_control:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/pa06/xmen_ws/install/xmen_description:/opt/ros/lyrical PYTHONPATH=/home/pa06/xmen_ws/build/xmen_vision:/home/pa06/xmen_ws/install/xmen_vision/lib/python3.14/site-packages:/home/pa06/xmen_ws/build/xmen_tracker:/home/pa06/xmen_ws/install/xmen_tracker/lib/python3.14/site-packages:/home/pa06/xmen_ws/build/xmen_control:/home/pa06/xmen_ws/install/xmen_control/lib/python3.14/site-packages:${PYTHONPATH} /usr/bin/cmake --build /home/pa06/xmen_ws/build/xmen_bringup -- -j4 -l4
+[2.916s] Invoking command in '/home/pa06/xmen_ws/build/xmen_bringup': AMENT_PREFIX_PATH=/home/pa06/xmen_ws/install/xmen_vision:/home/pa06/xmen_ws/install/xmen_tracker:/home/pa06/xmen_ws/install/xmen_description:/home/pa06/xmen_ws/install/xmen_control:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/pa06/xmen_ws/install/xmen_description:/opt/ros/lyrical PYTHONPATH=/home/pa06/xmen_ws/build/xmen_vision:/home/pa06/xmen_ws/install/xmen_vision/lib/python3.14/site-packages:/home/pa06/xmen_ws/build/xmen_tracker:/home/pa06/xmen_ws/install/xmen_tracker/lib/python3.14/site-packages:/home/pa06/xmen_ws/build/xmen_control:/home/pa06/xmen_ws/install/xmen_control/lib/python3.14/site-packages:${PYTHONPATH} /usr/bin/cmake --install /home/pa06/xmen_ws/build/xmen_bringup
+[2.940s] -- Install configuration: ""
+[2.942s] -- Execute custom install script
+[2.944s] -- Symlinking: /home/pa06/xmen_ws/install/xmen_bringup/share/xmen_bringup/launch/hardware_launch.py
+[2.974s] -- Symlinking: /home/pa06/xmen_ws/install/xmen_bringup/share/xmen_bringup/launch/rviz2_launch.py
+[3.002s] -- Symlinking: /home/pa06/xmen_ws/install/xmen_bringup/share/xmen_bringup/param/bag_qos.yaml
+[3.030s] -- Symlinking: /home/pa06/xmen_ws/install/xmen_bringup/share/xmen_bringup/param/control.yaml
+[3.056s] -- Symlinking: /home/pa06/xmen_ws/install/xmen_bringup/share/xmen_bringup/param/tracker.yaml
+[3.084s] -- Symlinking: /home/pa06/xmen_ws/install/xmen_bringup/share/ament_index/resource_index/package_run_dependencies/xmen_bringup
+[3.113s] -- Symlinking: /home/pa06/xmen_ws/install/xmen_bringup/share/ament_index/resource_index/parent_prefix_path/xmen_bringup
+[3.142s] -- Symlinking: /home/pa06/xmen_ws/install/xmen_bringup/share/xmen_bringup/environment/ament_prefix_path.sh
+[3.172s] -- Symlinking: /home/pa06/xmen_ws/install/xmen_bringup/share/xmen_bringup/environment/ament_prefix_path.dsv
+[3.200s] -- Symlinking: /home/pa06/xmen_ws/install/xmen_bringup/share/xmen_bringup/environment/path.sh
+[3.230s] -- Symlinking: /home/pa06/xmen_ws/install/xmen_bringup/share/xmen_bringup/environment/path.dsv
+[3.258s] -- Symlinking: /home/pa06/xmen_ws/install/xmen_bringup/share/xmen_bringup/local_setup.bash
+[3.286s] -- Symlinking: /home/pa06/xmen_ws/install/xmen_bringup/share/xmen_bringup/local_setup.fish
+[3.315s] -- Symlinking: /home/pa06/xmen_ws/install/xmen_bringup/share/xmen_bringup/local_setup.sh
+[3.342s] -- Symlinking: /home/pa06/xmen_ws/install/xmen_bringup/share/xmen_bringup/local_setup.zsh
+[3.369s] -- Symlinking: /home/pa06/xmen_ws/install/xmen_bringup/share/xmen_bringup/local_setup.dsv
+[3.396s] -- Symlinking: /home/pa06/xmen_ws/install/xmen_bringup/share/xmen_bringup/package.dsv
+[3.425s] -- Symlinking: /home/pa06/xmen_ws/install/xmen_bringup/share/ament_index/resource_index/packages/xmen_bringup
+[3.455s] -- Symlinking: /home/pa06/xmen_ws/install/xmen_bringup/share/xmen_bringup/cmake/xmen_bringupConfig.cmake
+[3.482s] -- Symlinking: /home/pa06/xmen_ws/install/xmen_bringup/share/xmen_bringup/cmake/xmen_bringupConfig-version.cmake
+[3.510s] -- Symlinking: /home/pa06/xmen_ws/install/xmen_bringup/share/xmen_bringup/package.xml
+[3.544s] Invoked command in '/home/pa06/xmen_ws/build/xmen_bringup' returned '0': AMENT_PREFIX_PATH=/home/pa06/xmen_ws/install/xmen_vision:/home/pa06/xmen_ws/install/xmen_tracker:/home/pa06/xmen_ws/install/xmen_description:/home/pa06/xmen_ws/install/xmen_control:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/pa06/xmen_ws/install/xmen_description:/opt/ros/lyrical PYTHONPATH=/home/pa06/xmen_ws/build/xmen_vision:/home/pa06/xmen_ws/install/xmen_vision/lib/python3.14/site-packages:/home/pa06/xmen_ws/build/xmen_tracker:/home/pa06/xmen_ws/install/xmen_tracker/lib/python3.14/site-packages:/home/pa06/xmen_ws/build/xmen_control:/home/pa06/xmen_ws/install/xmen_control/lib/python3.14/site-packages:${PYTHONPATH} /usr/bin/cmake --install /home/pa06/xmen_ws/build/xmen_bringup

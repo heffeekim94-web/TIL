@@ -1,0 +1,7 @@
+{
+	"InstallScripts" : 
+	[
+		"/home/pa06/xmen_ws/build/xmen_bringup/cmake_install.cmake"
+	],
+	"Parallel" : false
+}

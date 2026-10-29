@@ -1,0 +1,63 @@
+[0.952s] Invoking command in '/home/pa06/xmen_ws/build/xmen_description': CMAKE_PREFIX_PATH=/opt/ros/lyrical /usr/bin/cmake /home/pa06/xmen_ws/src/Xmen/xmen_description -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/pa06/xmen_ws/install/xmen_description
+[2.072s] -- The C compiler identification is GNU 15.2.0
+[2.078s] -- The CXX compiler identification is GNU 15.2.0
+[2.079s] -- Detecting C compiler ABI info
+[2.266s] -- Detecting C compiler ABI info - done
+[2.323s] -- Check for working C compiler: /usr/bin/cc - skipped
+[2.324s] -- Detecting C compile features
+[2.326s] -- Detecting C compile features - done
+[2.371s] -- Detecting CXX compiler ABI info
+[2.714s] -- Detecting CXX compiler ABI info - done
+[2.771s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[2.772s] -- Detecting CXX compile features
+[2.774s] -- Detecting CXX compile features - done
+[2.820s] -- Found ament_cmake: 2.8.8 (/opt/ros/lyrical/share/ament_cmake/cmake)
+[4.150s] -- Override CMake install command with custom implementation using symlinks instead of copying resources
+[4.962s] -- Configuring done (3.8s)
+[4.983s] -- Generating done (0.0s)
+[4.991s] -- Build files have been written to: /home/pa06/xmen_ws/build/xmen_description
+[5.010s] Invoked command in '/home/pa06/xmen_ws/build/xmen_description' returned '0': CMAKE_PREFIX_PATH=/opt/ros/lyrical /usr/bin/cmake /home/pa06/xmen_ws/src/Xmen/xmen_description -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/pa06/xmen_ws/install/xmen_description
+[5.013s] Invoking command in '/home/pa06/xmen_ws/build/xmen_description': CMAKE_PREFIX_PATH=/opt/ros/lyrical /usr/bin/cmake --build /home/pa06/xmen_ws/build/xmen_description -- -j4 -l4
+[5.159s] Invoked command in '/home/pa06/xmen_ws/build/xmen_description' returned '0': CMAKE_PREFIX_PATH=/opt/ros/lyrical /usr/bin/cmake --build /home/pa06/xmen_ws/build/xmen_description -- -j4 -l4
+[5.196s] Invoking command in '/home/pa06/xmen_ws/build/xmen_description': CMAKE_PREFIX_PATH=/opt/ros/lyrical /usr/bin/cmake --install /home/pa06/xmen_ws/build/xmen_description
+[5.233s] -- Install configuration: ""
+[5.236s] -- Execute custom install script
+[5.243s] -- Symlinking: /home/pa06/xmen_ws/install/xmen_description/share/xmen_description/urdf/cctv.urdf
+[5.276s] -- Symlinking: /home/pa06/xmen_ws/install/xmen_description/share/xmen_description/meshes/DYNAMIXEL_XM430_W350_R__Solid_1__DYNAMIXEL_XM430_W350_R__Solid_1.stl
+[5.313s] -- Symlinking: /home/pa06/xmen_ws/install/xmen_description/share/xmen_description/meshes/DYNAMIXEL_XM430_W350_R________1__DYNAMIXEL_XM430_W350_R________1.stl
+[5.356s] -- Symlinking: /home/pa06/xmen_ws/install/xmen_description/share/xmen_description/meshes/DYNAMIXEL_XM430_W350_R________1__DYNAMIXEL_XM430_W350_R________1_1.stl
+[5.394s] -- Symlinking: /home/pa06/xmen_ws/install/xmen_description/share/xmen_description/meshes/DYNAMIXEL_XM430_W350_R________1__DYNAMIXEL_XM430_W350_R________1_2.stl
+[5.436s] -- Symlinking: /home/pa06/xmen_ws/install/xmen_description/share/xmen_description/meshes/DYNAMIXEL_XM430_W350_R________1__DYNAMIXEL_XM430_W350_R________1_3.stl
+[5.478s] -- Symlinking: /home/pa06/xmen_ws/install/xmen_description/share/xmen_description/meshes/DYNAMIXEL_XM430_W350_R________1__DYNAMIXEL_XM430_W350_R________1_4.stl
+[5.516s] -- Symlinking: /home/pa06/xmen_ws/install/xmen_description/share/xmen_description/meshes/DYNAMIXEL_XM430_W350_R________1__DYNAMIXEL_XM430_W350_R________1_5.stl
+[5.602s] -- Symlinking: /home/pa06/xmen_ws/install/xmen_description/share/xmen_description/meshes/FR12_H101K.stl
+[5.648s] -- Symlinking: /home/pa06/xmen_ws/install/xmen_description/share/xmen_description/meshes/FR12_S102K.stl
+[5.696s] -- Symlinking: /home/pa06/xmen_ws/install/xmen_description/share/xmen_description/meshes/HN12_N101.stl
+[5.737s] -- Symlinking: /home/pa06/xmen_ws/install/xmen_description/share/xmen_description/meshes/Part_1.stl
+[5.781s] -- Symlinking: /home/pa06/xmen_ws/install/xmen_description/share/xmen_description/meshes/Part_1_1.stl
+[5.823s] -- Symlinking: /home/pa06/xmen_ws/install/xmen_description/share/xmen_description/meshes/Part_2.stl
+[5.868s] -- Symlinking: /home/pa06/xmen_ws/install/xmen_description/share/xmen_description/meshes/Part_3.stl
+[5.910s] -- Symlinking: /home/pa06/xmen_ws/install/xmen_description/share/xmen_description/meshes/Part_4.stl
+[5.955s] -- Symlinking: /home/pa06/xmen_ws/install/xmen_description/share/xmen_description/meshes/Part_5.stl
+[5.998s] -- Symlinking: /home/pa06/xmen_ws/install/xmen_description/share/xmen_description/meshes/XM430_W350.stl
+[6.053s] -- Symlinking: /home/pa06/xmen_ws/install/xmen_description/share/xmen_description/meshes/XM430_W350_1.stl
+[6.111s] -- Symlinking: /home/pa06/xmen_ws/install/xmen_description/share/xmen_description/meshes/XM430_W350_2.stl
+[6.175s] -- Symlinking: /home/pa06/xmen_ws/install/xmen_description/share/xmen_description/meshes/XM430_W350_3.stl
+[6.227s] -- Symlinking: /home/pa06/xmen_ws/install/xmen_description/share/xmen_description/rviz/tracking.rviz
+[6.275s] -- Symlinking: /home/pa06/xmen_ws/install/xmen_description/share/ament_index/resource_index/package_run_dependencies/xmen_description
+[6.320s] -- Symlinking: /home/pa06/xmen_ws/install/xmen_description/share/ament_index/resource_index/parent_prefix_path/xmen_description
+[6.368s] -- Symlinking: /home/pa06/xmen_ws/install/xmen_description/share/xmen_description/environment/ament_prefix_path.sh
+[6.405s] -- Symlinking: /home/pa06/xmen_ws/install/xmen_description/share/xmen_description/environment/ament_prefix_path.dsv
+[6.449s] -- Symlinking: /home/pa06/xmen_ws/install/xmen_description/share/xmen_description/environment/path.sh
+[6.490s] -- Symlinking: /home/pa06/xmen_ws/install/xmen_description/share/xmen_description/environment/path.dsv
+[6.578s] -- Symlinking: /home/pa06/xmen_ws/install/xmen_description/share/xmen_description/local_setup.bash
+[6.704s] -- Symlinking: /home/pa06/xmen_ws/install/xmen_description/share/xmen_description/local_setup.fish
+[6.844s] -- Symlinking: /home/pa06/xmen_ws/install/xmen_description/share/xmen_description/local_setup.sh
+[6.942s] -- Symlinking: /home/pa06/xmen_ws/install/xmen_description/share/xmen_description/local_setup.zsh
+[7.031s] -- Symlinking: /home/pa06/xmen_ws/install/xmen_description/share/xmen_description/local_setup.dsv
+[7.080s] -- Symlinking: /home/pa06/xmen_ws/install/xmen_description/share/xmen_description/package.dsv
+[7.128s] -- Symlinking: /home/pa06/xmen_ws/install/xmen_description/share/ament_index/resource_index/packages/xmen_description
+[7.185s] -- Symlinking: /home/pa06/xmen_ws/install/xmen_description/share/xmen_description/cmake/xmen_descriptionConfig.cmake
+[7.243s] -- Symlinking: /home/pa06/xmen_ws/install/xmen_description/share/xmen_description/cmake/xmen_descriptionConfig-version.cmake
+[7.336s] -- Symlinking: /home/pa06/xmen_ws/install/xmen_description/share/xmen_description/package.xml
+[7.395s] Invoked command in '/home/pa06/xmen_ws/build/xmen_description' returned '0': CMAKE_PREFIX_PATH=/opt/ros/lyrical /usr/bin/cmake --install /home/pa06/xmen_ws/build/xmen_description

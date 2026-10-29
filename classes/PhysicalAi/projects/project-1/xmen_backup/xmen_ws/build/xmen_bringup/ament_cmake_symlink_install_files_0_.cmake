@@ -1,0 +1,1 @@
+ament_cmake_symlink_install_files("/home/pa06/xmen_ws/src/Xmen/xmen_bringup" FILES "/home/pa06/xmen_ws/build/xmen_bringup/ament_cmake_index/share/ament_index/resource_index/package_run_dependencies/xmen_bringup" "DESTINATION" "share/ament_index/resource_index/package_run_dependencies")

@@ -1,0 +1,361 @@
+[0.000000] (-) TimerEvent: {}
+[0.000922] (xmen_control) JobQueued: {'identifier': 'xmen_control', 'dependencies': OrderedDict()}
+[0.001041] (xmen_description) JobQueued: {'identifier': 'xmen_description', 'dependencies': OrderedDict()}
+[0.001133] (xmen_tracker) JobQueued: {'identifier': 'xmen_tracker', 'dependencies': OrderedDict()}
+[0.001330] (xmen_vision) JobQueued: {'identifier': 'xmen_vision', 'dependencies': OrderedDict()}
+[0.002007] (xmen_bringup) JobQueued: {'identifier': 'xmen_bringup', 'dependencies': OrderedDict({'xmen_control': '/home/pa06/xmen_ws/install/xmen_control', 'xmen_description': '/home/pa06/xmen_ws/install/xmen_description', 'xmen_tracker': '/home/pa06/xmen_ws/install/xmen_tracker', 'xmen_vision': '/home/pa06/xmen_ws/install/xmen_vision'})}
+[0.002457] (xmen_control) JobStarted: {'identifier': 'xmen_control'}
+[0.042994] (xmen_description) JobStarted: {'identifier': 'xmen_description'}
+[0.056749] (xmen_tracker) JobStarted: {'identifier': 'xmen_tracker'}
+[0.078473] (xmen_vision) JobStarted: {'identifier': 'xmen_vision'}
+[0.100157] (-) TimerEvent: {}
+[0.201707] (-) TimerEvent: {}
+[0.302312] (-) TimerEvent: {}
+[0.402844] (-) TimerEvent: {}
+[0.503436] (-) TimerEvent: {}
+[0.604058] (-) TimerEvent: {}
+[0.704593] (-) TimerEvent: {}
+[0.805129] (-) TimerEvent: {}
+[0.905715] (-) TimerEvent: {}
+[0.990469] (xmen_description) JobProgress: {'identifier': 'xmen_description', 'progress': 'cmake'}
+[0.992468] (xmen_description) Command: {'cmd': ['/usr/bin/cmake', '/home/pa06/xmen_ws/src/Xmen/xmen_description', '-DAMENT_CMAKE_SYMLINK_INSTALL=1', '-DCMAKE_INSTALL_PREFIX=/home/pa06/xmen_ws/install/xmen_description'], 'cwd': '/home/pa06/xmen_ws/build/xmen_description', 'env': OrderedDict({'LESSOPEN': '| /usr/bin/lesspipe %s', 'USER': 'pa06', 'SSH_CLIENT': '10.2.12.136 40464 22', 'XDG_SESSION_TYPE': 'tty', 'GIT_ASKPASS': '/home/pa06/.vscode-server/cli/servers/Stable-07f806f999227108933c2e30515b26eecc1fda74/server/extensions/git/dist/askpass.sh', 'ROS_APT_SOURCE_VERSION': '1.3.0', 'SHLVL': '2', 'LD_LIBRARY_PATH': '/opt/ros/lyrical/lib/aarch64-linux-gnu:/opt/ros/lyrical/lib', 'BROWSER': '/home/pa06/.vscode-server/cli/servers/Stable-07f806f999227108933c2e30515b26eecc1fda74/server/bin/helpers/browser.sh', 'HOME': '/home/pa06', 'OLDPWD': '/home/pa06', 'TERM_PROGRAM_VERSION': '1.140.0', 'VSCODE_IPC_HOOK_CLI': '/run/user/1000/vscode-ipc-49c68a0c-e610-4797-a256-e91b89ac904a.sock', 'ROS_PYTHON_VERSION': '3', 'VSCODE_GIT_ASKPASS_MAIN': '/home/pa06/.vscode-server/cli/servers/Stable-07f806f999227108933c2e30515b26eecc1fda74/server/extensions/git/dist/askpass-main.js', 'VSCODE_GIT_ASKPASS_NODE': '/home/pa06/.vscode-server/cli/servers/Stable-07f806f999227108933c2e30515b26eecc1fda74/server/node', 'VSCODE_PYTHON_AUTOACTIVATE_GUARD': '1', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'COLORTERM': 'truecolor', 'ROS_DISTRO': 'lyrical', 'LOGNAME': 'pa06', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'CLAUDE_CODE_SSE_PORT': '55492', 'XDG_SESSION_CLASS': 'user', 'TERM': 'xterm-256color', 'XDG_SESSION_ID': '3', 'PATH': '/opt/ros/lyrical/bin:/home/pa06/.vscode-server/data/User/globalStorage/github.copilot-chat/debugCommand:/home/pa06/.vscode-server/data/User/globalStorage/github.copilot-chat/copilotCli:/home/pa06/.vscode-server/cli/servers/Stable-07f806f999227108933c2e30515b26eecc1fda74/server/bin/remote-cli:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin', 'XDG_RUNTIME_DIR': '/run/user/1000', 'LANG': 'C.UTF-8', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.swp=00;90:*.tmp=00;90:*.dpkg-dist=00;90:*.dpkg-old=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:', 'VSCODE_GIT_IPC_HANDLE': '/run/user/1000/vscode-git-eb45721f6f.sock', 'TERM_PROGRAM': 'vscode', 'AMENT_PREFIX_PATH': '/opt/ros/lyrical', 'SHELL': '/bin/bash', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'ROS_AUTOMATIC_DISCOVERY_RANGE': 'SUBNET', 'VSCODE_GIT_ASKPASS_EXTRA_ARGS': '', 'PWD': '/home/pa06/xmen_ws/build/xmen_description', 'LC_ALL': 'en_US.UTF-8', 'COPILOT_DEBUG_NONCE': '0b2d8c3eb81fbb959303761702b3fc92', 'SSH_CONNECTION': '10.2.12.136 40464 10.2.12.68 22', 'XDG_DATA_DIRS': '/usr/local/share:/usr/share:/var/lib/snapd/desktop', 'PYTHONPATH': '/opt/ros/lyrical/lib/python3.14/site-packages', 'COLCON': '1', 'CMAKE_PREFIX_PATH': '/opt/ros/lyrical'}), 'shell': False}
+[1.005818] (-) TimerEvent: {}
+[1.107234] (-) TimerEvent: {}
+[1.208060] (-) TimerEvent: {}
+[1.308838] (-) TimerEvent: {}
+[1.409605] (-) TimerEvent: {}
+[1.510233] (-) TimerEvent: {}
+[1.610831] (-) TimerEvent: {}
+[1.711535] (-) TimerEvent: {}
+[1.812209] (-) TimerEvent: {}
+[1.912822] (-) TimerEvent: {}
+[2.013547] (-) TimerEvent: {}
+[2.114666] (xmen_description) StdoutLine: {'line': b'-- The C compiler identification is GNU 15.2.0\n'}
+[2.118429] (-) TimerEvent: {}
+[2.120650] (xmen_description) StdoutLine: {'line': b'-- The CXX compiler identification is GNU 15.2.0\n'}
+[2.121851] (xmen_description) StdoutLine: {'line': b'-- Detecting C compiler ABI info\n'}
+[2.218667] (-) TimerEvent: {}
+[2.308972] (xmen_description) StdoutLine: {'line': b'-- Detecting C compiler ABI info - done\n'}
+[2.318823] (-) TimerEvent: {}
+[2.366226] (xmen_description) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc - skipped\n'}
+[2.367315] (xmen_description) StdoutLine: {'line': b'-- Detecting C compile features\n'}
+[2.369410] (xmen_description) StdoutLine: {'line': b'-- Detecting C compile features - done\n'}
+[2.413893] (xmen_description) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info\n'}
+[2.418979] (-) TimerEvent: {}
+[2.519676] (-) TimerEvent: {}
+[2.620404] (-) TimerEvent: {}
+[2.721154] (-) TimerEvent: {}
+[2.756380] (xmen_description) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info - done\n'}
+[2.813730] (xmen_description) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++ - skipped\n'}
+[2.814742] (xmen_description) StdoutLine: {'line': b'-- Detecting CXX compile features\n'}
+[2.817054] (xmen_description) StdoutLine: {'line': b'-- Detecting CXX compile features - done\n'}
+[2.821342] (-) TimerEvent: {}
+[2.862834] (xmen_description) StdoutLine: {'line': b'-- Found ament_cmake: 2.8.8 (/opt/ros/lyrical/share/ament_cmake/cmake)\n'}
+[2.922165] (-) TimerEvent: {}
+[3.022786] (-) TimerEvent: {}
+[3.123581] (-) TimerEvent: {}
+[3.224669] (-) TimerEvent: {}
+[3.326403] (-) TimerEvent: {}
+[3.429284] (-) TimerEvent: {}
+[3.533223] (-) TimerEvent: {}
+[3.636534] (-) TimerEvent: {}
+[3.742755] (-) TimerEvent: {}
+[3.844238] (-) TimerEvent: {}
+[3.946554] (-) TimerEvent: {}
+[4.050525] (-) TimerEvent: {}
+[4.154512] (-) TimerEvent: {}
+[4.193303] (xmen_description) StdoutLine: {'line': b'-- Override CMake install command with custom implementation using symlinks instead of copying resources\n'}
+[4.254674] (-) TimerEvent: {}
+[4.355634] (-) TimerEvent: {}
+[4.456374] (-) TimerEvent: {}
+[4.558832] (-) TimerEvent: {}
+[4.661871] (-) TimerEvent: {}
+[4.764208] (-) TimerEvent: {}
+[4.864972] (-) TimerEvent: {}
+[4.968438] (-) TimerEvent: {}
+[5.004684] (xmen_description) StdoutLine: {'line': b'-- Configuring done (3.8s)\n'}
+[5.026286] (xmen_description) StdoutLine: {'line': b'-- Generating done (0.0s)\n'}
+[5.034199] (xmen_description) StdoutLine: {'line': b'-- Build files have been written to: /home/pa06/xmen_ws/build/xmen_description\n'}
+[5.050386] (xmen_description) CommandEnded: {'returncode': 0}
+[5.055202] (xmen_description) JobProgress: {'identifier': 'xmen_description', 'progress': 'build'}
+[5.055353] (xmen_description) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/pa06/xmen_ws/build/xmen_description', '--', '-j4', '-l4'], 'cwd': '/home/pa06/xmen_ws/build/xmen_description', 'env': OrderedDict({'LESSOPEN': '| /usr/bin/lesspipe %s', 'USER': 'pa06', 'SSH_CLIENT': '10.2.12.136 40464 22', 'XDG_SESSION_TYPE': 'tty', 'GIT_ASKPASS': '/home/pa06/.vscode-server/cli/servers/Stable-07f806f999227108933c2e30515b26eecc1fda74/server/extensions/git/dist/askpass.sh', 'ROS_APT_SOURCE_VERSION': '1.3.0', 'SHLVL': '2', 'LD_LIBRARY_PATH': '/opt/ros/lyrical/lib/aarch64-linux-gnu:/opt/ros/lyrical/lib', 'BROWSER': '/home/pa06/.vscode-server/cli/servers/Stable-07f806f999227108933c2e30515b26eecc1fda74/server/bin/helpers/browser.sh', 'HOME': '/home/pa06', 'OLDPWD': '/home/pa06', 'TERM_PROGRAM_VERSION': '1.140.0', 'VSCODE_IPC_HOOK_CLI': '/run/user/1000/vscode-ipc-49c68a0c-e610-4797-a256-e91b89ac904a.sock', 'ROS_PYTHON_VERSION': '3', 'VSCODE_GIT_ASKPASS_MAIN': '/home/pa06/.vscode-server/cli/servers/Stable-07f806f999227108933c2e30515b26eecc1fda74/server/extensions/git/dist/askpass-main.js', 'VSCODE_GIT_ASKPASS_NODE': '/home/pa06/.vscode-server/cli/servers/Stable-07f806f999227108933c2e30515b26eecc1fda74/server/node', 'VSCODE_PYTHON_AUTOACTIVATE_GUARD': '1', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'COLORTERM': 'truecolor', 'ROS_DISTRO': 'lyrical', 'LOGNAME': 'pa06', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'CLAUDE_CODE_SSE_PORT': '55492', 'XDG_SESSION_CLASS': 'user', 'TERM': 'xterm-256color', 'XDG_SESSION_ID': '3', 'PATH': '/opt/ros/lyrical/bin:/home/pa06/.vscode-server/data/User/globalStorage/github.copilot-chat/debugCommand:/home/pa06/.vscode-server/data/User/globalStorage/github.copilot-chat/copilotCli:/home/pa06/.vscode-server/cli/servers/Stable-07f806f999227108933c2e30515b26eecc1fda74/server/bin/remote-cli:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin', 'XDG_RUNTIME_DIR': '/run/user/1000', 'LANG': 'C.UTF-8', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.swp=00;90:*.tmp=00;90:*.dpkg-dist=00;90:*.dpkg-old=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:', 'VSCODE_GIT_IPC_HANDLE': '/run/user/1000/vscode-git-eb45721f6f.sock', 'TERM_PROGRAM': 'vscode', 'AMENT_PREFIX_PATH': '/opt/ros/lyrical', 'SHELL': '/bin/bash', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'ROS_AUTOMATIC_DISCOVERY_RANGE': 'SUBNET', 'VSCODE_GIT_ASKPASS_EXTRA_ARGS': '', 'PWD': '/home/pa06/xmen_ws/build/xmen_description', 'LC_ALL': 'en_US.UTF-8', 'COPILOT_DEBUG_NONCE': '0b2d8c3eb81fbb959303761702b3fc92', 'SSH_CONNECTION': '10.2.12.136 40464 10.2.12.68 22', 'XDG_DATA_DIRS': '/usr/local/share:/usr/share:/var/lib/snapd/desktop', 'PYTHONPATH': '/opt/ros/lyrical/lib/python3.14/site-packages', 'COLCON': '1', 'CMAKE_PREFIX_PATH': '/opt/ros/lyrical'}), 'shell': False}
+[5.068625] (-) TimerEvent: {}
+[5.169290] (-) TimerEvent: {}
+[5.201497] (xmen_description) CommandEnded: {'returncode': 0}
+[5.205382] (xmen_description) JobProgress: {'identifier': 'xmen_description', 'progress': 'install'}
+[5.238391] (xmen_description) Command: {'cmd': ['/usr/bin/cmake', '--install', '/home/pa06/xmen_ws/build/xmen_description'], 'cwd': '/home/pa06/xmen_ws/build/xmen_description', 'env': OrderedDict({'LESSOPEN': '| /usr/bin/lesspipe %s', 'USER': 'pa06', 'SSH_CLIENT': '10.2.12.136 40464 22', 'XDG_SESSION_TYPE': 'tty', 'GIT_ASKPASS': '/home/pa06/.vscode-server/cli/servers/Stable-07f806f999227108933c2e30515b26eecc1fda74/server/extensions/git/dist/askpass.sh', 'ROS_APT_SOURCE_VERSION': '1.3.0', 'SHLVL': '2', 'LD_LIBRARY_PATH': '/opt/ros/lyrical/lib/aarch64-linux-gnu:/opt/ros/lyrical/lib', 'BROWSER': '/home/pa06/.vscode-server/cli/servers/Stable-07f806f999227108933c2e30515b26eecc1fda74/server/bin/helpers/browser.sh', 'HOME': '/home/pa06', 'OLDPWD': '/home/pa06', 'TERM_PROGRAM_VERSION': '1.140.0', 'VSCODE_IPC_HOOK_CLI': '/run/user/1000/vscode-ipc-49c68a0c-e610-4797-a256-e91b89ac904a.sock', 'ROS_PYTHON_VERSION': '3', 'VSCODE_GIT_ASKPASS_MAIN': '/home/pa06/.vscode-server/cli/servers/Stable-07f806f999227108933c2e30515b26eecc1fda74/server/extensions/git/dist/askpass-main.js', 'VSCODE_GIT_ASKPASS_NODE': '/home/pa06/.vscode-server/cli/servers/Stable-07f806f999227108933c2e30515b26eecc1fda74/server/node', 'VSCODE_PYTHON_AUTOACTIVATE_GUARD': '1', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'COLORTERM': 'truecolor', 'ROS_DISTRO': 'lyrical', 'LOGNAME': 'pa06', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'CLAUDE_CODE_SSE_PORT': '55492', 'XDG_SESSION_CLASS': 'user', 'TERM': 'xterm-256color', 'XDG_SESSION_ID': '3', 'PATH': '/opt/ros/lyrical/bin:/home/pa06/.vscode-server/data/User/globalStorage/github.copilot-chat/debugCommand:/home/pa06/.vscode-server/data/User/globalStorage/github.copilot-chat/copilotCli:/home/pa06/.vscode-server/cli/servers/Stable-07f806f999227108933c2e30515b26eecc1fda74/server/bin/remote-cli:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin', 'XDG_RUNTIME_DIR': '/run/user/1000', 'LANG': 'C.UTF-8', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.swp=00;90:*.tmp=00;90:*.dpkg-dist=00;90:*.dpkg-old=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:', 'VSCODE_GIT_IPC_HANDLE': '/run/user/1000/vscode-git-eb45721f6f.sock', 'TERM_PROGRAM': 'vscode', 'AMENT_PREFIX_PATH': '/opt/ros/lyrical', 'SHELL': '/bin/bash', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'ROS_AUTOMATIC_DISCOVERY_RANGE': 'SUBNET', 'VSCODE_GIT_ASKPASS_EXTRA_ARGS': '', 'PWD': '/home/pa06/xmen_ws/build/xmen_description', 'LC_ALL': 'en_US.UTF-8', 'COPILOT_DEBUG_NONCE': '0b2d8c3eb81fbb959303761702b3fc92', 'SSH_CONNECTION': '10.2.12.136 40464 10.2.12.68 22', 'XDG_DATA_DIRS': '/usr/local/share:/usr/share:/var/lib/snapd/desktop', 'PYTHONPATH': '/opt/ros/lyrical/lib/python3.14/site-packages', 'COLCON': '1', 'CMAKE_PREFIX_PATH': '/opt/ros/lyrical'}), 'shell': False}
+[5.269880] (-) TimerEvent: {}
+[5.275927] (xmen_description) StdoutLine: {'line': b'-- Install configuration: ""\n'}
+[5.278847] (xmen_description) StdoutLine: {'line': b'-- Execute custom install script\n'}
+[5.286217] (xmen_description) StdoutLine: {'line': b'-- Symlinking: /home/pa06/xmen_ws/install/xmen_description/share/xmen_description/urdf/cctv.urdf\n'}
+[5.319485] (xmen_description) StdoutLine: {'line': b'-- Symlinking: /home/pa06/xmen_ws/install/xmen_description/share/xmen_description/meshes/DYNAMIXEL_XM430_W350_R__Solid_1__DYNAMIXEL_XM430_W350_R__Solid_1.stl\n'}
+[5.356229] (xmen_description) StdoutLine: {'line': b'-- Symlinking: /home/pa06/xmen_ws/install/xmen_description/share/xmen_description/meshes/DYNAMIXEL_XM430_W350_R________1__DYNAMIXEL_XM430_W350_R________1.stl\n'}
+[5.370106] (-) TimerEvent: {}
+[5.398326] (xmen_description) StdoutLine: {'line': b'-- Symlinking: /home/pa06/xmen_ws/install/xmen_description/share/xmen_description/meshes/DYNAMIXEL_XM430_W350_R________1__DYNAMIXEL_XM430_W350_R________1_1.stl\n'}
+[5.437417] (xmen_description) StdoutLine: {'line': b'-- Symlinking: /home/pa06/xmen_ws/install/xmen_description/share/xmen_description/meshes/DYNAMIXEL_XM430_W350_R________1__DYNAMIXEL_XM430_W350_R________1_2.stl\n'}
+[5.471366] (-) TimerEvent: {}
+[5.478635] (xmen_description) StdoutLine: {'line': b'-- Symlinking: /home/pa06/xmen_ws/install/xmen_description/share/xmen_description/meshes/DYNAMIXEL_XM430_W350_R________1__DYNAMIXEL_XM430_W350_R________1_3.stl\n'}
+[5.521222] (xmen_description) StdoutLine: {'line': b'-- Symlinking: /home/pa06/xmen_ws/install/xmen_description/share/xmen_description/meshes/DYNAMIXEL_XM430_W350_R________1__DYNAMIXEL_XM430_W350_R________1_4.stl\n'}
+[5.559433] (xmen_description) StdoutLine: {'line': b'-- Symlinking: /home/pa06/xmen_ws/install/xmen_description/share/xmen_description/meshes/DYNAMIXEL_XM430_W350_R________1__DYNAMIXEL_XM430_W350_R________1_5.stl\n'}
+[5.574375] (-) TimerEvent: {}
+[5.645337] (xmen_description) StdoutLine: {'line': b'-- Symlinking: /home/pa06/xmen_ws/install/xmen_description/share/xmen_description/meshes/FR12_H101K.stl\n'}
+[5.675231] (-) TimerEvent: {}
+[5.691101] (xmen_description) StdoutLine: {'line': b'-- Symlinking: /home/pa06/xmen_ws/install/xmen_description/share/xmen_description/meshes/FR12_S102K.stl\n'}
+[5.739334] (xmen_description) StdoutLine: {'line': b'-- Symlinking: /home/pa06/xmen_ws/install/xmen_description/share/xmen_description/meshes/HN12_N101.stl\n'}
+[5.776213] (-) TimerEvent: {}
+[5.780422] (xmen_description) StdoutLine: {'line': b'-- Symlinking: /home/pa06/xmen_ws/install/xmen_description/share/xmen_description/meshes/Part_1.stl\n'}
+[5.824203] (xmen_description) StdoutLine: {'line': b'-- Symlinking: /home/pa06/xmen_ws/install/xmen_description/share/xmen_description/meshes/Part_1_1.stl\n'}
+[5.866419] (xmen_description) StdoutLine: {'line': b'-- Symlinking: /home/pa06/xmen_ws/install/xmen_description/share/xmen_description/meshes/Part_2.stl\n'}
+[5.876383] (-) TimerEvent: {}
+[5.910938] (xmen_description) StdoutLine: {'line': b'-- Symlinking: /home/pa06/xmen_ws/install/xmen_description/share/xmen_description/meshes/Part_3.stl\n'}
+[5.952543] (xmen_description) StdoutLine: {'line': b'-- Symlinking: /home/pa06/xmen_ws/install/xmen_description/share/xmen_description/meshes/Part_4.stl\n'}
+[5.977214] (-) TimerEvent: {}
+[5.998226] (xmen_description) StdoutLine: {'line': b'-- Symlinking: /home/pa06/xmen_ws/install/xmen_description/share/xmen_description/meshes/Part_5.stl\n'}
+[6.041228] (xmen_description) StdoutLine: {'line': b'-- Symlinking: /home/pa06/xmen_ws/install/xmen_description/share/xmen_description/meshes/XM430_W350.stl\n'}
+[6.077385] (-) TimerEvent: {}
+[6.095939] (xmen_description) StdoutLine: {'line': b'-- Symlinking: /home/pa06/xmen_ws/install/xmen_description/share/xmen_description/meshes/XM430_W350_1.stl\n'}
+[6.153802] (xmen_description) StdoutLine: {'line': b'-- Symlinking: /home/pa06/xmen_ws/install/xmen_description/share/xmen_description/meshes/XM430_W350_2.stl\n'}
+[6.179328] (-) TimerEvent: {}
+[6.217630] (xmen_description) StdoutLine: {'line': b'-- Symlinking: /home/pa06/xmen_ws/install/xmen_description/share/xmen_description/meshes/XM430_W350_3.stl\n'}
+[6.270301] (xmen_description) StdoutLine: {'line': b'-- Symlinking: /home/pa06/xmen_ws/install/xmen_description/share/xmen_description/rviz/tracking.rviz\n'}
+[6.279500] (-) TimerEvent: {}
+[6.318319] (xmen_description) StdoutLine: {'line': b'-- Symlinking: /home/pa06/xmen_ws/install/xmen_description/share/ament_index/resource_index/package_run_dependencies/xmen_description\n'}
+[6.362989] (xmen_description) StdoutLine: {'line': b'-- Symlinking: /home/pa06/xmen_ws/install/xmen_description/share/ament_index/resource_index/parent_prefix_path/xmen_description\n'}
+[6.380186] (-) TimerEvent: {}
+[6.408784] (xmen_description) StdoutLine: {'line': b'-- Symlinking: /home/pa06/xmen_ws/install/xmen_description/share/xmen_description/environment/ament_prefix_path.sh\n'}
+[6.448168] (xmen_description) StdoutLine: {'line': b'-- Symlinking: /home/pa06/xmen_ws/install/xmen_description/share/xmen_description/environment/ament_prefix_path.dsv\n'}
+[6.480353] (-) TimerEvent: {}
+[6.491640] (xmen_description) StdoutLine: {'line': b'-- Symlinking: /home/pa06/xmen_ws/install/xmen_description/share/xmen_description/environment/path.sh\n'}
+[6.533601] (xmen_description) StdoutLine: {'line': b'-- Symlinking: /home/pa06/xmen_ws/install/xmen_description/share/xmen_description/environment/path.dsv\n'}
+[6.582535] (-) TimerEvent: {}
+[6.615660] (xmen_description) StdoutLine: {'line': b'-- Symlinking: /home/pa06/xmen_ws/install/xmen_description/share/xmen_description/local_setup.bash\n'}
+[6.685786] (-) TimerEvent: {}
+[6.745353] (xmen_description) StdoutLine: {'line': b'-- Symlinking: /home/pa06/xmen_ws/install/xmen_description/share/xmen_description/local_setup.fish\n'}
+[6.786970] (-) TimerEvent: {}
+[6.886261] (xmen_description) StdoutLine: {'line': b'-- Symlinking: /home/pa06/xmen_ws/install/xmen_description/share/xmen_description/local_setup.sh\n'}
+[6.891537] (-) TimerEvent: {}
+[6.983936] (xmen_description) StdoutLine: {'line': b'-- Symlinking: /home/pa06/xmen_ws/install/xmen_description/share/xmen_description/local_setup.zsh\n'}
+[6.992365] (-) TimerEvent: {}
+[7.072380] (xmen_description) StdoutLine: {'line': b'-- Symlinking: /home/pa06/xmen_ws/install/xmen_description/share/xmen_description/local_setup.dsv\n'}
+[7.092600] (-) TimerEvent: {}
+[7.122652] (xmen_description) StdoutLine: {'line': b'-- Symlinking: /home/pa06/xmen_ws/install/xmen_description/share/xmen_description/package.dsv\n'}
+[7.171220] (xmen_description) StdoutLine: {'line': b'-- Symlinking: /home/pa06/xmen_ws/install/xmen_description/share/ament_index/resource_index/packages/xmen_description\n'}
+[7.192826] (-) TimerEvent: {}
+[7.228188] (xmen_description) StdoutLine: {'line': b'-- Symlinking: /home/pa06/xmen_ws/install/xmen_description/share/xmen_description/cmake/xmen_descriptionConfig.cmake\n'}
+[7.286270] (xmen_description) StdoutLine: {'line': b'-- Symlinking: /home/pa06/xmen_ws/install/xmen_description/share/xmen_description/cmake/xmen_descriptionConfig-version.cmake\n'}
+[7.293054] (-) TimerEvent: {}
+[7.379023] (xmen_description) StdoutLine: {'line': b'-- Symlinking: /home/pa06/xmen_ws/install/xmen_description/share/xmen_description/package.xml\n'}
+[7.393236] (-) TimerEvent: {}
+[7.437559] (xmen_description) CommandEnded: {'returncode': 0}
+[7.496656] (-) TimerEvent: {}
+[7.600272] (-) TimerEvent: {}
+[7.625995] (xmen_description) JobEnded: {'identifier': 'xmen_description', 'rc': 0}
+[7.700561] (-) TimerEvent: {}
+[7.801968] (-) TimerEvent: {}
+[7.902636] (-) TimerEvent: {}
+[8.003646] (-) TimerEvent: {}
+[8.104383] (-) TimerEvent: {}
+[8.205398] (-) TimerEvent: {}
+[8.306489] (-) TimerEvent: {}
+[8.407182] (-) TimerEvent: {}
+[8.507794] (-) TimerEvent: {}
+[8.608697] (-) TimerEvent: {}
+[8.710390] (-) TimerEvent: {}
+[8.812387] (-) TimerEvent: {}
+[8.834129] (xmen_control) Command: {'cmd': ['/usr/bin/python3', '-W', 'ignore:setup.py install is deprecated', '-W', 'ignore:easy_install command is deprecated', 'setup.py', 'develop', '--editable', '--build-directory', '/home/pa06/xmen_ws/build/xmen_control/build', '--no-deps', 'symlink_data'], 'cwd': '/home/pa06/xmen_ws/build/xmen_control', 'env': OrderedDict({'LESSOPEN': '| /usr/bin/lesspipe %s', 'USER': 'pa06', 'SSH_CLIENT': '10.2.12.136 40464 22', 'XDG_SESSION_TYPE': 'tty', 'GIT_ASKPASS': '/home/pa06/.vscode-server/cli/servers/Stable-07f806f999227108933c2e30515b26eecc1fda74/server/extensions/git/dist/askpass.sh', 'ROS_APT_SOURCE_VERSION': '1.3.0', 'SHLVL': '2', 'LD_LIBRARY_PATH': '/opt/ros/lyrical/lib/aarch64-linux-gnu:/opt/ros/lyrical/lib', 'BROWSER': '/home/pa06/.vscode-server/cli/servers/Stable-07f806f999227108933c2e30515b26eecc1fda74/server/bin/helpers/browser.sh', 'HOME': '/home/pa06', 'OLDPWD': '/home/pa06', 'TERM_PROGRAM_VERSION': '1.140.0', 'VSCODE_IPC_HOOK_CLI': '/run/user/1000/vscode-ipc-49c68a0c-e610-4797-a256-e91b89ac904a.sock', 'ROS_PYTHON_VERSION': '3', 'VSCODE_GIT_ASKPASS_MAIN': '/home/pa06/.vscode-server/cli/servers/Stable-07f806f999227108933c2e30515b26eecc1fda74/server/extensions/git/dist/askpass-main.js', 'VSCODE_GIT_ASKPASS_NODE': '/home/pa06/.vscode-server/cli/servers/Stable-07f806f999227108933c2e30515b26eecc1fda74/server/node', 'VSCODE_PYTHON_AUTOACTIVATE_GUARD': '1', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'COLORTERM': 'truecolor', 'ROS_DISTRO': 'lyrical', 'LOGNAME': 'pa06', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'CLAUDE_CODE_SSE_PORT': '55492', 'XDG_SESSION_CLASS': 'user', 'TERM': 'xterm-256color', 'XDG_SESSION_ID': '3', 'PATH': '/opt/ros/lyrical/bin:/home/pa06/.vscode-server/data/User/globalStorage/github.copilot-chat/debugCommand:/home/pa06/.vscode-server/data/User/globalStorage/github.copilot-chat/copilotCli:/home/pa06/.vscode-server/cli/servers/Stable-07f806f999227108933c2e30515b26eecc1fda74/server/bin/remote-cli:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin', 'XDG_RUNTIME_DIR': '/run/user/1000', 'LANG': 'C.UTF-8', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.swp=00;90:*.tmp=00;90:*.dpkg-dist=00;90:*.dpkg-old=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:', 'VSCODE_GIT_IPC_HANDLE': '/run/user/1000/vscode-git-eb45721f6f.sock', 'TERM_PROGRAM': 'vscode', 'AMENT_PREFIX_PATH': '/opt/ros/lyrical', 'SHELL': '/bin/bash', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'ROS_AUTOMATIC_DISCOVERY_RANGE': 'SUBNET', 'VSCODE_GIT_ASKPASS_EXTRA_ARGS': '', 'PWD': '/home/pa06/xmen_ws/build/xmen_control', 'LC_ALL': 'en_US.UTF-8', 'COPILOT_DEBUG_NONCE': '0b2d8c3eb81fbb959303761702b3fc92', 'SSH_CONNECTION': '10.2.12.136 40464 10.2.12.68 22', 'XDG_DATA_DIRS': '/usr/local/share:/usr/share:/var/lib/snapd/desktop', 'PYTHONPATH': '/home/pa06/xmen_ws/build/xmen_control/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/pa06/xmen_ws/install/xmen_control/lib/python3.14/site-packages:/opt/ros/lyrical/lib/python3.14/site-packages', 'COLCON': '1'}), 'shell': False}
+[8.872875] (xmen_vision) Command: {'cmd': ['/usr/bin/python3', '-W', 'ignore:setup.py install is deprecated', '-W', 'ignore:easy_install command is deprecated', 'setup.py', 'develop', '--editable', '--build-directory', '/home/pa06/xmen_ws/build/xmen_vision/build', '--no-deps', 'symlink_data'], 'cwd': '/home/pa06/xmen_ws/build/xmen_vision', 'env': OrderedDict({'LESSOPEN': '| /usr/bin/lesspipe %s', 'USER': 'pa06', 'SSH_CLIENT': '10.2.12.136 40464 22', 'XDG_SESSION_TYPE': 'tty', 'GIT_ASKPASS': '/home/pa06/.vscode-server/cli/servers/Stable-07f806f999227108933c2e30515b26eecc1fda74/server/extensions/git/dist/askpass.sh', 'ROS_APT_SOURCE_VERSION': '1.3.0', 'SHLVL': '2', 'LD_LIBRARY_PATH': '/opt/ros/lyrical/lib/aarch64-linux-gnu:/opt/ros/lyrical/lib', 'BROWSER': '/home/pa06/.vscode-server/cli/servers/Stable-07f806f999227108933c2e30515b26eecc1fda74/server/bin/helpers/browser.sh', 'HOME': '/home/pa06', 'OLDPWD': '/home/pa06', 'TERM_PROGRAM_VERSION': '1.140.0', 'VSCODE_IPC_HOOK_CLI': '/run/user/1000/vscode-ipc-49c68a0c-e610-4797-a256-e91b89ac904a.sock', 'ROS_PYTHON_VERSION': '3', 'VSCODE_GIT_ASKPASS_MAIN': '/home/pa06/.vscode-server/cli/servers/Stable-07f806f999227108933c2e30515b26eecc1fda74/server/extensions/git/dist/askpass-main.js', 'VSCODE_GIT_ASKPASS_NODE': '/home/pa06/.vscode-server/cli/servers/Stable-07f806f999227108933c2e30515b26eecc1fda74/server/node', 'VSCODE_PYTHON_AUTOACTIVATE_GUARD': '1', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'COLORTERM': 'truecolor', 'ROS_DISTRO': 'lyrical', 'LOGNAME': 'pa06', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'CLAUDE_CODE_SSE_PORT': '55492', 'XDG_SESSION_CLASS': 'user', 'TERM': 'xterm-256color', 'XDG_SESSION_ID': '3', 'PATH': '/opt/ros/lyrical/bin:/home/pa06/.vscode-server/data/User/globalStorage/github.copilot-chat/debugCommand:/home/pa06/.vscode-server/data/User/globalStorage/github.copilot-chat/copilotCli:/home/pa06/.vscode-server/cli/servers/Stable-07f806f999227108933c2e30515b26eecc1fda74/server/bin/remote-cli:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin', 'XDG_RUNTIME_DIR': '/run/user/1000', 'LANG': 'C.UTF-8', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.swp=00;90:*.tmp=00;90:*.dpkg-dist=00;90:*.dpkg-old=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:', 'VSCODE_GIT_IPC_HANDLE': '/run/user/1000/vscode-git-eb45721f6f.sock', 'TERM_PROGRAM': 'vscode', 'AMENT_PREFIX_PATH': '/opt/ros/lyrical', 'SHELL': '/bin/bash', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'ROS_AUTOMATIC_DISCOVERY_RANGE': 'SUBNET', 'VSCODE_GIT_ASKPASS_EXTRA_ARGS': '', 'PWD': '/home/pa06/xmen_ws/build/xmen_vision', 'LC_ALL': 'en_US.UTF-8', 'COPILOT_DEBUG_NONCE': '0b2d8c3eb81fbb959303761702b3fc92', 'SSH_CONNECTION': '10.2.12.136 40464 10.2.12.68 22', 'XDG_DATA_DIRS': '/usr/local/share:/usr/share:/var/lib/snapd/desktop', 'PYTHONPATH': '/home/pa06/xmen_ws/build/xmen_vision/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/pa06/xmen_ws/install/xmen_vision/lib/python3.14/site-packages:/opt/ros/lyrical/lib/python3.14/site-packages', 'COLCON': '1'}), 'shell': False}
+[8.912546] (-) TimerEvent: {}
+[8.926058] (xmen_tracker) Command: {'cmd': ['/usr/bin/python3', '-W', 'ignore:setup.py install is deprecated', '-W', 'ignore:easy_install command is deprecated', 'setup.py', 'develop', '--editable', '--build-directory', '/home/pa06/xmen_ws/build/xmen_tracker/build', '--no-deps', 'symlink_data'], 'cwd': '/home/pa06/xmen_ws/build/xmen_tracker', 'env': OrderedDict({'LESSOPEN': '| /usr/bin/lesspipe %s', 'USER': 'pa06', 'SSH_CLIENT': '10.2.12.136 40464 22', 'XDG_SESSION_TYPE': 'tty', 'GIT_ASKPASS': '/home/pa06/.vscode-server/cli/servers/Stable-07f806f999227108933c2e30515b26eecc1fda74/server/extensions/git/dist/askpass.sh', 'ROS_APT_SOURCE_VERSION': '1.3.0', 'SHLVL': '2', 'LD_LIBRARY_PATH': '/opt/ros/lyrical/lib/aarch64-linux-gnu:/opt/ros/lyrical/lib', 'BROWSER': '/home/pa06/.vscode-server/cli/servers/Stable-07f806f999227108933c2e30515b26eecc1fda74/server/bin/helpers/browser.sh', 'HOME': '/home/pa06', 'OLDPWD': '/home/pa06', 'TERM_PROGRAM_VERSION': '1.140.0', 'VSCODE_IPC_HOOK_CLI': '/run/user/1000/vscode-ipc-49c68a0c-e610-4797-a256-e91b89ac904a.sock', 'ROS_PYTHON_VERSION': '3', 'VSCODE_GIT_ASKPASS_MAIN': '/home/pa06/.vscode-server/cli/servers/Stable-07f806f999227108933c2e30515b26eecc1fda74/server/extensions/git/dist/askpass-main.js', 'VSCODE_GIT_ASKPASS_NODE': '/home/pa06/.vscode-server/cli/servers/Stable-07f806f999227108933c2e30515b26eecc1fda74/server/node', 'VSCODE_PYTHON_AUTOACTIVATE_GUARD': '1', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'COLORTERM': 'truecolor', 'ROS_DISTRO': 'lyrical', 'LOGNAME': 'pa06', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'CLAUDE_CODE_SSE_PORT': '55492', 'XDG_SESSION_CLASS': 'user', 'TERM': 'xterm-256color', 'XDG_SESSION_ID': '3', 'PATH': '/opt/ros/lyrical/bin:/home/pa06/.vscode-server/data/User/globalStorage/github.copilot-chat/debugCommand:/home/pa06/.vscode-server/data/User/globalStorage/github.copilot-chat/copilotCli:/home/pa06/.vscode-server/cli/servers/Stable-07f806f999227108933c2e30515b26eecc1fda74/server/bin/remote-cli:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin', 'XDG_RUNTIME_DIR': '/run/user/1000', 'LANG': 'C.UTF-8', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.swp=00;90:*.tmp=00;90:*.dpkg-dist=00;90:*.dpkg-old=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:', 'VSCODE_GIT_IPC_HANDLE': '/run/user/1000/vscode-git-eb45721f6f.sock', 'TERM_PROGRAM': 'vscode', 'AMENT_PREFIX_PATH': '/opt/ros/lyrical', 'SHELL': '/bin/bash', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'ROS_AUTOMATIC_DISCOVERY_RANGE': 'SUBNET', 'VSCODE_GIT_ASKPASS_EXTRA_ARGS': '', 'PWD': '/home/pa06/xmen_ws/build/xmen_tracker', 'LC_ALL': 'en_US.UTF-8', 'COPILOT_DEBUG_NONCE': '0b2d8c3eb81fbb959303761702b3fc92', 'SSH_CONNECTION': '10.2.12.136 40464 10.2.12.68 22', 'XDG_DATA_DIRS': '/usr/local/share:/usr/share:/var/lib/snapd/desktop', 'PYTHONPATH': '/home/pa06/xmen_ws/build/xmen_tracker/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/pa06/xmen_ws/install/xmen_tracker/lib/python3.14/site-packages:/opt/ros/lyrical/lib/python3.14/site-packages', 'COLCON': '1'}), 'shell': False}
+[9.012716] (-) TimerEvent: {}
+[9.113645] (-) TimerEvent: {}
+[9.214488] (-) TimerEvent: {}
+[9.315201] (-) TimerEvent: {}
+[9.415974] (-) TimerEvent: {}
+[9.517003] (-) TimerEvent: {}
+[9.617727] (-) TimerEvent: {}
+[9.718359] (-) TimerEvent: {}
+[9.819031] (-) TimerEvent: {}
+[9.919727] (-) TimerEvent: {}
+[10.020357] (-) TimerEvent: {}
+[10.121213] (-) TimerEvent: {}
+[10.223427] (-) TimerEvent: {}
+[10.324023] (-) TimerEvent: {}
+[10.339225] (xmen_control) StdoutLine: {'line': b'running develop\n'}
+[10.340374] (xmen_vision) StdoutLine: {'line': b'running develop\n'}
+[10.408850] (xmen_tracker) StdoutLine: {'line': b'running develop\n'}
+[10.424264] (-) TimerEvent: {}
+[10.524886] (-) TimerEvent: {}
+[10.625620] (-) TimerEvent: {}
+[10.726372] (-) TimerEvent: {}
+[13.461841] (xmen_vision) StdoutLine: {'line': b'running egg_info\n'}
+[13.463373] (-) TimerEvent: {}
+[13.464186] (xmen_control) StdoutLine: {'line': b'running egg_info\n'}
+[13.465976] (xmen_vision) StdoutLine: {'line': b'creating xmen_vision.egg-info\n'}
+[13.466768] (xmen_control) StdoutLine: {'line': b'creating xmen_control.egg-info\n'}
+[13.467285] (xmen_tracker) StdoutLine: {'line': b'running egg_info\n'}
+[13.467746] (xmen_tracker) StdoutLine: {'line': b'creating xmen_tracker.egg-info\n'}
+[13.468457] (xmen_control) StdoutLine: {'line': b'writing xmen_control.egg-info/PKG-INFO\n'}
+[13.469264] (xmen_tracker) StdoutLine: {'line': b'writing xmen_tracker.egg-info/PKG-INFO\n'}
+[13.469907] (xmen_tracker) StdoutLine: {'line': b'writing dependency_links to xmen_tracker.egg-info/dependency_links.txt\n'}
+[13.471381] (xmen_vision) StdoutLine: {'line': b'writing xmen_vision.egg-info/PKG-INFO\n'}
+[13.472376] (xmen_vision) StdoutLine: {'line': b'writing dependency_links to xmen_vision.egg-info/dependency_links.txt\n'}
+[13.472835] (xmen_vision) StdoutLine: {'line': b'writing entry points to xmen_vision.egg-info/entry_points.txt\n'}
+[13.473385] (xmen_tracker) StdoutLine: {'line': b'writing entry points to xmen_tracker.egg-info/entry_points.txt\n'}
+[13.473877] (xmen_vision) StdoutLine: {'line': b'writing requirements to xmen_vision.egg-info/requires.txt\n'}
+[13.474500] (xmen_tracker) StdoutLine: {'line': b'writing requirements to xmen_tracker.egg-info/requires.txt\n'}
+[13.474956] (xmen_vision) StdoutLine: {'line': b'writing top-level names to xmen_vision.egg-info/top_level.txt\n'}
+[13.475614] (xmen_tracker) StdoutLine: {'line': b'writing top-level names to xmen_tracker.egg-info/top_level.txt\n'}
+[13.476051] (xmen_tracker) StdoutLine: {'line': b"writing manifest file 'xmen_tracker.egg-info/SOURCES.txt'\n"}
+[13.476603] (xmen_vision) StdoutLine: {'line': b"writing manifest file 'xmen_vision.egg-info/SOURCES.txt'\n"}
+[13.477230] (xmen_control) StdoutLine: {'line': b'writing dependency_links to xmen_control.egg-info/dependency_links.txt\n'}
+[13.477776] (xmen_control) StdoutLine: {'line': b'writing entry points to xmen_control.egg-info/entry_points.txt\n'}
+[13.478263] (xmen_control) StdoutLine: {'line': b'writing requirements to xmen_control.egg-info/requires.txt\n'}
+[13.479226] (xmen_control) StdoutLine: {'line': b'writing top-level names to xmen_control.egg-info/top_level.txt\n'}
+[13.480051] (xmen_control) StdoutLine: {'line': b"writing manifest file 'xmen_control.egg-info/SOURCES.txt'\n"}
+[13.563522] (-) TimerEvent: {}
+[13.663384] (xmen_tracker) StdoutLine: {'line': b"reading manifest file 'xmen_tracker.egg-info/SOURCES.txt'\n"}
+[13.663885] (-) TimerEvent: {}
+[13.664775] (xmen_vision) StdoutLine: {'line': b"reading manifest file 'xmen_vision.egg-info/SOURCES.txt'\n"}
+[13.667004] (xmen_tracker) StdoutLine: {'line': b"writing manifest file 'xmen_tracker.egg-info/SOURCES.txt'\n"}
+[13.667834] (xmen_vision) StdoutLine: {'line': b"writing manifest file 'xmen_vision.egg-info/SOURCES.txt'\n"}
+[13.683286] (xmen_control) StdoutLine: {'line': b"reading manifest file 'xmen_control.egg-info/SOURCES.txt'\n"}
+[13.686449] (xmen_control) StdoutLine: {'line': b"writing manifest file 'xmen_control.egg-info/SOURCES.txt'\n"}
+[13.761096] (xmen_tracker) StdoutLine: {'line': b'running build_ext\n'}
+[13.761839] (xmen_tracker) StdoutLine: {'line': b'Creating /home/pa06/xmen_ws/install/xmen_tracker/lib/python3.14/site-packages/xmen-tracker.egg-link (link to .)\n'}
+[13.762462] (xmen_vision) StdoutLine: {'line': b'running build_ext\n'}
+[13.763191] (xmen_vision) StdoutLine: {'line': b'Creating /home/pa06/xmen_ws/install/xmen_vision/lib/python3.14/site-packages/xmen-vision.egg-link (link to .)\n'}
+[13.764041] (-) TimerEvent: {}
+[13.765711] (xmen_tracker) StdoutLine: {'line': b'Installing preview_node script to /home/pa06/xmen_ws/install/xmen_tracker/lib/xmen_tracker\n'}
+[13.766301] (xmen_vision) StdoutLine: {'line': b'Installing realsense_node script to /home/pa06/xmen_ws/install/xmen_vision/lib/xmen_vision\n'}
+[13.767191] (xmen_vision) StdoutLine: {'line': b'\n'}
+[13.767722] (xmen_vision) StdoutLine: {'line': b'Installed /home/pa06/xmen_ws/build/xmen_vision\n'}
+[13.768355] (xmen_tracker) StdoutLine: {'line': b'Installing rviz_node script to /home/pa06/xmen_ws/install/xmen_tracker/lib/xmen_tracker\n'}
+[13.768925] (xmen_vision) StdoutLine: {'line': b'running symlink_data\n'}
+[13.769558] (xmen_vision) StdoutLine: {'line': b'creating /home/pa06/xmen_ws/install/xmen_vision/share/ament_index/resource_index/packages\n'}
+[13.770194] (xmen_tracker) StdoutLine: {'line': b'Installing tracker_node script to /home/pa06/xmen_ws/install/xmen_tracker/lib/xmen_tracker\n'}
+[13.772105] (xmen_vision) StdoutLine: {'line': b'symbolically linking /home/pa06/xmen_ws/build/xmen_vision/resource/xmen_vision -> /home/pa06/xmen_ws/install/xmen_vision/share/ament_index/resource_index/packages\n'}
+[13.773948] (xmen_vision) StdoutLine: {'line': b'symbolically linking /home/pa06/xmen_ws/build/xmen_vision/package.xml -> /home/pa06/xmen_ws/install/xmen_vision/share/xmen_vision\n'}
+[13.775645] (xmen_tracker) StdoutLine: {'line': b'\n'}
+[13.779542] (xmen_tracker) StdoutLine: {'line': b'Installed /home/pa06/xmen_ws/build/xmen_tracker\n'}
+[13.783982] (xmen_tracker) StdoutLine: {'line': b'running symlink_data\n'}
+[13.785760] (xmen_tracker) StdoutLine: {'line': b'creating /home/pa06/xmen_ws/install/xmen_tracker/share/ament_index/resource_index/packages\n'}
+[13.787961] (xmen_tracker) StdoutLine: {'line': b'symbolically linking /home/pa06/xmen_ws/build/xmen_tracker/resource/xmen_tracker -> /home/pa06/xmen_ws/install/xmen_tracker/share/ament_index/resource_index/packages\n'}
+[13.794045] (xmen_tracker) StdoutLine: {'line': b'symbolically linking /home/pa06/xmen_ws/build/xmen_tracker/package.xml -> /home/pa06/xmen_ws/install/xmen_tracker/share/xmen_tracker\n'}
+[13.810760] (xmen_control) StdoutLine: {'line': b'running build_ext\n'}
+[13.812699] (xmen_control) StdoutLine: {'line': b'Creating /home/pa06/xmen_ws/install/xmen_control/lib/python3.14/site-packages/xmen-control.egg-link (link to .)\n'}
+[13.821182] (xmen_control) StdoutLine: {'line': b'Installing control script to /home/pa06/xmen_ws/install/xmen_control/lib/xmen_control\n'}
+[13.826533] (xmen_control) StdoutLine: {'line': b'Installing control_lite script to /home/pa06/xmen_ws/install/xmen_control/lib/xmen_control\n'}
+[13.830267] (xmen_control) StdoutLine: {'line': b'\n'}
+[13.832380] (xmen_control) StdoutLine: {'line': b'Installed /home/pa06/xmen_ws/build/xmen_control\n'}
+[13.833828] (xmen_control) StdoutLine: {'line': b'running symlink_data\n'}
+[13.835425] (xmen_control) StdoutLine: {'line': b'creating /home/pa06/xmen_ws/install/xmen_control/share/ament_index/resource_index/packages\n'}
+[13.838548] (xmen_control) StdoutLine: {'line': b'symbolically linking /home/pa06/xmen_ws/build/xmen_control/resource/xmen_control -> /home/pa06/xmen_ws/install/xmen_control/share/ament_index/resource_index/packages\n'}
+[13.845554] (xmen_control) StdoutLine: {'line': b'symbolically linking /home/pa06/xmen_ws/build/xmen_control/package.xml -> /home/pa06/xmen_ws/install/xmen_control/share/xmen_control\n'}
+[13.864518] (-) TimerEvent: {}
+[13.968437] (-) TimerEvent: {}
+[14.070487] (-) TimerEvent: {}
+[14.146513] (xmen_tracker) CommandEnded: {'returncode': 0}
+[14.171920] (-) TimerEvent: {}
+[14.201055] (xmen_tracker) JobEnded: {'identifier': 'xmen_tracker', 'rc': 0}
+[14.204648] (xmen_vision) CommandEnded: {'returncode': 0}
+[14.240892] (xmen_vision) JobEnded: {'identifier': 'xmen_vision', 'rc': 0}
+[14.244536] (xmen_control) CommandEnded: {'returncode': 0}
+[14.272058] (-) TimerEvent: {}
+[14.281535] (xmen_control) JobEnded: {'identifier': 'xmen_control', 'rc': 0}
+[14.284700] (xmen_bringup) JobStarted: {'identifier': 'xmen_bringup'}
+[14.320764] (xmen_bringup) JobProgress: {'identifier': 'xmen_bringup', 'progress': 'cmake'}
+[14.322375] (xmen_bringup) Command: {'cmd': ['/usr/bin/cmake', '/home/pa06/xmen_ws/src/Xmen/xmen_bringup', '-DAMENT_CMAKE_SYMLINK_INSTALL=1', '-DCMAKE_INSTALL_PREFIX=/home/pa06/xmen_ws/install/xmen_bringup'], 'cwd': '/home/pa06/xmen_ws/build/xmen_bringup', 'env': OrderedDict({'LESSOPEN': '| /usr/bin/lesspipe %s', 'USER': 'pa06', 'SSH_CLIENT': '10.2.12.136 40464 22', 'XDG_SESSION_TYPE': 'tty', 'GIT_ASKPASS': '/home/pa06/.vscode-server/cli/servers/Stable-07f806f999227108933c2e30515b26eecc1fda74/server/extensions/git/dist/askpass.sh', 'ROS_APT_SOURCE_VERSION': '1.3.0', 'SHLVL': '2', 'LD_LIBRARY_PATH': '/opt/ros/lyrical/lib/aarch64-linux-gnu:/opt/ros/lyrical/lib', 'BROWSER': '/home/pa06/.vscode-server/cli/servers/Stable-07f806f999227108933c2e30515b26eecc1fda74/server/bin/helpers/browser.sh', 'HOME': '/home/pa06', 'OLDPWD': '/home/pa06', 'TERM_PROGRAM_VERSION': '1.140.0', 'VSCODE_IPC_HOOK_CLI': '/run/user/1000/vscode-ipc-49c68a0c-e610-4797-a256-e91b89ac904a.sock', 'ROS_PYTHON_VERSION': '3', 'VSCODE_GIT_ASKPASS_MAIN': '/home/pa06/.vscode-server/cli/servers/Stable-07f806f999227108933c2e30515b26eecc1fda74/server/extensions/git/dist/askpass-main.js', 'VSCODE_GIT_ASKPASS_NODE': '/home/pa06/.vscode-server/cli/servers/Stable-07f806f999227108933c2e30515b26eecc1fda74/server/node', 'VSCODE_PYTHON_AUTOACTIVATE_GUARD': '1', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'COLORTERM': 'truecolor', 'ROS_DISTRO': 'lyrical', 'LOGNAME': 'pa06', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'CLAUDE_CODE_SSE_PORT': '55492', 'XDG_SESSION_CLASS': 'user', 'TERM': 'xterm-256color', 'XDG_SESSION_ID': '3', 'PATH': '/opt/ros/lyrical/bin:/home/pa06/.vscode-server/data/User/globalStorage/github.copilot-chat/debugCommand:/home/pa06/.vscode-server/data/User/globalStorage/github.copilot-chat/copilotCli:/home/pa06/.vscode-server/cli/servers/Stable-07f806f999227108933c2e30515b26eecc1fda74/server/bin/remote-cli:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin', 'XDG_RUNTIME_DIR': '/run/user/1000', 'LANG': 'C.UTF-8', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.swp=00;90:*.tmp=00;90:*.dpkg-dist=00;90:*.dpkg-old=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:', 'VSCODE_GIT_IPC_HANDLE': '/run/user/1000/vscode-git-eb45721f6f.sock', 'TERM_PROGRAM': 'vscode', 'AMENT_PREFIX_PATH': '/home/pa06/xmen_ws/install/xmen_vision:/home/pa06/xmen_ws/install/xmen_tracker:/home/pa06/xmen_ws/install/xmen_description:/home/pa06/xmen_ws/install/xmen_control:/opt/ros/lyrical', 'SHELL': '/bin/bash', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'ROS_AUTOMATIC_DISCOVERY_RANGE': 'SUBNET', 'VSCODE_GIT_ASKPASS_EXTRA_ARGS': '', 'PWD': '/home/pa06/xmen_ws/build/xmen_bringup', 'LC_ALL': 'en_US.UTF-8', 'COPILOT_DEBUG_NONCE': '0b2d8c3eb81fbb959303761702b3fc92', 'SSH_CONNECTION': '10.2.12.136 40464 10.2.12.68 22', 'XDG_DATA_DIRS': '/usr/local/share:/usr/share:/var/lib/snapd/desktop', 'PYTHONPATH': '/home/pa06/xmen_ws/build/xmen_vision:/home/pa06/xmen_ws/install/xmen_vision/lib/python3.14/site-packages:/home/pa06/xmen_ws/build/xmen_tracker:/home/pa06/xmen_ws/install/xmen_tracker/lib/python3.14/site-packages:/home/pa06/xmen_ws/build/xmen_control:/home/pa06/xmen_ws/install/xmen_control/lib/python3.14/site-packages:/opt/ros/lyrical/lib/python3.14/site-packages', 'COLCON': '1', 'CMAKE_PREFIX_PATH': '/home/pa06/xmen_ws/install/xmen_description:/opt/ros/lyrical'}), 'shell': False}
+[14.348115] (xmen_bringup) StderrLine: {'line': b'\x1b[0mCMake Deprecation Warning at CMakeLists.txt:1 (cmake_minimum_required):\n'}
+[14.348665] (xmen_bringup) StderrLine: {'line': b'  Compatibility with CMake < 3.10 will be removed from a future version of\n'}
+[14.348913] (xmen_bringup) StderrLine: {'line': b'  CMake.\n'}
+[14.349205] (xmen_bringup) StderrLine: {'line': b'\n'}
+[14.349453] (xmen_bringup) StderrLine: {'line': b'  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax\n'}
+[14.349720] (xmen_bringup) StderrLine: {'line': b'  to tell CMake that the project requires at least <min> but has been updated\n'}
+[14.349972] (xmen_bringup) StderrLine: {'line': b'  to work with policies introduced by <max> or earlier.\n'}
+[14.350264] (xmen_bringup) StderrLine: {'line': b'\n'}
+[14.350553] (xmen_bringup) StderrLine: {'line': b'\x1b[0m\n'}
+[14.372240] (-) TimerEvent: {}
+[14.472829] (-) TimerEvent: {}
+[14.542720] (xmen_bringup) StdoutLine: {'line': b'-- The C compiler identification is GNU 15.2.0\n'}
+[14.572984] (-) TimerEvent: {}
+[14.673676] (-) TimerEvent: {}
+[14.774437] (-) TimerEvent: {}
+[14.797839] (xmen_bringup) StdoutLine: {'line': b'-- The CXX compiler identification is GNU 15.2.0\n'}
+[14.823803] (xmen_bringup) StdoutLine: {'line': b'-- Detecting C compiler ABI info\n'}
+[14.874583] (-) TimerEvent: {}
+[14.975211] (-) TimerEvent: {}
+[15.075913] (-) TimerEvent: {}
+[15.104841] (xmen_bringup) StdoutLine: {'line': b'-- Detecting C compiler ABI info - done\n'}
+[15.157780] (xmen_bringup) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc - skipped\n'}
+[15.158657] (xmen_bringup) StdoutLine: {'line': b'-- Detecting C compile features\n'}
+[15.160043] (xmen_bringup) StdoutLine: {'line': b'-- Detecting C compile features - done\n'}
+[15.176132] (-) TimerEvent: {}
+[15.202411] (xmen_bringup) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info\n'}
+[15.276313] (-) TimerEvent: {}
+[15.376925] (-) TimerEvent: {}
+[15.477597] (-) TimerEvent: {}
+[15.504056] (xmen_bringup) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info - done\n'}
+[15.557425] (xmen_bringup) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++ - skipped\n'}
+[15.558219] (xmen_bringup) StdoutLine: {'line': b'-- Detecting CXX compile features\n'}
+[15.560532] (xmen_bringup) StdoutLine: {'line': b'-- Detecting CXX compile features - done\n'}
+[15.577778] (-) TimerEvent: {}
+[15.589455] (xmen_bringup) StdoutLine: {'line': b'-- Found ament_cmake: 2.8.8 (/opt/ros/lyrical/share/ament_cmake/cmake)\n'}
+[15.677955] (-) TimerEvent: {}
+[15.778557] (-) TimerEvent: {}
+[15.879170] (-) TimerEvent: {}
+[15.979756] (-) TimerEvent: {}
+[16.080353] (-) TimerEvent: {}
+[16.181179] (-) TimerEvent: {}
+[16.281685] (-) TimerEvent: {}
+[16.382206] (-) TimerEvent: {}
+[16.482867] (-) TimerEvent: {}
+[16.535513] (xmen_bringup) StdoutLine: {'line': b'-- Override CMake install command with custom implementation using symlinks instead of copying resources\n'}
+[16.583005] (-) TimerEvent: {}
+[16.683587] (-) TimerEvent: {}
+[16.784165] (-) TimerEvent: {}
+[16.884718] (-) TimerEvent: {}
+[16.985311] (-) TimerEvent: {}
+[17.037678] (xmen_bringup) StdoutLine: {'line': b'-- Configuring done (2.7s)\n'}
+[17.052051] (xmen_bringup) StdoutLine: {'line': b'-- Generating done (0.0s)\n'}
+[17.057178] (xmen_bringup) StdoutLine: {'line': b'-- Build files have been written to: /home/pa06/xmen_ws/build/xmen_bringup\n'}
+[17.069999] (xmen_bringup) CommandEnded: {'returncode': 0}
+[17.072173] (xmen_bringup) JobProgress: {'identifier': 'xmen_bringup', 'progress': 'build'}
+[17.073012] (xmen_bringup) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/pa06/xmen_ws/build/xmen_bringup', '--', '-j4', '-l4'], 'cwd': '/home/pa06/xmen_ws/build/xmen_bringup', 'env': OrderedDict({'LESSOPEN': '| /usr/bin/lesspipe %s', 'USER': 'pa06', 'SSH_CLIENT': '10.2.12.136 40464 22', 'XDG_SESSION_TYPE': 'tty', 'GIT_ASKPASS': '/home/pa06/.vscode-server/cli/servers/Stable-07f806f999227108933c2e30515b26eecc1fda74/server/extensions/git/dist/askpass.sh', 'ROS_APT_SOURCE_VERSION': '1.3.0', 'SHLVL': '2', 'LD_LIBRARY_PATH': '/opt/ros/lyrical/lib/aarch64-linux-gnu:/opt/ros/lyrical/lib', 'BROWSER': '/home/pa06/.vscode-server/cli/servers/Stable-07f806f999227108933c2e30515b26eecc1fda74/server/bin/helpers/browser.sh', 'HOME': '/home/pa06', 'OLDPWD': '/home/pa06', 'TERM_PROGRAM_VERSION': '1.140.0', 'VSCODE_IPC_HOOK_CLI': '/run/user/1000/vscode-ipc-49c68a0c-e610-4797-a256-e91b89ac904a.sock', 'ROS_PYTHON_VERSION': '3', 'VSCODE_GIT_ASKPASS_MAIN': '/home/pa06/.vscode-server/cli/servers/Stable-07f806f999227108933c2e30515b26eecc1fda74/server/extensions/git/dist/askpass-main.js', 'VSCODE_GIT_ASKPASS_NODE': '/home/pa06/.vscode-server/cli/servers/Stable-07f806f999227108933c2e30515b26eecc1fda74/server/node', 'VSCODE_PYTHON_AUTOACTIVATE_GUARD': '1', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'COLORTERM': 'truecolor', 'ROS_DISTRO': 'lyrical', 'LOGNAME': 'pa06', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'CLAUDE_CODE_SSE_PORT': '55492', 'XDG_SESSION_CLASS': 'user', 'TERM': 'xterm-256color', 'XDG_SESSION_ID': '3', 'PATH': '/opt/ros/lyrical/bin:/home/pa06/.vscode-server/data/User/globalStorage/github.copilot-chat/debugCommand:/home/pa06/.vscode-server/data/User/globalStorage/github.copilot-chat/copilotCli:/home/pa06/.vscode-server/cli/servers/Stable-07f806f999227108933c2e30515b26eecc1fda74/server/bin/remote-cli:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin', 'XDG_RUNTIME_DIR': '/run/user/1000', 'LANG': 'C.UTF-8', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.swp=00;90:*.tmp=00;90:*.dpkg-dist=00;90:*.dpkg-old=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:', 'VSCODE_GIT_IPC_HANDLE': '/run/user/1000/vscode-git-eb45721f6f.sock', 'TERM_PROGRAM': 'vscode', 'AMENT_PREFIX_PATH': '/home/pa06/xmen_ws/install/xmen_vision:/home/pa06/xmen_ws/install/xmen_tracker:/home/pa06/xmen_ws/install/xmen_description:/home/pa06/xmen_ws/install/xmen_control:/opt/ros/lyrical', 'SHELL': '/bin/bash', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'ROS_AUTOMATIC_DISCOVERY_RANGE': 'SUBNET', 'VSCODE_GIT_ASKPASS_EXTRA_ARGS': '', 'PWD': '/home/pa06/xmen_ws/build/xmen_bringup', 'LC_ALL': 'en_US.UTF-8', 'COPILOT_DEBUG_NONCE': '0b2d8c3eb81fbb959303761702b3fc92', 'SSH_CONNECTION': '10.2.12.136 40464 10.2.12.68 22', 'XDG_DATA_DIRS': '/usr/local/share:/usr/share:/var/lib/snapd/desktop', 'PYTHONPATH': '/home/pa06/xmen_ws/build/xmen_vision:/home/pa06/xmen_ws/install/xmen_vision/lib/python3.14/site-packages:/home/pa06/xmen_ws/build/xmen_tracker:/home/pa06/xmen_ws/install/xmen_tracker/lib/python3.14/site-packages:/home/pa06/xmen_ws/build/xmen_control:/home/pa06/xmen_ws/install/xmen_control/lib/python3.14/site-packages:/opt/ros/lyrical/lib/python3.14/site-packages', 'COLCON': '1', 'CMAKE_PREFIX_PATH': '/home/pa06/xmen_ws/install/xmen_description:/opt/ros/lyrical'}), 'shell': False}
+[17.085552] (-) TimerEvent: {}
+[17.186277] (-) TimerEvent: {}
+[17.197313] (xmen_bringup) CommandEnded: {'returncode': 0}
+[17.199089] (xmen_bringup) JobProgress: {'identifier': 'xmen_bringup', 'progress': 'install'}
+[17.199598] (xmen_bringup) Command: {'cmd': ['/usr/bin/cmake', '--install', '/home/pa06/xmen_ws/build/xmen_bringup'], 'cwd': '/home/pa06/xmen_ws/build/xmen_bringup', 'env': OrderedDict({'LESSOPEN': '| /usr/bin/lesspipe %s', 'USER': 'pa06', 'SSH_CLIENT': '10.2.12.136 40464 22', 'XDG_SESSION_TYPE': 'tty', 'GIT_ASKPASS': '/home/pa06/.vscode-server/cli/servers/Stable-07f806f999227108933c2e30515b26eecc1fda74/server/extensions/git/dist/askpass.sh', 'ROS_APT_SOURCE_VERSION': '1.3.0', 'SHLVL': '2', 'LD_LIBRARY_PATH': '/opt/ros/lyrical/lib/aarch64-linux-gnu:/opt/ros/lyrical/lib', 'BROWSER': '/home/pa06/.vscode-server/cli/servers/Stable-07f806f999227108933c2e30515b26eecc1fda74/server/bin/helpers/browser.sh', 'HOME': '/home/pa06', 'OLDPWD': '/home/pa06', 'TERM_PROGRAM_VERSION': '1.140.0', 'VSCODE_IPC_HOOK_CLI': '/run/user/1000/vscode-ipc-49c68a0c-e610-4797-a256-e91b89ac904a.sock', 'ROS_PYTHON_VERSION': '3', 'VSCODE_GIT_ASKPASS_MAIN': '/home/pa06/.vscode-server/cli/servers/Stable-07f806f999227108933c2e30515b26eecc1fda74/server/extensions/git/dist/askpass-main.js', 'VSCODE_GIT_ASKPASS_NODE': '/home/pa06/.vscode-server/cli/servers/Stable-07f806f999227108933c2e30515b26eecc1fda74/server/node', 'VSCODE_PYTHON_AUTOACTIVATE_GUARD': '1', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'COLORTERM': 'truecolor', 'ROS_DISTRO': 'lyrical', 'LOGNAME': 'pa06', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'CLAUDE_CODE_SSE_PORT': '55492', 'XDG_SESSION_CLASS': 'user', 'TERM': 'xterm-256color', 'XDG_SESSION_ID': '3', 'PATH': '/opt/ros/lyrical/bin:/home/pa06/.vscode-server/data/User/globalStorage/github.copilot-chat/debugCommand:/home/pa06/.vscode-server/data/User/globalStorage/github.copilot-chat/copilotCli:/home/pa06/.vscode-server/cli/servers/Stable-07f806f999227108933c2e30515b26eecc1fda74/server/bin/remote-cli:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin', 'XDG_RUNTIME_DIR': '/run/user/1000', 'LANG': 'C.UTF-8', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.swp=00;90:*.tmp=00;90:*.dpkg-dist=00;90:*.dpkg-old=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:', 'VSCODE_GIT_IPC_HANDLE': '/run/user/1000/vscode-git-eb45721f6f.sock', 'TERM_PROGRAM': 'vscode', 'AMENT_PREFIX_PATH': '/home/pa06/xmen_ws/install/xmen_vision:/home/pa06/xmen_ws/install/xmen_tracker:/home/pa06/xmen_ws/install/xmen_description:/home/pa06/xmen_ws/install/xmen_control:/opt/ros/lyrical', 'SHELL': '/bin/bash', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'ROS_AUTOMATIC_DISCOVERY_RANGE': 'SUBNET', 'VSCODE_GIT_ASKPASS_EXTRA_ARGS': '', 'PWD': '/home/pa06/xmen_ws/build/xmen_bringup', 'LC_ALL': 'en_US.UTF-8', 'COPILOT_DEBUG_NONCE': '0b2d8c3eb81fbb959303761702b3fc92', 'SSH_CONNECTION': '10.2.12.136 40464 10.2.12.68 22', 'XDG_DATA_DIRS': '/usr/local/share:/usr/share:/var/lib/snapd/desktop', 'PYTHONPATH': '/home/pa06/xmen_ws/build/xmen_vision:/home/pa06/xmen_ws/install/xmen_vision/lib/python3.14/site-packages:/home/pa06/xmen_ws/build/xmen_tracker:/home/pa06/xmen_ws/install/xmen_tracker/lib/python3.14/site-packages:/home/pa06/xmen_ws/build/xmen_control:/home/pa06/xmen_ws/install/xmen_control/lib/python3.14/site-packages:/opt/ros/lyrical/lib/python3.14/site-packages', 'COLCON': '1', 'CMAKE_PREFIX_PATH': '/home/pa06/xmen_ws/install/xmen_description:/opt/ros/lyrical'}), 'shell': False}
+[17.224696] (xmen_bringup) StdoutLine: {'line': b'-- Install configuration: ""\n'}
+[17.225874] (xmen_bringup) StdoutLine: {'line': b'-- Execute custom install script\n'}
+[17.227934] (xmen_bringup) StdoutLine: {'line': b'-- Symlinking: /home/pa06/xmen_ws/install/xmen_bringup/share/xmen_bringup/launch/hardware_launch.py\n'}
+[17.258258] (xmen_bringup) StdoutLine: {'line': b'-- Symlinking: /home/pa06/xmen_ws/install/xmen_bringup/share/xmen_bringup/launch/rviz2_launch.py\n'}
+[17.285911] (xmen_bringup) StdoutLine: {'line': b'-- Symlinking: /home/pa06/xmen_ws/install/xmen_bringup/share/xmen_bringup/param/bag_qos.yaml\n'}
+[17.286427] (-) TimerEvent: {}
+[17.314049] (xmen_bringup) StdoutLine: {'line': b'-- Symlinking: /home/pa06/xmen_ws/install/xmen_bringup/share/xmen_bringup/param/control.yaml\n'}
+[17.340535] (xmen_bringup) StdoutLine: {'line': b'-- Symlinking: /home/pa06/xmen_ws/install/xmen_bringup/share/xmen_bringup/param/tracker.yaml\n'}
+[17.368370] (xmen_bringup) StdoutLine: {'line': b'-- Symlinking: /home/pa06/xmen_ws/install/xmen_bringup/share/ament_index/resource_index/package_run_dependencies/xmen_bringup\n'}
+[17.386605] (-) TimerEvent: {}
+[17.397180] (xmen_bringup) StdoutLine: {'line': b'-- Symlinking: /home/pa06/xmen_ws/install/xmen_bringup/share/ament_index/resource_index/parent_prefix_path/xmen_bringup\n'}
+[17.426656] (xmen_bringup) StdoutLine: {'line': b'-- Symlinking: /home/pa06/xmen_ws/install/xmen_bringup/share/xmen_bringup/environment/ament_prefix_path.sh\n'}
+[17.456274] (xmen_bringup) StdoutLine: {'line': b'-- Symlinking: /home/pa06/xmen_ws/install/xmen_bringup/share/xmen_bringup/environment/ament_prefix_path.dsv\n'}
+[17.484637] (xmen_bringup) StdoutLine: {'line': b'-- Symlinking: /home/pa06/xmen_ws/install/xmen_bringup/share/xmen_bringup/environment/path.sh\n'}
+[17.486776] (-) TimerEvent: {}
+[17.513961] (xmen_bringup) StdoutLine: {'line': b'-- Symlinking: /home/pa06/xmen_ws/install/xmen_bringup/share/xmen_bringup/environment/path.dsv\n'}
+[17.541962] (xmen_bringup) StdoutLine: {'line': b'-- Symlinking: /home/pa06/xmen_ws/install/xmen_bringup/share/xmen_bringup/local_setup.bash\n'}
+[17.570453] (xmen_bringup) StdoutLine: {'line': b'-- Symlinking: /home/pa06/xmen_ws/install/xmen_bringup/share/xmen_bringup/local_setup.fish\n'}
+[17.586945] (-) TimerEvent: {}
+[17.598903] (xmen_bringup) StdoutLine: {'line': b'-- Symlinking: /home/pa06/xmen_ws/install/xmen_bringup/share/xmen_bringup/local_setup.sh\n'}
+[17.626290] (xmen_bringup) StdoutLine: {'line': b'-- Symlinking: /home/pa06/xmen_ws/install/xmen_bringup/share/xmen_bringup/local_setup.zsh\n'}
+[17.653839] (xmen_bringup) StdoutLine: {'line': b'-- Symlinking: /home/pa06/xmen_ws/install/xmen_bringup/share/xmen_bringup/local_setup.dsv\n'}
+[17.680752] (xmen_bringup) StdoutLine: {'line': b'-- Symlinking: /home/pa06/xmen_ws/install/xmen_bringup/share/xmen_bringup/package.dsv\n'}
+[17.687123] (-) TimerEvent: {}
+[17.709880] (xmen_bringup) StdoutLine: {'line': b'-- Symlinking: /home/pa06/xmen_ws/install/xmen_bringup/share/ament_index/resource_index/packages/xmen_bringup\n'}
+[17.738871] (xmen_bringup) StdoutLine: {'line': b'-- Symlinking: /home/pa06/xmen_ws/install/xmen_bringup/share/xmen_bringup/cmake/xmen_bringupConfig.cmake\n'}
+[17.766092] (xmen_bringup) StdoutLine: {'line': b'-- Symlinking: /home/pa06/xmen_ws/install/xmen_bringup/share/xmen_bringup/cmake/xmen_bringupConfig-version.cmake\n'}
+[17.787333] (-) TimerEvent: {}
+[17.794238] (xmen_bringup) StdoutLine: {'line': b'-- Symlinking: /home/pa06/xmen_ws/install/xmen_bringup/share/xmen_bringup/package.xml\n'}
+[17.827016] (xmen_bringup) CommandEnded: {'returncode': 0}
+[17.887688] (-) TimerEvent: {}
+[17.904695] (xmen_bringup) JobEnded: {'identifier': 'xmen_bringup', 'rc': 0}
+[17.909280] (-) EventReactorShutdown: {}

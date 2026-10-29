@@ -1,0 +1,3 @@
+[console_scripts]
+control = xmen_control.control:main
+control_lite = xmen_control.control_lite:main

@@ -1,0 +1,20 @@
+running develop
+running egg_info
+creating xmen_vision.egg-info
+writing xmen_vision.egg-info/PKG-INFO
+writing dependency_links to xmen_vision.egg-info/dependency_links.txt
+writing entry points to xmen_vision.egg-info/entry_points.txt
+writing requirements to xmen_vision.egg-info/requires.txt
+writing top-level names to xmen_vision.egg-info/top_level.txt
+writing manifest file 'xmen_vision.egg-info/SOURCES.txt'
+reading manifest file 'xmen_vision.egg-info/SOURCES.txt'
+writing manifest file 'xmen_vision.egg-info/SOURCES.txt'
+running build_ext
+Creating /home/pa06/xmen_ws/install/xmen_vision/lib/python3.14/site-packages/xmen-vision.egg-link (link to .)
+Installing realsense_node script to /home/pa06/xmen_ws/install/xmen_vision/lib/xmen_vision
+
+Installed /home/pa06/xmen_ws/build/xmen_vision
+running symlink_data
+creating /home/pa06/xmen_ws/install/xmen_vision/share/ament_index/resource_index/packages
+symbolically linking /home/pa06/xmen_ws/build/xmen_vision/resource/xmen_vision -> /home/pa06/xmen_ws/install/xmen_vision/share/ament_index/resource_index/packages
+symbolically linking /home/pa06/xmen_ws/build/xmen_vision/package.xml -> /home/pa06/xmen_ws/install/xmen_vision/share/xmen_vision

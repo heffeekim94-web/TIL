@@ -1,0 +1,1 @@
+ament_cmake_symlink_install_files("/home/pa06/xmen_ws/src/Xmen/xmen_bringup" FILES "/opt/ros/lyrical/share/ament_cmake_core/cmake/environment_hooks/environment/path.sh" "DESTINATION" "share/xmen_bringup/environment")
