@@ -1,0 +1,5 @@
+train: /home/haeminkim/바탕화면/git/TIL/classes/PhysicalAi/projects/project-2/archive/upload_wide/yolo/wide/runs/eval/test_어두움.txt
+val: /home/haeminkim/바탕화면/git/TIL/classes/PhysicalAi/projects/project-2/archive/upload_wide/yolo/wide/runs/eval/test_어두움.txt
+test: /home/haeminkim/바탕화면/git/TIL/classes/PhysicalAi/projects/project-2/archive/upload_wide/yolo/wide/runs/eval/test_어두움.txt
+nc: 6
+names: ['red_cyl', 'green_cyl', 'red_box', 'green_box', 'barcode', 'traffic_light']
