@@ -1,7 +1,9 @@
 Date: 2026 Nov 2, Monday
 
 ## 오늘 배운 것
-- [신호등 밝기 판정 · 릴레이 · SSH 화면 속도 (오늘 실습에서 배운 것)](class.md)
+- [Jetson 에지 컴퓨팅 · ONNX Runtime 추론 최적화 · 오늘 실습에서 배운 것](class.md)
+- [강의](https://app.notion.com/p/40c7969693958068810be833db58cc34)
+- [수업 자료](https://docs.google.com/presentation/d/1qHPfYlgfzE8w6xKevdClf9dxrpqJ040hPq8NfVkz0Gk/edit)
 
 
 
