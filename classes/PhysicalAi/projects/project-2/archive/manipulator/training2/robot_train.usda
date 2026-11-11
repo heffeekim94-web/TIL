@@ -1,0 +1,37 @@
+#usda 1.0
+(
+    defaultPrim = "ninja_turtle"
+    doc = """학습2 용 로봇 = ../robot_usd 로봇 그대로 + 충돌 끄는 쌍 하나.
+    wrist_link ↔ link2: 충돌 메시가 HOME 에서 원래 겹침 (약 36 N). 팀 moveit_config ninja_turtle.srdf 도 reason="Default" 로 끈 쌍.
+    켜 두면 팔이 받침에서 떠오를 때 겹친 힘이 풀리며 몸체가 튀어 적재된 퍽 (17 g) 이 날아감 (2026-11-10 시험)."""
+)
+
+def Xform "ninja_turtle" (
+    prepend references = @../robot_usd/usd/robot/robot.usda@
+)
+{
+    over "Geometry"
+    {
+        over "base_footprint"
+        {
+            over "link2"
+            {
+                over "link3"
+                {
+                    over "link4"
+                    {
+                        over "link5"
+                        {
+                            over "wrist_link" (
+                                prepend apiSchemas = ["PhysicsFilteredPairsAPI"]
+                            )
+                            {
+                                rel physics:filteredPairs = </ninja_turtle/Geometry/base_footprint/link2>
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

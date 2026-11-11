@@ -1,0 +1,1181 @@
+#usda 1.0
+(
+    customLayerData = {
+        string creator = "URDF USD Converter v0.3.2"
+    }
+    defaultPrim = "ninja_turtle"
+    endTimeCode = 1000000
+    kilogramsPerUnit = 1
+    metersPerUnit = 1
+    startTimeCode = 0
+    upAxis = "Z"
+)
+
+over "ninja_turtle"
+{
+    over "Physics"
+    {
+        def PhysicsPrismaticJoint "gripper_right_joint" (
+            prepend apiSchemas = ["NewtonJointAPI", "NewtonMimicAPI", "PhysicsDriveAPI:linear", "PhysicsJointStateAPI:linear"]
+        )
+        {
+            float drive:linear:physics:maxForce = 1
+            uniform token drive:linear:physics:type = "force"
+            rel newton:mimicJoint = </ninja_turtle/Physics/gripper_left_joint>
+            float newton:velocityLimit = 4.8
+            uniform token physics:axis = "X"
+            custom rel physics:body0
+            append rel physics:body0 = </ninja_turtle/Geometry/base_footprint/link2/link3/link4/link5/wrist_link>
+            custom rel physics:body1
+            append rel physics:body1 = </ninja_turtle/Geometry/base_footprint/link2/link3/link4/link5/wrist_link/gripper_right_link>
+            point3f physics:localPos0 = (0.01202175, -0.037138384, -0.046160694)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (0.534496, 0, -0.000023291248, -0.84517103)
+            quatf physics:localRot1 = (0.534496, 0, -0.000023291248, -0.84517103)
+            float physics:lowerLimit = -0.003
+            float physics:upperLimit = 0.0175
+            custom float urdf:limit:effort = 1
+        }
+
+        def PhysicsRevoluteJoint "steer_fl_joint" (
+            prepend apiSchemas = ["NewtonJointAPI", "PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
+        )
+        {
+            float drive:angular:physics:maxForce = 3
+            uniform token drive:angular:physics:type = "force"
+            float newton:velocityLimit = 286.4789
+            uniform token physics:axis = "Z"
+            custom rel physics:body0
+            append rel physics:body0 = </ninja_turtle/Geometry/base_footprint>
+            custom rel physics:body1
+            append rel physics:body1 = </ninja_turtle/Geometry/base_footprint/steer_fl_link>
+            point3f physics:localPos0 = (-0.07, 0.112, 0.033)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (1, 0, 0, 0)
+            quatf physics:localRot1 = (1, 0, 0, 0)
+            float physics:lowerLimit = -179.91211
+            float physics:upperLimit = 180
+            custom float urdf:limit:effort = 3
+        }
+
+        def PhysicsRevoluteJoint "drive_fl_joint" (
+            prepend apiSchemas = ["PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
+        )
+        {
+            uniform token drive:angular:physics:type = "force"
+            uniform token physics:axis = "Y"
+            custom rel physics:body0
+            append rel physics:body0 = </ninja_turtle/Geometry/base_footprint/steer_fl_link>
+            custom rel physics:body1
+            append rel physics:body1 = </ninja_turtle/Geometry/base_footprint/steer_fl_link/wheel_fl_link>
+            point3f physics:localPos0 = (0, 0.0269, 0)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (1, 0, 0, 0)
+            quatf physics:localRot1 = (1, 0, 0, 0)
+        }
+
+        def PhysicsRevoluteJoint "steer_fr_joint" (
+            prepend apiSchemas = ["NewtonJointAPI", "PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
+        )
+        {
+            float drive:angular:physics:maxForce = 3
+            uniform token drive:angular:physics:type = "force"
+            float newton:velocityLimit = 286.4789
+            uniform token physics:axis = "Z"
+            custom rel physics:body0
+            append rel physics:body0 = </ninja_turtle/Geometry/base_footprint>
+            custom rel physics:body1
+            append rel physics:body1 = </ninja_turtle/Geometry/base_footprint/steer_fr_link>
+            point3f physics:localPos0 = (0.06, 0.112, 0.033)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (1, 0, 0, 0)
+            quatf physics:localRot1 = (1, 0, 0, 0)
+            float physics:lowerLimit = -179.91211
+            float physics:upperLimit = 180
+            custom float urdf:limit:effort = 3
+        }
+
+        def PhysicsRevoluteJoint "drive_fr_joint" (
+            prepend apiSchemas = ["PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
+        )
+        {
+            uniform token drive:angular:physics:type = "force"
+            uniform token physics:axis = "Y"
+            custom rel physics:body0
+            append rel physics:body0 = </ninja_turtle/Geometry/base_footprint/steer_fr_link>
+            custom rel physics:body1
+            append rel physics:body1 = </ninja_turtle/Geometry/base_footprint/steer_fr_link/wheel_fr_link>
+            point3f physics:localPos0 = (0, 0.0269, 0)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (1, 0, 0, 0)
+            quatf physics:localRot1 = (1, 0, 0, 0)
+        }
+
+        def PhysicsRevoluteJoint "steer_rl_joint" (
+            prepend apiSchemas = ["NewtonJointAPI", "PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
+        )
+        {
+            float drive:angular:physics:maxForce = 3
+            uniform token drive:angular:physics:type = "force"
+            float newton:velocityLimit = 286.4789
+            uniform token physics:axis = "Z"
+            custom rel physics:body0
+            append rel physics:body0 = </ninja_turtle/Geometry/base_footprint>
+            custom rel physics:body1
+            append rel physics:body1 = </ninja_turtle/Geometry/base_footprint/steer_rl_link>
+            point3f physics:localPos0 = (-0.07, -0.112, 0.033)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (1, 0, 0, 0)
+            quatf physics:localRot1 = (1, 0, 0, 0)
+            float physics:lowerLimit = -179.91211
+            float physics:upperLimit = 180
+            custom float urdf:limit:effort = 3
+        }
+
+        def PhysicsRevoluteJoint "drive_rl_joint" (
+            prepend apiSchemas = ["PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
+        )
+        {
+            uniform token drive:angular:physics:type = "force"
+            uniform token physics:axis = "Y"
+            custom rel physics:body0
+            append rel physics:body0 = </ninja_turtle/Geometry/base_footprint/steer_rl_link>
+            custom rel physics:body1
+            append rel physics:body1 = </ninja_turtle/Geometry/base_footprint/steer_rl_link/wheel_rl_link>
+            point3f physics:localPos0 = (0, -0.0269, 0)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (1, 0, 0, 0)
+            quatf physics:localRot1 = (1, 0, 0, 0)
+        }
+
+        def PhysicsRevoluteJoint "steer_rr_joint" (
+            prepend apiSchemas = ["NewtonJointAPI", "PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
+        )
+        {
+            float drive:angular:physics:maxForce = 3
+            uniform token drive:angular:physics:type = "force"
+            float newton:velocityLimit = 286.4789
+            uniform token physics:axis = "Z"
+            custom rel physics:body0
+            append rel physics:body0 = </ninja_turtle/Geometry/base_footprint>
+            custom rel physics:body1
+            append rel physics:body1 = </ninja_turtle/Geometry/base_footprint/steer_rr_link>
+            point3f physics:localPos0 = (0.06, -0.112, 0.033)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (1, 0, 0, 0)
+            quatf physics:localRot1 = (1, 0, 0, 0)
+            float physics:lowerLimit = -134.47266
+            float physics:upperLimit = 225.43945
+            custom float urdf:limit:effort = 3
+        }
+
+        def PhysicsRevoluteJoint "drive_rr_joint" (
+            prepend apiSchemas = ["PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
+        )
+        {
+            uniform token drive:angular:physics:type = "force"
+            uniform token physics:axis = "Y"
+            custom rel physics:body0
+            append rel physics:body0 = </ninja_turtle/Geometry/base_footprint/steer_rr_link>
+            custom rel physics:body1
+            append rel physics:body1 = </ninja_turtle/Geometry/base_footprint/steer_rr_link/wheel_rr_link>
+            point3f physics:localPos0 = (0, -0.0269, 0)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (1, 0, 0, 0)
+            quatf physics:localRot1 = (1, 0, 0, 0)
+        }
+
+        def PhysicsRevoluteJoint "joint1" (
+            prepend apiSchemas = ["NewtonJointAPI", "PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
+        )
+        {
+            float drive:angular:physics:maxForce = 4.1
+            uniform token drive:angular:physics:type = "force"
+            float newton:velocityLimit = 275.01974
+            uniform token physics:axis = "Z"
+            custom rel physics:body0
+            append rel physics:body0 = </ninja_turtle/Geometry/base_footprint>
+            custom rel physics:body1
+            append rel physics:body1 = </ninja_turtle/Geometry/base_footprint/link2>
+            point3f physics:localPos0 = (0.022549994, 0, 0.1995124)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (0.9755201, 0, 0, 0.2199104)
+            quatf physics:localRot1 = (1, 0, 0, 0)
+            float physics:lowerLimit = -180
+            float physics:upperLimit = 180
+            custom float urdf:limit:effort = 4.1
+        }
+
+        def PhysicsRevoluteJoint "joint2" (
+            prepend apiSchemas = ["NewtonJointAPI", "PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
+        )
+        {
+            float drive:angular:physics:maxForce = 4.1
+            uniform token drive:angular:physics:type = "force"
+            float newton:velocityLimit = 275.01974
+            uniform token physics:axis = "X"
+            custom rel physics:body0
+            append rel physics:body0 = </ninja_turtle/Geometry/base_footprint/link2>
+            custom rel physics:body1
+            append rel physics:body1 = </ninja_turtle/Geometry/base_footprint/link2/link3>
+            point3f physics:localPos0 = (-0.008187255, -0.01725627, 0.0405)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (0.84238124, -0.06870185, -0.04344657, 0.532716)
+            quatf physics:localRot1 = (0.8451781, 0, 2.1328767e-16, 0.53448474)
+            float physics:lowerLimit = -85.94367
+            float physics:upperLimit = 85.94367
+            custom float urdf:limit:effort = 4.1
+        }
+
+        def PhysicsRevoluteJoint "joint3" (
+            prepend apiSchemas = ["NewtonJointAPI", "PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
+        )
+        {
+            float drive:angular:physics:maxForce = 4.1
+            uniform token drive:angular:physics:type = "force"
+            float newton:velocityLimit = 275.01974
+            uniform token physics:axis = "X"
+            custom rel physics:body0
+            append rel physics:body0 = </ninja_turtle/Geometry/base_footprint/link2/link3>
+            custom rel physics:body1
+            append rel physics:body1 = </ninja_turtle/Geometry/base_footprint/link2/link3/link4>
+            point3f physics:localPos0 = (0.056442134, 0.015281047, 0.12241232)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (0.80094904, 0.2698272, 0.17063683, 0.50651455)
+            quatf physics:localRot1 = (0.8451781, 0, 6.690966e-16, 0.53448474)
+            float physics:lowerLimit = -85.94367
+            float physics:upperLimit = 80.21409
+            custom float urdf:limit:effort = 4.1
+        }
+
+        def PhysicsRevoluteJoint "joint4" (
+            prepend apiSchemas = ["NewtonJointAPI", "PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
+        )
+        {
+            float drive:angular:physics:maxForce = 4.1
+            uniform token drive:angular:physics:type = "force"
+            float newton:velocityLimit = 275.01974
+            uniform token physics:axis = "X"
+            custom rel physics:body0
+            append rel physics:body0 = </ninja_turtle/Geometry/base_footprint/link2/link3/link4>
+            custom rel physics:body1
+            append rel physics:body1 = </ninja_turtle/Geometry/base_footprint/link2/link3/link4/link5>
+            point3f physics:localPos0 = (0.08370254, -0.081772834, 0.055920377)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (0.8395652, 0.09724352, 0.061496127, 0.53093517)
+            quatf physics:localRot1 = (0.8451781, 0, -2.1448517e-15, 0.53448474)
+            float physics:lowerLimit = -97.402824
+            float physics:upperLimit = 38.587322
+            custom float urdf:limit:effort = 4.1
+        }
+
+        def PhysicsRevoluteJoint "joint5" (
+            prepend apiSchemas = ["NewtonJointAPI", "PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
+        )
+        {
+            float drive:angular:physics:maxForce = 4.1
+            uniform token drive:angular:physics:type = "force"
+            float newton:velocityLimit = 275.01974
+            uniform token physics:axis = "X"
+            custom rel physics:body0
+            append rel physics:body0 = </ninja_turtle/Geometry/base_footprint/link2/link3/link4/link5>
+            custom rel physics:body1
+            append rel physics:body1 = </ninja_turtle/Geometry/base_footprint/link2/link3/link4/link5/wrist_link>
+            point3f physics:localPos0 = (0.046800036, -0.0011742882, -0.045696143)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (0.89907545, 0.020359585, 0.40206036, -0.17203572)
+            quatf physics:localRot1 = (0.89930594, 0, 0.40585205, -0.1628893)
+            float physics:lowerLimit = -90.00021
+            float physics:upperLimit = 90.00021
+            custom float urdf:limit:effort = 4.1
+        }
+
+        def PhysicsPrismaticJoint "gripper_left_joint" (
+            prepend apiSchemas = ["NewtonJointAPI", "PhysicsDriveAPI:linear", "PhysicsJointStateAPI:linear"]
+        )
+        {
+            float drive:linear:physics:maxForce = 1
+            uniform token drive:linear:physics:type = "force"
+            float newton:velocityLimit = 4.8
+            uniform token physics:axis = "X"
+            custom rel physics:body0
+            append rel physics:body0 = </ninja_turtle/Geometry/base_footprint/link2/link3/link4/link5/wrist_link>
+            custom rel physics:body1
+            append rel physics:body1 = </ninja_turtle/Geometry/base_footprint/link2/link3/link4/link5/wrist_link/gripper_left_link>
+            point3f physics:localPos0 = (0.036370352, 0.014178703, -0.046159714)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (0.84517103, -2.7755576e-17, 0.000014729656, 0.534496)
+            quatf physics:localRot1 = (0.84517103, 0, 0.000014729656, 0.534496)
+            float physics:lowerLimit = -0.003
+            float physics:upperLimit = 0.0175
+            custom float urdf:limit:effort = 1
+        }
+    }
+
+    over "Geometry"
+    {
+        over "base_footprint" (
+            prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsArticulationRootAPI", "NewtonArticulationRootAPI", "PhysicsMassAPI", "NewtonMassAPI"]
+        )
+        {
+            double[] newton:inertia = [0.04641853379, 0.04439230471, 0.03129931002, -0.002426152285, 0.005524236389, 0.006307449323]
+            bool newton:selfCollisionEnabled = 0
+            point3f physics:centerOfMass = (-0.008154511, -0.009449046, 0.12986627)
+            float3 physics:diagonalInertia = (0.02689235, 0.04691415, 0.048303653)
+            float physics:mass = 2.583986
+            quatf physics:principalAxes = (-0.58867604, -0.07681018, 0.77838796, 0.20413935)
+
+            over "steer_fl_link" (
+                prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "NewtonMassAPI"]
+            )
+            {
+                double[] newton:inertia = [0.00003970833333333333, 0.00003130833333333333, 0.000022416666666666665, 0, 0, 0]
+                point3f physics:centerOfMass = (0, 0, 0.016)
+                float3 physics:diagonalInertia = (0.000022416667, 0.000031308333, 0.000039708335)
+                float physics:mass = 0.1
+                quatf physics:principalAxes = (-0.70710677, 0, 0.70710677, 0)
+
+                over "wheel_fl_link" (
+                    prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "NewtonMassAPI"]
+                )
+                {
+                    double[] newton:inertia = [0.00001117558, 0.000020712558, 0.000011192413, 0, 0, 0]
+                    float3 physics:diagonalInertia = (0.00001117558, 0.000011192413, 0.000020712558)
+                    float physics:mass = 0.0284989
+                    quatf physics:principalAxes = (0.70710677, 0.70710677, 0, 0)
+
+                    over "cylinder" (
+                        prepend apiSchemas = ["NewtonCollisionAPI"]
+                    )
+                    {
+                    }
+                }
+
+                over "box" (
+                    prepend apiSchemas = ["NewtonCollisionAPI"]
+                )
+                {
+                }
+            }
+
+            over "steer_fr_link" (
+                prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "NewtonMassAPI"]
+            )
+            {
+                double[] newton:inertia = [0.00003970833333333333, 0.00003130833333333333, 0.000022416666666666665, 0, 0, 0]
+                point3f physics:centerOfMass = (0, 0, 0.016)
+                float3 physics:diagonalInertia = (0.000022416667, 0.000031308333, 0.000039708335)
+                float physics:mass = 0.1
+                quatf physics:principalAxes = (-0.70710677, 0, 0.70710677, 0)
+
+                over "wheel_fr_link" (
+                    prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "NewtonMassAPI"]
+                )
+                {
+                    double[] newton:inertia = [0.00001117558, 0.000020712558, 0.000011192413, 0, 0, 0]
+                    float3 physics:diagonalInertia = (0.00001117558, 0.000011192413, 0.000020712558)
+                    float physics:mass = 0.0284989
+                    quatf physics:principalAxes = (0.70710677, 0.70710677, 0, 0)
+
+                    over "cylinder" (
+                        prepend apiSchemas = ["NewtonCollisionAPI"]
+                    )
+                    {
+                    }
+                }
+
+                over "box" (
+                    prepend apiSchemas = ["NewtonCollisionAPI"]
+                )
+                {
+                }
+            }
+
+            over "steer_rl_link" (
+                prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "NewtonMassAPI"]
+            )
+            {
+                double[] newton:inertia = [0.00003970833333333333, 0.00003130833333333333, 0.000022416666666666665, 0, 0, 0]
+                point3f physics:centerOfMass = (0, 0, 0.016)
+                float3 physics:diagonalInertia = (0.000022416667, 0.000031308333, 0.000039708335)
+                float physics:mass = 0.1
+                quatf physics:principalAxes = (-0.70710677, 0, 0.70710677, 0)
+
+                over "wheel_rl_link" (
+                    prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "NewtonMassAPI"]
+                )
+                {
+                    double[] newton:inertia = [0.00001117558, 0.000020712558, 0.000011192413, 0, 0, 0]
+                    float3 physics:diagonalInertia = (0.00001117558, 0.000011192413, 0.000020712558)
+                    float physics:mass = 0.0284989
+                    quatf physics:principalAxes = (0.70710677, 0.70710677, 0, 0)
+
+                    over "cylinder" (
+                        prepend apiSchemas = ["NewtonCollisionAPI"]
+                    )
+                    {
+                    }
+                }
+
+                over "box" (
+                    prepend apiSchemas = ["NewtonCollisionAPI"]
+                )
+                {
+                }
+            }
+
+            over "steer_rr_link" (
+                prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "NewtonMassAPI"]
+            )
+            {
+                double[] newton:inertia = [0.00003970833333333333, 0.00003130833333333333, 0.000022416666666666665, 0, 0, 0]
+                point3f physics:centerOfMass = (0, 0, 0.016)
+                float3 physics:diagonalInertia = (0.000022416667, 0.000031308333, 0.000039708335)
+                float physics:mass = 0.1
+                quatf physics:principalAxes = (-0.70710677, 0, 0.70710677, 0)
+
+                over "wheel_rr_link" (
+                    prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "NewtonMassAPI"]
+                )
+                {
+                    double[] newton:inertia = [0.00001117558, 0.000020712558, 0.000011192413, 0, 0, 0]
+                    float3 physics:diagonalInertia = (0.00001117558, 0.000011192413, 0.000020712558)
+                    float physics:mass = 0.0284989
+                    quatf physics:principalAxes = (0.70710677, 0.70710677, 0, 0)
+
+                    over "cylinder" (
+                        prepend apiSchemas = ["NewtonCollisionAPI"]
+                    )
+                    {
+                    }
+                }
+
+                over "box" (
+                    prepend apiSchemas = ["NewtonCollisionAPI"]
+                )
+                {
+                }
+            }
+
+            over "link2" (
+                prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "NewtonMassAPI"]
+            )
+            {
+                double[] newton:inertia = [0.0000347209957, 0.0000315556977, 0.0000174069076, -0.00000193803868, -1.00969679e-7, -2.12813705e-7]
+                point3f physics:centerOfMass = (0.00021466352, 0.00045244614, 0.024613513)
+                float3 physics:diagonalInertia = (0.000017402715, 0.000030640385, 0.0000356405)
+                float physics:mass = 0.098407
+                quatf physics:principalAxes = (0.6911865, -0.16147919, -0.6884217, -0.14920187)
+
+                over "link3" (
+                    prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "NewtonMassAPI"]
+                )
+                {
+                    double[] newton:inertia = [0.000203611729, 0.000217916708, 0.0000514026704, 0.00000794700473, -0.0000491248238, 0.0000217416294]
+                    point3f physics:centerOfMass = (0.030452715, 0.0070410543, 0.099614225)
+                    float3 physics:diagonalInertia = (0.000034022676, 0.00021745205, 0.00022145639)
+                    float physics:mass = 0.138509
+                    quatf physics:principalAxes = (-0.46959794, 0.6482291, 0.2856105, 0.52697575)
+
+                    over "link4" (
+                        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "NewtonMassAPI"]
+                    )
+                    {
+                        double[] newton:inertia = [0.0000749784373, 0.000151428514, 0.000147597629, 0.0000448620532, -0.0000574649245, 0.0000265757851]
+                        point3f physics:centerOfMass = (0.063676715, -0.050762232, 0.040063243)
+                        float3 physics:diagonalInertia = (0.00002227861, 0.0001721419, 0.00017958407)
+                        float physics:mass = 0.132745
+                        quatf physics:principalAxes = (0.9499743, -0.051963437, -0.22588769, -0.20934048)
+
+                        over "link5" (
+                            prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "NewtonMassAPI"]
+                        )
+                        {
+                            double[] newton:inertia = [0.0000192140798, 0.000025629437, 0.0000205834263, 0.00000249399034, -0.00000257960961, 0.00000129406656]
+                            point3f physics:centerOfMass = (0.04157954, 0.0006074882, -0.02396026)
+                            float3 physics:diagonalInertia = (0.000016397626, 0.000022514012, 0.000026515307)
+                            float physics:mass = 0.090765
+                            quatf physics:principalAxes = (0.6712465, 0.6602115, -0.32132673, 0.10147917)
+
+                            over "wrist_link" (
+                                prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "NewtonMassAPI"]
+                            )
+                            {
+                                double[] newton:inertia = [0.000142631468158, 0.000180000225165, 0.000229863151642, 0.0000276003128105, -0.0000351193872762, 0.0000169260039726]
+                                point3f physics:centerOfMass = (0.031622246, -0.015572929, -0.013168612)
+                                float3 physics:diagonalInertia = (0.00011479421, 0.00019460647, 0.00024309417)
+                                float physics:mass = 0.216231
+                                quatf physics:principalAxes = (0.9586948, -0.025587473, -0.16105616, -0.23304601)
+
+                                over "gripper_left_link" (
+                                    prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "NewtonMassAPI"]
+                                )
+                                {
+                                    double[] newton:inertia = [0.0000094243636, 0.0000108498261, 0.0000074158851, 0.00000252609403, 0.00000165692344, -0.0000020215005]
+                                    point3f physics:centerOfMass = (0.008682178, -0.013506298, -0.014548728)
+                                    float3 physics:diagonalInertia = (0.0000048981506, 0.000009941496, 0.000012850429)
+                                    float physics:mass = 0.017573
+                                    quatf physics:principalAxes = (-0.07498956, 0.48346144, 0.58117586, 0.65028936)
+                                }
+
+                                over "gripper_right_link" (
+                                    prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "NewtonMassAPI"]
+                                )
+                                {
+                                    double[] newton:inertia = [0.00000784141237, 0.0000125489931, 0.00000746756175, 0.00000119534415, 0.00000265254169, 3.76515252e-9]
+                                    point3f physics:centerOfMass = (0.01575872, 0.0017827753, -0.01440189)
+                                    float3 physics:diagonalInertia = (0.0000049073965, 0.000010024037, 0.000012926534)
+                                    float physics:mass = 0.017815
+                                    quatf physics:principalAxes = (-0.18814944, 0.34546354, 0.5550087, 0.73295295)
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            over "box" (
+                prepend apiSchemas = ["NewtonCollisionAPI"]
+            )
+            {
+            }
+
+            over "profile_column_link__collision__profile_450mm_0_aabb" (
+                prepend apiSchemas = ["NewtonCollisionAPI"]
+            )
+            {
+            }
+
+            over "gripper_park_stand_link__collision__floor" (
+                prepend apiSchemas = ["NewtonCollisionAPI"]
+            )
+            {
+            }
+
+            over "gripper_park_stand_link__collision__wall0" (
+                prepend apiSchemas = ["NewtonCollisionAPI"]
+            )
+            {
+            }
+
+            over "gripper_park_stand_link__collision__wall1" (
+                prepend apiSchemas = ["NewtonCollisionAPI"]
+            )
+            {
+            }
+
+            over "gripper_park_stand_link__collision__wall2" (
+                prepend apiSchemas = ["NewtonCollisionAPI"]
+            )
+            {
+            }
+
+            over "gripper_park_stand_link__collision__wall3" (
+                prepend apiSchemas = ["NewtonCollisionAPI"]
+            )
+            {
+            }
+
+            over "rack_plate_8cell" (
+                prepend apiSchemas = ["NewtonCollisionAPI"]
+            )
+            {
+            }
+
+            over "rack_plate_4cell" (
+                prepend apiSchemas = ["NewtonCollisionAPI"]
+            )
+            {
+            }
+
+            over "rack_cell_S1_collision_wall_px" (
+                prepend apiSchemas = ["NewtonCollisionAPI"]
+            )
+            {
+            }
+
+            over "rack_cell_S1_collision_wall_nx" (
+                prepend apiSchemas = ["NewtonCollisionAPI"]
+            )
+            {
+            }
+
+            over "rack_cell_S1_collision_wall_py" (
+                prepend apiSchemas = ["NewtonCollisionAPI"]
+            )
+            {
+            }
+
+            over "rack_cell_S1_collision_wall_ny" (
+                prepend apiSchemas = ["NewtonCollisionAPI"]
+            )
+            {
+            }
+
+            over "rack_cell_S1_collision_flare_px" (
+                prepend apiSchemas = ["NewtonCollisionAPI"]
+            )
+            {
+            }
+
+            over "rack_cell_S1_collision_flare_nx" (
+                prepend apiSchemas = ["NewtonCollisionAPI"]
+            )
+            {
+            }
+
+            over "rack_cell_S1_collision_flare_py" (
+                prepend apiSchemas = ["NewtonCollisionAPI"]
+            )
+            {
+            }
+
+            over "rack_cell_S1_collision_flare_ny" (
+                prepend apiSchemas = ["NewtonCollisionAPI"]
+            )
+            {
+            }
+
+            over "rack_cell_S2_collision_wall_px" (
+                prepend apiSchemas = ["NewtonCollisionAPI"]
+            )
+            {
+            }
+
+            over "rack_cell_S2_collision_wall_nx" (
+                prepend apiSchemas = ["NewtonCollisionAPI"]
+            )
+            {
+            }
+
+            over "rack_cell_S2_collision_wall_py" (
+                prepend apiSchemas = ["NewtonCollisionAPI"]
+            )
+            {
+            }
+
+            over "rack_cell_S2_collision_wall_ny" (
+                prepend apiSchemas = ["NewtonCollisionAPI"]
+            )
+            {
+            }
+
+            over "rack_cell_S2_collision_flare_px" (
+                prepend apiSchemas = ["NewtonCollisionAPI"]
+            )
+            {
+            }
+
+            over "rack_cell_S2_collision_flare_nx" (
+                prepend apiSchemas = ["NewtonCollisionAPI"]
+            )
+            {
+            }
+
+            over "rack_cell_S2_collision_flare_py" (
+                prepend apiSchemas = ["NewtonCollisionAPI"]
+            )
+            {
+            }
+
+            over "rack_cell_S2_collision_flare_ny" (
+                prepend apiSchemas = ["NewtonCollisionAPI"]
+            )
+            {
+            }
+
+            over "rack_cell_S3_collision_wall_px" (
+                prepend apiSchemas = ["NewtonCollisionAPI"]
+            )
+            {
+            }
+
+            over "rack_cell_S3_collision_wall_nx" (
+                prepend apiSchemas = ["NewtonCollisionAPI"]
+            )
+            {
+            }
+
+            over "rack_cell_S3_collision_wall_py" (
+                prepend apiSchemas = ["NewtonCollisionAPI"]
+            )
+            {
+            }
+
+            over "rack_cell_S3_collision_wall_ny" (
+                prepend apiSchemas = ["NewtonCollisionAPI"]
+            )
+            {
+            }
+
+            over "rack_cell_S3_collision_flare_px" (
+                prepend apiSchemas = ["NewtonCollisionAPI"]
+            )
+            {
+            }
+
+            over "rack_cell_S3_collision_flare_nx" (
+                prepend apiSchemas = ["NewtonCollisionAPI"]
+            )
+            {
+            }
+
+            over "rack_cell_S3_collision_flare_py" (
+                prepend apiSchemas = ["NewtonCollisionAPI"]
+            )
+            {
+            }
+
+            over "rack_cell_S3_collision_flare_ny" (
+                prepend apiSchemas = ["NewtonCollisionAPI"]
+            )
+            {
+            }
+
+            over "rack_cell_S4_collision_wall_px" (
+                prepend apiSchemas = ["NewtonCollisionAPI"]
+            )
+            {
+            }
+
+            over "rack_cell_S4_collision_wall_nx" (
+                prepend apiSchemas = ["NewtonCollisionAPI"]
+            )
+            {
+            }
+
+            over "rack_cell_S4_collision_wall_py" (
+                prepend apiSchemas = ["NewtonCollisionAPI"]
+            )
+            {
+            }
+
+            over "rack_cell_S4_collision_wall_ny" (
+                prepend apiSchemas = ["NewtonCollisionAPI"]
+            )
+            {
+            }
+
+            over "rack_cell_S4_collision_flare_px" (
+                prepend apiSchemas = ["NewtonCollisionAPI"]
+            )
+            {
+            }
+
+            over "rack_cell_S4_collision_flare_nx" (
+                prepend apiSchemas = ["NewtonCollisionAPI"]
+            )
+            {
+            }
+
+            over "rack_cell_S4_collision_flare_py" (
+                prepend apiSchemas = ["NewtonCollisionAPI"]
+            )
+            {
+            }
+
+            over "rack_cell_S4_collision_flare_ny" (
+                prepend apiSchemas = ["NewtonCollisionAPI"]
+            )
+            {
+            }
+
+            over "rack_cell_S5_collision_wall_px" (
+                prepend apiSchemas = ["NewtonCollisionAPI"]
+            )
+            {
+            }
+
+            over "rack_cell_S5_collision_wall_nx" (
+                prepend apiSchemas = ["NewtonCollisionAPI"]
+            )
+            {
+            }
+
+            over "rack_cell_S5_collision_wall_py" (
+                prepend apiSchemas = ["NewtonCollisionAPI"]
+            )
+            {
+            }
+
+            over "rack_cell_S5_collision_wall_ny" (
+                prepend apiSchemas = ["NewtonCollisionAPI"]
+            )
+            {
+            }
+
+            over "rack_cell_S5_collision_flare_px" (
+                prepend apiSchemas = ["NewtonCollisionAPI"]
+            )
+            {
+            }
+
+            over "rack_cell_S5_collision_flare_nx" (
+                prepend apiSchemas = ["NewtonCollisionAPI"]
+            )
+            {
+            }
+
+            over "rack_cell_S5_collision_flare_py" (
+                prepend apiSchemas = ["NewtonCollisionAPI"]
+            )
+            {
+            }
+
+            over "rack_cell_S5_collision_flare_ny" (
+                prepend apiSchemas = ["NewtonCollisionAPI"]
+            )
+            {
+            }
+
+            over "rack_cell_S6_collision_wall_px" (
+                prepend apiSchemas = ["NewtonCollisionAPI"]
+            )
+            {
+            }
+
+            over "rack_cell_S6_collision_wall_nx" (
+                prepend apiSchemas = ["NewtonCollisionAPI"]
+            )
+            {
+            }
+
+            over "rack_cell_S6_collision_wall_py" (
+                prepend apiSchemas = ["NewtonCollisionAPI"]
+            )
+            {
+            }
+
+            over "rack_cell_S6_collision_wall_ny" (
+                prepend apiSchemas = ["NewtonCollisionAPI"]
+            )
+            {
+            }
+
+            over "rack_cell_S6_collision_flare_px" (
+                prepend apiSchemas = ["NewtonCollisionAPI"]
+            )
+            {
+            }
+
+            over "rack_cell_S6_collision_flare_nx" (
+                prepend apiSchemas = ["NewtonCollisionAPI"]
+            )
+            {
+            }
+
+            over "rack_cell_S6_collision_flare_py" (
+                prepend apiSchemas = ["NewtonCollisionAPI"]
+            )
+            {
+            }
+
+            over "rack_cell_S6_collision_flare_ny" (
+                prepend apiSchemas = ["NewtonCollisionAPI"]
+            )
+            {
+            }
+
+            over "rack_cell_S7_collision_wall_px" (
+                prepend apiSchemas = ["NewtonCollisionAPI"]
+            )
+            {
+            }
+
+            over "rack_cell_S7_collision_wall_nx" (
+                prepend apiSchemas = ["NewtonCollisionAPI"]
+            )
+            {
+            }
+
+            over "rack_cell_S7_collision_wall_py" (
+                prepend apiSchemas = ["NewtonCollisionAPI"]
+            )
+            {
+            }
+
+            over "rack_cell_S7_collision_wall_ny" (
+                prepend apiSchemas = ["NewtonCollisionAPI"]
+            )
+            {
+            }
+
+            over "rack_cell_S7_collision_flare_px" (
+                prepend apiSchemas = ["NewtonCollisionAPI"]
+            )
+            {
+            }
+
+            over "rack_cell_S7_collision_flare_nx" (
+                prepend apiSchemas = ["NewtonCollisionAPI"]
+            )
+            {
+            }
+
+            over "rack_cell_S7_collision_flare_py" (
+                prepend apiSchemas = ["NewtonCollisionAPI"]
+            )
+            {
+            }
+
+            over "rack_cell_S7_collision_flare_ny" (
+                prepend apiSchemas = ["NewtonCollisionAPI"]
+            )
+            {
+            }
+
+            over "rack_cell_S8_collision_wall_px" (
+                prepend apiSchemas = ["NewtonCollisionAPI"]
+            )
+            {
+            }
+
+            over "rack_cell_S8_collision_wall_nx" (
+                prepend apiSchemas = ["NewtonCollisionAPI"]
+            )
+            {
+            }
+
+            over "rack_cell_S8_collision_wall_py" (
+                prepend apiSchemas = ["NewtonCollisionAPI"]
+            )
+            {
+            }
+
+            over "rack_cell_S8_collision_wall_ny" (
+                prepend apiSchemas = ["NewtonCollisionAPI"]
+            )
+            {
+            }
+
+            over "rack_cell_S8_collision_flare_px" (
+                prepend apiSchemas = ["NewtonCollisionAPI"]
+            )
+            {
+            }
+
+            over "rack_cell_S8_collision_flare_nx" (
+                prepend apiSchemas = ["NewtonCollisionAPI"]
+            )
+            {
+            }
+
+            over "rack_cell_S8_collision_flare_py" (
+                prepend apiSchemas = ["NewtonCollisionAPI"]
+            )
+            {
+            }
+
+            over "rack_cell_S8_collision_flare_ny" (
+                prepend apiSchemas = ["NewtonCollisionAPI"]
+            )
+            {
+            }
+
+            over "rack_cell_S9_collision_wall_px" (
+                prepend apiSchemas = ["NewtonCollisionAPI"]
+            )
+            {
+            }
+
+            over "rack_cell_S9_collision_wall_nx" (
+                prepend apiSchemas = ["NewtonCollisionAPI"]
+            )
+            {
+            }
+
+            over "rack_cell_S9_collision_wall_py" (
+                prepend apiSchemas = ["NewtonCollisionAPI"]
+            )
+            {
+            }
+
+            over "rack_cell_S9_collision_wall_ny" (
+                prepend apiSchemas = ["NewtonCollisionAPI"]
+            )
+            {
+            }
+
+            over "rack_cell_S9_collision_flare_px" (
+                prepend apiSchemas = ["NewtonCollisionAPI"]
+            )
+            {
+            }
+
+            over "rack_cell_S9_collision_flare_nx" (
+                prepend apiSchemas = ["NewtonCollisionAPI"]
+            )
+            {
+            }
+
+            over "rack_cell_S9_collision_flare_py" (
+                prepend apiSchemas = ["NewtonCollisionAPI"]
+            )
+            {
+            }
+
+            over "rack_cell_S9_collision_flare_ny" (
+                prepend apiSchemas = ["NewtonCollisionAPI"]
+            )
+            {
+            }
+
+            over "rack_cell_S10_collision_wall_px" (
+                prepend apiSchemas = ["NewtonCollisionAPI"]
+            )
+            {
+            }
+
+            over "rack_cell_S10_collision_wall_nx" (
+                prepend apiSchemas = ["NewtonCollisionAPI"]
+            )
+            {
+            }
+
+            over "rack_cell_S10_collision_wall_py" (
+                prepend apiSchemas = ["NewtonCollisionAPI"]
+            )
+            {
+            }
+
+            over "rack_cell_S10_collision_wall_ny" (
+                prepend apiSchemas = ["NewtonCollisionAPI"]
+            )
+            {
+            }
+
+            over "rack_cell_S10_collision_flare_px" (
+                prepend apiSchemas = ["NewtonCollisionAPI"]
+            )
+            {
+            }
+
+            over "rack_cell_S10_collision_flare_nx" (
+                prepend apiSchemas = ["NewtonCollisionAPI"]
+            )
+            {
+            }
+
+            over "rack_cell_S10_collision_flare_py" (
+                prepend apiSchemas = ["NewtonCollisionAPI"]
+            )
+            {
+            }
+
+            over "rack_cell_S10_collision_flare_ny" (
+                prepend apiSchemas = ["NewtonCollisionAPI"]
+            )
+            {
+            }
+
+            over "rack_cell_S11_collision_wall_px" (
+                prepend apiSchemas = ["NewtonCollisionAPI"]
+            )
+            {
+            }
+
+            over "rack_cell_S11_collision_wall_nx" (
+                prepend apiSchemas = ["NewtonCollisionAPI"]
+            )
+            {
+            }
+
+            over "rack_cell_S11_collision_wall_py" (
+                prepend apiSchemas = ["NewtonCollisionAPI"]
+            )
+            {
+            }
+
+            over "rack_cell_S11_collision_wall_ny" (
+                prepend apiSchemas = ["NewtonCollisionAPI"]
+            )
+            {
+            }
+
+            over "rack_cell_S11_collision_flare_px" (
+                prepend apiSchemas = ["NewtonCollisionAPI"]
+            )
+            {
+            }
+
+            over "rack_cell_S11_collision_flare_nx" (
+                prepend apiSchemas = ["NewtonCollisionAPI"]
+            )
+            {
+            }
+
+            over "rack_cell_S11_collision_flare_py" (
+                prepend apiSchemas = ["NewtonCollisionAPI"]
+            )
+            {
+            }
+
+            over "rack_cell_S11_collision_flare_ny" (
+                prepend apiSchemas = ["NewtonCollisionAPI"]
+            )
+            {
+            }
+
+            over "rack_cell_S12_collision_wall_px" (
+                prepend apiSchemas = ["NewtonCollisionAPI"]
+            )
+            {
+            }
+
+            over "rack_cell_S12_collision_wall_nx" (
+                prepend apiSchemas = ["NewtonCollisionAPI"]
+            )
+            {
+            }
+
+            over "rack_cell_S12_collision_wall_py" (
+                prepend apiSchemas = ["NewtonCollisionAPI"]
+            )
+            {
+            }
+
+            over "rack_cell_S12_collision_wall_ny" (
+                prepend apiSchemas = ["NewtonCollisionAPI"]
+            )
+            {
+            }
+
+            over "rack_cell_S12_collision_flare_px" (
+                prepend apiSchemas = ["NewtonCollisionAPI"]
+            )
+            {
+            }
+
+            over "rack_cell_S12_collision_flare_nx" (
+                prepend apiSchemas = ["NewtonCollisionAPI"]
+            )
+            {
+            }
+
+            over "rack_cell_S12_collision_flare_py" (
+                prepend apiSchemas = ["NewtonCollisionAPI"]
+            )
+            {
+            }
+
+            over "rack_cell_S12_collision_flare_ny" (
+                prepend apiSchemas = ["NewtonCollisionAPI"]
+            )
+            {
+            }
+
+            over "lidar_front_link__collision__lidar_housing_approx" (
+                prepend apiSchemas = ["NewtonCollisionAPI"]
+            )
+            {
+            }
+
+            over "lidar_rear_link__collision__lidar_housing_approx" (
+                prepend apiSchemas = ["NewtonCollisionAPI"]
+            )
+            {
+            }
+        }
+    }
+}
+

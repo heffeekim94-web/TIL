@@ -1,0 +1,247 @@
+#usda 1.0
+(
+    customLayerData = {
+        string creator = "URDF USD Converter v0.3.2"
+    }
+    defaultPrim = "ninja_turtle"
+    endTimeCode = 1000000
+    kilogramsPerUnit = 1
+    metersPerUnit = 1
+    startTimeCode = 0
+    subLayers = [
+        @./physics.usda@
+    ]
+    upAxis = "Z"
+)
+
+over "ninja_turtle"
+{
+    over "Physics"
+    {
+        over "steer_fl_joint" (
+            delete apiSchemas = ["PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
+            prepend apiSchemas = ["MjcJointAPI"]
+        )
+        {
+        }
+
+        over "drive_fl_joint" (
+            delete apiSchemas = ["PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
+            prepend apiSchemas = ["MjcJointAPI"]
+        )
+        {
+        }
+
+        over "steer_fr_joint" (
+            delete apiSchemas = ["PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
+            prepend apiSchemas = ["MjcJointAPI"]
+        )
+        {
+        }
+
+        over "drive_fr_joint" (
+            delete apiSchemas = ["PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
+            prepend apiSchemas = ["MjcJointAPI"]
+        )
+        {
+        }
+
+        over "steer_rl_joint" (
+            delete apiSchemas = ["PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
+            prepend apiSchemas = ["MjcJointAPI"]
+        )
+        {
+        }
+
+        over "drive_rl_joint" (
+            delete apiSchemas = ["PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
+            prepend apiSchemas = ["MjcJointAPI"]
+        )
+        {
+        }
+
+        over "steer_rr_joint" (
+            delete apiSchemas = ["PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
+            prepend apiSchemas = ["MjcJointAPI"]
+        )
+        {
+        }
+
+        over "drive_rr_joint" (
+            delete apiSchemas = ["PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
+            prepend apiSchemas = ["MjcJointAPI"]
+        )
+        {
+        }
+
+        over "joint1" (
+            delete apiSchemas = ["PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
+            prepend apiSchemas = ["MjcJointAPI"]
+        )
+        {
+        }
+
+        over "joint2" (
+            delete apiSchemas = ["PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
+            prepend apiSchemas = ["MjcJointAPI"]
+        )
+        {
+        }
+
+        over "joint3" (
+            delete apiSchemas = ["PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
+            prepend apiSchemas = ["MjcJointAPI"]
+        )
+        {
+        }
+
+        over "joint4" (
+            delete apiSchemas = ["PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
+            prepend apiSchemas = ["MjcJointAPI"]
+        )
+        {
+        }
+
+        over "joint5" (
+            delete apiSchemas = ["PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
+            prepend apiSchemas = ["MjcJointAPI"]
+        )
+        {
+        }
+
+        over "gripper_left_joint" (
+            delete apiSchemas = ["PhysicsDriveAPI:linear", "PhysicsJointStateAPI:linear"]
+            prepend apiSchemas = ["MjcJointAPI"]
+        )
+        {
+        }
+
+        over "gripper_right_joint" (
+            delete apiSchemas = ["PhysicsDriveAPI:linear", "PhysicsJointStateAPI:linear"]
+            prepend apiSchemas = ["MjcJointAPI"]
+        )
+        {
+        }
+
+        def MjcActuator "steer_fl_joint_actuator"
+        {
+            uniform double mjc:forceRange:max = 3
+            uniform double mjc:forceRange:min = -3
+            custom rel mjc:target
+            append rel mjc:target = </ninja_turtle/Physics/steer_fl_joint>
+        }
+
+        def MjcActuator "drive_fl_joint_actuator"
+        {
+            uniform double mjc:forceRange:max = inf
+            uniform double mjc:forceRange:min = -inf
+            custom rel mjc:target
+            append rel mjc:target = </ninja_turtle/Physics/drive_fl_joint>
+        }
+
+        def MjcActuator "steer_fr_joint_actuator"
+        {
+            uniform double mjc:forceRange:max = 3
+            uniform double mjc:forceRange:min = -3
+            custom rel mjc:target
+            append rel mjc:target = </ninja_turtle/Physics/steer_fr_joint>
+        }
+
+        def MjcActuator "drive_fr_joint_actuator"
+        {
+            uniform double mjc:forceRange:max = inf
+            uniform double mjc:forceRange:min = -inf
+            custom rel mjc:target
+            append rel mjc:target = </ninja_turtle/Physics/drive_fr_joint>
+        }
+
+        def MjcActuator "steer_rl_joint_actuator"
+        {
+            uniform double mjc:forceRange:max = 3
+            uniform double mjc:forceRange:min = -3
+            custom rel mjc:target
+            append rel mjc:target = </ninja_turtle/Physics/steer_rl_joint>
+        }
+
+        def MjcActuator "drive_rl_joint_actuator"
+        {
+            uniform double mjc:forceRange:max = inf
+            uniform double mjc:forceRange:min = -inf
+            custom rel mjc:target
+            append rel mjc:target = </ninja_turtle/Physics/drive_rl_joint>
+        }
+
+        def MjcActuator "steer_rr_joint_actuator"
+        {
+            uniform double mjc:forceRange:max = 3
+            uniform double mjc:forceRange:min = -3
+            custom rel mjc:target
+            append rel mjc:target = </ninja_turtle/Physics/steer_rr_joint>
+        }
+
+        def MjcActuator "drive_rr_joint_actuator"
+        {
+            uniform double mjc:forceRange:max = inf
+            uniform double mjc:forceRange:min = -inf
+            custom rel mjc:target
+            append rel mjc:target = </ninja_turtle/Physics/drive_rr_joint>
+        }
+
+        def MjcActuator "joint1_actuator"
+        {
+            uniform double mjc:forceRange:max = 4.099999904632568
+            uniform double mjc:forceRange:min = -4.099999904632568
+            custom rel mjc:target
+            append rel mjc:target = </ninja_turtle/Physics/joint1>
+        }
+
+        def MjcActuator "joint2_actuator"
+        {
+            uniform double mjc:forceRange:max = 4.099999904632568
+            uniform double mjc:forceRange:min = -4.099999904632568
+            custom rel mjc:target
+            append rel mjc:target = </ninja_turtle/Physics/joint2>
+        }
+
+        def MjcActuator "joint3_actuator"
+        {
+            uniform double mjc:forceRange:max = 4.099999904632568
+            uniform double mjc:forceRange:min = -4.099999904632568
+            custom rel mjc:target
+            append rel mjc:target = </ninja_turtle/Physics/joint3>
+        }
+
+        def MjcActuator "joint4_actuator"
+        {
+            uniform double mjc:forceRange:max = 4.099999904632568
+            uniform double mjc:forceRange:min = -4.099999904632568
+            custom rel mjc:target
+            append rel mjc:target = </ninja_turtle/Physics/joint4>
+        }
+
+        def MjcActuator "joint5_actuator"
+        {
+            uniform double mjc:forceRange:max = 4.099999904632568
+            uniform double mjc:forceRange:min = -4.099999904632568
+            custom rel mjc:target
+            append rel mjc:target = </ninja_turtle/Physics/joint5>
+        }
+
+        def MjcActuator "gripper_left_joint_actuator"
+        {
+            uniform double mjc:forceRange:max = 1
+            uniform double mjc:forceRange:min = -1
+            custom rel mjc:target
+            append rel mjc:target = </ninja_turtle/Physics/gripper_left_joint>
+        }
+
+        def MjcActuator "gripper_right_joint_actuator"
+        {
+            uniform double mjc:forceRange:max = 1
+            uniform double mjc:forceRange:min = -1
+            custom rel mjc:target
+            append rel mjc:target = </ninja_turtle/Physics/gripper_right_joint>
+        }
+    }
+}
+
