@@ -80,7 +80,7 @@ def plan(sc, measure=None):
             i = min(left, key=lambda m: np.linalg.norm(st['pucks'][m]['xy'] - pg.J1XY))
             left.remove(i)
             p = st['pucks'][i]
-            cell = next(c for c in order if c not in occupied)
+            cell = pg.store_cell(occupied)
             others = [pt for m in left for pt in obstacle_pts(st['pucks'][m])]
             P = s2.Path(q)
             if p['kind'] == 'lying':

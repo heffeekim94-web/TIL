@@ -16,7 +16,7 @@ p = argparse.ArgumentParser()
 p.add_argument('--n', type=int, default=32)
 p.add_argument('--start', type=int, default=0, help='라이브러리 몇 번부터')
 p.add_argument('--ids', default='', help='라이브러리 번호 목록 (쉼표), 주면 --n · --start 대신')
-p.add_argument('--library', default='logs/library_chain.npz')
+p.add_argument('--library', default='logs/library_chain_v3.npz')
 p.add_argument('--checkpoint', default='')
 p.add_argument('--gif', action='store_true')
 p.add_argument('--max_steps', type=int, default=0, help='> 0: 이 스텝까지만 (짧게 찍기)')
@@ -99,6 +99,13 @@ for r in rows:
     m = env.lib_meta[(IDS[r['env']] if IDS else a.start + r['env'])]
     print(r['env'], m['task'], [jb['cell'] for jb in m['jobs']], [jb.get('how', '')[:14] for jb in m['jobs']], '· 끝낸 퍽', r.get('done'), '/', len(m['jobs']), '· 충돌 없음', r['collision_free'], '· 성공', r['success'],
           '· 떨어뜨림', r['drop'], '· 가장 가까움', r['min_clearance_mm'], 'mm', flush=True)
+import collections
+tot = collections.defaultdict(list)
+for r in rows:
+    for k_, v_ in r.get('parts', {}).items():
+        tot[k_].append(v_)
+if tot:
+    print('항목별 에피소드 합 평균:', {k_: round(float(np.mean(v_)), 1) for k_, v_ in tot.items()}, '· 합계', round(float(np.mean([sum(r['parts'].values()) for r in rows if 'parts' in r])), 1))
 for task in ('store', 'retrieve'):
     rr = [r for r in rows if env.lib_meta[(IDS[r['env']] if IDS else a.start + r['env'])]['task'] == task]
     if rr:

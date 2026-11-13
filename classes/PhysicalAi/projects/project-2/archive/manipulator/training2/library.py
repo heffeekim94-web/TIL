@@ -53,7 +53,7 @@ def gen_store(rng):
         i = min(left, key=lambda m: np.linalg.norm(st[m]['xy'] - pg.J1XY))
         left.remove(i)
         p = st[i]
-        cell = next(c for c in order if c not in occupied)
+        cell = pg.store_cell(occupied)
         others = [pt for m in left for pt in collect.obstacle_pts(st[m])]
         P = s2.Path(q)
         if p['kind'] == 'lying':
@@ -80,7 +80,7 @@ def gen_retrieve(rng):
     pips = int(rng.integers(1, 7))
     n = int(rng.integers(pips, 13))
     filled = [str(c) for c in rng.choice(order, n, replace=False)]
-    cells = sorted(filled, key=order.index, reverse=True)[:pips]
+    cells = pg.retrieve_cells(filled, pips)
     Q, G, N, segs = pg.dice_sequence(cells, filled, pips)
     pre_shape = ['cyl' if rng.random() < 0.4 else 'box' for _ in filled]
     jobs = [dict(start=int(st_), cell=str(c), target=[float(xy[0]), float(xy[1])]) for st_, c, xy in segs]

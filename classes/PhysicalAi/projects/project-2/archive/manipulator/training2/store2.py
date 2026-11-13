@@ -306,7 +306,7 @@ def park_nodes(g, q_from):
     raise RuntimeError('받침에 넣는 자세 IK 안 됨')
 
 
-def pick_lying(path, xy, axis_yaw, others):
+def pick_lying(path, xy, axis_yaw, others, until='all'):
     """누운 네모 퍽: 집기 → 받침 세우기 → 다시 쥠. 돌려줌 쥔 깊이 (선 퍽 윗면 아래) [m]."""
     def clear_ok(g):
         # 열린 손가락 (닫힘축 ±reach, 폭 ±16 mm) 이 옆 퍽 (반 대각 21 mm) 과 3 mm 넘게 떨어짐
@@ -331,8 +331,11 @@ def pick_lying(path, xy, axis_yaw, others):
     path.go(g['tip'], g['app'], g['close'], '내림', step=0.002)
     path.hold(8, '쥠 (누운 퍽 끝)', g='close')
     path.go(np.r_[g['tip'][:2], BOX_Z + 0.02], g['app'], g['close'], '들기', step=0.0025, wa=1.0)
-    nodes, elev, _ = g['park']
+    nodes, elev, c_park = g['park']
+    path.park_close = c_park
     for nm, q, gr in nodes:
+        if until == 'insert' and nm == '손 세우고 닫기':     # 받침에 넣고 손 뺀 데까지 (뒤는 확인하며 park_press · park_regrasp)
+            break
         path.joint(q, nm)
         gg = {'release': f'release:{pg.OPEN_NARROW}', 'close': 'close'}.get(gr, '-')
         if gg != '-':
@@ -355,7 +358,8 @@ def to_rack_check(path, cell, occupied):
     return c_ins
 
 
-def insert(path, cell, c_ins, depth, ins_offset=(0.0, 0.0), ins_dyaw=0.0, insert_gap=0.008):
+def insert(path, cell, c_ins, depth, ins_offset=(0.0, 0.0), ins_dyaw=0.0, insert_gap=0.008, hold_only=False):
+    """hold_only: 칸 안 놓는 점까지 내려가 쥔 채 멈춤 (걸림 확인 뒤 release_and_lift 또는 recover_lift_out). 돌려줌 (txy, c_fix)."""
     cxy = np.array(CELLS[cell]['xy'])
     txy = cxy - np.asarray(ins_offset)
     cr, sr = np.cos(-ins_dyaw), np.sin(-ins_dyaw)
@@ -364,5 +368,198 @@ def insert(path, cell, c_ins, depth, ins_offset=(0.0, 0.0), ins_dyaw=0.0, insert
     ins_tip = RC['floor_z'] + insert_gap + 0.060 - depth
     path.go(np.r_[txy, SAFE_Z], DOWN, c_fix, '넣기', step=0.0025, wa=3.0)
     path.go(np.r_[txy, ins_tip], DOWN, c_fix, '넣기', step=0.0015, wa=3.0)
+    if hold_only:
+        path.hold(6, '걸림 확인')
+        return txy, c_fix
+    release_and_lift(path, txy, c_fix)
+    return txy, c_fix
+
+
+def release_and_lift(path, txy, c_fix):
     path.hold(10, '놓음', g='release:0.0085')
     path.go(np.r_[txy, SAFE_Z], DOWN, c_fix, '칸에서 들기', step=0.0025)
+
+
+def recover_lift_out(path, txy, c_fix, spot, others):
+    """혁무님 store_recover: 걸리면 칸 안에서 놓지 않고 쥔 채 곧게 들어 → 박스 자리 spot 에 세워 내려놓음 (그 뒤 다시 보고 다시 쥠)."""
+    path.go(np.r_[txy, SAFE_Z], DOWN, c_fix, '걸림 → 쥔 채 곧게 들기', step=0.0025)
+    path.go(np.r_[txy, RACK_Z], DOWN, c_fix, '걸림 → 쥔 채 곧게 들기', step=0.0025, wa=0.3)
+    path.go(np.r_[spot, RACK_Z], DOWN, pg.front_close(spot), '적재함 높이로 박스 위까지', wa=0.3, polar=True)   # 적재함 위에서 내려가지 않게
+    place_dice(path, spot, others)
+
+
+def seat_correct(path, cell, kind, yaw_err=0.0, occupied=()):
+    """칸 안 퍽 정정 (사용자 2026-11-11, 옆 퍽 안 건드리게 칸 바로 위에서만 작게):
+    kind 'press' = 손가락 닫고 윗면 가운데를 수직으로 살짝 눌러 내림 (턱에 걸침 · 기욺),
+    kind 'twist' = 칸 위로 나온 부분만 좁게 쥐고 5 mm 들어 손목으로 yaw_err 만큼 되돌려 내려놓음 (면 돌아감)."""
+    cxy = np.array(CELLS[cell]['xy'])
+    c = pg.feasible_sign(np.r_[cxy, SAFE_Z], choose_close(cell, [o for o in occupied if o != cell]), path.q[-1])
+    p0 = path.tip()[0]
+    path.go(np.r_[p0[:2], max(p0[2], SAFE_Z)], DOWN, path.tip()[2], '올림', step=0.003, wa=1.0)
+    path.go(np.r_[cxy, SAFE_Z], DOWN, c, '칸 위 (정정)', wa=1.0, polar=True)
+    if kind == 'press':
+        path.hold(8, '손가락 닫음', g='close')
+        path.go(np.r_[cxy, TOP + 0.010], DOWN, c, '윗면 위', step=0.0025)
+        path.go(np.r_[cxy, TOP - 0.002], DOWN, c, '살짝 눌러 내림', step=0.001)
+        path.go(np.r_[cxy, SAFE_Z], DOWN, c, '올림', step=0.0025)
+    else:
+        grip_tip = TOP - 0.015                                  # 칸 턱 (rim) 위로 나온 부분만 (손끝 턱 위 약 17 mm)
+        path.hold(10, '좁게 벌림', g=f'release:{pg.OPEN_NARROW}')
+        path.go(np.r_[cxy, grip_tip], DOWN, c, '윗부분 쥐러', step=0.002)
+        path.hold(8, '쥠', g='close')
+        path.go(np.r_[cxy, grip_tip + 0.005], DOWN, c, '5 mm 들기', step=0.001)
+        cr, sr = np.cos(-yaw_err), np.sin(-yaw_err)
+        c2 = np.r_[cr * c[0] - sr * c[1], sr * c[0] + cr * c[1], 0.0]
+        path.go(np.r_[cxy, grip_tip + 0.005], DOWN, c2, '손목으로 돌려 맞춤', step=0.001)
+        path.go(np.r_[cxy, grip_tip + 0.001], DOWN, c2, '내려놓기', step=0.001)
+        path.hold(10, '놓음', g='release:0.0085')
+        path.go(np.r_[cxy, SAFE_Z], DOWN, c2, '올림', step=0.0025)
+
+
+# ---------------------------------------------------------------- 놓은 퍽 다시 세우기 · 끌어오기 (사용자 2026-11-11: 놓고 확인 → 넘어졌으면 다시)
+def drag_in(path, xy, axis_yaw, r_end=0.235):
+    """손이 못 집는 먼 자리의 누운 퍽: 손가락 닫고 퍽 바깥쪽 뒤로 내려가 J1 쪽으로 끌어옴 (퍽 중심이 J1 에서 r_end 까지).
+    손은 팔 평면 안에서만 기울어짐 (5 축) → 바깥으로 기울여 멀리 닿음, 닫힘축 = 접선 (손가락 판이 미는 면)."""
+    xy = np.asarray(xy, float)
+    rdir = (xy - J1XY) / np.linalg.norm(xy - J1XY); tang = np.array([-rdir[1], rdir[0]])
+    a_ax = np.array([np.cos(axis_yaw), np.sin(axis_yaw)])
+    ext = 0.030 * abs(a_ax @ rdir) + 0.015 * abs(a_ax @ tang)        # 누운 퍽 반지름 방향 반 길이
+    start_xy = xy + rdir * (ext + 0.012)                              # 퍽 바깥 면 12 mm 뒤 (손가락 반 두께 6 + 여유)
+    end_xy = J1XY + rdir * (r_end + ext + 0.006)
+    z_push = BOX_TOP_Z + 0.012                                        # 손끝이 박스 윗면 12 mm 위 (누운 퍽 높이 30 의 아래쪽)
+    R, c = np.r_[rdir, 0], np.r_[tang, 0]
+    for t in np.arange(0.0, 45.1, 5.0):
+        a = np.sin(np.radians(t)) * R - np.cos(np.radians(t)) * Z
+        seeds = seeds_around(path.q[-1])
+        if multi_ik(np.r_[start_xy, z_push], a, c, seeds) is not None and multi_ik(np.r_[end_xy, z_push], a, c, seeds) is not None:
+            break
+    else:
+        raise RuntimeError(f'끌어오기: 퍽 ({xy[0]:.3f}, {xy[1]:.3f}) 뒤로 손이 안 닿음')
+    p0 = path.tip()[0]
+    path.go(np.r_[p0[:2], max(p0[2], BOX_Z)], path.tip()[1], path.tip()[2], '올림', step=0.003, wa=1.0)
+    path.go(np.r_[start_xy, BOX_Z], a, c, '퍽 뒤 위로', wa=1.0, polar=True)
+    path.hold(8, '손가락 닫음', g='close')
+    path.go(np.r_[start_xy, z_push], a, c, '퍽 뒤로 내림', step=0.002)
+    path.go(np.r_[end_xy, z_push], a, c, '끌어옴', step=0.002)
+    path.go(np.r_[end_xy, BOX_Z], a, c, '올림', step=0.003, wa=1.0)
+    return f'끌어옴 손 {t:.0f}° ({xy[0]:.3f} → {J1XY[0] + rdir[0] * r_end:.3f})'
+
+
+def place_dice(path, target, placed, depth=VERT_DEPTH):
+    """쥔 퍽 (수직 손) 을 주사위 자리에 놓기. 수직 손이 닿으면 그대로 (pathgen.place_and_home),
+    안 닿으면 팀 control_master place_far_regrasp: 같은 방향 (J1 → 목표) 가까운 빈 자리에 세워 내려놓고 →
+    손을 기울여 (닫힘축 = 접선) 다시 쥠 (퍽은 선 채) → 그 기울임 그대로 먼 자리에 놓음. 기울인 손으로 수직 퍽을 놓으면 넘어짐 (2026-11-11 시뮬)."""
+    target = np.asarray(target, float)
+    top = BOX_TOP_Z + 0.060
+    c_f = pg.front_close(target)
+    q_now = path.q[-1]
+    if vertical_reach(target, top - depth + 0.002, c_f, q_now) and vertical_reach(target, top + 0.040, c_f, q_now):
+        Q, G, N = pg.place_and_home(q_now, target, placed, depth=depth, home=False)
+        path.extend([to_qm(x) for x in Q], G, N)
+        return 'vertical'
+    rdir = (target - J1XY) / np.linalg.norm(target - J1XY); tang = np.array([-rdir[1], rdir[0]])
+    R, c = np.r_[rdir, 0], np.r_[tang, 0]
+    # 기울임: 목표에 놓는 자세가 되는 가장 작은 손 기울임
+    for t in np.arange(10.0, MAX_TILT + 1e-6, 5.0):
+        a = np.sin(np.radians(t)) * R - np.cos(np.radians(t)) * Z
+        if multi_ik(np.r_[target, top - TILTED_DEPTH + 0.002], a, c, seeds_around(q_now)) is not None:
+            break
+    else:
+        raise RuntimeError(f'주사위 자리 ({target[0]:.3f}, {target[1]:.3f}): {MAX_TILT:.0f}° 기울여도 안 닿음')
+    # 내려놓을 가까운 자리: J1 → 목표 선 위, regrasp_min_x 부터 바깥으로 1 cm 씩, 옆 0 · ±4 cm. 놓인 퍽 · 목표에서 떨어지고 수직 손 · 기울인 손 다 닿는 곳
+    r0 = np.linalg.norm(target - J1XY)
+    spot = None
+    for r in np.arange((REGRASP_MIN_X + 0.002 - J1XY[0]) / max(rdir[0], 0.1), r0 - 0.03 + 1e-9, 0.01):
+        for lat in (0.0, 0.04, -0.04):
+            s = J1XY + rdir * r + tang * lat
+            if s[0] < REGRASP_MIN_X or abs(s[1]) > 0.1025 - 0.020:
+                continue
+            if any(np.linalg.norm(np.asarray(p) - s) < 0.067 for p in placed):          # 목표 자리는 비어 있으니 가까워도 됨
+                continue
+            if vertical_reach(s, top - depth + 0.002, pg.front_close(s), q_now) and ik_ok(np.r_[s, top - TILTED_DEPTH], a, c, q_now)[1]:
+                spot = s; break
+        if spot is not None:
+            break
+    if spot is None:
+        raise RuntimeError('먼 주사위 자리: 내려놓고 다시 쥘 빈 자리가 없음')
+    Q, G, N = pg.place_and_home(q_now, spot, placed, depth=depth, home=False)
+    path.extend([to_qm(x) for x in Q], G, N)
+    tip_s = np.r_[spot, top - TILTED_DEPTH]
+    path.go(np.r_[(tip_s - 0.050 * a)[:2], BOX_Z], a, c, '기울여 다시 쥐러', wa=1.0)
+    path.go(tip_s - 0.050 * a, a, c, '기울여 다시 쥐러', step=0.0025)
+    path.hold(10, '확인', g=f'release:{pg.OPEN_NARROW}')
+    path.go(tip_s, a, c, '기울여 들어감', step=0.002)
+    path.hold(8, '다시 쥠 (손 기울임, 퍽은 선 채)', g='close')
+    path.go(tip_s + 0.020 * Z, a, c, '들기', step=0.002)
+    tip_t = np.r_[target, top - TILTED_DEPTH + 0.002]
+    path.go(tip_t + 0.020 * Z, a, c, '먼 자리 위로', step=0.003)
+    path.hold(15, '자리 확인')
+    path.go(tip_t, a, c, '내려놓기', step=0.002)
+    path.hold(10, '놓음', g=f'release:{pg.OPEN_NARROW}')
+    path.go(tip_t - 0.050 * a, a, c, '손 빼기', step=0.0025)
+    path.go(np.r_[(tip_t - 0.050 * a)[:2], BOX_Z], a, c, '들기', step=0.003, wa=1.0)
+    return f'far: 손 {t:.0f}° · 다시 쥔 자리 ({spot[0]:.3f}, {spot[1]:.3f})'
+
+
+# ---------------------------------------------------------------- 받침에서 확인하며 세우기 (사용자 2026-11-11: 누르고 확인 → 2 번 안 되면 다시 집어 박스에서 다시)
+def _park_at(r, z):
+    sc = PARK['center']; rdir = (sc - J1XY) / np.linalg.norm(sc - J1XY)
+    return np.r_[sc + r * rdir, z]
+
+
+def _park_T():
+    sc = PARK['center']; rdir = (sc - J1XY) / np.linalg.norm(sc - J1XY)
+    return np.r_[-rdir[1], rdir[0], 0.0]
+
+
+def park_press(path, side):
+    """받침에 기댄 퍽 누르기: side = -1 뒤 (J1 쪽, 퍽 윗부분이 바깥으로 기울었을 때), +1 앞 (로봇 쪽으로 기울었을 때).
+    손 수직 · 닫고 그 쪽 위 → 바닥 + press_h 까지 곧게 내려 누름 → 올림."""
+    c = getattr(path, 'park_close', _park_T())
+    z_top = PARK['floor_z'] + PARK['press_top']
+    r = side * abs(PARK['press_r'])
+    p0 = path.tip()[0]
+    q, ok = nearest_ik(np.r_[p0[:2], max(p0[2], z_top)], DOWN, c, path.q[-1])
+    path.joint(q, '손 세우고 닫기'); path.hold(8, '손 세우고 닫기', g='close')
+    q, ok = nearest_ik(_park_at(r, z_top), DOWN, c, path.q[-1])
+    if not ok:
+        raise RuntimeError(f'받침 {"앞" if side > 0 else "뒤"} 누르기 자세 IK 안 됨')
+    path.joint(q, f'받침 {"앞" if side > 0 else "뒤"} 위')
+    for k in range(1, PARK['press_steps'] + 1):
+        q, ok = nearest_ik(_park_at(r, z_top + (PARK['floor_z'] + PARK['press_h'] - z_top) * k / PARK['press_steps']), DOWN, c, path.q[-1])
+        path.joint(q, f'{"앞" if side > 0 else "뒤"}에서 눌러 세우기')
+    q, ok = nearest_ik(_park_at(r, z_top), DOWN, c, path.q[-1])
+    path.joint(q, '올림')
+
+
+def park_regrasp(path, xy):
+    """받침에 선 퍽 (잰 자리 xy) 을 수직 손으로 다시 쥠 · 들기. 돌려줌 쥔 깊이."""
+    c = getattr(path, 'park_close', _park_T())
+    ptop = PARK['floor_z'] + LENGTH
+    for p, nm, g in ((np.r_[xy, ptop + 0.0075], '선 퍽 위', f'release:{pg.OPEN_NARROW}'), (np.r_[xy, ptop - PARK['regrasp_depth']], '다시 내림', 'close'),
+                     (np.r_[xy, ptop + 0.0075], '받침에서 들기', '-')):
+        q, ok = nearest_ik(p, DOWN, c, path.q[-1])
+        if not ok:
+            raise RuntimeError(f'받침 다시 쥐기 IK 안 됨 ({nm})')
+        path.joint(q, nm)
+        if g != '-':
+            path.hold(8, nm, g=g)
+    return PARK['regrasp_depth']
+
+
+def park_extract(path, top_xyz, spot):
+    """2 번 눌러도 안 선 퍽: 받침에서 집어 (윗끝을 수직 손으로) 박스 빈 자리 spot 에 놓음 (누운 채) → 거기서 다시 제대로 잡기."""
+    c = getattr(path, 'park_close', _park_T())
+    top = np.asarray(top_xyz, float)
+    for p, nm, g in ((np.r_[top[:2], top[2] + 0.015], '받침 퍽 윗끝 위', f'release:{pg.OPEN_WIDE}'), (np.r_[top[:2], top[2] - 0.018], '윗끝 쥐러 내림', 'close'),
+                     (np.r_[top[:2], top[2] + 0.030], '받침에서 꺼냄', '-')):
+        q, ok = nearest_ik(p, DOWN, c, path.q[-1])
+        if not ok:
+            raise RuntimeError(f'받침에서 꺼내기 IK 안 됨 ({nm})')
+        path.joint(q, nm)
+        if g != '-':
+            path.hold(8, nm, g=g)
+    path.go(np.r_[spot, BOX_Z], DOWN, pg.front_close(spot), '박스 빈 자리로', wa=1.0, polar=True)
+    path.go(np.r_[spot, BOX_TOP_Z + 0.045], DOWN, pg.front_close(spot), '내려놓기', step=0.0025)
+    path.hold(10, '놓음', g=f'release:{pg.OPEN_WIDE}')
+    path.go(np.r_[spot, BOX_Z], DOWN, pg.front_close(spot), '들기', step=0.003)

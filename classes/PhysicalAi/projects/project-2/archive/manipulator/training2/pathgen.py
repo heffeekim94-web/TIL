@@ -177,7 +177,7 @@ def retrieve_path(cell, occupied, depth=0.025, safe_z=0.22, look_s=1.0, q_start=
     new = lerp_path(qs[-1], [(np.r_[xy, carry_z], down, c_star)], 0.0025, w_a=0.3)
     qs += new; names += ['더 들기'] * len(new); grips += ['-'] * len(new)
     box_above = np.r_[0.21, 0.03, carry_z]
-    new = lerp_path(qs[-1], [(box_above, down, c0 if abs(c0 @ c_star) < 0.5 else c_star)], 0.005, w_a=0.3, polar=True)   # 8. 그 높이로 박스 쪽
+    new = lerp_path(qs[-1], [(box_above, down, front_close(box_above[:2]))], 0.005, w_a=0.3, polar=True)   # 8. 몸통을 정면으로 돌리며 J5 도 원점 (그리퍼 머리 정면)
     qs += new; names += ['박스 쪽'] * len(new); grips += ['-'] * len(new)
     Q = np.array([to_cmd(q) for q in qs])
     return Q, grips, names
@@ -206,8 +206,19 @@ def pip_xy(px, py):
 
 
 def pip_order(pips):
-    """팀 order_far_first: 로봇에서 먼 점부터."""
-    return sorted(PIPS[pips], key=lambda c: -c[1])
+    """놓는 순서 (사용자 2026-11-11): 먼 줄 → 가까운 줄, 같은 줄은 왼쪽 → 오른쪽 (팀 dice.cpp order_far_first 를 바꿈).
+    J5 원점 (정면) 으로 놓으면 손가락이 좌우로 닫힘 → 이 순서면 이미 놓인 퍽은 늘 왼쪽 · 먼 쪽."""
+    return sorted(PIPS[pips], key=lambda c: (-c[1], c[0]))
+
+
+FRONT_DEG = 86.0       # J5 원점 (HOME J5 0.023) 수직 손의 닫힘축 = J1 → 손끝 반지름 방향에서 86° (IK 로 잼, 2026-11-11)
+
+
+def front_close(xy):
+    """그리퍼 머리 정면 (J5 원점) 일 때 닫힘축 (손가락 좌우)."""
+    r = np.asarray(xy, float) - J1XY
+    a = np.arctan2(r[1], r[0]) + np.radians(FRONT_DEG)
+    return np.array([np.cos(a), np.sin(a), 0.0])
 
 
 def choose_close_xy(xy, others):
@@ -227,10 +238,7 @@ def choose_close_xy(xy, others):
 def place_and_home(q_start, target_xy, placed_xy, depth=0.025, home=True):
     """쥔 퍽을 박스 주사위 칸에 놓고 HOME 으로. 이미 놓인 퍽 (placed_xy) 을 피해 손가락 방향 고름."""
     down = np.array([0, 0, -1.0])
-    c = choose_close_xy(target_xy, placed_xy)
-    _, _, c_now = grip(q_start)
-    if c @ c_now < 0:
-        c = -c
+    c = front_close(target_xy)                                        # 그리퍼 머리 정면 그대로 (손가락 좌우)
     carry_z = BOX_TOPB + 0.060 + 0.047 + 0.010 + 0.012              # 쥔 퍽 바닥이 놓인 퍽 윗면 10 mm 위 (팔이 닿는 높이)
     place_z = BOX_TOPB + 0.060 - depth + 0.002                         # 퍽 바닥이 박스 윗면 2 mm 위에서 놓음
     qs, names, grips = [], [], []
@@ -239,10 +247,10 @@ def place_and_home(q_start, target_xy, placed_xy, depth=0.025, home=True):
                             (np.r_[target_xy, carry_z], '놓을 칸 위', 0.005, 1.0)):            # 그 높이로 칸 위까지 수평
         new = lerp_path(q, [(p, down, c)], step, w_a=wa); q = new[-1]
         qs += new; names += [nm] * len(new); grips += ['-'] * len(new)
-    qs += [q] * 10; names += ['확인'] * 10; grips += ['-'] * 10
+    qs += [q] * 15; names += ['자리 확인'] * 15; grips += ['-'] * 15
     new = lerp_path(q, [(np.r_[target_xy, place_z], down, c)], 0.0025, w_a=3.0); q = new[-1]
     qs += new; names += ['내려놓기'] * len(new); grips += ['-'] * len(new)
-    qs += [q] * 10; names += ['놓음'] * 10; grips += ['release'] + ['-'] * 9
+    qs += [q] * 10; names += ['놓음'] * 10; grips += ['release:0.0100'] + ['-'] * 9   # 좁게 벌림 (옆 퍽 60 mm, 여유 약 11 mm)
     new = lerp_path(q, [(np.r_[target_xy, carry_z], down, c)], 0.0025, w_a=1.0); q = new[-1]
     qs += new; names += ['들기'] * len(new); grips += ['-'] * len(new)
     if not home:          # 바로 다음 칸으로 (HOME 안 들름)
@@ -265,7 +273,40 @@ def cargo_order():
     for line in open(sag.TEAM / 'config/planning.yaml'):
         m_ = re.match(r'\s*cargo_slots:\s*\[(.*)\]', line)
         if m_:
-            return [c.strip() for c in m_.group(1).split(',')]
+            return [c.strip().strip('"').strip("'") for c in m_.group(1).split(',')]
+
+
+def _plan_list(key):
+    """config/planning.yaml 의 ["A:B", ...] 목록 → [(A, B)] (A 를 넣기 · 빼기 전에 B 가 비어야 함)."""
+    import re
+    for line in open(sag.TEAM / 'config/planning.yaml'):
+        m_ = re.match(r'\s*' + key + r':\s*\[(.*?)\]', line)
+        if m_:
+            return [tuple(x.strip().strip('"').strip("'").split(':')) for x in m_.group(1).split(',') if ':' in x]
+    return []
+
+
+def store_cell(occupied):
+    """넣을 칸: 혁무님 순서 (cargo_slots) 첫 빈 칸, 넣기 제약 (rack_store_needs_empty) 을 어기면 다음 빈 칸."""
+    need = _plan_list('rack_store_needs_empty')
+    empty = [c for c in cargo_order() if c not in occupied]
+    for c in empty:
+        if all(b not in occupied for a, b in need if a == c):
+            return c
+    return empty[0]
+
+
+def retrieve_cells(filled, n):
+    """뺄 칸 n 개 차례: 마지막에 넣은 칸부터 (cargo_slots 거꾸로), 빼기 제약 (rack_retrieve_needs_empty) 을 지키는 칸 먼저."""
+    need = _plan_list('rack_retrieve_needs_empty')
+    left, out = list(filled), []
+    order = cargo_order()
+    for _ in range(n):
+        cands = sorted(left, key=order.index, reverse=True)
+        ok = [c for c in cands if all(b not in left for a, b in need if a == c)]
+        c = (ok or cands)[0]
+        out.append(c); left.remove(c)
+    return out
 
 
 def random_box_layout(n, seed, pitch=0.05, jitter=0.004, max_yaw=np.radians(30)):
@@ -383,7 +424,12 @@ def dice_sequence(cells, occupied, pips):
     for k, (cell, xy) in enumerate(zip(cells, order)):
         segs.append((len(Q), cell, xy))
         Q1, G1, N1 = retrieve_path(cell, [c for c in occ if c != cell], q_start=q)
-        Q2, G2, N2 = place_and_home(to_qm(Q1[-1]), xy, order[:k], home=(k == len(order) - 1))
+        import store2                                   # 먼 자리는 기울여 다시 쥐어 놓기 (store2.place_dice)
+        P = store2.Path(to_qm(Q1[-1]))
+        store2.place_dice(P, xy, order[:k])
+        if k == len(order) - 1:
+            hq, hg, hn = go_home(P.q[-1]); P.extend(hq, hg, hn)
+        Q2 = np.array([to_cmd(x) for x in P.q[1:]]); G2, N2 = P.g[1:], P.n[1:]
         Q += list(Q1) + list(Q2); G += G1 + G2; N += N1 + N2
         occ.remove(cell)
         q = to_qm(Q2[-1])
@@ -391,13 +437,77 @@ def dice_sequence(cells, occupied, pips):
     return Q, G, N, [(a_, c_, x_) for a_, (_, c_, x_) in zip(st, segs)]
 
 
-def dense_all(Q, G, N, marks=(), max_step=MAX_DQ):
-    """전체 경로 (팀 관절 값) 를 관절 한 걸음 max_step 이하로 나눔. 그리퍼 사건은 원래 경유점에 도착할 때, marks (경유점 번호) 는 새 번호로."""
+def unwrap_limits(Q):
+    """관절 값 (팀 명령) 이 한 바퀴 (2π) 건너뛰면 실제 관절 범위 (LO–HI) 안의 같은 각도로. 틱 변환 (cmd_to_ticks) 이 범위 끝에서
+    2π 바꿔 놓아 J4 가 한 바퀴 도는 명령이 됐음 (2026-11-11, 시뮬에서 그리퍼가 하늘로 꺾임)."""
+    Q = np.array(Q, float)
+    for i in range(len(Q)):
+        for j in range(5):
+            cands = Q[i, j] + 2 * np.pi * np.arange(-2, 3)
+            inside = cands[(cands >= LO[j] - 0.05) & (cands <= HI[j] + 0.05)]
+            pool = inside if len(inside) else cands
+            ref = Q[i - 1, j] if i else Q[i, j]
+            Q[i, j] = pool[np.argmin(np.abs(pool - ref))]
+    return Q
+
+
+# 속도 (사용자 2026-11-11: 빈 공간은 빠르게 · 퍽 근처는 안정적으로, 최고 속도까지 올렸다가 다시 줄임) — 팀 config/control.yaml 값
+FAST = {'칸 위', '박스 쪽', '놓을 칸 위', '칸 위로', '적재함 높이로', '먼 자리 위로', '먼 퍽 위 (손 기울임)', '누운 퍽 위', '박스 빈 자리로',
+        '퍽 뒤 위로', '가까운 자리로', '기울여 다시 쥐러', '돌아감', '박스 위로 내림', '일어섬', '퍽 위', '다시 퍽 위', '더 들기'}
+SLOW_PUSH = ('눌러 세우기', '꽂아 눌러')
+V_FAST, V_NEAR, V_PUSH = np.radians(150.0), np.radians(62.5), np.radians(20.0)   # path_speed_dps · near_puck_speed_dps · park_push_speed_dps
+ACC = 3.7                  # 가감속 [rad/s²] (2026-11-11 사용자: 5.0–1.0 비교 뒤 3.7, 몸체 0.32°)
+WP_DT = 2 / 30             # 경유점 하나 = 정책 2 스텝
+
+
+def _speed(name):
+    if name in FAST:
+        return V_FAST
+    if any(k in name for k in SLOW_PUSH):
+        return V_PUSH
+    return V_NEAR
+
+
+def dense_all(Q, G, N, marks=(), max_step=None):
+    """경로 (팀 관절 값) 를 시간으로 다시 나눔 (경유점 간격 WP_DT). 멈춤 (같은 자세 반복 = 확인 · 쥠 · 놓음) 사이는 한 번에 이어서:
+    출발 때 가속 ACC 로 올리고, 멈출 곳 앞에서만 줄임. 구간마다 최고 속도 (빈 공간 · 퍽 근처) 가 달라도 서지 않고 속도만 바꿈
+    (앞 · 뒤 두 번 훑어 가속 한계 안에서 가장 빠른 속도, 사용자 2026-11-11: 뚝뚝 끊기지 않게)."""
+    Q = unwrap_limits(Q)
+    G, N = list(G), list(N)
     oq, og, on, idx = [Q[0]], [G[0]], [N[0]], [0]
-    for i in range(1, len(Q)):
-        k = max(1, int(np.ceil(np.abs(Q[i] - oq[-1]).max() / max_step)))
-        p = oq[-1]
-        for j, t in enumerate(np.linspace(0, 1, k + 1)[1:]):
-            oq.append(p + t * (Q[i] - p)); on.append(N[i]); og.append(G[i] if j == k - 1 else '-')
-        idx.append(len(oq) - 1)
+    i = 1
+    while i < len(Q):
+        if np.abs(Q[i] - Q[i - 1]).max() < 1e-6:                  # 멈춤
+            oq.append(Q[i]); og.append(G[i]); on.append(N[i]); idx.append(len(oq) - 1); i += 1
+            continue
+        j = i
+        while j < len(Q) and np.abs(Q[j] - Q[j - 1]).max() >= 1e-6:
+            j += 1
+        pts = np.vstack([oq[-1:], Q[i:j]])
+        seg = np.abs(np.diff(pts, axis=0)).max(1)
+        cum = np.r_[0, np.cumsum(seg)]
+        vlim = np.array([_speed(N[m]) for m in range(i, j)])      # 각 작은 구간 (pts[k] → pts[k+1]) 최고 속도
+        v = np.r_[0.0, vlim.copy()]                                 # 각 점 속도 (끝점 0)
+        v[-1] = 0.0
+        for k in range(1, len(v)):                                  # 앞으로: 가속 한계
+            v[k] = min(v[k], np.sqrt(v[k - 1] ** 2 + 2 * ACC * seg[k - 1]), vlim[k - 1] if k - 1 < len(vlim) else v[k])
+        for k in range(len(v) - 2, -1, -1):                         # 뒤로: 감속 한계
+            v[k] = min(v[k], np.sqrt(v[k + 1] ** 2 + 2 * ACC * seg[k]))
+        dt = 2 * seg / np.maximum(v[:-1] + v[1:], 1e-9)             # 작은 구간마다 걸리는 시간 (등가속)
+        tcum = np.r_[0, np.cumsum(dt)]
+        T = tcum[-1]
+        n = max(1, int(np.ceil(T / WP_DT)))
+        base = len(oq)
+        for t in np.linspace(0, T, n + 1)[1:]:
+            k = min(np.searchsorted(tcum, t, side='right') - 1, len(seg) - 1)
+            tau = t - tcum[k]; a_k = (v[k + 1] - v[k]) / max(dt[k], 1e-9)
+            d = min(v[k] * tau + 0.5 * a_k * tau * tau, seg[k])
+            oq.append(pts[k] + d / max(seg[k], 1e-12) * (pts[k + 1] - pts[k])); on.append(N[min(i + k, j - 1)]); og.append('-')
+        for m_, tc in zip(range(i, j), tcum[1:]):                   # 원래 경유점 → 그 시각에 처음 닿는 새 경유점
+            nk = base + int(min(np.ceil(tc / WP_DT - 1e-9) - 1, n - 1))
+            nk = max(nk, base)
+            if G[m_] != '-':
+                og[nk] = G[m_]
+            idx.append(nk)
+        i = j
     return np.array(oq), og, on, [idx[m] for m in marks]

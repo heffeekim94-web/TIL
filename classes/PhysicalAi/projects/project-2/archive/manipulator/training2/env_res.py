@@ -27,12 +27,22 @@ HERE = Path(__file__).resolve().parent
 @configclass
 class ResEnvCfg(EnvCfg):
     observation_space = 92                # Training2Env 80 + 기본 경로 12
-    library: str = 'logs/library_chain.npz'
+    library: str = 'logs/library_chain_v3.npz'
     res_scale: float = 0.05               # 관절 보정 최대 [rad] (손끝 약 10 mm)
-    grip_res: float = 0.002               # 그리퍼 보정 최대
+    grip_res: float = 0.0                 # 그리퍼 보정 최대 (0 = 그리퍼는 기본 경로 그대로, 2026-11-11 r1 실패 뒤)
+    act_smooth: float = 0.8               # 행동 저역 필터: 보정 = 0.8 × 앞 보정 + 0.2 × 새 행동 (탐색 때 팔이 떨지 않게)
     res_penalty: float = -0.02            # 보정 크기 벌점 (행동² 합)
     settle_steps: int = 60                # 경로 끝 뒤 기다림 (2 s)
     lookahead: int = 8                    # 관측: 몇 경유점 앞 기본 자세
+    # 몸체 안정 (사용자 2026-11-11: 바닥에서 덜컹거리면 감점, 안정적으로 끝내면 보상)
+    own_cup_touch: float = 0.0002         # 작업 퍽 ↔ 자기 칸 컵 벽 닿음 (기록만). 사용자 2026-11-11: 자기 칸 벽 스침은 괜찮음, 다른 퍽 건드림은 금물 (충돌)
+    stab_tilt_deg: float = 0.45           # 이 기울기까지는 감점 없음 (2026-11-11 사용자: 가속 5.0–1.0 측정 범위 0.31–0.41° 는 봐줌)
+    stab_tilt: float = -1.0               # 넘은 각 [°] 당
+    stab_lift_mm: float = 1.0             # 바퀴 높이 차 이만큼까지 감점 없음 (같은 측정 0.65–0.94 mm)
+    stab_lift: float = -0.5               # 넘은 mm 당
+    stab_angvel: float = -0.05            # 몸체 각속도² [rad/s]²
+    stab_bonus: float = 2.0               # 미션 끝까지 기울기 · 바퀴 높이 차가 위 기준 안 · 충돌 없이 성공
+    lift_fail: float = -5.0               # 바퀴 뜸이 stab_lift_mm 넘으면 에피소드 끝 + 이 벌점 (사용자 2026-11-12: 바닥에서 아예 뜨면 안 됨)
 
 
 class Training2ResEnv(Training2Env):
@@ -53,6 +63,10 @@ class Training2ResEnv(Training2Env):
         self.t = torch.zeros(N, dtype=torch.long, device=dev)
         self._sp = torch.zeros(N, dtype=torch.bool, device=dev)   # 이 에피소드 성공 보상 줬나
         self.holding = torch.zeros(N, dtype=torch.bool, device=dev)
+        self.a_f = torch.zeros(N, 6, device=dev)                         # 걸러진 보정 행동
+        self.wheel_ids = [i for i, nm in enumerate(self.robot.body_names) if 'wheel' in nm.lower()]
+        self.stable = torch.ones(N, dtype=torch.bool, device=dev)     # 이 에피소드 내내 몸체 안정
+        self.ep_tilt = torch.zeros(N, device=dev)                      # 에피소드 최대 기울기 [°]
         self.js = [None] * N               # env 마다 이 에피소드 퍽 차례 (라이브러리 jobs)
         self.n_jobs = torch.ones(N, dtype=torch.long, device=dev)
         self.n_done = torch.zeros(N, dtype=torch.long, device=dev)   # 제자리에 놓고 끝난 퍽 수 (지금 퍽 빼고)
@@ -122,6 +136,10 @@ class Training2ResEnv(Training2Env):
         for k in ('grasped', 'ever_grasped', 'placed', 'holding'):
             getattr(self, k)[ids] = False
         self.clean[ids] = True
+        self.stable[ids] = True
+        self.ep_tilt[ids] = 0
+        if hasattr(self, 'a_f'):
+            self.a_f[ids] = 0
         self.phase[ids] = 0
         self.prev_actions[ids] = 0
         self.prev_phi[ids] = float('nan')
@@ -222,8 +240,9 @@ class Training2ResEnv(Training2Env):
         qb = self.libQ[self.li, k]
         if self.scripted is not None:                      # 기본 경로만 (보정 0) 시험
             a = torch.zeros_like(a)
-        self.q_target = torch.maximum(torch.minimum(qb + a[:, :5] * self.cfg.res_scale, self.q_hi), self.q_lo)
-        self.grip_target = (self.libG[self.li, k] + a[:, 5] * self.cfg.grip_res).clamp(GRIPPER_CLOSE - 0.001, GRIPPER_OPEN)
+        self.a_f = self.cfg.act_smooth * self.a_f + (1 - self.cfg.act_smooth) * a
+        self.q_target = torch.maximum(torch.minimum(qb + self.a_f[:, :5] * self.cfg.res_scale, self.q_hi), self.q_lo)
+        self.grip_target = (self.libG[self.li, k] + self.a_f[:, 5] * self.cfg.grip_res).clamp(GRIPPER_CLOSE - 0.001, GRIPPER_OPEN)
         self.t += 1
 
     # ------------------------------------------------------------------ 끝 · 보상
@@ -237,10 +256,21 @@ class Training2ResEnv(Training2Env):
         self.holding = (self.holding | self.grasped) & closed
         far = (self.work_w - self.grasp_w).norm(dim=-1) > 0.04
         self.ev['drop'] = (self.holding & far) | ((self.work_w[:, 2] - o[:, 2] < 0.04) & ~self.placed)
+        # 몸체 기울기 (몸체 z 축 ↔ 세계 z) · 바퀴 뜸 (네 바퀴 높이 차) · 각속도
+        from isaaclab.utils.math import matrix_from_quat
+        bz = matrix_from_quat(self.robot.data.root_quat_w.torch)[:, :, 2]
+        self.body_tilt = torch.rad2deg(torch.acos(bz[:, 2].clamp(-1, 1)))
+        wz = self.robot.data.body_pos_w.torch[:, self.wheel_ids, 2]
+        self.wheel_lift = (wz.amax(1) - wz.amin(1)) * 1000
+        self.body_angvel = self.robot.data.root_ang_vel_w.torch.square().sum(1)
+        self.stable &= (self.body_tilt <= self.cfg.stab_tilt_deg) & (self.wheel_lift <= self.cfg.stab_lift_mm)
+        self.ep_tilt = torch.maximum(self.ep_tilt, self.body_tilt)
         home_ok = (self.robot.data.joint_pos.torch[:, self.arm_ids] - self.home).abs().amax(1) < self.cfg.reward.home_tol
         last = self.next_start >= 10 ** 9
         self.ev['success'] = last & ((self.n_done + self.placed.long()) >= self.n_jobs) & home_ok & (self.t >= 2 * self.libN[self.li])
-        terminated = self.ev['severe'] | self.ev['drop'] | self.ev['bad']
+        self.cup_touch = self.d_own_cup < self.cfg.own_cup_touch       # 칸 벽 닿음 (기록만)
+        self.ev['lifted'] = self.wheel_lift > self.cfg.stab_lift_mm
+        terminated = self.ev['severe'] | self.ev['drop'] | self.ev['bad'] | self.ev['lifted']
         if self.no_terminate:
             terminated = torch.zeros_like(terminated)
         done_path = self.t >= 2 * self.libN[self.li] + self.cfg.settle_steps
@@ -254,14 +284,24 @@ class Training2ResEnv(Training2Env):
         self.ep_stats['collision_steps'] += coll
         self.ep_stats['min_clear'] = torch.minimum(self.ep_stats['min_clear'], self.d_min)
         a, pa = self.actions, self.prev_actions
-        rew = (rw.collision * coll + rw.near * near
-               + rw.terminate_collision * ev['severe'].float() + rw.drop * ev['drop'].float()
-               + rw.own_cup_scrape * (self.d_own_cup < rw.contact_eps).float()
-               + rw.grasp * ev['grasp_new'].float()
-               + rw.place * (ev['place_new'] & self.clean).float()
-               + rw.home * (ev['success'] & ~self._sp & self.clean).float()
-               + self.cfg.res_penalty * a.square().sum(1)
-               + rw.action_rate * (a - pa).square().sum(1))
+        parts = {
+            '충돌': rw.collision * coll, '가까움': rw.near * near,
+            '심한충돌': rw.terminate_collision * ev['severe'].float(), '떨어뜨림': rw.drop * ev['drop'].float(),
+            '컵닿음': self.cup_touch.float(),                           # 기록만 (닿은 스텝 수, 보상에 안 들어감)
+            '쥠': rw.grasp * ev['grasp_new'].float(), '놓음': rw.place * (ev['place_new'] & self.clean).float(),
+            'HOME': rw.home * (ev['success'] & ~self._sp & self.clean).float(),
+            '기울기': self.cfg.stab_tilt * (self.body_tilt - self.cfg.stab_tilt_deg).clamp(min=0),
+            '바퀴뜸': self.cfg.stab_lift * (self.wheel_lift - self.cfg.stab_lift_mm).clamp(min=0),
+            '바퀴뜸실패': self.cfg.lift_fail * ev['lifted'].float(),
+            '흔들림속도': self.cfg.stab_angvel * self.body_angvel,
+            '안정보상': self.cfg.stab_bonus * (ev['success'] & ~self._sp & self.clean & self.stable).float(),
+            '보정크기': self.cfg.res_penalty * a.square().sum(1),
+            '보정변화': rw.action_rate * (a - pa).square().sum(1)}
+        if not hasattr(self, 'ep_parts'):
+            self.ep_parts = {k: torch.zeros(self.num_envs, device=self.device) for k in parts}
+        for k_, v_ in parts.items():
+            self.ep_parts[k_] += torch.nan_to_num(v_)
+        rew = sum(v for k_, v in parts.items() if k_ != '컵닿음')
         self._sp |= ev['success']
         self.prev_actions = a.clone()
         return torch.nan_to_num(rew, nan=0.0, posinf=0.0, neginf=0.0)
@@ -289,6 +329,13 @@ class Training2ResEnv(Training2Env):
             for r in self.record[n0:]:
                 e = r['env']; d = int(self.n_done[e]) + int(bool(self.placed[e]))
                 r['done'], r['done_frac'] = d, d / max(int(self.n_jobs[e]), 1)
+                if hasattr(self, 'ep_parts'):
+                    r['parts'] = {k: round(float(v[e]), 2) for k, v in self.ep_parts.items()}
+        if hasattr(self, 'ep_parts'):
+            log = self.extras.setdefault('log', {})
+            for k, v in self.ep_parts.items():
+                log[f'Reward_part/{k}'] = v[ids].mean()
+                v[ids] = 0
         if hasattr(self, '_sp'):
             self._sp[ids] = False
         if self.dist and hasattr(self, 'li'):
@@ -298,3 +345,5 @@ class Training2ResEnv(Training2Env):
                 if msk.any():
                     log[f'Task/{nm}_pucks_done'] = ((self.n_done[ids] + self.placed[ids].long()).float() / self.n_jobs[ids].float())[msk].mean()
                     log[f'Task/{nm}_clean'] = self.clean[ids][msk].float().mean()
+            log['Episode/body_stable'] = self.stable[ids].float().mean()
+            log['Episode/body_tilt_max_deg'] = self.ep_tilt[ids].mean()
