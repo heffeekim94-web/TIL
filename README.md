@@ -78,6 +78,7 @@
 - [2026.11.10](classes/4th-month/Day67/README.md)
 - [2026.11.11](classes/4th-month/Day68/README.md)
 - [2026.11.12](classes/4th-month/Day69/README.md)
+- [2026.11.13](classes/4th-month/Day70/README.md)
 
 </details>
 
@@ -201,6 +202,7 @@
 - [Day67 (2026.11.10) - 매니퓰레이터 학습2 환경](classes/4th-month/Day67/README.md)
 - [Day68 (2026.11.11) - 매니퓰레이터 보정 학습 · 툭 건드리기](classes/4th-month/Day68/README.md)
 - [Day69 (2026.11.12) - 보정 학습 접고 새 모델 3개 · 미션 rosbag 분석 · pa06 초음파 · Nav2](classes/4th-month/Day69/README.md)
+- [Day70 (2026.11.13) - 모방 학습 접고 단계 보상 보고 집기 · Jetson 바코드 · 신호등 점검](classes/4th-month/Day70/README.md)
 
 </details>
 
