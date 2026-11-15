@@ -20,6 +20,8 @@ p.add_argument('--episodes', type=int, default=3)
 p.add_argument('--gif', default='')
 p.add_argument('--mp4', default='')
 p.add_argument('--seed', type=int, default=7)
+p.add_argument('--pick2', action='store_true', help='env_pick2 (단계 보상, 선 퍽만)')
+p.add_argument('--away', type=float, default=-1, help='env_pick2: 안 보이게 시작하는 비율 (−1 = 설정 그대로)')
 AppLauncher.add_app_launcher_args(p)
 a = p.parse_args()
 a.headless = True
@@ -31,10 +33,14 @@ import torch  # noqa: E402
 from PIL import Image, ImageDraw, ImageFont  # noqa: E402
 
 from env_pick import PickEnvCfg, Training2PickEnv  # noqa: E402
+if a.pick2:
+    from env_pick2 import Pick2EnvCfg as PickEnvCfg, Training2Pick2Env as Training2PickEnv  # noqa: E402, F811
 import viz  # noqa: E402
 
 torch.manual_seed(a.seed)
 cfg = PickEnvCfg(); cfg.scene.num_envs = a.n
+if a.away >= 0:
+    cfg.look_away = a.away
 viz.add_camera(cfg, height=300, width=400)
 env = Training2PickEnv(cfg)
 env.record = []
@@ -76,10 +82,11 @@ while (count.min() < a.episodes) if policy is not None else (it < a.steps):
     for k in range(a.n):
         x, y = (k % cols) * (W + 6), (k // cols) * (H + 42)
         canvas.paste(Image.fromarray(rgb[k]), (x, y + 40))
-        b = int(env.bi[k]); lf = float(env.wheel_lift[k]); tl = float(env.body_tilt[k])
+        b = int(env.bi[k]); b = int(env.bank_keep[b]) if hasattr(env, 'bank_keep') else b; lf = float(env.wheel_lift[k]); tl = float(env.body_tilt[k])
         col = '#d93636' if lf > 1.0 or not bool(env.clean[k]) else '#2e9e4f'
         dr.text((x + 4, y + 3), f"박스 {np.degrees(bank['psi'][b]):+.0f}° · 틈 {bank['gap'][b] * 100:.0f} cm · {SH[int(bank['pucks'][b, 0, 3])]} · 손 {int(bank['tilt'][b])}°", font=F, fill='#222')
-        dr.text((x + 4, y + 21), f"바퀴 뜸 {lf:.1f} mm · 기울기 {tl:.2f}° · " + ('쥠' if bool(env.grasped[k]) else '') + ('' if bool(env.clean[k]) else ' 충돌!'), font=F, fill=col)
+        dr.text((x + 4, y + 21), f"바퀴 뜸 {lf:.1f} mm · 기울기 {tl:.2f}° · " + ('쥠' if bool(env.grasped[k]) else '') + ('' if bool(env.clean[k]) else ' 충돌!')
+                + (('' if not hasattr(env, 'vis') else (' · 퍽 봄' if bool(env.vis[k]) else ' · 찾는 중')) + (' (안 보이게 시작)' if hasattr(env, 'away') and bool(env.away[k]) else '')), font=F, fill=col)
     frames.append(canvas)
 if env.record:
     R = env.record

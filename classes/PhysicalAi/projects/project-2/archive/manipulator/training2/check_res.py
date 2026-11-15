@@ -22,6 +22,7 @@ p.add_argument('--gif', action='store_true')
 p.add_argument('--max_steps', type=int, default=0, help='> 0: 이 스텝까지만 (짧게 찍기)')
 p.add_argument('--every', type=int, default=12, help='GIF · 동영상 몇 스텝마다 한 장')
 p.add_argument('--mp4', default='', help='동영상 파일 (logs/ 안), 주면 GIF 대신')
+p.add_argument('--store', action='store_true', help='1번 적재 모델 환경 (env_store, 정책이 관절 속도 직접)')
 p.add_argument('--gui', action='store_true', help='Isaac Sim 창으로 보기 (GIF 대신)')
 AppLauncher.add_app_launcher_args(p)
 a = p.parse_args()
@@ -39,6 +40,8 @@ import torch  # noqa: E402
 from env_res import ResEnvCfg, Training2ResEnv  # noqa: E402
 import viz  # noqa: E402
 
+if a.store:
+    from env_store import StoreEnvCfg as ResEnvCfg, Training2StoreEnv as Training2ResEnv  # noqa: F811
 cfg = ResEnvCfg(); cfg.library = a.library; cfg.scene.num_envs = a.n
 if a.gif:
     viz.add_camera(cfg, height=300, width=400)

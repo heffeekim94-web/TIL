@@ -4,6 +4,8 @@
   2) 정책 (rsl_rl actor, 평균 출력) 을 지도 학습 → logs/<시각>_<이름>/model_0.pt (train.py --store --resume 으로 이어서 강화학습)
   3) 전문가 그대로 · 모방 정책 성공률 비교
   $PY bc_store.py --run_name s1bc --rollouts 2 --epochs 30
+  DAgger (사용자 2026-11-13 "모방 더 해보기"): 정책이 직접 움직여 벗어난 자세에서도 전문가 행동을 정답으로 모아 합쳐 다시 학습 (반복).
+  $PY bc_store.py --run_name s3dag --init logs/20261113_104619_s2bc/model_0.pt --dagger 3
 """
 import argparse
 import json
@@ -21,6 +23,9 @@ p.add_argument('--rollouts', type=int, default=2, help='모을 에피소드 묶�
 p.add_argument('--noise', type=float, default=0.15)
 p.add_argument('--epochs', type=int, default=30)
 p.add_argument('--every', type=int, default=2, help='몇 스텝마다 저장')
+p.add_argument('--init', default='', help='이 모방 정책에서 시작 (1 단계 모으기 건너뜀)')
+p.add_argument('--dagger', type=int, default=0, help='DAgger 반복 수')
+p.add_argument('--beta', type=float, default=0.5, help='반복 k 에서 env 의 beta**k 만큼은 전문가가 움직임 (처음엔 덜 벗어나게)')
 AppLauncher.add_app_launcher_args(p)
 a = p.parse_args()
 a.headless = True
@@ -72,30 +77,53 @@ def rollout(policy_fn, n_ep, collect=False):
 
 
 t0 = time.time()
-print('[bc] 1) 전문가 + 잡음으로 모으기', flush=True)
+from tensordict import TensorDict  # noqa: E402
+B = 4096
+
+
+def fit(Ob, Ab, epochs):
+    actor.train()
+    actor.update_normalization(TensorDict({'policy': Ob, 'critic': torch.zeros(len(Ob), 1, device=dev)}, batch_size=[len(Ob)]))
+    opt = torch.optim.Adam(actor.parameters(), lr=1e-3)
+    for ep in range(epochs):
+        perm = torch.randperm(len(Ob), device=dev); tot = 0.0
+        for i in range(0, len(Ob), B):
+            j = perm[i:i + B]
+            out = actor(TensorDict({'policy': Ob[j]}, batch_size=[len(j)]))
+            loss = (out - Ab[j]).square().mean()
+            opt.zero_grad(); loss.backward(); opt.step(); tot += float(loss) * len(j)
+        if ep % 10 == 0 or ep == epochs - 1:
+            print(f'[bc]   epoch {ep} loss {tot / len(Ob):.4f}', flush=True)
+    actor.eval()
+
+
 def noisy(o, ae):
     nz = a.noise * torch.randn_like(ae); nz[:, 5] = 0          # 그리퍼는 잡음 없이 (s1bc: 그리퍼 잡음 → 떨어뜨림 26 %)
     return (ae + nz).clamp(-1, 1)
-O, A = rollout(noisy, a.rollouts, collect=True)
-print(f'[bc]   전문가(+잡음) {stats(env.record)} · 표본 {sum(len(x) for x in O) * 1} · {time.time() - t0:.0f} s', flush=True)
-Ob = torch.cat(O); Ab = torch.cat(A)
-print('[bc] 2) 지도 학습', Ob.shape, flush=True)
-from tensordict import TensorDict  # noqa: E402
-actor.train()
-actor.update_normalization(TensorDict({'policy': Ob, 'critic': torch.zeros(len(Ob), 1, device=dev)}, batch_size=[len(Ob)]))
-opt = torch.optim.Adam(actor.parameters(), lr=1e-3)
-B = 4096
-for ep in range(a.epochs):
-    perm = torch.randperm(len(Ob), device=dev); tot = 0.0
-    for i in range(0, len(Ob), B):
-        j = perm[i:i + B]
-        td = TensorDict({'policy': Ob[j]}, batch_size=[len(j)])
-        out = actor(td)
-        loss = (out - Ab[j]).square().mean()
-        opt.zero_grad(); loss.backward(); opt.step(); tot += float(loss) * len(j)
-    if ep % 5 == 0 or ep == a.epochs - 1:
-        print(f'[bc]   epoch {ep} loss {tot / len(Ob):.4f}', flush=True)
-actor.eval()
+
+
+if a.init:
+    runner.load(a.init); actor = runner.alg.actor; actor.eval()
+    print(f'[bc] 시작 정책 {a.init}', flush=True)
+    Ob = Ab = None
+else:
+    print('[bc] 1) 전문가 + 잡음으로 모으기', flush=True)
+    O, A = rollout(noisy, a.rollouts, collect=True)
+    print(f'[bc]   전문가(+잡음) {stats(env.record)} · {time.time() - t0:.0f} s', flush=True)
+    Ob = torch.cat(O); Ab = torch.cat(A)
+    print('[bc] 2) 지도 학습', Ob.shape, flush=True)
+    fit(Ob, Ab, a.epochs)
+for k in range(1, a.dagger + 1):
+    beta = a.beta ** k
+    use_exp = torch.rand(N, device=dev) < beta
+    def mixed(o, ae):
+        return torch.where(use_exp[:, None], noisy(o, ae), actor(o).clamp(-1, 1))
+    O, A = rollout(mixed, 1, collect=True)
+    print(f'[dagger {k}] beta {beta:.2f} · 섞어 돌림 {stats(env.record)} · 새 표본 {sum(len(x) for x in O)} · {time.time() - t0:.0f} s', flush=True)
+    Ob = torch.cat(([Ob] if Ob is not None else []) + O)
+    Ab = torch.cat(([Ab] if Ab is not None else []) + A)
+    fit(Ob, Ab, a.epochs)
+    runner.save(str(log_dir / f'model_d{k}.pt'))
 runner.save(str(log_dir / 'model_0.pt'))
 print('[bc] 3) 모방 정책 평가', flush=True)
 _ = rollout(lambda o, ae: actor(o).clamp(-1, 1), 1)

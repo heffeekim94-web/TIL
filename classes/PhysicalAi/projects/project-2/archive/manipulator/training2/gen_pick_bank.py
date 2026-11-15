@@ -18,6 +18,12 @@ FRONT = 0.145                       # 차체 앞 끝 (base_link x)
 ZB = 0.034                          # base_link 높이 (바닥 위)
 SIDE, LEN = 0.030, 0.060
 YAW_MAX, GAP = np.radians(20.0), (0.01, 0.12)
+# v3 (사용자 2026-11-14 "멀면 그냥 가까이 가서 집어"): 혁무님 정밀 접근 dock3 정차 = 면 0.5–3.5 cm · 방향 2° 안 → PICK_YAW_DEG=3 PICK_GAP=0.005,0.035
+import os
+if os.environ.get('PICK_YAW_DEG'):
+    YAW_MAX = np.radians(float(os.environ['PICK_YAW_DEG']))
+if os.environ.get('PICK_GAP'):
+    GAP = tuple(float(x) for x in os.environ['PICK_GAP'].split(','))
 DEPTH = 0.013                       # 손끝 = 퍽 윗면 13 mm 아래 (실물 넣기 · 빼기 경로와 같음, env GRIP_DEPTH)
 ABOVE = 0.060
 SEEDS = [pg.team_unfold()[0][-1]] + [np.array(x) for x in ([0, 0.6, 0.6, -1.0, 0], [0, 0.9, 0.3, -1.2, 0], [0, 0.3, 0.9, -1.2, 0])]

@@ -16,6 +16,11 @@ CELLS = RC['cells']
 ZB = 0.072 - 0.034                    # 모델 base z (바닥 위 0.072) → base_link (바닥 위 0.034)
 TOP = RC['floor_z'] + 0.060           # 선 퍽 윗면 (base_link)
 LO, HI = np.array([-3.14, -1.5, -1.5, -1.7, -1.5708]), np.array([3.14, 1.5, 1.4, 0.6735, 1.5708])   # 시뮬 USD 관절 범위
+import os as _os
+if _os.environ.get('J4_LO'):          # 2026-11-14 사용자: "J4 범위는 한계 아님" → 손목 더 꺾어 손을 바닥과 평행하게 (명령값 rad)
+    LO[3] = float(_os.environ['J4_LO'])
+if _os.environ.get('J4_HI'):          # 2026-11-15 확인용: 손끝을 몸 쪽 아래로 꺾는 쪽 (퍽 축과 나란히 쥐기에 J4 +20° 필요). 실물 가능 여부 미확인
+    HI[3] = float(_os.environ['J4_HI'])
 
 
 def grip(qm):
@@ -493,7 +498,7 @@ def dense_all(Q, G, N, marks=(), max_step=None):
             v[k] = min(v[k], np.sqrt(v[k - 1] ** 2 + 2 * ACC * seg[k - 1]), vlim[k - 1] if k - 1 < len(vlim) else v[k])
         for k in range(len(v) - 2, -1, -1):                         # 뒤로: 감속 한계
             v[k] = min(v[k], np.sqrt(v[k + 1] ** 2 + 2 * ACC * seg[k]))
-        dt = 2 * seg / np.maximum(v[:-1] + v[1:], 1e-9)             # 작은 구간마다 걸리는 시간 (등가속)
+        dt = 2 * seg / np.maximum(v[:-1] + v[1:], np.sqrt(ACC * seg))   # 작은 구간마다 걸리는 시간 (등가속). 양 끝 속도 0 인 아주 작은 움직임은 2√(seg/ACC) (2026-11-15: 1e-9 로 나누면 경유점 수백만 개 → RAM 폭주)
         tcum = np.r_[0, np.cumsum(dt)]
         T = tcum[-1]
         n = max(1, int(np.ceil(T / WP_DT)))

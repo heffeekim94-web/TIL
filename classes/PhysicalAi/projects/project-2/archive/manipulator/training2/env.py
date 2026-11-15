@@ -42,6 +42,17 @@ class Training2Env(DirectRLEnv):
         self.home = torch.tensor(HOME, device=dev)
         lim = self.robot.data.soft_joint_pos_limits.torch[0, self.arm_ids]
         self.q_lo, self.q_hi = lim[:, 0], lim[:, 1]
+        import os
+        if os.environ.get('J4_LO'):      # 2026-11-14 사용자: J4 범위는 실물 한계 아님 → 시뮬도 넓힘 (pathgen 과 같은 값)
+            j4 = int(self.arm_ids[3]); lo4 = float(os.environ['J4_LO'])
+            L = self.robot.data.soft_joint_pos_limits.torch[:, [j4]].clone(); L[..., 0] = lo4
+            self.robot.write_joint_position_limit_to_sim_index(limits=L, joint_ids=[j4])
+            self.q_lo = self.q_lo.clone(); self.q_lo[3] = lo4
+        if os.environ.get('J4_HI'):      # 2026-11-15 확인용 (pathgen 과 같은 값)
+            j4 = int(self.arm_ids[3]); hi4 = float(os.environ['J4_HI'])
+            L = self.robot.data.soft_joint_pos_limits.torch[:, [j4]].clone(); L[..., 1] = hi4
+            self.robot.write_joint_position_limit_to_sim_index(limits=L, joint_ids=[j4])
+            self.q_hi = self.q_hi.clone(); self.q_hi[3] = hi4
         self._build_geometry()
 
         rw = cfg.reward
