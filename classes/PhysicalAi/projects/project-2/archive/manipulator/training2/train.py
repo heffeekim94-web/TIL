@@ -31,6 +31,7 @@ p.add_argument('--std', type=float, default=0.0, help='이어 학습할 때 연�
 p.add_argument('--nudge', action='store_true', help='툭 건드리기 학습 (env_nudge: 칸 안 틀어진 퍽 세우기)')
 p.add_argument('--pick', action='store_true', help='스테이션 집기 학습 (env_pick: 비뚤고 조금 먼 박스 위 퍽 집어 올리기, logs/pick_bank_v1.npz)')
 p.add_argument('--pick2', action='store_true', help='집기 정책 단계 보상 (env_pick2: ① 다가가기 ② 쥐기 ③ 들기)')
+p.add_argument('--stand', action='store_true', help='받침 세우기 보정 학습 (env_stand: lift 기본 경로 + 보정, logs/stand_bank_v1.npz 필요)')
 p.add_argument('--res', action='store_true', help='보정 학습 (env_res: 혁무님 방식 기본 경로 + 보정, logs/library.npz 필요)')
 p.add_argument('--library', default='logs/library_chain_v3.npz')
 p.add_argument('--set', nargs='*', default=[], help='설정 덮어쓰기 sec.key=값 (예: reward.near=-0.5 task.occupied_max_start=11)')
@@ -54,9 +55,11 @@ if a.pick:
 if a.pick2:
     from env_pick2 import Pick2EnvCfg as PickEnvCfg, Training2Pick2Env as Training2PickEnv  # noqa: E402
     a.pick = True
+if a.stand:
+    from env_stand import StandEnvCfg, Training2StandEnv  # noqa: E402
 if a.nudge:
     from env_nudge import NudgeEnvCfg, Training2NudgeEnv  # noqa: E402
-cfg, tc = (ResEnvCfg() if a.res else NudgeEnvCfg() if a.nudge else PickEnvCfg() if a.pick else EnvCfg()), TrainCfg()
+cfg, tc = (StandEnvCfg() if a.stand else ResEnvCfg() if a.res else NudgeEnvCfg() if a.nudge else PickEnvCfg() if a.pick else EnvCfg()), TrainCfg()
 if a.nudge:
     tc.experiment_name = 'training2_nudge'
 if a.pick:
@@ -64,8 +67,10 @@ if a.pick:
 if a.res:
     cfg.library = a.library
     tc.experiment_name = 'training2_res'
+if a.stand:
+    tc.experiment_name = 'training2_stand'
 RUNNER = tc.runner_dict()
-if a.res:
+if a.res or a.stand:
     RUNNER['actor']['distribution_cfg']['init_std'] = 0.1      # 보정 탐색 작게 (r1: 0.5 → 팔 떨림 · 퍽 놓침)
 if a.num_envs is not None:
     cfg.scene.num_envs = a.num_envs
@@ -89,7 +94,7 @@ log_dir.mkdir(parents=True, exist_ok=True)
                                               'max_joint_speed': cfg.max_joint_speed, 'point_spacing': cfg.point_spacing},
                                              indent=1, ensure_ascii=False))
 
-env = RslRlVecEnvWrapper(Training2ResEnv(cfg) if a.res else Training2NudgeEnv(cfg) if a.nudge else Training2PickEnv(cfg) if a.pick else Training2Env(cfg))
+env = RslRlVecEnvWrapper(Training2StandEnv(cfg) if a.stand else Training2ResEnv(cfg) if a.res else Training2NudgeEnv(cfg) if a.nudge else Training2PickEnv(cfg) if a.pick else Training2Env(cfg))
 runner = OnPolicyRunner(env, RUNNER, str(log_dir), env.device)
 if a.resume:
     runner.load(a.resume)

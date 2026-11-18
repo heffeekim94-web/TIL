@@ -1,0 +1,39 @@
+{
+  "kind": "allocation",
+  "revision": 2,
+  "reason": "replan: arm:RETRIEVE:S3>5 실패",
+  "stamp_s": 933.28,
+  "barcode": "P2-02",
+  "order": "descending",
+  "signal": {"sequence": "RGGYYGGYRRRY", "R": 4, "Y": 4, "G": 4},
+  "yellow_shape": "cylinder",
+  "status": "partial",
+  "places": [
+    {"place": "L1", "group": "R", "pips": 4, "placed": 0, "filled": true, "center_map": [-3.305, -0.004], "center_arena_mm": [3681, 1004],
+      "cells": [
+        {"cell": 0, "puck": "4", "map": [-3.246, -0.065], "arena_mm": [3621, 1064]},
+        {"cell": 1, "puck": "3", "map": [-3.366, -0.063], "arena_mm": [3741, 1064]}
+      ]},
+    {"place": "L2", "group": "Y", "pips": 4, "placed": 4, "filled": false, "center_map": [-1.951, -2.684], "center_arena_mm": [2277, 3658],
+      "cells": []},
+    {"place": "L3", "group": "G", "pips": 4, "placed": 4, "filled": false, "center_map": [-3.401, -4.315], "center_arena_mm": [3696, 5316],
+      "cells": []}
+  ],
+  "pucks": [
+    {"id": "0", "color": "green", "shape": "box", "where": "placed", "to": "", "seen_as": ""},
+    {"id": "1", "color": "green", "shape": "box", "where": "placed", "to": "", "seen_as": ""},
+    {"id": "2", "color": "green", "shape": "box", "where": "placed", "to": "", "seen_as": ""},
+    {"id": "3", "color": "red", "shape": "box", "where": "cargo:S1", "to": "L1#1", "seen_as": ""},
+    {"id": "4", "color": "red", "shape": "box", "where": "cargo:S2", "to": "L1#0", "seen_as": ""},
+    {"id": "5", "color": "red", "shape": "box", "where": "removed", "to": "", "seen_as": ""},
+    {"id": "6", "color": "green", "shape": "cylinder", "where": "placed", "to": "", "seen_as": ""},
+    {"id": "7", "color": "green", "shape": "cylinder", "where": "placed", "to": "", "seen_as": ""},
+    {"id": "8", "color": "green", "shape": "cylinder", "where": "skipped:B5", "to": "", "seen_as": ""},
+    {"id": "9", "color": "red", "shape": "cylinder", "where": "placed", "to": "", "seen_as": ""},
+    {"id": "10", "color": "red", "shape": "cylinder", "where": "placed", "to": "", "seen_as": ""},
+    {"id": "11", "color": "red", "shape": "cylinder", "where": "placed", "to": "", "seen_as": ""}
+  ],
+  "verify_order": ["L1", "L2", "L3"],
+  "expected_remaining_s": 266,
+  "history": ["rev 1 (initial (수집 중 arm:PICK:8 실패)): L1채움 L2채움 L3채움 "]
+}

@@ -1,0 +1,25 @@
+옆 보기 (side_look_missing): 켬, 박스 퍽 < 2 개면 left, near
+가까운 퍽 뒤로 빼기: 누운 x < 0.200 · 선 x < 0.100 m → 뒤로 (0.250 − x, 최대 0.120 m, 0.10 m/s, /cmd_vel_nav, 끄는 영역 1 개)
+PICK 앞 다시 보기 (relook_before_pick): 켬, 새 검출 최대 0.5 s
+dice_map: /home/turtle/maps/dice_map_arena7b.yaml, 이동 시간표: /home/turtle/p2_integ/maps/dice_travel_times.yaml, 바코드 표: /home/turtle/p2_integ/maps/dice_barcodes.json (4 개)
+바코드 벽 판: 경기장 (0.050, 0.930, 높이 0.20) → map (0.327, 0.002) · 폭 0.36 높이 0.39 (+0.08) · 법선 178.9° · 판 밖 광각 상자 버림 · 돌기 없음 · 판 훑기 3 자리
+바코드 찾기 켬: 광각 /perception/wide/objects · 손목 /perception/barcode/detections · 거리 0.15 [0.15, 0.18] m · 광각 숙임 +8.0° · 신호등 여유 8° · 최대 75 s · 못 찾으면 옛 고정 경로
+STANDBY: 준비 확인 중, /mission/start 기다림
+신호등: 점멸 기록 켬
+STANDBY 준비 안 됨: NAV2_SERVER, DOCK_SERVER:dock_to_pose, NAV2_LIFECYCLE:/lifecycle_manager_navigation/is_active, NAV2_LIFECYCLE:/lifecycle_manager_localization/is_active, LOCALIZATION_TF, LOCALIZATION_COV, DETECTIONS:d435_color_optical_frame, WIDE_SERVICE:/perception/wide/enable, BARCODE_SERVICE:/perception/barcode/enable
+STANDBY 준비 안 됨: NAV2_LIFECYCLE:/lifecycle_manager_navigation/is_active, NAV2_LIFECYCLE:/lifecycle_manager_localization/is_active, LOCALIZATION_TF, LOCALIZATION_COV, DETECTIONS:d435_color_optical_frame, WIDE_SERVICE:/perception/wide/enable, BARCODE_SERVICE:/perception/barcode/enable
+STANDBY 준비 안 됨: NAV2_LIFECYCLE:/lifecycle_manager_navigation/is_active, LOCALIZATION_TF, LOCALIZATION_COV, DETECTIONS:d435_color_optical_frame, WIDE_SERVICE:/perception/wide/enable, BARCODE_SERVICE:/perception/barcode/enable
+광각 usb_cam 캡처 끔 (바코드 먼저 — 신호 기록은 바코드 읽은 뒤, 아직 안 함)
+STANDBY 준비 안 됨: NAV2_LIFECYCLE:/lifecycle_manager_navigation/is_active, LOCALIZATION_TF, LOCALIZATION_COV, DETECTIONS:d435_color_optical_frame
+perception 세션: pid=12856 start_ns=1794814078612299975 restored=0
+perception 손목 박스 측정 켬
+perception 손목 검출 켬
+perception 바코드 판독 끔
+perception 광각 끔 (바코드 먼저 — 신호 기록은 바코드 읽은 뒤, 아직 안 함)
+STANDBY 준비 안 됨: NAV2_LIFECYCLE:/lifecycle_manager_navigation/is_active, LOCALIZATION_TF, LOCALIZATION_COV
+STANDBY 준비 안 됨: NAV2_LIFECYCLE:/lifecycle_manager_navigation/is_active, NAV2_LIFECYCLE:/lifecycle_manager_localization/is_active, LOCALIZATION_TF, LOCALIZATION_COV
+STANDBY 준비 안 됨: NAV2_LIFECYCLE:/lifecycle_manager_navigation/is_active, LOCALIZATION_TF, LOCALIZATION_COV
+STANDBY 준비 안 됨: NAV2_LIFECYCLE:/lifecycle_manager_navigation/is_active, NAV2_LIFECYCLE:/lifecycle_manager_localization/is_active, LOCALIZATION_TF, LOCALIZATION_COV
+STANDBY 준비 안 됨: NAV2_LIFECYCLE:/lifecycle_manager_navigation/is_active, LOCALIZATION_TF, LOCALIZATION_COV
+STANDBY 준비 안 됨: NAV2_LIFECYCLE:/lifecycle_manager_navigation/is_active, NAV2_LIFECYCLE:/lifecycle_manager_localization/is_active, LOCALIZATION_TF, LOCALIZATION_COV
+STANDBY 준비 안 됨: NAV2_LIFECYCLE:/lifecycle_manager_navigation/is_active, LOCALIZATION_TF, LOCALIZATION_COV

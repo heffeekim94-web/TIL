@@ -10,7 +10,7 @@ from pathlib import Path
 import numpy as np
 import yaml
 
-TEAM = Path('/home/haeminkim/바탕화면/git/Project2_Turtle_Ninja')
+TEAM = Path(__import__('os').environ.get('TEAM_DIR', '/home/haeminkim/바탕화면/git/Project2_Turtle_Ninja'))   # 2026-11-15: 팀 저장소가 다른 브랜치일 때 꺼내 둔 복사본을 가리킴
 G = 9.81
 T2R = 2 * np.pi / 4096
 # hardware_map.yaml zero_tick (joint1 은 4104 를 한 바퀴 뺀 8 로 적음 → 틱 범위 안으로 바퀴 수를 맞춰 씀)

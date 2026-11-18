@@ -6,6 +6,7 @@
 나머지 적재함 칸은 무작위로 참 (0 ~ 11 개, 처음엔 적게 → 성공률 따라 늘림).
 """
 from dataclasses import dataclass
+import os
 from pathlib import Path
 
 import isaaclab.sim as sim_utils
@@ -18,6 +19,14 @@ from isaaclab.sim import SimulationCfg
 from isaaclab.utils import configclass
 from isaaclab_physx.physics import PhysxCfg
 from isaaclab_physx.sim.schemas.schemas_cfg import PhysxArticulationCfg, PhysxRigidBodyCfg
+from isaaclab_physx.sim.spawners.materials import PhysxRigidBodyMaterialCfg
+import isaaclab.envs.mdp as mdp
+from isaaclab.managers import EventTermCfg as EventTerm, SceneEntityCfg
+# 마찰 = 팀 sim 값 (sim/robot_sim/sim_core/turtleninja_maze_env.py MATERIALS: 고무 바퀴 · 바닥 0.9 / 0.8).
+#   2026-11-15: 빠뜨려서 기본 0.5 였음 → 팔 휘두를 때 몸체가 바닥에서 9 mm 미끄러짐 (바퀴는 거의 안 돎)
+FLOOR_MAT = dict(static_friction=0.9, dynamic_friction=0.8, restitution=0.0)
+if os.environ.get('SIM_MU'):          # 시험용: 바닥 · 바퀴 마찰을 이 값 (정지 = 미끄럼) 으로
+    FLOOR_MAT = dict(static_friction=float(os.environ['SIM_MU']), dynamic_friction=float(os.environ['SIM_MU']), restitution=0.0)
 
 HERE = Path(__file__).resolve().parent
 # USD 안 팔 몸체 경로 (robot.usda payloads/base.usda 의 중첩 그대로)
@@ -89,7 +98,7 @@ N_CYL = 12                              # 원기둥 장애물 퍽 (스테이션 
 
 @configclass
 class SceneCfg(InteractiveSceneCfg):
-    ground = AssetBaseCfg(prim_path='/World/ground', spawn=sim_utils.GroundPlaneCfg())
+    ground = AssetBaseCfg(prim_path='/World/ground', spawn=sim_utils.GroundPlaneCfg(physics_material=PhysxRigidBodyMaterialCfg(**FLOOR_MAT)))
     light = AssetBaseCfg(prim_path='/World/light', spawn=sim_utils.DomeLightCfg(intensity=2500.0))
     robot: ArticulationCfg = ArticulationCfg(
         prim_path='{ENV_REGEX_NS}/Robot',
@@ -114,7 +123,8 @@ class SceneCfg(InteractiveSceneCfg):
             # 바퀴 · 조향은 그 자리 유지 (팔 쓸 때 control_master 가 바퀴를 세움). 바퀴 = 속도 모드 목표 0:
             #   팀 sim damping 1 이면 팔 반동에 로봇이 15 mm 굴러감 (replay_check 2026-11-10) → 20 (속도 0.3 rad/s 에 6 N·m, XM430 한계 넘음 = 사실상 정지)
             'steer': ImplicitActuatorCfg(joint_names_expr=['steer_.*_joint'], stiffness=20.0, damping=0.3, armature=0.012),
-            'drive': ImplicitActuatorCfg(joint_names_expr=['drive_.*_joint'], stiffness=0.0, damping=20.0, armature=0.005),
+            # 2026-11-15: 속도 0 만으로는 팔 반동에 네 바퀴가 같은 쪽으로 약 1.8 mm 굴러감 (실물은 안 밀림) → 자리 붙잡기 (목표 = 리셋 때 바퀴각 0)
+            'drive': ImplicitActuatorCfg(joint_names_expr=['drive_.*_joint'], stiffness=50.0, damping=20.0, armature=0.005),
         })
     dice_box = AssetBaseCfg(
         prim_path='{ENV_REGEX_NS}/DiceBox',
@@ -208,12 +218,22 @@ class TrainCfg:
 
 
 @configclass
+class EventsCfg:
+    # 바퀴 = 팀 고무 바퀴 재질 (몸체 · 손가락 재질은 그대로: 손가락 ↔ 퍽 마찰이 바뀌면 쥐기 결과가 달라짐)
+    wheel_material = EventTerm(func=mdp.randomize_rigid_body_material, mode='startup',
+                               params={'asset_cfg': SceneEntityCfg('robot', body_names='wheel_.*_link'), 'num_buckets': 1,
+                                       'static_friction_range': (FLOOR_MAT['static_friction'],) * 2, 'dynamic_friction_range': (FLOOR_MAT['dynamic_friction'],) * 2,
+                                       'restitution_range': (0.0, 0.0)})
+
+
+@configclass
 class EnvCfg(DirectRLEnvCfg):
     # 물리 120 Hz, 정책 30 Hz
     decimation = 4
     episode_length_s = 25.0               # 실물 넣기 · 빼기 경로 약 10–20 s (arm_paths.yaml 경유점 · 속도) + 돌아오기
     sim: SimulationCfg = SimulationCfg(dt=1 / 120, render_interval=4, physics=PhysxCfg())
     scene: SceneCfg = SceneCfg(num_envs=256, env_spacing=1.5, replicate_physics=True)
+    events: EventsCfg = EventsCfg()
     action_space = 6                      # 관절 5 개 목표 변화 + 그리퍼 (> 0 열기, ≤ 0 닫기)
     observation_space = 80                # env.py _get_observations policy (critic 은 따로 11)
     state_space = 0

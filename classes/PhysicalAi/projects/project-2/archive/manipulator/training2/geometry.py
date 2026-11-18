@@ -35,6 +35,9 @@ def origin(el):
 
 def load_mesh(path):
     """삼각형 (F, 3, 3). obj · stl(이진/문자)."""
+    import os
+    if os.environ.get('TEAM_DIR'):                     # 2026-11-15: 팀 저장소가 다른 브랜치일 때 꺼내 둔 복사본
+        path = path.replace('/home/haeminkim/바탕화면/git/Project2_Turtle_Ninja', os.environ['TEAM_DIR'])
     if path.lower().endswith('.obj'):
         V, F = [], []
         for ln in open(path, errors='ignore'):

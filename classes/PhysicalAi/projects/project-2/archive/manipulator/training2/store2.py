@@ -367,7 +367,8 @@ def insert(path, cell, c_ins, depth, ins_offset=(0.0, 0.0), ins_dyaw=0.0, insert
     path.go(np.r_[txy, RACK_Z], DOWN, c_fix, '맞춤', step=0.0015, wa=0.3)
     ins_tip = RC['floor_z'] + insert_gap + 0.060 - depth
     path.go(np.r_[txy, SAFE_Z], DOWN, c_fix, '넣기', step=0.0025, wa=3.0)
-    path.go(np.r_[txy, ins_tip], DOWN, c_fix, '넣기', step=0.0015, wa=3.0)
+    path.go(np.r_[txy, ins_tip + 0.008], DOWN, c_fix, '넣기', step=0.0015, wa=3.0)
+    path.go(np.r_[txy, ins_tip], DOWN, c_fix, '넣기 끝 (천천히)', step=0.001, wa=3.0)   # 2026-11-15: 마지막 8 mm 천천히 (pathgen V_INSERT)
     if hold_only:
         path.hold(6, '걸림 확인')
         return txy, c_fix

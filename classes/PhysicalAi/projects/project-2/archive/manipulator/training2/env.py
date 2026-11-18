@@ -408,7 +408,10 @@ class Training2Env(DirectRLEnv):
         self.grasped = grasp
         self.ever_grasped |= grasp
         # 놓음: 목표 자리 · 바로 섬 · 손 뗌
-        rel = wp - (o + self.dst)
+        # 적재 칸 목표는 로봇 몸체 기준 (stored_local) → 몸체가 바퀴 위에서 밀려도 몸체 기준으로 비교 (2026-11-15: 몸체 7–9 mm 밀려 칸에 든 퍽을 못 놓은 걸로 셈). 박스 목표는 바닥 기준 그대로
+        Rr = matrix_from_quat(self.robot.data.root_quat_w.torch)
+        rel_body = torch.einsum('nji,nj->ni', Rr, wp - self.robot.data.root_pos_w.torch) - self.dst
+        rel = torch.where(self.task_store[:, None], rel_body, wp - (o + self.dst))
         xy_tol = torch.where(self.task_store, rw.place_xy_cell, rw.place_xy_box)
         upright = self.work_up[:, 2] > np.cos(np.deg2rad(rw.place_tilt_deg))
         at_dst = (rel[:, :2].norm(dim=-1) < xy_tol) & (rel[:, 2].abs() < 0.004) & upright

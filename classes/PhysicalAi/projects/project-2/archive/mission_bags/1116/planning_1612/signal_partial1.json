@@ -1,0 +1,19 @@
+{
+  "kind": "signal_partial",
+  "partial": 1,
+  "parked_s": 116.11,
+  "sequence": "YYGGYRRRY",
+  "count": 9,
+  "blinks": [
+    {"n": 1, "color": "Y", "start_s": 98.74, "end_s": 100.05},
+    {"n": 2, "color": "Y", "start_s": 101.11, "end_s": 102.10},
+    {"n": 3, "color": "G", "start_s": 103.07, "end_s": 104.07},
+    {"n": 4, "color": "G", "start_s": 105.11, "end_s": 106.10},
+    {"n": 5, "color": "Y", "start_s": 107.15, "end_s": 108.07},
+    {"n": 6, "color": "R", "start_s": 109.09, "end_s": 110.11},
+    {"n": 7, "color": "R", "start_s": 111.15, "end_s": 112.10},
+    {"n": 8, "color": "R", "start_s": 113.18, "end_s": 114.07},
+    {"n": 9, "color": "Y", "start_s": 115.12, "end_s": 116.08}
+  ],
+  "issues": []
+}

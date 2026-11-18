@@ -1,0 +1,43 @@
+{
+  "kind": "signal",
+  "status": "DONE",
+  "sequence": "RGGYYGGYRRRY",
+  "count": 12,
+  "R": 4, "Y": 4, "G": 4, "unknown": 0,
+  "blinks": [
+    {"n": 1, "color": "R", "start_s": 119.12, "end_s": 120.13},
+    {"n": 2, "color": "G", "start_s": 121.12, "end_s": 122.10},
+    {"n": 3, "color": "G", "start_s": 123.18, "end_s": 124.12},
+    {"n": 4, "color": "Y", "start_s": 125.19, "end_s": 126.11},
+    {"n": 5, "color": "Y", "start_s": 127.10, "end_s": 128.24},
+    {"n": 6, "color": "G", "start_s": 129.12, "end_s": 130.08},
+    {"n": 7, "color": "G", "start_s": 131.17, "end_s": 132.12},
+    {"n": 8, "color": "Y", "start_s": 133.19, "end_s": 134.10},
+    {"n": 9, "color": "R", "start_s": 135.16, "end_s": 136.08},
+    {"n": 10, "color": "R", "start_s": 137.13, "end_s": 138.12},
+    {"n": 11, "color": "R", "start_s": 139.14, "end_s": 140.11},
+    {"n": 12, "color": "Y", "start_s": 141.16, "end_s": 142.10}
+  ],
+  "issues": [],
+  "partials": [
+    {
+      "partial": 1,
+      "parked_s": 116.11,
+      "sequence": "YYGGYRRRY",
+      "count": 9,
+      "blinks": [
+        {"n": 1, "color": "Y", "start_s": 98.74, "end_s": 100.05},
+        {"n": 2, "color": "Y", "start_s": 101.11, "end_s": 102.10},
+        {"n": 3, "color": "G", "start_s": 103.07, "end_s": 104.07},
+        {"n": 4, "color": "G", "start_s": 105.11, "end_s": 106.10},
+        {"n": 5, "color": "Y", "start_s": 107.15, "end_s": 108.07},
+        {"n": 6, "color": "R", "start_s": 109.09, "end_s": 110.11},
+        {"n": 7, "color": "R", "start_s": 111.15, "end_s": 112.10},
+        {"n": 8, "color": "R", "start_s": 113.18, "end_s": 114.07},
+        {"n": 9, "color": "Y", "start_s": 115.12, "end_s": 116.08}
+      ],
+      "issues": []
+    }
+  ],
+  "note": "시각은 planning 시작 기준 [s]. '?' = 색을 정하지 못한 점멸 (추정해 채우지 않음). partials = 12 개 전에 끝 소등이 온 시퀀스 (참고, 결과 아님)"
+}

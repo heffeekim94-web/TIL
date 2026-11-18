@@ -460,9 +460,13 @@ def unwrap_limits(Q):
 FAST = {'칸 위', '박스 쪽', '놓을 칸 위', '칸 위로', '적재함 높이로', '먼 자리 위로', '먼 퍽 위 (손 기울임)', '누운 퍽 위', '박스 빈 자리로',
         '퍽 뒤 위로', '가까운 자리로', '기울여 다시 쥐러', '돌아감', '박스 위로 내림', '일어섬', '퍽 위', '다시 퍽 위', '더 들기'}
 SLOW_PUSH = ('눌러 세우기', '꽂아 눌러')
+SLOW_INSERT, V_INSERT = ('넣기 끝',), np.radians(15.0)   # 2026-11-15 사용자 OK: 칸 걸림 줄이게 넣기 마지막 몇 mm 는 천천히
 V_FAST, V_NEAR, V_PUSH = np.radians(150.0), np.radians(62.5), np.radians(20.0)   # path_speed_dps · near_puck_speed_dps · park_push_speed_dps
 ACC = 3.7                  # 가감속 [rad/s²] (2026-11-11 사용자: 5.0–1.0 비교 뒤 3.7, 몸체 0.32°)
 WP_DT = 2 / 30             # 경유점 하나 = 정책 2 스텝
+# 2026-11-15 사용자: 내려놓고 HOME 으로 돌아올 때 확 오지 말고 일정하게 (너무 느리진 않게). 시뮬: 이 구간 가속에 바퀴 0.6 mm 들리며 몸체 4–5 mm 밀림
+RETURN_KEYS = ('돌아감', '복귀')
+ACC_RETURN, V_RETURN = 1.5, np.radians(100.0)   # 1.0 도 시험 (밀림 3.5 vs 3.7 mm, 거의 같음) → 시간 덜 드는 1.5
 
 
 def _speed(name):
@@ -470,6 +474,8 @@ def _speed(name):
         return V_FAST
     if any(k in name for k in SLOW_PUSH):
         return V_PUSH
+    if any(k in name for k in SLOW_INSERT):
+        return V_INSERT
     return V_NEAR
 
 
@@ -492,13 +498,17 @@ def dense_all(Q, G, N, marks=(), max_step=None):
         seg = np.abs(np.diff(pts, axis=0)).max(1)
         cum = np.r_[0, np.cumsum(seg)]
         vlim = np.array([_speed(N[m]) for m in range(i, j)])      # 각 작은 구간 (pts[k] → pts[k+1]) 최고 속도
+        ret = any(k_ in str(N[m]) for m in range(i, j) for k_ in RETURN_KEYS)
+        acc = ACC_RETURN if ret else ACC                            # HOME 으로 돌아오는 구간은 부드럽게
+        if ret:
+            vlim = np.minimum(vlim, V_RETURN)
         v = np.r_[0.0, vlim.copy()]                                 # 각 점 속도 (끝점 0)
         v[-1] = 0.0
         for k in range(1, len(v)):                                  # 앞으로: 가속 한계
-            v[k] = min(v[k], np.sqrt(v[k - 1] ** 2 + 2 * ACC * seg[k - 1]), vlim[k - 1] if k - 1 < len(vlim) else v[k])
+            v[k] = min(v[k], np.sqrt(v[k - 1] ** 2 + 2 * acc * seg[k - 1]), vlim[k - 1] if k - 1 < len(vlim) else v[k])
         for k in range(len(v) - 2, -1, -1):                         # 뒤로: 감속 한계
-            v[k] = min(v[k], np.sqrt(v[k + 1] ** 2 + 2 * ACC * seg[k]))
-        dt = 2 * seg / np.maximum(v[:-1] + v[1:], np.sqrt(ACC * seg))   # 작은 구간마다 걸리는 시간 (등가속). 양 끝 속도 0 인 아주 작은 움직임은 2√(seg/ACC) (2026-11-15: 1e-9 로 나누면 경유점 수백만 개 → RAM 폭주)
+            v[k] = min(v[k], np.sqrt(v[k + 1] ** 2 + 2 * acc * seg[k]))
+        dt = 2 * seg / np.maximum(v[:-1] + v[1:], np.sqrt(acc * seg))   # 작은 구간마다 걸리는 시간 (등가속). 양 끝 속도 0 인 아주 작은 움직임은 2√(seg/ACC) (2026-11-15: 1e-9 로 나누면 경유점 수백만 개 → RAM 폭주)
         tcum = np.r_[0, np.cumsum(dt)]
         T = tcum[-1]
         n = max(1, int(np.ceil(T / WP_DT)))

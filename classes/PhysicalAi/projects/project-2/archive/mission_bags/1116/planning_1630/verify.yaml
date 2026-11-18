@@ -1,0 +1,78 @@
+# 재검증 기록 (planning dice_verify). 관측 = VERIFY 단계 LOOK 뒤 새 검출, map 프레임 [m]
+barcode: "P2-02"
+signal: "RGGYYGGYRRRY"
+status: FAIL
+places:
+  - place: L1
+    group: R
+    pips: 4
+    seen: 2
+    ok: false
+    stamp_s: 1009.98
+    center: [-3.333, 0.012]     # 판정에 쓴 중심 (박스 측정 · 모양 맞춤 반영)
+    map_center: [-3.305, -0.004]     # 지도 원래 중심 (참고)
+    frame_source: remeasured   # 칸 기준: remeasured (재검증 측정) · placed (놓을 때 박스 측정) · map
+    ref_center: [-3.333, 0.012]
+    fit: {used: false, dx_mm: 0.0, dy_mm: 0.0, dyaw_deg: 0.00}   # 기준 칸 → 관측에 맞춘 눈 모양
+    box: {source: remeasured, center: [-3.333, 0.012], yaw_deg: 179.4, half: 0.1025}   # 박스 위 확인에 쓴 윗면
+    cells:     # 판정에 쓴 칸 (맞춤 뒤, 먼 칸부터, cell_error_mm 의 기준), 뒤 = 놓은 퍽 ID · 로봇이 볼 때 자리
+      - [-3.274, -0.048]   # ID 4 · 먼 줄 왼쪽
+      - [-3.394, -0.047]   # ID 3 · 먼 줄 오른쪽
+      - [-3.273, 0.072]   # (안 놓음) · 가까운 줄 왼쪽
+      - [-3.393, 0.073]   # (안 놓음) · 가까운 줄 오른쪽
+    observed:
+      - {id: "3", color: red, shape: box, x: -3.386, y: -0.055, cell: 1, spot: far-right, cell_error_mm: 11, on_box: true, ok: true}
+      - {id: "4", color: red, shape: box, x: -3.276, y: -0.046, cell: 0, spot: far-left, cell_error_mm: 3, on_box: true, ok: true}
+  - place: L2
+    group: Y
+    pips: 4
+    seen: 4
+    ok: true
+    stamp_s: 1043.18
+    center: [-1.967, -2.702]     # 판정에 쓴 중심 (박스 측정 · 모양 맞춤 반영)
+    map_center: [-1.951, -2.684]     # 지도 원래 중심 (참고)
+    y_shape: cylinder   # Y 기준 모양 (다시 본 모양 최다, "" = 섞임 · 모름)
+    frame_source: remeasured   # 칸 기준: remeasured (재검증 측정) · placed (놓을 때 박스 측정) · map
+    ref_center: [-1.967, -2.702]
+    fit: {used: false, dx_mm: 0.0, dy_mm: 0.0, dyaw_deg: 0.00}   # 기준 칸 → 관측에 맞춘 눈 모양
+    box: {source: remeasured, center: [-1.967, -2.702], yaw_deg: 180.9, half: 0.1025}   # 박스 위 확인에 쓴 윗면
+    cells:     # 판정에 쓴 칸 (맞춤 뒤, 먼 칸부터, cell_error_mm 의 기준), 뒤 = 놓은 퍽 ID · 로봇이 볼 때 자리
+      - [-1.906, -2.761]   # ID 11 · 먼 줄 왼쪽
+      - [-2.026, -2.763]   # ID 6 · 먼 줄 오른쪽
+      - [-1.908, -2.641]   # ID 9 · 가까운 줄 왼쪽
+      - [-2.028, -2.643]   # ID 10 · 가까운 줄 오른쪽
+    observed:
+      - {id: "10", color: red, shape: cylinder, x: -2.028, y: -2.654, cell: 3, spot: near-right, cell_error_mm: 11, on_box: true, ok: true}
+      - {id: "11", color: red, shape: cylinder, x: -1.909, y: -2.763, cell: 0, spot: far-left, cell_error_mm: 3, on_box: true, ok: true}
+      - {id: "6", color: green, shape: cylinder, x: -2.024, y: -2.765, cell: 1, spot: far-right, cell_error_mm: 3, on_box: true, ok: true}
+      - {id: "9", color: red, shape: cylinder, x: -1.919, y: -2.638, cell: 2, spot: near-left, cell_error_mm: 11, on_box: true, ok: true, depth_bad_frames: 10}
+  - place: L3
+    group: G
+    pips: 4
+    seen: 4
+    ok: true
+    stamp_s: 1069.88
+    center: [-3.410, -4.335]     # 판정에 쓴 중심 (박스 측정 · 모양 맞춤 반영)
+    map_center: [-3.401, -4.315]     # 지도 원래 중심 (참고)
+    frame_source: remeasured   # 칸 기준: remeasured (재검증 측정) · placed (놓을 때 박스 측정) · map
+    ref_center: [-3.410, -4.335]
+    fit: {used: false, dx_mm: 0.0, dy_mm: 0.0, dyaw_deg: 0.00}   # 기준 칸 → 관측에 맞춘 눈 모양
+    box: {source: remeasured, center: [-3.410, -4.335], yaw_deg: 182.7, half: 0.1025}   # 박스 위 확인에 쓴 윗면
+    cells:     # 판정에 쓴 칸 (맞춤 뒤, 먼 칸부터, cell_error_mm 의 기준), 뒤 = 놓은 퍽 ID · 로봇이 볼 때 자리
+      - [-3.347, -4.392]   # ID 7 · 먼 줄 왼쪽
+      - [-3.467, -4.398]   # ID 0 · 먼 줄 오른쪽
+      - [-3.352, -4.272]   # ID 2 · 가까운 줄 왼쪽
+      - [-3.472, -4.278]   # ID 1 · 가까운 줄 오른쪽
+    observed:
+      - {id: "0", color: green, shape: box, x: -3.465, y: -4.413, cell: 1, spot: far-right, cell_error_mm: 16, on_box: true, ok: true}
+      - {id: "1", color: green, shape: box, x: -3.468, y: -4.291, cell: 3, spot: near-right, cell_error_mm: 14, on_box: true, ok: true}
+      - {id: "2", color: green, shape: box, x: -3.356, y: -4.286, cell: 2, spot: near-left, cell_error_mm: 14, on_box: true, ok: true, depth_bad_frames: 3}
+      - {id: "7", color: green, shape: cylinder, x: -3.339, y: -4.404, cell: 0, spot: far-left, cell_error_mm: 14, on_box: true, ok: true}
+duplicate_ids: []
+missing_ids: ["5", "8"]
+issues:
+  - "L1 가까운 줄 왼쪽 자리: 놓을 퍽이 모자라 비워 둔 자리"
+  - "L1 가까운 줄 오른쪽 자리: 놓을 퍽이 모자라 비워 둔 자리"
+  - "L1 퍽 2 개 보임, 눈 4 개 필요 (놓은 퍽 2 개)"
+  - "퍽 5: 세 장소 어디에서도 안 보임"
+  - "퍽 8: 세 장소 어디에서도 안 보임"
