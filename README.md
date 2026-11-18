@@ -79,6 +79,11 @@
 - [2026.11.11](classes/4th-month/Day68/README.md)
 - [2026.11.12](classes/4th-month/Day69/README.md)
 - [2026.11.13](classes/4th-month/Day70/README.md)
+- [2026.11.14](Daily-I-learned/2026/2026.11.14/README.md)
+- [2026.11.15](Daily-I-learned/2026/2026.11.15/README.md)
+- [2026.11.16](classes/4th-month/Day71/README.md)
+- [2026.11.17](classes/4th-month/Day72/README.md)
+- [2026.11.18](classes/4th-month/Day73/README.md)
 
 </details>
 
@@ -203,6 +208,9 @@
 - [Day68 (2026.11.11) - 매니퓰레이터 보정 학습 · 툭 건드리기](classes/4th-month/Day68/README.md)
 - [Day69 (2026.11.12) - 보정 학습 접고 새 모델 3개 · 미션 rosbag 분석 · pa06 초음파 · Nav2](classes/4th-month/Day69/README.md)
 - [Day70 (2026.11.13) - 모방 학습 접고 단계 보상 보고 집기 · Jetson 바코드 · 신호등 점검](classes/4th-month/Day70/README.md)
+- [Day71 (2026.11.16) - 받침 세우기 강화학습 · 마지막 미션 분석 · 경기 1등](classes/4th-month/Day71/README.md)
+- [Day72 (2026.11.17) - 받침 세우기 B 재학습 · 46° 넘어짐 분석 · 펌웨어 코드 읽기](classes/4th-month/Day72/README.md)
+- [Day73 (2026.11.18) - Ollama · LLM/VLM/VLA 준비 · 터틀봇 파이 Wi-Fi · OpenCR 연결](classes/4th-month/Day73/README.md)
 
 </details>
 
