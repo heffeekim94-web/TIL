@@ -84,6 +84,7 @@
 - [2026.11.16](classes/4th-month/Day71/README.md)
 - [2026.11.17](classes/4th-month/Day72/README.md)
 - [2026.11.18](classes/4th-month/Day73/README.md)
+- [2026.11.19](classes/4th-month/Day74/README.md)
 
 </details>
 
@@ -211,6 +212,7 @@
 - [Day71 (2026.11.16) - 받침 세우기 강화학습 · 마지막 미션 분석 · 경기 1등](classes/4th-month/Day71/README.md)
 - [Day72 (2026.11.17) - 받침 세우기 B 재학습 · 46° 넘어짐 분석 · 펌웨어 코드 읽기](classes/4th-month/Day72/README.md)
 - [Day73 (2026.11.18) - Ollama · LLM/VLM/VLA 준비 · 터틀봇 파이 Wi-Fi · OpenCR 연결](classes/4th-month/Day73/README.md)
+- [Day74 (2026.11.19) - 모델 개념 · gemma4 활용 고민 · OpenCR 펌웨어 확인](classes/4th-month/Day74/README.md)
 
 </details>
 
