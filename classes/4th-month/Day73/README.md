@@ -7,6 +7,9 @@ Date: 2026 Nov 18, Wednesday
 - Wi-Fi 해시 비밀번호 (PSK) 는 SSID 와 섞어 만든 값이라 SSID 만 바꾸면 연결이 안 된다
 - ROS2 는 같은 Wi-Fi + 같은 `ROS_DOMAIN_ID` 여야 서로 보이고, 터미널마다 `setup.bash` 를 source 해야 `ros2` 가 생긴다
 - 포트 · 보레이트가 다 되는데 `Failed connection with Devices` 면 OpenCR 펌웨어를 의심한다
+- (강의) LLM 은 앞 토큰을 조건으로 다음 토큰 분포를 계산하는 자기회귀 모델이다. 생성 확률이 높다고 사실이거나 실행 가능한 건 아니다
+- (강의) 로봇 명령은 "지시문 · 대상 ID · 장소 ID · 관측 시각" 으로 나누고, JSON 형식 검사 → 스키마 검사 → 현장 의미 검사를 통과한 것만 실행한다. 모르면 보류도 정답
+- (강의) VLA 는 a(t) = π(o(t), l). 새 로봇에 쓰려면 행동 규격 (차원 · 단위 · 좌표계 · 주기) 과 행동 어댑터가 먼저다
 
 
 
@@ -16,6 +19,7 @@ Date: 2026 Nov 18, Wednesday
 
 - [LLM · VLM · VLA 준비 일지 (11/18)](llm_log.md)
 - [터틀봇 파이 연결 일지 (11/18)](pi_log.md)
+- [강의 정리: 01 AI·LLM 응용 베이스 (11/18)](lecture_log.md)
 - Ollama `0.40.2` → `0.40.16` 업그레이드, GPU 점검
 - 8GB 에 맞는 LLM · VLM 모델 정리, `gemma4` (e4b) 받아서 실행
 - 노트북에 Lyrical MoveIt · ros2_control · open_manipulator 설치
