@@ -87,6 +87,7 @@
 - [2026.11.19](classes/4th-month/Day74/README.md)
 - [2026.11.20](classes/4th-month/Day75/README.md)
 - [2026.11.23](classes/4th-month/Day76/README.md)
+- [2026.11.24](classes/4th-month/Day77/README.md)
 
 </details>
 
@@ -217,6 +218,7 @@
 - [Day74 (2026.11.19) - 모델 개념 · gemma4 활용 고민 · OpenCR 펌웨어 확인](classes/4th-month/Day74/README.md)
 - [Day75 (2026.11.20) - LeRobot · SmolVLA 설치 · 2-A 예제 · LIBERO 시도](classes/4th-month/Day75/README.md)
 - [Day76 (2026.11.23) - Transformer · Attention (Q·K·V, causal mask) · KQV.py 실습](classes/4th-month/Day76/README.md)
+- [Day77 (2026.11.24) - VLA 설치 전 터틀봇 분해 · 볼트 · 나사 분배](classes/4th-month/Day77/README.md)
 
 </details>
 
