@@ -88,6 +88,8 @@
 - [2026.11.20](classes/4th-month/Day75/README.md)
 - [2026.11.23](classes/4th-month/Day76/README.md)
 - [2026.11.24](classes/4th-month/Day77/README.md)
+- [2026.11.25](classes/4th-month/Day78/README.md)
+- [2026.11.26](classes/4th-month/Day79/README.md)
 
 </details>
 
@@ -219,6 +221,8 @@
 - [Day75 (2026.11.20) - LeRobot · SmolVLA 설치 · 2-A 예제 · LIBERO 시도](classes/4th-month/Day75/README.md)
 - [Day76 (2026.11.23) - Transformer · Attention (Q·K·V, causal mask) · KQV.py 실습](classes/4th-month/Day76/README.md)
 - [Day77 (2026.11.24) - VLA 설치 전 터틀봇 분해 · 볼트 · 나사 분배](classes/4th-month/Day77/README.md)
+- [Day78 (2026.11.25) - 자연어 → 하위 작업 (작업 그래프 · 위상 정렬) · pa06 waffle-mpx 빌드](classes/4th-month/Day78/README.md)
+- [Day79 (2026.11.26) - ReAct와 Tool Use · 팔 joint1 재조립 · MoveIt2 실물 · 자연어 에이전트](classes/4th-month/Day79/README.md)
 
 </details>
 
