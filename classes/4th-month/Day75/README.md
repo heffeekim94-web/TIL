@@ -15,6 +15,7 @@ Date: 2026 Nov 20, Friday
 
 ## 오늘 한 것 
 
+- 참고 자료: [튜터님 가이드 (velog SmolVLA)](https://velog.io/@roboticsmaster/SmolVLA) · [논문 PDF (드라이브 Research papers)](https://drive.google.com/drive/folders/12683e-ywY8Bg8cwTTH4qqdTiIgTcC7m0)
 - [SmolVLA 설치 · 실행 일지 (11/20)](smolvla_log.md)
 - 튜터님 가이드 (velog SmolVLA) 따라 `~/vla` 에 LeRobot 클론 · 가상환경 · `[smolvla]` 설치
 - 2-A 공식 예제 실행 → SmolVLM2 · `smolvla_base` 모델 받음

@@ -17,6 +17,7 @@ Date: 2026 Nov 18, Wednesday
 
 ## 오늘 한 것 
 
+- 강의 자료: [01 AI·LLM 응용 베이스 · 20시간 · v1.2 (드라이브 PPT)](https://docs.google.com/presentation/d/1YlBKAhh7dICAgIp0Bg7Vr2Yjf_mgCJuyOC6CRk7OA4w/edit)
 - [LLM · VLM · VLA 준비 일지 (11/18)](llm_log.md)
 - [터틀봇 파이 연결 일지 (11/18)](pi_log.md)
 - [강의 정리: 01 AI·LLM 응용 베이스 (11/18)](lecture_log.md)

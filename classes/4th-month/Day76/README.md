@@ -16,6 +16,7 @@ Date: 2026 Nov 23, Monday
 
 ## 오늘 한 것 
 
+- 강의 자료: [11강. Transformer와 Attention (드라이브 PPT)](https://docs.google.com/presentation/d/1WMWWSaEKw-Xxwj2GQbLm1I8HGowNKRjwSb2R7ZhzkJ4/edit) · [강의 원문 (노션)](https://app.notion.com/p/teamsparta/11-Transformer-Attention-4122dc3ef514816190b7e6316b6ae5dd)
 - [Transformer · Attention 일지 (11/23)](attention_log.md)
 - 11강 Transformer 와 Attention (23장) 수업
 - 실습 ① 을 [KQV.py](KQV.py) 로 짜서 세 조건 (q 바꾸기 · 둘째 Key 가리기) 실행

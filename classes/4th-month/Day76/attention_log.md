@@ -3,6 +3,7 @@ date: 2026.11.23
 # Transformer · Attention 일지 (11/23)
 
 > 작성: 김혜민 · 2026-11-23 (월)
+> 강의 자료: [11강. Transformer와 Attention (드라이브 PPT)](https://docs.google.com/presentation/d/1WMWWSaEKw-Xxwj2GQbLm1I8HGowNKRjwSb2R7ZhzkJ4/edit) · [강의 원문 (노션)](https://app.notion.com/p/teamsparta/11-Transformer-Attention-4122dc3ef514816190b7e6316b6ae5dd)
 
 오늘은 **11강 Transformer 와 Attention 을 배우고, Attention 한 번을 손계산과 Python (`KQV.py`) 으로 직접 확인한 날**이에요.
 

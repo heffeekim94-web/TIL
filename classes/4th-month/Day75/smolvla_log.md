@@ -3,6 +3,7 @@ date: 2026.11.20
 # SmolVLA 설치 · 실행 일지 (11/20)
 
 > 작성: 김혜민 · 2026-11-20 (금)
+> 참고 자료: [튜터님 가이드 (velog SmolVLA)](https://velog.io/@roboticsmaster/SmolVLA) · [논문 PDF (드라이브 Research papers)](https://drive.google.com/drive/folders/12683e-ywY8Bg8cwTTH4qqdTiIgTcC7m0)
 
 오늘은 **튜터님 가이드 (velog SmolVLA) 를 따라 LeRobot · SmolVLA 를 처음 설치하고, 로봇 없이 어디까지 돌릴 수 있는지 확인한 날**이에요.
 
