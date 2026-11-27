@@ -90,6 +90,7 @@
 - [2026.11.24](classes/4th-month/Day77/README.md)
 - [2026.11.25](classes/4th-month/Day78/README.md)
 - [2026.11.26](classes/4th-month/Day79/README.md)
+- [2026.11.27](classes/4th-month/Day80/README.md)
 
 </details>
 
@@ -223,6 +224,7 @@
 - [Day77 (2026.11.24) - VLA 설치 전 터틀봇 분해 · 볼트 · 나사 분배](classes/4th-month/Day77/README.md)
 - [Day78 (2026.11.25) - 자연어 → 하위 작업 (작업 그래프 · 위상 정렬) · pa06 waffle-mpx 빌드](classes/4th-month/Day78/README.md)
 - [Day79 (2026.11.26) - ReAct와 Tool Use · 팔 joint1 재조립 · MoveIt2 실물 · 자연어 에이전트](classes/4th-month/Day79/README.md)
+- [Day80 (2026.11.27) - 프로젝트 3 (AUTOBOT) 시작 · 와이파이 카메라 브리지 · RM-X52 메시](classes/4th-month/Day80/README.md)
 
 </details>
 
